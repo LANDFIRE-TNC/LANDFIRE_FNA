@@ -1,0 +1,32 @@
+---
+title: "Existing Vegetation (EVT)"
+author: "Sarah Hagen"
+toc: true
+format: html
+---
+![LANDFIRE delivers Existing Vegetation Type data for the entire United States, including Alaska, Hawaii, Puerto Rico and the US Virgin Islands. More than 1000 Existing Vegetation Types are grouped into seven major vegetation classes and displayed using one color family for each class. This map was designed with a custom color ramp created by Sarah Hagen.](images/2-evt-map.bmp){fig-alt="A map of the Existing Vegetation Type data for the Contiguous United States, Alaska, and Hawaii."}
+
+## What is Existing Vegetation Type?
+
+The [Existing Vegetation Type (EVT)](https://landfire.gov/vegetation/evt) data represent the species composition currently present at a given site. Vegetation map units are primarily derived from NatureServe's Ecological Systems classification, which is a nationally consistent set of mid-scale ecological units. Additional units are derived from the National Land Cover Database (NLCD), National Vegetation Classification Standard (NVCS) Alliances, and LANDFIRE-specific types.
+
+EVTs are mapped using decision tree models, field data, Landsat imagery, elevation, and biophysical gradient data. Decision tree models are developed separately for each of the three lifeforms—tree, shrub, and herbaceous—and are then used to generate lifeform-specific EVT layers. The EVT layer is essential for understanding the current state of vegetation and planning management actions.
+
+## Using EVT in fire needs assessments
+
+EVT is a valuable tool in Fire Needs Assessments for several reasons:
+
+- **Current Vegetation State**: EVT provides a detailed understanding of the current vegetation state, which is essential for planning restoration and management activities.
+
+- **Invasive Species Management**: By identifying areas dominated by invasive species, EVT helps prioritize management actions to remove these species and restore native vegetation.
+
+- **Fire Management**: Understanding the current vegetation composition is crucial for planning prescribed burns and other fire management activities.
+
+## Learn more
+For more detailed information on Existing Vegetation Type, please visit the following web pages:
+
+- [EVT on the LANDFIRE Program Website](https://landfire.gov/vegetation/evt)
+
+- [LANDFIRE 101 Existing Vegetation Type](https://landfire-tnc.github.io/LANDFIRE_101/LANDFIRE_Datasets/1_Vegetation/Existing_Vegetation/1-existing-vegetation-type.html)
+
+These resources provide comprehensive information on Biophysical Settings and their applications in landscape management.

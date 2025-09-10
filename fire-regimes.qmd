@@ -1,0 +1,57 @@
+---
+title: "Fire Regime Datasets"
+author: "Sarah Hagen"
+toc: true
+format: html
+---
+## Fire Return Interval (FRI)
+![Fire Return Interval data for the United States are displayed on the FRI_ALLFIR attribute. This map explores the fire regime attributes of the Biophysical Settings data, with more frequent fire areas in reds and oranges, moderate frequency fire areas in yellow and pale green, and lower frequency fire areas in shades of blue. This map was designed using a custom color ramp created by Sarah Hagen.](images/3-fri-map.bmp){fig-alt="A map of the Fire Return Interval data for the Contiguous United States, Alaska, and Hawaii."}
+
+The [Fire Return Interval (FRI) data](https://landfire.gov/fire-regime/fri) describe historical fire frequency as a mean fire return interval. This information helps us understand the natural fire cycles and plan for future fire management.
+
+For example, the FRI layer shows that certain grasslands historically experienced frequent fires, with intervals of 3-5 years. This information helps us plan prescribed burns to mimic natural fire cycles and maintain the health of these ecosystems.
+
+The FRI layer is intended to describe one component of historical fire regime characteristics in the context of the broader historical time period represented by the LANDFIRE Biophysical Settings (BPS) models. FRI is derived from the vegetation dynamics model. This layer is created by linking the BpS Group attribute in the BpS layer with modeled FRI.
+
+## Fire Regime Groups (FRG)
+![Fire Regime Groups for the United States are displayed on the FRG_NEW attribute. This map explores the fire regime groups of the Biophysical Settings data, with more frequent fire areas in reds and oranges, moderate frequency fire areas in yellow and pale green, and lower frequency fire areas in shades of blue. This map was designed using a custom color ramp created by Sarah Hagen.](images/4-frg-map.bmp){fig-alt="A map of the Fire Return Groups data for the Contiguous United States, Alaska, and Hawaii."}
+
+[Fire Regime Groups (FRG)](https://landfire.gov/fire-regime/frg) characterize historical frequency and severity of fire. These groups help us understand the types of fires that occurred historically and their impact on the landscape.
+
+For instance, the FRG layer helps us understand the historical fire regimes of various ecosystems, such as forests that experienced low-intensity surface fires. This information guides our prescribed fire practices to ensure they align with the natural fire regimes of these ecosystems.
+
+The FRG layer categorizes simulated mean fire return intervals and fire severities into twelve fire regimes defined in the [attribute data dictionary](https://landfire.gov/sites/default/files/DataDictionary/LF2020/LF20_BPSADD_220.pdf) (opens a pdf):
+
+- **Fire Regime I-A**: 0 to 5-year frequency, percent replacement fire less than 66.7%
+- **Fire Regime I-B**: 6 to 15-year frequency, percent replacement fire less than 66.7%
+- **Fire Regime I-C**: 16 to 35-year frequency, percent replacement fire less than 66.7%
+- **Fire Regime II-A**: 0 to 5-year frequency, percent replacement fire greater than 66.7%
+- **Fire Regime II-B**: 6 to 15-year frequency, percent replacement fire greater than 66.7%
+- **Fire Regime II-C**: 16 to 35-year frequency, percent replacement fire greater than 66.7%
+- **Fire Regime III-A**: 36 to 100-year frequency, percent replacement fire less than 80%
+- **Fire Regime III-B**: 101 to 200-year frequency, percent replacement fire less than 66.7%
+- **Fire Regime IV-A**: 36 to 100-year frequency, percent replacement fire greater than 80%
+- **Fire Regime IV-B**: 101 to 200-year frequency, percent replacement fire greater than 66.7%
+- **Fire Regime V-A**: 201 to 500-year frequency, any severity
+- **Fire Regime V-B**: Greater than 500-year frequency, any severity
+
+## Using fire regime data in fire needs assessments
+
+Fire regime data is crucial in Fire Needs Assessments for several reasons:
+
+- **Historical Fire Cycles**: Understanding historical fire cycles helps in planning prescribed burns and other fire management activities.
+
+- **Vegetation Management**: Fire regime data provides insights into how different vegetation types respond to fire, guiding restoration and management efforts.
+
+- **Risk Assessment**: By understanding historical fire regimes, we can better assess the risk of wildfires and plan mitigation strategies.
+
+## Learn more
+For more detailed information on Fire Regime data, please visit the following websites:
+
+- [Biophysical Settings on the LANDFIRE 101 website](https://landfire-tnc.github.io/LANDFIRE_101/LANDFIRE_Datasets/1_Vegetation/Biophysical_Settings/2-bps_spatial.html)
+
+- [Mean Fire Return Interval Overview](https://landfire.gov/fire-regime/fri) on the LANDFIRE Program website
+
+- [Fire Regime Groups Overview](https://landfire.gov/fire-regime/frg) on the LANDFIRE Program website
+
+These resources provide comprehensive information on Fire Regime data and its applications in landscape management.

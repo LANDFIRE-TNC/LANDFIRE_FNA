@@ -1,0 +1,40 @@
+---
+title: "LANDFIRE in Fire Needs Assessments"
+author: "Sarah Hagen, Jim Smith"
+toc: true
+format: html
+---
+
+## How can LANDFIRE help?
+
+One of the significant challenges in many assessments is the lack of basic data due to limited time and resources. LANDFIRE addresses this issue by providing a set of comprehensive, cross-boundary, consistent vegetation, fuels, and fire information data. Additionally, LANDFIRE has implemented a long-term Operations and Maintenance Plan to keep this data up to date. While LANDFIRE was initially developed for national, regional, and very large landscape analyses, its products are also relevant for smaller geographies after local review. This flexibility makes LANDFIRE a valuable tool for various scales of landscape management.
+
+::: callout
+[LANDFIRE](https://www.landfire.gov/) is a shared interagency wildland fire management data program across the United States and Territories. Leadership, management, and oversight are through the U.S. Department of Agriculture Forest Service - Fire and Aviation Management and the U.S. Department of the Interior – Office of Wildland Fire. The LANDFIRE project team includes USGS EROS, EROS Technical Support Services Contract (KBR), The Nature Conservancy, USDA Forest Service (Rocky Mountain Research Station) RMRS, and Forest Inventory & Analysis (FIA).
+
+LANDFIRE provides more than twenty landscape-scale geospatial products of biological and ecological data, including data such as (900+) vegetation types and (13/40) fire behavior fuel models that support all-lands planning, fire and natural resources management, operations, analyses and assessments.
+
+Learn more about LANDFIRE’s mission on the [LANDFIRE Program website](https://www.landfire.gov/about-landfire). You can also learn more about each of the LANDFIRE datasets we will be using in the FNA process on our companion [LANDFIRE 101 website](https://landfire-tnc.github.io/LANDFIRE_101/).
+:::
+
+### The LANDFIRE Product Suite
+
+LANDFIRE offers a large suite of products developed for a wide range of disciplines, including vegetation, fuels, fire regime, and disturbance. These products are essential for various landscape management and planning activities.
+
+The layers we are predominantly concerned with for these fire needs assessments are:
+
+- [**Biophysical Settings**](https://landfire.gov/vegetation/bps)
+- [**Existing Vegetation Type**](https://landfire.gov/vegetation/evt)
+- [**Mean Fire Return Interval**](https://landfire.gov/fire-regime/fri)
+- [**Fire Regime Groups**](https://landfire.gov/fire-regime/frg)
+
+You may also find some of the fuels datasets helpful in your assessments or your work with fire.
+
+## Learn more
+
+For more detailed information on LANDFIRE and its datasets, please visit the following websites:
+
+- [The LANDFIRE Program website](https://www.landfire.gov/about-landfire)
+- [LANDFIRE 101](https://landfire-tnc.github.io/LANDFIRE_101/)
+
+These resources provide an in-depth look at the LANDFIRE program and its applications, ensuring you have all the information needed to utilize these tools effectively.
