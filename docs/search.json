@@ -1,205 +1,35 @@
 [
   {
-    "objectID": "LANDFIRE_FNA.html",
-    "href": "LANDFIRE_FNA.html",
-    "title": "LANDFIRE_FNA",
+    "objectID": "mask-bps.html",
+    "href": "mask-bps.html",
+    "title": "FNA Process: Use EVT to mask BPS",
     "section": "",
-    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
+    "text": "To refine your analysis, you can use the extent of the new EVT raster with non-burnable values removed to mask the Biophysical Settings (BpS) raster. This process requires a Spatial Analyst license in ArcGIS Pro.",
+    "crumbs": [
+      "The Fire Needs Assessment Process",
+      "FNA Process: Use EVT to mask BPS"
+    ]
   },
   {
-    "objectID": "LANDFIRE_FNA.html#quarto",
-    "href": "LANDFIRE_FNA.html#quarto",
-    "title": "LANDFIRE_FNA",
+    "objectID": "mask-bps.html#using-the-evt-raster-to-mask-the-bps-raster",
+    "href": "mask-bps.html#using-the-evt-raster-to-mask-the-bps-raster",
+    "title": "FNA Process: Use EVT to mask BPS",
     "section": "",
-    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Why Fire Needs Assessments",
-    "section": "",
-    "text": "The frequency and severity of wildfires are changing around the country. To understand their impact on the landscape, federal agencies and states are conducting fire needs assessments. Fire needs assessments help fire stakeholders understand where, what type of, and how much fire needs to occur to reduce the destructive effects of wildfire and restore or maintain ecosystem health and resiliency.",
+    "text": "To refine your analysis, you can use the extent of the new EVT raster with non-burnable values removed to mask the Biophysical Settings (BpS) raster. This process requires a Spatial Analyst license in ArcGIS Pro.",
     "crumbs": [
-      "An introduction to fire needs assessments"
+      "The Fire Needs Assessment Process",
+      "FNA Process: Use EVT to mask BPS"
     ]
   },
   {
-    "objectID": "index.html#what-is-a-fire-needs-assessment",
-    "href": "index.html#what-is-a-fire-needs-assessment",
-    "title": "Why Fire Needs Assessments",
-    "section": "What is a Fire Needs Assessment?",
-    "text": "What is a Fire Needs Assessment?\nA fire needs sssessment (FNA) is a structured, science-based process used to evaluate where and to what extent fire is needed on a landscape to restore or maintain ecological integrity, reduce wildfire risk, and meet land management objectives. It integrates ecological principles, historical fire regimes, current vegetation conditions, and spatial data to identify areas where fire—either through prescribed burning or managed wildfire—can be applied beneficially. FNAs help land managers prioritize treatments by assessing the ecological need for fire, not just the risk of fire, which is a critical distinction in fire-adapted ecosystems.\nThe process typically involves spatial analysis using GIS to compare current vegetation and fire regime conditions against reference conditions (often derived from models like LANDFIRE or local ecological knowledge). This comparison highlights areas of departure—where fire has been excluded or altered—and helps quantify the type, amount, and frequency of fire needed to move the system toward desired conditions. FNAs are essential for aligning fire management with ecological goals, supporting NEPA planning, and justifying funding for prescribed fire programs. By grounding fire planning in ecological need, FNAs promote more strategic, effective, and defensible fire management decisions. Later in this website, we will showcase some examples of fire needs assessments and what programs have done with them.",
+    "objectID": "mask-bps.html#step-by-step-process",
+    "href": "mask-bps.html#step-by-step-process",
+    "title": "FNA Process: Use EVT to mask BPS",
+    "section": "Step-by-step process",
+    "text": "Step-by-step process\n💡 Screenshots of the process are included below the written instructions for those who find them useful.\n\nOpen the Extract by Mask Tool\n\nNavigate to the Spatial Analyst toolbox in ArcGIS Pro and open the “Extract by Mask” tool.\n\nSelect the Input Raster\n\nFor the input raster, select the BpS raster that you previously clipped to your study area.\n\nSelect the Mask Data\n\nFor the “Input raster or feature mask data,” use the new EVT raster with the non-burnable values or other values you don’t want to consider removed.\n\nSet the Extraction Area\n\nSet the extraction area to “Inside” to ensure that only the areas within the mask are included in the output.\n\nCheck Environment Settings\n\nBefore running the tool, check your environment settings:\n\nEnsure that your output raster will be in the correct coordinate system.\nSet the snap raster to your selected snap raster (in this case, the CONUS BpS Raster) to ensure alignment.\n\n\nRun the Tool\n\nExecute the “Extract by Mask” tool to generate the masked BpS raster.\n\n\nThis process will help you refine your analysis by focusing only on the relevant areas, ensuring that your fire needs assessment is accurate and comprehensive.\n\nScreenshot for masking the BPS raster with the EVT raster\n\n\n\nUse the EVT raster to mask your BpS raster. Remember to set appropriate environment settings.",
     "crumbs": [
-      "An introduction to fire needs assessments"
-    ]
-  },
-  {
-    "objectID": "index.html#the-importance-of-fire-needs-assessments",
-    "href": "index.html#the-importance-of-fire-needs-assessments",
-    "title": "Why Fire Needs Assessments",
-    "section": "The importance of fire needs assessments",
-    "text": "The importance of fire needs assessments\nFire needs assessments are crucial for several reasons:\n\nThey elevate ecological need as a planning priority: FNAs shift the focus from fire risk to fire need, helping managers advocate for fire where it’s ecologically beneficial—even in places where fire has long been absent.\nThey support landscape-scale restoration: FNAs help identify patterns of fire exclusion and suppression across large areas, guiding coordinated efforts to restore fire regimes that support biodiversity, resilience, and ecosystem health.\nThey strengthen the case for prescribed fire: By quantifying ecological need, FNAs provide a defensible rationale for prescribed fire programs — supporting NEPA documentation, funding proposals, interagency planning, and more.\nThey foster collaboration and shared understanding: FNAs offer a common language and framework for land managers, scientists, and stakeholders to discuss fire needs, priorities, and trade-offs across jurisdictions.\nThey help tell the story of fire as a healing force: FNAs provide the data and context needed to communicate with the public about why fire is essential—not just dangerous—and how it can be used to restore landscapes and protect communities.\n\n\nPrescribed Fire as a Restoration Tool\nOne of the most important applications of a fire needs assessment is to effectively plan prescribed fire programs. Prescribed fire is not only a tool for maintaining landscapes but also for restoring them. Here’s how:\n\nEcosystem Restoration: Prescribed fire plays a pivotal role in restoring and maintaining healthy ecosystems. It helps in the regeneration of native plant species, which in turn supports the wildlife that depends on these plants.\nWildlife Habitat Improvement: Numerous wildlife species depend on fire-maintained habitats for their survival. Prescribed fire helps create a mosaic of different habitat types, which is essential for biodiversity.\nInvasive Species Control: Fire is an effective tool for controlling invasive species that outcompete native plants. By reducing the presence of invasive species, prescribed fire helps restore the natural balance of ecosystems.\nReducing Fire Hazards: By reducing the accumulation of combustible materials, prescribed fire helps lower the risk of severe wildfires. This is particularly important in areas prone to wildfires.\nPromoting Forest Health: Fire helps in thinning dense forests, which reduces competition among trees and promotes the growth of healthier, more resilient forests.\nCarbon Management: Prescribed fire can help manage carbon levels in the soil and vegetation, contributing to the overall health of the ecosystem.",
-    "crumbs": [
-      "An introduction to fire needs assessments"
-    ]
-  },
-  {
-    "objectID": "index.html#regional-considerations",
-    "href": "index.html#regional-considerations",
-    "title": "Why Fire Needs Assessments",
-    "section": "Regional Considerations",
-    "text": "Regional Considerations\nUnderstanding fire return intervals and historical fire patterns is essential for various regions across the United States:\n\nNortheast US: In the Northeast, fire needs assessments help manage forest health and reduce the risk of uncontrolled wildfires. Historical fire data can guide the use of prescribed burns to maintain biodiversity and prevent the spread of invasive species.\nSoutheast US: The Southeast has a long history of fire-adapted ecosystems. Fire needs assessments are crucial for maintaining the health of pine forests and grasslands. Understanding fire return intervals helps in planning prescribed burns to mimic natural fire cycles.\nCentral US: In the Central US, fire needs assessments are used to manage prairies and savannas. Historical fire data helps in understanding the natural fire regimes and planning restoration activities to maintain these ecosystems.\nWestern US: The Western US faces frequent and severe wildfires. Fire needs assessments are essential for reducing wildfire risks and managing forest health. Understanding historical fire regimes helps in planning fuel reduction treatments and prescribed burns.",
-    "crumbs": [
-      "An introduction to fire needs assessments"
-    ]
-  },
-  {
-    "objectID": "evt.html",
-    "href": "evt.html",
-    "title": "Existing Vegetation (EVT)",
-    "section": "",
-    "text": "LANDFIRE delivers Existing Vegetation Type data for the entire United States, including Alaska, Hawaii, Puerto Rico and the US Virgin Islands. More than 1000 Existing Vegetation Types are grouped into seven major vegetation classes and displayed using one color family for each class. This map was designed with a custom color ramp created by Sarah Hagen.",
-    "crumbs": [
-      "Fire Needs Assessments Datasets",
-      "Existing Vegetation (EVT)"
-    ]
-  },
-  {
-    "objectID": "evt.html#what-is-existing-vegetation-type",
-    "href": "evt.html#what-is-existing-vegetation-type",
-    "title": "Existing Vegetation (EVT)",
-    "section": "What is Existing Vegetation Type?",
-    "text": "What is Existing Vegetation Type?\nThe Existing Vegetation Type (EVT) data represent the species composition currently present at a given site. Vegetation map units are primarily derived from NatureServe’s Ecological Systems classification, which is a nationally consistent set of mid-scale ecological units. Additional units are derived from the National Land Cover Database (NLCD), National Vegetation Classification Standard (NVCS) Alliances, and LANDFIRE-specific types.\nEVTs are mapped using decision tree models, field data, Landsat imagery, elevation, and biophysical gradient data. Decision tree models are developed separately for each of the three lifeforms—tree, shrub, and herbaceous—and are then used to generate lifeform-specific EVT layers. The EVT layer is essential for understanding the current state of vegetation and planning management actions.",
-    "crumbs": [
-      "Fire Needs Assessments Datasets",
-      "Existing Vegetation (EVT)"
-    ]
-  },
-  {
-    "objectID": "evt.html#using-evt-in-fire-needs-assessments",
-    "href": "evt.html#using-evt-in-fire-needs-assessments",
-    "title": "Existing Vegetation (EVT)",
-    "section": "Using EVT in fire needs assessments",
-    "text": "Using EVT in fire needs assessments\nEVT is a valuable tool in Fire Needs Assessments for several reasons:\n\nCurrent Vegetation State: EVT provides a detailed understanding of the current vegetation state, which is essential for planning restoration and management activities.\nInvasive Species Management: By identifying areas dominated by invasive species, EVT helps prioritize management actions to remove these species and restore native vegetation.\nFire Management: Understanding the current vegetation composition is crucial for planning prescribed burns and other fire management activities.",
-    "crumbs": [
-      "Fire Needs Assessments Datasets",
-      "Existing Vegetation (EVT)"
-    ]
-  },
-  {
-    "objectID": "evt.html#learn-more",
-    "href": "evt.html#learn-more",
-    "title": "Existing Vegetation (EVT)",
-    "section": "Learn more",
-    "text": "Learn more\nFor more detailed information on Existing Vegetation Type, please visit the following web pages:\n\nEVT on the LANDFIRE Program Website\nLANDFIRE 101 Existing Vegetation Type\n\nThese resources provide comprehensive information on Biophysical Settings and their applications in landscape management.",
-    "crumbs": [
-      "Fire Needs Assessments Datasets",
-      "Existing Vegetation (EVT)"
-    ]
-  },
-  {
-    "objectID": "bps.html",
-    "href": "bps.html",
-    "title": "Biophysical Settings (BPS)",
-    "section": "",
-    "text": "LANDFIRE delivers Biophysical Settings data and models for the entire United States, including Alaska and Hawaii. Puerto Rico and the US Virgin Islands do not yet have BPS data developed. In this map Biophysical Settings are grouped into seven major vegetation classes and displayed using one color for each class. This map was designed using a custom color ramp created by Sarah Hagen.",
-    "crumbs": [
-      "Fire Needs Assessments Datasets"
-    ]
-  },
-  {
-    "objectID": "bps.html#what-are-biophysical-settings",
-    "href": "bps.html#what-are-biophysical-settings",
-    "title": "Biophysical Settings (BPS)",
-    "section": "What are Biophysical Settings?",
-    "text": "What are Biophysical Settings?\nBiophysical Settings (BPS) represent reference conditions, helping us examine historical disturbance patterns and estimate proportions of succession classes prior to European colonization. This information provides a baseline for understanding current conditions and planning restoration efforts.\nBiophysical Settings (BPS) are a foundational concept for LANDFIRE defined on the LANDFIRE Program website as:\n\n“…a modeled representation of the vegetation system that may have been dominant on the landscape prior to Euro-American settlement and is based on both the current biophysical environment and an approximation of modeled past disturbance regimes.”\n\nWe like to think of the Biophysical Settings as ‘ecosystem habitats’, or ‘potential ecosystem footprints’. The BPS concept asks “where might an ecosystem occur” based on abiotic factors such as soils, surficial geology, slope and elevation as well as natural disturbance regimes.\nFor example, in many regions across the United States, the Biophysical Settings layer helps us understand the historical distribution of various ecosystems, such as grasslands, forests, and wetlands. By comparing these reference conditions to current vegetation, we can identify areas that have undergone significant changes and need restoration or other management.",
-    "crumbs": [
-      "Fire Needs Assessments Datasets"
-    ]
-  },
-  {
-    "objectID": "bps.html#using-bps-in-fire-needs-assessments",
-    "href": "bps.html#using-bps-in-fire-needs-assessments",
-    "title": "Biophysical Settings (BPS)",
-    "section": "Using BPS in fire needs assessments",
-    "text": "Using BPS in fire needs assessments\nBPS is a valuable tool in fire needs assessments for several reasons:\n\nUnderstanding Historical Vegetation: BpS helps us understand what vegetation was historically present in an area. This information is crucial for planning restoration and management decisions.\nFire Regime Data: BpS is directly tied to fire regime data, which helps us understand how much of the landscape burned historically. This information is essential for planning prescribed burns and other fire management activities.\nReference Conditions: While we can conduct a fire needs assessment without BpS, it provides useful information on reference conditions, helping us make more informed decisions.\n\n\n\n\n\n\n\nBiophysical Settings as reference conditions\n\n\n\nWe are not looking at climate change, and we are not necessarily saying that reference conditions are the same as “Desired Future Conditions.” However, they do help us understand the conditions that ecosystems evolved with and to which they adapted over time. In some ecosystems, departure from reference conditions means higher vulnerabiligy to climate change, and we can look at the reference vs. current conditions to assess what we might need to do to adapt.",
-    "crumbs": [
-      "Fire Needs Assessments Datasets"
-    ]
-  },
-  {
-    "objectID": "bps.html#bps-models-and-syncrosim",
-    "href": "bps.html#bps-models-and-syncrosim",
-    "title": "Biophysical Settings (BPS)",
-    "section": "BPS models and SyncroSim",
-    "text": "BPS models and SyncroSim\nSyncroSim, developed by ApexRMS, is the tool currently used for BpS models. It allows users to develop and run aspatial or spatially-explicit, stochastic state-and-transition simulation models (STSMs) of vegetation change. SyncroSim is designed to simulate and compare possible vegetation conditions across a landscape over time by considering the interaction between succession, disturbances, and management. LANDFIRE uses the SyncroSim package ST-Sim to estimate historical fire frequency and severity.\nSyncroSim and ST-Sim, have been supported by several agencies, including The Nature Conservancy, U.S. Forest Service, U.S. Geological Survey, and LANDFIRE. As a result, it is available as a free download.\nThe LANDFIRE Reference Condition table is a MS Excel file that provides LANDFIRE’s modeled estimate of historical fire frequency and severity for every BpS. This information is also in the attribute tables of the LANDFIRE Fire Return Interval and Percent Fire Severity spatial layers. This will directly plug into the process to help us understand historic and current fire on the landscape.\nYou can (and are encouraged to) re-define fire return intervals to better match what is on your landscape. The TNC LANDFIRE team encourages you to submit your modifications to us for possible inclusion in future iterations of LANDFIRE data.",
-    "crumbs": [
-      "Fire Needs Assessments Datasets"
-    ]
-  },
-  {
-    "objectID": "bps.html#learn-more",
-    "href": "bps.html#learn-more",
-    "title": "Biophysical Settings (BPS)",
-    "section": "Learn more",
-    "text": "Learn more\nFor more detailed information on Biophysical Settings and SyncroSim, please visit the following web pages:\n\nBPS on the LANDFIRE Program Website\nLANDFIRE 101 BPS Overview\nLANDFIRE 101 BPS Spatial Data\nLANDFIRE 101 BPS Models\nThe LANDFIRE Vegetation Modeling website\n\nThese resources provide comprehensive information on Biophysical Settings and their applications in landscape management.",
-    "crumbs": [
-      "Fire Needs Assessments Datasets"
-    ]
-  },
-  {
-    "objectID": "fire-regimes.html",
-    "href": "fire-regimes.html",
-    "title": "Fire Regime Datasets",
-    "section": "",
-    "text": "Fire Return Interval data for the United States are displayed on the FRI_ALLFIR attribute. This map explores the fire regime attributes of the Biophysical Settings data, with more frequent fire areas in reds and oranges, moderate frequency fire areas in yellow and pale green, and lower frequency fire areas in shades of blue. This map was designed using a custom color ramp created by Sarah Hagen.\n\n\nThe Fire Return Interval (FRI) data describe historical fire frequency as a mean fire return interval. This information helps us understand the natural fire cycles and plan for future fire management.\nFor example, the FRI layer shows that certain grasslands historically experienced frequent fires, with intervals of 3-5 years. This information helps us plan prescribed burns to mimic natural fire cycles and maintain the health of these ecosystems.\nThe FRI layer is intended to describe one component of historical fire regime characteristics in the context of the broader historical time period represented by the LANDFIRE Biophysical Settings (BPS) models. FRI is derived from the vegetation dynamics model. This layer is created by linking the BpS Group attribute in the BpS layer with modeled FRI.",
-    "crumbs": [
-      "Fire Needs Assessments Datasets",
-      "Fire Regime Datasets"
-    ]
-  },
-  {
-    "objectID": "fire-regimes.html#fire-return-interval-fri",
-    "href": "fire-regimes.html#fire-return-interval-fri",
-    "title": "Fire Regime Datasets",
-    "section": "",
-    "text": "Fire Return Interval data for the United States are displayed on the FRI_ALLFIR attribute. This map explores the fire regime attributes of the Biophysical Settings data, with more frequent fire areas in reds and oranges, moderate frequency fire areas in yellow and pale green, and lower frequency fire areas in shades of blue. This map was designed using a custom color ramp created by Sarah Hagen.\n\n\nThe Fire Return Interval (FRI) data describe historical fire frequency as a mean fire return interval. This information helps us understand the natural fire cycles and plan for future fire management.\nFor example, the FRI layer shows that certain grasslands historically experienced frequent fires, with intervals of 3-5 years. This information helps us plan prescribed burns to mimic natural fire cycles and maintain the health of these ecosystems.\nThe FRI layer is intended to describe one component of historical fire regime characteristics in the context of the broader historical time period represented by the LANDFIRE Biophysical Settings (BPS) models. FRI is derived from the vegetation dynamics model. This layer is created by linking the BpS Group attribute in the BpS layer with modeled FRI.",
-    "crumbs": [
-      "Fire Needs Assessments Datasets",
-      "Fire Regime Datasets"
-    ]
-  },
-  {
-    "objectID": "fire-regimes.html#fire-regime-groups-frg",
-    "href": "fire-regimes.html#fire-regime-groups-frg",
-    "title": "Fire Regime Datasets",
-    "section": "Fire Regime Groups (FRG)",
-    "text": "Fire Regime Groups (FRG)\n\n\n\nFire Regime Groups for the United States are displayed on the FRG_NEW attribute. This map explores the fire regime groups of the Biophysical Settings data, with more frequent fire areas in reds and oranges, moderate frequency fire areas in yellow and pale green, and lower frequency fire areas in shades of blue. This map was designed using a custom color ramp created by Sarah Hagen.\n\n\nFire Regime Groups (FRG) characterize historical frequency and severity of fire. These groups help us understand the types of fires that occurred historically and their impact on the landscape.\nFor instance, the FRG layer helps us understand the historical fire regimes of various ecosystems, such as forests that experienced low-intensity surface fires. This information guides our prescribed fire practices to ensure they align with the natural fire regimes of these ecosystems.\nThe FRG layer categorizes simulated mean fire return intervals and fire severities into twelve fire regimes defined in the attribute data dictionary (opens a pdf):\n\nFire Regime I-A: 0 to 5-year frequency, percent replacement fire less than 66.7%\nFire Regime I-B: 6 to 15-year frequency, percent replacement fire less than 66.7%\nFire Regime I-C: 16 to 35-year frequency, percent replacement fire less than 66.7%\nFire Regime II-A: 0 to 5-year frequency, percent replacement fire greater than 66.7%\nFire Regime II-B: 6 to 15-year frequency, percent replacement fire greater than 66.7%\nFire Regime II-C: 16 to 35-year frequency, percent replacement fire greater than 66.7%\nFire Regime III-A: 36 to 100-year frequency, percent replacement fire less than 80%\nFire Regime III-B: 101 to 200-year frequency, percent replacement fire less than 66.7%\nFire Regime IV-A: 36 to 100-year frequency, percent replacement fire greater than 80%\nFire Regime IV-B: 101 to 200-year frequency, percent replacement fire greater than 66.7%\nFire Regime V-A: 201 to 500-year frequency, any severity\nFire Regime V-B: Greater than 500-year frequency, any severity",
-    "crumbs": [
-      "Fire Needs Assessments Datasets",
-      "Fire Regime Datasets"
-    ]
-  },
-  {
-    "objectID": "fire-regimes.html#using-fire-regime-data-in-fire-needs-assessments",
-    "href": "fire-regimes.html#using-fire-regime-data-in-fire-needs-assessments",
-    "title": "Fire Regime Datasets",
-    "section": "Using fire regime data in fire needs assessments",
-    "text": "Using fire regime data in fire needs assessments\nFire regime data is crucial in Fire Needs Assessments for several reasons:\n\nHistorical Fire Cycles: Understanding historical fire cycles helps in planning prescribed burns and other fire management activities.\nVegetation Management: Fire regime data provides insights into how different vegetation types respond to fire, guiding restoration and management efforts.\nRisk Assessment: By understanding historical fire regimes, we can better assess the risk of wildfires and plan mitigation strategies.",
-    "crumbs": [
-      "Fire Needs Assessments Datasets",
-      "Fire Regime Datasets"
-    ]
-  },
-  {
-    "objectID": "fire-regimes.html#learn-more",
-    "href": "fire-regimes.html#learn-more",
-    "title": "Fire Regime Datasets",
-    "section": "Learn more",
-    "text": "Learn more\nFor more detailed information on Fire Regime data, please visit the following websites:\n\nBiophysical Settings on the LANDFIRE 101 website\nMean Fire Return Interval Overview on the LANDFIRE Program website\nFire Regime Groups Overview on the LANDFIRE Program website\n\nThese resources provide comprehensive information on Fire Regime data and its applications in landscape management.",
-    "crumbs": [
-      "Fire Needs Assessments Datasets",
-      "Fire Regime Datasets"
+      "The Fire Needs Assessment Process",
+      "FNA Process: Use EVT to mask BPS"
     ]
   },
   {
@@ -231,5 +61,305 @@
     "crumbs": [
       "An overview of the LANDFIRE Program"
     ]
+  },
+  {
+    "objectID": "historical-vegetation.html",
+    "href": "historical-vegetation.html",
+    "title": "FNA Process: Historical Vegetation",
+    "section": "",
+    "text": "Conducting a fire needs assessment involves understanding historical fire regimes and vegetation types to plan for future fire management and restoration efforts. This guide will walk you through the process, focusing on the LANDFIRE Biophysical Settings (BPS) and Fire Regime (FRI) data.\n\n\n\n\n\n\nImportant\n\n\n\nThis site will walk you through working with LANDFIRE spatial data in ArcGIS Pro. Some of this workflow may be possible in QGIS or other open source GIS sources, but those workflows are not documented here.\n\n\n\n\n💡 Screenshots of the process are included below the written instructions for those who find them useful.\n\nIdentify historical vegetation types\n\nLoad LANDFIRE Biophysical Settings Data: Begin by loading the LANDFIRE Biophysical Settings spatial data into ArcGIS Pro\nClip to area of interest: Use the Clip Raster tool or the Extract by Mask tool (requires a Spatial Analyst license) to clip the BPS spatial data to your specific area of interest. This will help you focus on the relevant geographic region.\n\n\n\n\n\n\n\n\nNote\n\n\n\nDon’t forget to set the environment settings in the tool. Most importantly, make sure the spatial reference of your output raster is correct and set a snap raster (e.g. the BPS_CONUS raster) to ensure your pixel extents match. This will be important later when you use one raster to process another.\n\n\n    -   **Identify vegetation types**: Examine the clipped BPS layer to identify the historical vegetation types present in your area.\n\nEstimate historical fire return intervals\n\nExplore fire return interval data: The BPS data include fire return interval (FRI) information. Display the raster on the FRI_ALLFIR field to explore the historical fire return intervals for the identified vegetation type.\n\n\n\n\n\n\n\n\nTip\n\n\n\nLANDFIRE also delivers the fire regime data separately. That dataset includes only fire severity, fire return interval, fire regime groups, and the BPS name and code. Use this if you prefer to work with a simplified version of the data. It will have all the information you need to complete this assessment.\n\n\n\nCalculate historical fire acreages\n\nAdd fields for calculation: Add an Acres field and an Acres_Year field to your clipped data.\nCalculate acres: Use the following formula to calculate the total acres for each vegetation type:\n\n\\[\nAcres=!COUNT!*900*0.000247105\n\\]\nHere, !COUNT! represents the number of pixels for each vegetation type, 900 is the area of each pixel in square meters, and 0.000247105 converts square meters to acres.\n\nCalculate acres burned annually: Use the following formula to calculate the number of acres that should burn each year for each BPS:\n\n\\[\nAcres\\_Year=!Acres!/!FRI\\_ALLFIR!\n\\]\nThis calculation will give you an estimate of the annual burned area under historical conditions.\n\n\n\n\n\n\nAdd BPS data to ArcGIS Pro.\n\n\n \n\n\n\nCrop the BPS raster to your area of interest.\n\n\n \n\n\n\nExplore BPS attributes on your landscape, including BPS names (shown in the vertical box), and fire regime information (shown in the horizontal box).\n\n\n \n\n\n\nExamine the fire regime attributes by displaying the primary symbology on FRI_ALLFIR using Unique Values. (Note: the image shown here is using a custom color scheme. Your data may look different.)\n\n\n \n\n\n\nAdd fields to the BpS raster. You can do this either by using the Add button in the attribute table or the Add Fields geoprocessing tool.\n\n\n \n\n\n\nCalculate the acre field. You can do this by right clicking on the field name in the attribute table and selecting Calculate Field or with the Calculate Field geoprocessing tool. Repeat the process with the appropriate formula to calculate Acres Burned/Year.",
+    "crumbs": [
+      "The Fire Needs Assessment Process"
+    ]
+  },
+  {
+    "objectID": "historical-vegetation.html#understanding-historical-fire-regimes-using-biophysical-settings",
+    "href": "historical-vegetation.html#understanding-historical-fire-regimes-using-biophysical-settings",
+    "title": "FNA Process: Historical Vegetation",
+    "section": "",
+    "text": "Conducting a fire needs assessment involves understanding historical fire regimes and vegetation types to plan for future fire management and restoration efforts. This guide will walk you through the process, focusing on the LANDFIRE Biophysical Settings (BPS) and Fire Regime (FRI) data.\n\n\n\n\n\n\nImportant\n\n\n\nThis site will walk you through working with LANDFIRE spatial data in ArcGIS Pro. Some of this workflow may be possible in QGIS or other open source GIS sources, but those workflows are not documented here.\n\n\n\n\n💡 Screenshots of the process are included below the written instructions for those who find them useful.\n\nIdentify historical vegetation types\n\nLoad LANDFIRE Biophysical Settings Data: Begin by loading the LANDFIRE Biophysical Settings spatial data into ArcGIS Pro\nClip to area of interest: Use the Clip Raster tool or the Extract by Mask tool (requires a Spatial Analyst license) to clip the BPS spatial data to your specific area of interest. This will help you focus on the relevant geographic region.\n\n\n\n\n\n\n\n\nNote\n\n\n\nDon’t forget to set the environment settings in the tool. Most importantly, make sure the spatial reference of your output raster is correct and set a snap raster (e.g. the BPS_CONUS raster) to ensure your pixel extents match. This will be important later when you use one raster to process another.\n\n\n    -   **Identify vegetation types**: Examine the clipped BPS layer to identify the historical vegetation types present in your area.\n\nEstimate historical fire return intervals\n\nExplore fire return interval data: The BPS data include fire return interval (FRI) information. Display the raster on the FRI_ALLFIR field to explore the historical fire return intervals for the identified vegetation type.\n\n\n\n\n\n\n\n\nTip\n\n\n\nLANDFIRE also delivers the fire regime data separately. That dataset includes only fire severity, fire return interval, fire regime groups, and the BPS name and code. Use this if you prefer to work with a simplified version of the data. It will have all the information you need to complete this assessment.\n\n\n\nCalculate historical fire acreages\n\nAdd fields for calculation: Add an Acres field and an Acres_Year field to your clipped data.\nCalculate acres: Use the following formula to calculate the total acres for each vegetation type:\n\n\\[\nAcres=!COUNT!*900*0.000247105\n\\]\nHere, !COUNT! represents the number of pixels for each vegetation type, 900 is the area of each pixel in square meters, and 0.000247105 converts square meters to acres.\n\nCalculate acres burned annually: Use the following formula to calculate the number of acres that should burn each year for each BPS:\n\n\\[\nAcres\\_Year=!Acres!/!FRI\\_ALLFIR!\n\\]\nThis calculation will give you an estimate of the annual burned area under historical conditions.\n\n\n\n\n\n\nAdd BPS data to ArcGIS Pro.\n\n\n \n\n\n\nCrop the BPS raster to your area of interest.\n\n\n \n\n\n\nExplore BPS attributes on your landscape, including BPS names (shown in the vertical box), and fire regime information (shown in the horizontal box).\n\n\n \n\n\n\nExamine the fire regime attributes by displaying the primary symbology on FRI_ALLFIR using Unique Values. (Note: the image shown here is using a custom color scheme. Your data may look different.)\n\n\n \n\n\n\nAdd fields to the BpS raster. You can do this either by using the Add button in the attribute table or the Add Fields geoprocessing tool.\n\n\n \n\n\n\nCalculate the acre field. You can do this by right clicking on the field name in the attribute table and selecting Calculate Field or with the Calculate Field geoprocessing tool. Repeat the process with the appropriate formula to calculate Acres Burned/Year.",
+    "crumbs": [
+      "The Fire Needs Assessment Process"
+    ]
+  },
+  {
+    "objectID": "export-to-csv.html",
+    "href": "export-to-csv.html",
+    "title": "FNA Process: Export the attribute table",
+    "section": "",
+    "text": "Exporting your attribute table to CSV (comma separated value) format makes your data versatile and accessible in various programs, such as Microsoft Excel, R, ArcGIS Pro, and QGIS. Follow these steps to export your table in ArcGIS Pro.\n\n\n💡 Screenshots of the process are included below the written instructions for those who find them useful.\n\nOpen the Attribute Table\n\nOpen the attribute table for the combined raster you just used to join fields.\n\nAccess the Export Option\n\nClick the hamburger (three lines) menu in the top right corner of the attribute table window.\nSelect the “Export” option from the menu.\n\nSet Input Table\n\nIn the Export Table dialogue window, ensure the input table is set to the combined table you just used to join fields.\n\nSet Output Table\n\nUse the folder icon to choose a meaningful location to save your output table.\nImportant: Make sure you set the file extension to .csv. If you don’t do this, ArcGIS Pro will default to a .dbf format, which can be read by GIS but is harder to open with spreadsheet programs such as Excel.\n\nComplete the Export\n\nConfirm your settings and click Export to save the attribute table as a CSV file.\n\n\nThis process ensures your data is saved in a versatile format, making it easy to use in various applications for further analysis and visualization.\n\n\n\n\n\nExport the table.\n\n\n \n\n\n\nSave the table as a .csv file on your computer.",
+    "crumbs": [
+      "The Fire Needs Assessment Process",
+      "FNA Process: Export the attribute table"
+    ]
+  },
+  {
+    "objectID": "export-to-csv.html#exporting-the-attribute-table-to-.csv-format",
+    "href": "export-to-csv.html#exporting-the-attribute-table-to-.csv-format",
+    "title": "FNA Process: Export the attribute table",
+    "section": "",
+    "text": "Exporting your attribute table to CSV (comma separated value) format makes your data versatile and accessible in various programs, such as Microsoft Excel, R, ArcGIS Pro, and QGIS. Follow these steps to export your table in ArcGIS Pro.\n\n\n💡 Screenshots of the process are included below the written instructions for those who find them useful.\n\nOpen the Attribute Table\n\nOpen the attribute table for the combined raster you just used to join fields.\n\nAccess the Export Option\n\nClick the hamburger (three lines) menu in the top right corner of the attribute table window.\nSelect the “Export” option from the menu.\n\nSet Input Table\n\nIn the Export Table dialogue window, ensure the input table is set to the combined table you just used to join fields.\n\nSet Output Table\n\nUse the folder icon to choose a meaningful location to save your output table.\nImportant: Make sure you set the file extension to .csv. If you don’t do this, ArcGIS Pro will default to a .dbf format, which can be read by GIS but is harder to open with spreadsheet programs such as Excel.\n\nComplete the Export\n\nConfirm your settings and click Export to save the attribute table as a CSV file.\n\n\nThis process ensures your data is saved in a versatile format, making it easy to use in various applications for further analysis and visualization.\n\n\n\n\n\nExport the table.\n\n\n \n\n\n\nSave the table as a .csv file on your computer.",
+    "crumbs": [
+      "The Fire Needs Assessment Process",
+      "FNA Process: Export the attribute table"
+    ]
+  },
+  {
+    "objectID": "current-vegetation.html",
+    "href": "current-vegetation.html",
+    "title": "FNA Process: Current vegetation",
+    "section": "",
+    "text": "Assessing current fire needs involves understanding the current vegetation types and adjusting historical fire return intervals to reflect current management practices. This guide will walk you through the process using ArcGIS Pro, focusing on the LANDFIRE Existing Vegetation Type (EVT) data.\n\n\n\n\n\n\nA note on Fire Return Intervals\n\n\n\nFor now, we are still using historical fire return intervals, even though we are looking at current systems. We acknowledge that current fire return intervals may or may not be the same as the fire return intervals for the underlying Biophysical Settings. We will share examples of how others have updated these intervals later. For now, we are trying to get a sense of how historical intervals relate to current vegetation, so we can begin refining our estimates of fire needs within the analysis area.\n\n\n\n\n💡 Screenshots of the process are included below the written instructions for those who find them useful. Steps that are the same as those we covered in the section on historical fire regimes have been omitted.\n\nIdentify Current Vegetation Types\n\nLoad LANDFIRE Existing Vegetation Type Data: Begin by loading the LANDFIRE Existing Vegetation Type layer into ArcGIS Pro.\nClip to Area of Interest: Use the Clip Raster tool or the Extract by Mask tool to clip the EVT data to your specific area of interest. This will help you focus on the relevant geographic region.\n\nExamine Vegetation Types: Review the vegetation types for your area and decide which to keep in the analysis and which you do not want to count in fire needs planning. At a minimum, we recommend removing urban areas, agricultural areas, open water, no data values, and the grouped value of ‘quarries, strip mines, gravel pits, wind and well pads’.\nEliminate Non-Relevant Vegetation Classes\n\nUse the “Extract by Attributes” Tool: In ArcGIS Pro, use the Extract by Attributes tool to exclude non-relevant vegetation types.\n\nFor the Input Raster, select your clipped EVT raster.\nIn the where clause, include the following, in addition to any other vegetation types you’ve elected to exclude: EVT_PHYS &lt;&gt; ‘Agricultural’ AND EVT_PHYS &lt;&gt; ‘Developed’ AND EVT_PHYS &lt;&gt; ‘Developed-High Intensity’ AND EVT_PHYS &lt;&gt; ‘Developed-Low Intensity’ AND EVT_PHYS &lt;&gt; ‘Developed-Medium Intensity’ AND EVT_PHYS &lt;&gt; ‘Developed-Roads’ AND EVT_PHYS &lt;&gt; ‘NA’ AND EVT_PHYS &lt;&gt; ‘Open Water’ AND EVT_PHYS &lt;&gt; ‘Quarries-Strip Mines-Gravel Pits-Well and Wind Pads’\n\nThis will remove any non-fire types or other vegetation types you wish to exclude from analysis. Next, we will use this new EVT extent to adjust the extent of our Biophysical Settings, and therefore our Fire Return Intervals and acres of fire needs.\n\n\n\n\n\n\n\nRemove unwanted vegetation types from the EVT layer using ArcGIS Pro’s selectors or SQL queries. Remember to set appropriate environment settings.",
+    "crumbs": [
+      "The Fire Needs Assessment Process",
+      "FNA Process: Current vegetation"
+    ]
+  },
+  {
+    "objectID": "current-vegetation.html#examining-existing-vegetation-types",
+    "href": "current-vegetation.html#examining-existing-vegetation-types",
+    "title": "FNA Process: Current vegetation",
+    "section": "",
+    "text": "Assessing current fire needs involves understanding the current vegetation types and adjusting historical fire return intervals to reflect current management practices. This guide will walk you through the process using ArcGIS Pro, focusing on the LANDFIRE Existing Vegetation Type (EVT) data.\n\n\n\n\n\n\nA note on Fire Return Intervals\n\n\n\nFor now, we are still using historical fire return intervals, even though we are looking at current systems. We acknowledge that current fire return intervals may or may not be the same as the fire return intervals for the underlying Biophysical Settings. We will share examples of how others have updated these intervals later. For now, we are trying to get a sense of how historical intervals relate to current vegetation, so we can begin refining our estimates of fire needs within the analysis area.\n\n\n\n\n💡 Screenshots of the process are included below the written instructions for those who find them useful. Steps that are the same as those we covered in the section on historical fire regimes have been omitted.\n\nIdentify Current Vegetation Types\n\nLoad LANDFIRE Existing Vegetation Type Data: Begin by loading the LANDFIRE Existing Vegetation Type layer into ArcGIS Pro.\nClip to Area of Interest: Use the Clip Raster tool or the Extract by Mask tool to clip the EVT data to your specific area of interest. This will help you focus on the relevant geographic region.\n\nExamine Vegetation Types: Review the vegetation types for your area and decide which to keep in the analysis and which you do not want to count in fire needs planning. At a minimum, we recommend removing urban areas, agricultural areas, open water, no data values, and the grouped value of ‘quarries, strip mines, gravel pits, wind and well pads’.\nEliminate Non-Relevant Vegetation Classes\n\nUse the “Extract by Attributes” Tool: In ArcGIS Pro, use the Extract by Attributes tool to exclude non-relevant vegetation types.\n\nFor the Input Raster, select your clipped EVT raster.\nIn the where clause, include the following, in addition to any other vegetation types you’ve elected to exclude: EVT_PHYS &lt;&gt; ‘Agricultural’ AND EVT_PHYS &lt;&gt; ‘Developed’ AND EVT_PHYS &lt;&gt; ‘Developed-High Intensity’ AND EVT_PHYS &lt;&gt; ‘Developed-Low Intensity’ AND EVT_PHYS &lt;&gt; ‘Developed-Medium Intensity’ AND EVT_PHYS &lt;&gt; ‘Developed-Roads’ AND EVT_PHYS &lt;&gt; ‘NA’ AND EVT_PHYS &lt;&gt; ‘Open Water’ AND EVT_PHYS &lt;&gt; ‘Quarries-Strip Mines-Gravel Pits-Well and Wind Pads’\n\nThis will remove any non-fire types or other vegetation types you wish to exclude from analysis. Next, we will use this new EVT extent to adjust the extent of our Biophysical Settings, and therefore our Fire Return Intervals and acres of fire needs.\n\n\n\n\n\n\n\nRemove unwanted vegetation types from the EVT layer using ArcGIS Pro’s selectors or SQL queries. Remember to set appropriate environment settings.",
+    "crumbs": [
+      "The Fire Needs Assessment Process",
+      "FNA Process: Current vegetation"
+    ]
+  },
+  {
+    "objectID": "bps.html",
+    "href": "bps.html",
+    "title": "Data: Biophysical Settings (BPS)",
+    "section": "",
+    "text": "LANDFIRE delivers Biophysical Settings data and models for the entire United States, including Alaska and Hawaii. Puerto Rico and the US Virgin Islands do not yet have BPS data developed. In this map Biophysical Settings are grouped into seven major vegetation classes and displayed using one color for each class. This map was designed using a custom color ramp created by Sarah Hagen.",
+    "crumbs": [
+      "Fire Needs Assessments Datasets"
+    ]
+  },
+  {
+    "objectID": "bps.html#what-are-biophysical-settings",
+    "href": "bps.html#what-are-biophysical-settings",
+    "title": "Data: Biophysical Settings (BPS)",
+    "section": "What are Biophysical Settings?",
+    "text": "What are Biophysical Settings?\nBiophysical Settings (BPS) represent reference conditions, helping us examine historical disturbance patterns and estimate proportions of succession classes prior to European colonization. This information provides a baseline for understanding current conditions and planning restoration efforts.\nBiophysical Settings (BPS) are a foundational concept for LANDFIRE defined on the LANDFIRE Program website as:\n\n“…a modeled representation of the vegetation system that may have been dominant on the landscape prior to Euro-American settlement and is based on both the current biophysical environment and an approximation of modeled past disturbance regimes.”\n\nWe like to think of the Biophysical Settings as ‘ecosystem habitats’, or ‘potential ecosystem footprints’. The BPS concept asks “where might an ecosystem occur” based on abiotic factors such as soils, surficial geology, slope and elevation as well as natural disturbance regimes.\nFor example, in many regions across the United States, the Biophysical Settings layer helps us understand the historical distribution of various ecosystems, such as grasslands, forests, and wetlands. By comparing these reference conditions to current vegetation, we can identify areas that have undergone significant changes and need restoration or other management.",
+    "crumbs": [
+      "Fire Needs Assessments Datasets"
+    ]
+  },
+  {
+    "objectID": "bps.html#using-bps-in-fire-needs-assessments",
+    "href": "bps.html#using-bps-in-fire-needs-assessments",
+    "title": "Data: Biophysical Settings (BPS)",
+    "section": "Using BPS in fire needs assessments",
+    "text": "Using BPS in fire needs assessments\nBPS is a valuable tool in fire needs assessments for several reasons:\n\nUnderstanding Historical Vegetation: BpS helps us understand what vegetation was historically present in an area. This information is crucial for planning restoration and management decisions.\nFire Regime Data: BpS is directly tied to fire regime data, which helps us understand how much of the landscape burned historically. This information is essential for planning prescribed burns and other fire management activities.\nReference Conditions: While we can conduct a fire needs assessment without BpS, it provides useful information on reference conditions, helping us make more informed decisions.\n\n\n\n\n\n\n\nBiophysical Settings as reference conditions\n\n\n\nWe are not looking at climate change, and we are not necessarily saying that reference conditions are the same as “Desired Future Conditions.” However, they do help us understand the conditions that ecosystems evolved with and to which they adapted over time. In some ecosystems, departure from reference conditions means higher vulnerabiligy to climate change, and we can look at the reference vs. current conditions to assess what we might need to do to adapt.",
+    "crumbs": [
+      "Fire Needs Assessments Datasets"
+    ]
+  },
+  {
+    "objectID": "bps.html#bps-models-and-syncrosim",
+    "href": "bps.html#bps-models-and-syncrosim",
+    "title": "Data: Biophysical Settings (BPS)",
+    "section": "BPS models and SyncroSim",
+    "text": "BPS models and SyncroSim\nSyncroSim, developed by ApexRMS, is the tool currently used for BpS models. It allows users to develop and run aspatial or spatially-explicit, stochastic state-and-transition simulation models (STSMs) of vegetation change. SyncroSim is designed to simulate and compare possible vegetation conditions across a landscape over time by considering the interaction between succession, disturbances, and management. LANDFIRE uses the SyncroSim package ST-Sim to estimate historical fire frequency and severity.\nSyncroSim and ST-Sim, have been supported by several agencies, including The Nature Conservancy, U.S. Forest Service, U.S. Geological Survey, and LANDFIRE. As a result, it is available as a free download.\nThe LANDFIRE Reference Condition table is a MS Excel file that provides LANDFIRE’s modeled estimate of historical fire frequency and severity for every BpS. This information is also in the attribute tables of the LANDFIRE Fire Return Interval and Percent Fire Severity spatial layers. This will directly plug into the process to help us understand historic and current fire on the landscape.\nYou can (and are encouraged to) re-define fire return intervals to better match what is on your landscape. The TNC LANDFIRE team encourages you to submit your modifications to us for possible inclusion in future iterations of LANDFIRE data.",
+    "crumbs": [
+      "Fire Needs Assessments Datasets"
+    ]
+  },
+  {
+    "objectID": "bps.html#learn-more",
+    "href": "bps.html#learn-more",
+    "title": "Data: Biophysical Settings (BPS)",
+    "section": "Learn more",
+    "text": "Learn more\nFor more detailed information on Biophysical Settings and SyncroSim, please visit the following web pages:\n\nBPS on the LANDFIRE Program Website\nLANDFIRE 101 BPS Overview\nLANDFIRE 101 BPS Spatial Data\nLANDFIRE 101 BPS Models\nThe LANDFIRE Vegetation Modeling website\n\nThese resources provide comprehensive information on Biophysical Settings and their applications in landscape management.",
+    "crumbs": [
+      "Fire Needs Assessments Datasets"
+    ]
+  },
+  {
+    "objectID": "combine-and-join.html",
+    "href": "combine-and-join.html",
+    "title": "FNA Process: Combine rasters and join fields",
+    "section": "",
+    "text": "To understand how Biophysical Settings (BPS), Existing Vegetation Type (EVT), and historical fire return intervals work together on the landscape, you need to combine the new EVT and BPS rasters. This process requires a Spatial Analyst license in ArcGIS Pro.\n\n\n💡 Screenshots of the process are included below the written instructions for those who find them useful.\n\nNavigate to the Spatial Analyst toolbox in ArcGIS Pro.\nWithin the Spatial Analyst toolbox, select the Local toolbox.\nOpen the Combine tool within the Local toolbox.\nWithin the Combine tool:\n\nInput Rasters: Select the new BPS and EVT rasters you created in the last step as input rasters.\nOutput Raster: Set the output raster to something meaningful, such as “Combined_BPS_EVT”.\n\nCheck Environment Settings\n\nCoordinate System: Ensure that you are using the correct coordinate system.\nMasks: Make sure any masks are in place if needed.\nSnap Raster: Choose the correct Snap Raster (e.g., the CONUS BPS Raster) to ensure alignment.\n\nRun the Tool\n\nExecute the Combine tool to generate the combined raster.\n\n\nThis process will help you join fields and start understanding how BPS, EVT, and historic fire return intervals interact on the landscape, providing a comprehensive view for your fire needs assessment.\n\n\n\n\n\nUse the EVT raster to mask your BpS raster. Remember to set appropriate environment settings.\n\n\n \n\n\n\nAdd the BpS and EVT rasters to be combined. Remember to set appropriate environment settings.",
+    "crumbs": [
+      "The Fire Needs Assessment Process",
+      "FNA Process: Combine rasters and join fields"
+    ]
+  },
+  {
+    "objectID": "combine-and-join.html#combining-evt-and-bps-rasters",
+    "href": "combine-and-join.html#combining-evt-and-bps-rasters",
+    "title": "FNA Process: Combine rasters and join fields",
+    "section": "",
+    "text": "To understand how Biophysical Settings (BPS), Existing Vegetation Type (EVT), and historical fire return intervals work together on the landscape, you need to combine the new EVT and BPS rasters. This process requires a Spatial Analyst license in ArcGIS Pro.\n\n\n💡 Screenshots of the process are included below the written instructions for those who find them useful.\n\nNavigate to the Spatial Analyst toolbox in ArcGIS Pro.\nWithin the Spatial Analyst toolbox, select the Local toolbox.\nOpen the Combine tool within the Local toolbox.\nWithin the Combine tool:\n\nInput Rasters: Select the new BPS and EVT rasters you created in the last step as input rasters.\nOutput Raster: Set the output raster to something meaningful, such as “Combined_BPS_EVT”.\n\nCheck Environment Settings\n\nCoordinate System: Ensure that you are using the correct coordinate system.\nMasks: Make sure any masks are in place if needed.\nSnap Raster: Choose the correct Snap Raster (e.g., the CONUS BPS Raster) to ensure alignment.\n\nRun the Tool\n\nExecute the Combine tool to generate the combined raster.\n\n\nThis process will help you join fields and start understanding how BPS, EVT, and historic fire return intervals interact on the landscape, providing a comprehensive view for your fire needs assessment.\n\n\n\n\n\nUse the EVT raster to mask your BpS raster. Remember to set appropriate environment settings.\n\n\n \n\n\n\nAdd the BpS and EVT rasters to be combined. Remember to set appropriate environment settings.",
+    "crumbs": [
+      "The Fire Needs Assessment Process",
+      "FNA Process: Combine rasters and join fields"
+    ]
+  },
+  {
+    "objectID": "combine-and-join.html#adding-attributes-to-the-combined-raster",
+    "href": "combine-and-join.html#adding-attributes-to-the-combined-raster",
+    "title": "FNA Process: Combine rasters and join fields",
+    "section": "Adding attributes to the combined raster",
+    "text": "Adding attributes to the combined raster\nAfter running the combine tool, you will get a raster attribute table with a few columns, such as Object ID, Value, Count, and the value fields from the BpS and EVT rasters. To make this data useful for analysis, you need to add the relevant attributes. This involves using the Join Field tool twice: once to join the BpS and Fire Return Interval values, and once to join the EVT values\n\nJoining the BPS and fire regime fields\n💡 Screenshots of the process are included below the written instructions for those who find them useful.\n\nNavigate to the Join Field Tool\n\nGo to the Data Management toolbox in ArcGIS Pro.\nNavigate to Joins and Relates -&gt; Join Fields.\n\nSet Input Table\n\nFor the input table, choose the output of your combine tool.\n\nSelect Input Field\n\nFor the Input field, first choose the BPS value field. This will allow you to add the BPS name and fire regime information first.\n\nSelect Join Table\n\nFor the Join Table, select your new BPS raster (the same one you used for the combine).\n\nSelect Join Field\n\nFor the Join Field, select the value field. This is the field in the BPS raster that will be common between the combine and the BPS raster.\n\nTransfer Fields\n\nTransfer the following fields, either by selecting transfer fields or using field mapping (you can change this with the drop-down arrow):\n\nBPS_CODE\nBPS_NAME\nGROUPVEG\nFRI_ALLFIR\nThe new acre fields you created earlier:\n\nAcres\nAcres_Year\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nYou can add other fire regime fields if you want, including information on Fire Regime Group and Fire Severity, but Fire Return Interval is the one we will use during this tutorial.\n\n\n\nScreenshots for joining the BPS and fire regime fields\n\n\n\nJoin the BpS and Fire Regime fields using the Join Field tool.\n\n\n \n\n\n\nAdding EVT Values\n💡 Screenshots of the process are included below the written instructions for those who find them useful. To add EVT fields, the process is the same, but you will need to change a few settings.\n\n\n\n\n\n\nTip\n\n\n\nTo re-run a tool in ArcGIS Pro with the same settings and parameters, you can use the history pane, which will show you all the tools you have run in this project in the past. The History Pane should also open when you open the Geoprocessing pane and run any Geoprocessing tool. You can use this to open the Join Field tool you just ran and change a few settings, rather than starting the tool from scratch.\n\n\n\nInput Field\n\nLeave the Input Table and the Join Field the same (assuming you did not change the name of the Value field in either your EVT or BPS raster).\nChange the Input Field to the field in the combine that contains the values of your EVT raster.\n\nJoin Table\n\nSelect your EVT raster used in the combine.\n\nTransfer Fields\n\nTransfer the following fields:\n\nEVT_NAME\nEVT_LF\nEVT_GP_N\nOptional: You can add the R, G, B, and RED, GREEN, BLUE fields to use the EVT colormap in any maps you make for the project.\n\n\n\nThis process will enrich your combined raster with the necessary attributes, allowing you to analyze how BPS, EVT, and historic fire return intervals interact on the landscape.\n\nScreenshots for joining the BPS and fire regime fields\n\n\n\nJoin the EVT values using the Join Field tool.",
+    "crumbs": [
+      "The Fire Needs Assessment Process",
+      "FNA Process: Combine rasters and join fields"
+    ]
+  },
+  {
+    "objectID": "evt.html",
+    "href": "evt.html",
+    "title": "Data: Existing Vegetation (EVT)",
+    "section": "",
+    "text": "LANDFIRE delivers Existing Vegetation Type data for the entire United States, including Alaska, Hawaii, Puerto Rico and the US Virgin Islands. More than 1000 Existing Vegetation Types are grouped into seven major vegetation classes and displayed using one color family for each class. This map was designed with a custom color ramp created by Sarah Hagen.",
+    "crumbs": [
+      "Fire Needs Assessments Datasets",
+      "Data: Existing Vegetation (EVT)"
+    ]
+  },
+  {
+    "objectID": "evt.html#what-is-existing-vegetation-type",
+    "href": "evt.html#what-is-existing-vegetation-type",
+    "title": "Data: Existing Vegetation (EVT)",
+    "section": "What is Existing Vegetation Type?",
+    "text": "What is Existing Vegetation Type?\nThe Existing Vegetation Type (EVT) data represent the species composition currently present at a given site. Vegetation map units are primarily derived from NatureServe’s Ecological Systems classification, which is a nationally consistent set of mid-scale ecological units. Additional units are derived from the National Land Cover Database (NLCD), National Vegetation Classification Standard (NVCS) Alliances, and LANDFIRE-specific types.\nEVTs are mapped using decision tree models, field data, Landsat imagery, elevation, and biophysical gradient data. Decision tree models are developed separately for each of the three lifeforms—tree, shrub, and herbaceous—and are then used to generate lifeform-specific EVT layers. The EVT layer is essential for understanding the current state of vegetation and planning management actions.",
+    "crumbs": [
+      "Fire Needs Assessments Datasets",
+      "Data: Existing Vegetation (EVT)"
+    ]
+  },
+  {
+    "objectID": "evt.html#using-evt-in-fire-needs-assessments",
+    "href": "evt.html#using-evt-in-fire-needs-assessments",
+    "title": "Data: Existing Vegetation (EVT)",
+    "section": "Using EVT in fire needs assessments",
+    "text": "Using EVT in fire needs assessments\nEVT is a valuable tool in Fire Needs Assessments for several reasons:\n\nCurrent Vegetation State: EVT provides a detailed understanding of the current vegetation state, which is essential for planning restoration and management activities.\nInvasive Species Management: By identifying areas dominated by invasive species, EVT helps prioritize management actions to remove these species and restore native vegetation.\nFire Management: Understanding the current vegetation composition is crucial for planning prescribed burns and other fire management activities.",
+    "crumbs": [
+      "Fire Needs Assessments Datasets",
+      "Data: Existing Vegetation (EVT)"
+    ]
+  },
+  {
+    "objectID": "evt.html#learn-more",
+    "href": "evt.html#learn-more",
+    "title": "Data: Existing Vegetation (EVT)",
+    "section": "Learn more",
+    "text": "Learn more\nFor more detailed information on Existing Vegetation Type, please visit the following web pages:\n\nEVT on the LANDFIRE Program Website\nLANDFIRE 101 Existing Vegetation Type\n\nThese resources provide comprehensive information on Biophysical Settings and their applications in landscape management.",
+    "crumbs": [
+      "Fire Needs Assessments Datasets",
+      "Data: Existing Vegetation (EVT)"
+    ]
+  },
+  {
+    "objectID": "fire-regimes.html",
+    "href": "fire-regimes.html",
+    "title": "Data: Fire Regimes",
+    "section": "",
+    "text": "Fire Return Interval data for the United States are displayed on the FRI_ALLFIR attribute. This map explores the fire regime attributes of the Biophysical Settings data, with more frequent fire areas in reds and oranges, moderate frequency fire areas in yellow and pale green, and lower frequency fire areas in shades of blue. This map was designed using a custom color ramp created by Sarah Hagen.\n\n\nThe Fire Return Interval (FRI) data describe historical fire frequency as a mean fire return interval. This information helps us understand the natural fire cycles and plan for future fire management.\nFor example, the FRI layer shows that certain grasslands historically experienced frequent fires, with intervals of 3-5 years. This information helps us plan prescribed burns to mimic natural fire cycles and maintain the health of these ecosystems.\nThe FRI layer is intended to describe one component of historical fire regime characteristics in the context of the broader historical time period represented by the LANDFIRE Biophysical Settings (BPS) models. FRI is derived from the vegetation dynamics model. This layer is created by linking the BpS Group attribute in the BpS layer with modeled FRI.",
+    "crumbs": [
+      "Fire Needs Assessments Datasets",
+      "Data: Fire Regimes"
+    ]
+  },
+  {
+    "objectID": "fire-regimes.html#fire-return-interval-fri",
+    "href": "fire-regimes.html#fire-return-interval-fri",
+    "title": "Data: Fire Regimes",
+    "section": "",
+    "text": "Fire Return Interval data for the United States are displayed on the FRI_ALLFIR attribute. This map explores the fire regime attributes of the Biophysical Settings data, with more frequent fire areas in reds and oranges, moderate frequency fire areas in yellow and pale green, and lower frequency fire areas in shades of blue. This map was designed using a custom color ramp created by Sarah Hagen.\n\n\nThe Fire Return Interval (FRI) data describe historical fire frequency as a mean fire return interval. This information helps us understand the natural fire cycles and plan for future fire management.\nFor example, the FRI layer shows that certain grasslands historically experienced frequent fires, with intervals of 3-5 years. This information helps us plan prescribed burns to mimic natural fire cycles and maintain the health of these ecosystems.\nThe FRI layer is intended to describe one component of historical fire regime characteristics in the context of the broader historical time period represented by the LANDFIRE Biophysical Settings (BPS) models. FRI is derived from the vegetation dynamics model. This layer is created by linking the BpS Group attribute in the BpS layer with modeled FRI.",
+    "crumbs": [
+      "Fire Needs Assessments Datasets",
+      "Data: Fire Regimes"
+    ]
+  },
+  {
+    "objectID": "fire-regimes.html#fire-regime-groups-frg",
+    "href": "fire-regimes.html#fire-regime-groups-frg",
+    "title": "Data: Fire Regimes",
+    "section": "Fire Regime Groups (FRG)",
+    "text": "Fire Regime Groups (FRG)\n\n\n\nFire Regime Groups for the United States are displayed on the FRG_NEW attribute. This map explores the fire regime groups of the Biophysical Settings data, with more frequent fire areas in reds and oranges, moderate frequency fire areas in yellow and pale green, and lower frequency fire areas in shades of blue. This map was designed using a custom color ramp created by Sarah Hagen.\n\n\nFire Regime Groups (FRG) characterize historical frequency and severity of fire. These groups help us understand the types of fires that occurred historically and their impact on the landscape.\nFor instance, the FRG layer helps us understand the historical fire regimes of various ecosystems, such as forests that experienced low-intensity surface fires. This information guides our prescribed fire practices to ensure they align with the natural fire regimes of these ecosystems.\nThe FRG layer categorizes simulated mean fire return intervals and fire severities into twelve fire regimes defined in the attribute data dictionary (opens a pdf):\n\nFire Regime I-A: 0 to 5-year frequency, percent replacement fire less than 66.7%\nFire Regime I-B: 6 to 15-year frequency, percent replacement fire less than 66.7%\nFire Regime I-C: 16 to 35-year frequency, percent replacement fire less than 66.7%\nFire Regime II-A: 0 to 5-year frequency, percent replacement fire greater than 66.7%\nFire Regime II-B: 6 to 15-year frequency, percent replacement fire greater than 66.7%\nFire Regime II-C: 16 to 35-year frequency, percent replacement fire greater than 66.7%\nFire Regime III-A: 36 to 100-year frequency, percent replacement fire less than 80%\nFire Regime III-B: 101 to 200-year frequency, percent replacement fire less than 66.7%\nFire Regime IV-A: 36 to 100-year frequency, percent replacement fire greater than 80%\nFire Regime IV-B: 101 to 200-year frequency, percent replacement fire greater than 66.7%\nFire Regime V-A: 201 to 500-year frequency, any severity\nFire Regime V-B: Greater than 500-year frequency, any severity",
+    "crumbs": [
+      "Fire Needs Assessments Datasets",
+      "Data: Fire Regimes"
+    ]
+  },
+  {
+    "objectID": "fire-regimes.html#using-fire-regime-data-in-fire-needs-assessments",
+    "href": "fire-regimes.html#using-fire-regime-data-in-fire-needs-assessments",
+    "title": "Data: Fire Regimes",
+    "section": "Using fire regime data in fire needs assessments",
+    "text": "Using fire regime data in fire needs assessments\nFire regime data is crucial in Fire Needs Assessments for several reasons:\n\nHistorical Fire Cycles: Understanding historical fire cycles helps in planning prescribed burns and other fire management activities.\nVegetation Management: Fire regime data provides insights into how different vegetation types respond to fire, guiding restoration and management efforts.\nRisk Assessment: By understanding historical fire regimes, we can better assess the risk of wildfires and plan mitigation strategies.",
+    "crumbs": [
+      "Fire Needs Assessments Datasets",
+      "Data: Fire Regimes"
+    ]
+  },
+  {
+    "objectID": "fire-regimes.html#learn-more",
+    "href": "fire-regimes.html#learn-more",
+    "title": "Data: Fire Regimes",
+    "section": "Learn more",
+    "text": "Learn more\nFor more detailed information on Fire Regime data, please visit the following websites:\n\nBiophysical Settings on the LANDFIRE 101 website\nMean Fire Return Interval Overview on the LANDFIRE Program website\nFire Regime Groups Overview on the LANDFIRE Program website\n\nThese resources provide comprehensive information on Fire Regime data and its applications in landscape management.",
+    "crumbs": [
+      "Fire Needs Assessments Datasets",
+      "Data: Fire Regimes"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Why Fire Needs Assessments",
+    "section": "",
+    "text": "The frequency and severity of wildfires are changing around the country. To understand their impact on the landscape, federal agencies and states are conducting fire needs assessments. Fire needs assessments help fire stakeholders understand where, what type of, and how much fire needs to occur to reduce the destructive effects of wildfire and restore or maintain ecosystem health and resiliency.",
+    "crumbs": [
+      "An introduction to fire needs assessments"
+    ]
+  },
+  {
+    "objectID": "index.html#what-is-a-fire-needs-assessment",
+    "href": "index.html#what-is-a-fire-needs-assessment",
+    "title": "Why Fire Needs Assessments",
+    "section": "What is a Fire Needs Assessment?",
+    "text": "What is a Fire Needs Assessment?\nA fire needs assessment (FNA) is a structured, science-based process used to evaluate where and to what extent fire is needed on a landscape to restore or maintain ecological integrity, reduce wildfire risk, and meet land management objectives. It integrates ecological principles, historical fire regimes, current vegetation conditions, and spatial data to identify areas where fire—either through prescribed burning or managed wildfire—can be applied beneficially. FNAs help land managers prioritize treatments by assessing the ecological need for fire, not just the risk of fire, which is a critical distinction in fire-adapted ecosystems.\nThe process typically involves spatial analysis using GIS to compare current vegetation and fire regime conditions against reference conditions (often derived from models like LANDFIRE or local ecological knowledge). This comparison highlights areas of departure—where fire has been excluded or altered—and helps quantify the type, amount, and frequency of fire needed to move the system toward desired conditions. FNAs are essential for aligning fire management with ecological goals, supporting NEPA planning, and justifying funding for prescribed fire programs. By grounding fire planning in ecological need, FNAs promote more strategic, effective, and defensible fire management decisions. Later in this website, we will showcase some examples of fire needs assessments and what programs have done with them.",
+    "crumbs": [
+      "An introduction to fire needs assessments"
+    ]
+  },
+  {
+    "objectID": "index.html#the-importance-of-fire-needs-assessments",
+    "href": "index.html#the-importance-of-fire-needs-assessments",
+    "title": "Why Fire Needs Assessments",
+    "section": "The importance of fire needs assessments",
+    "text": "The importance of fire needs assessments\nFire needs assessments are crucial for several reasons:\n\nThey elevate ecological need as a planning priority: FNAs shift the focus from fire risk to fire need, helping managers advocate for fire where it’s ecologically beneficial—even in places where fire has long been absent.\nThey support landscape-scale restoration: FNAs help identify patterns of fire exclusion and suppression across large areas, guiding coordinated efforts to restore fire regimes that support biodiversity, resilience, and ecosystem health.\nThey strengthen the case for prescribed fire: By quantifying ecological need, FNAs provide a defensible rationale for prescribed fire programs — supporting NEPA documentation, funding proposals, interagency planning, and more.\nThey foster collaboration and shared understanding: FNAs offer a common language and framework for land managers, scientists, and stakeholders to discuss fire needs, priorities, and trade-offs across jurisdictions.\nThey help tell the story of fire as a healing force: FNAs provide the data and context needed to communicate with the public about why fire is essential—not just dangerous—and how it can be used to restore landscapes and protect communities.\n\n\nPrescribed Fire as a Restoration Tool\nOne of the most important applications of a fire needs assessment is to effectively plan prescribed fire programs. Prescribed fire is not only a tool for maintaining landscapes but also for restoring them. Here’s how:\n\nEcosystem Restoration: Prescribed fire plays a pivotal role in restoring and maintaining healthy ecosystems. It helps in the regeneration of native plant species, which in turn supports the wildlife that depends on these plants.\nWildlife Habitat Improvement: Numerous wildlife species depend on fire-maintained habitats for their survival. Prescribed fire helps create a mosaic of different habitat types, which is essential for biodiversity.\nInvasive Species Control: Fire is an effective tool for controlling invasive species that outcompete native plants. By reducing the presence of invasive species, prescribed fire helps restore the natural balance of ecosystems.\nReducing Fire Hazards: By reducing the accumulation of combustible materials, prescribed fire helps lower the risk of severe wildfires. This is particularly important in areas prone to wildfires.\nPromoting Forest Health: Fire helps in thinning dense forests, which reduces competition among trees and promotes the growth of healthier, more resilient forests.\nCarbon Management: Prescribed fire can help manage carbon levels in the soil and vegetation, contributing to the overall health of the ecosystem.",
+    "crumbs": [
+      "An introduction to fire needs assessments"
+    ]
+  },
+  {
+    "objectID": "index.html#regional-considerations",
+    "href": "index.html#regional-considerations",
+    "title": "Why Fire Needs Assessments",
+    "section": "Regional Considerations",
+    "text": "Regional Considerations\nUnderstanding fire return intervals and historical fire patterns is essential for various regions across the United States:\n\nNortheast US: In the Northeast, fire needs assessments help manage forest health and reduce the risk of uncontrolled wildfires. Historical fire data can guide the use of prescribed burns to maintain biodiversity and prevent the spread of invasive species.\nSoutheast US: The Southeast has a long history of fire-adapted ecosystems. Fire needs assessments are crucial for maintaining the health of pine forests and grasslands. Understanding fire return intervals helps in planning prescribed burns to mimic natural fire cycles.\nCentral US: In the Central US, fire needs assessments are used to manage prairies and savannas. Historical fire data helps in understanding the natural fire regimes and planning restoration activities to maintain these ecosystems.\nWestern US: The Western US faces frequent and severe wildfires. Fire needs assessments are essential for reducing wildfire risks and managing forest health. Understanding historical fire regimes helps in planning fuel reduction treatments and prescribed burns.",
+    "crumbs": [
+      "An introduction to fire needs assessments"
+    ]
+  },
+  {
+    "objectID": "LANDFIRE_FNA.html",
+    "href": "LANDFIRE_FNA.html",
+    "title": "LANDFIRE_FNA",
+    "section": "",
+    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
+  },
+  {
+    "objectID": "LANDFIRE_FNA.html#quarto",
+    "href": "LANDFIRE_FNA.html#quarto",
+    "title": "LANDFIRE_FNA",
+    "section": "",
+    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
   }
 ]

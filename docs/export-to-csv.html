@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Sarah Hagen, Jim Smith">
+<meta name="author" content="Sarah Hagen">
 
-<title>LANDFIRE in Fire Needs Assessments</title>
+<title>FNA Process: Export the attribute table – LANDFIRE in Fire Needs Assessments</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,8 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./bps.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./combine-and-join.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -84,7 +83,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./landfire-overview.html">An overview of the LANDFIRE Program</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./historical-vegetation.html">The Fire Needs Assessment Process</a></li><li class="breadcrumb-item"><a href="./export-to-csv.html">FNA Process: Export the attribute table</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -120,7 +119,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./landfire-overview.html" class="sidebar-item-text sidebar-link active">
+  <a href="./landfire-overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">An overview of the LANDFIRE Program</span></a>
   </div>
 </li>
@@ -188,7 +187,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./export-to-csv.html" class="sidebar-item-text sidebar-link">
+  <a href="./export-to-csv.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">FNA Process: Export the attribute table</span></a>
   </div>
 </li>
@@ -212,20 +211,19 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#how-can-landfire-help" id="toc-how-can-landfire-help" class="nav-link active" data-scroll-target="#how-can-landfire-help">How can LANDFIRE help?</a>
+  <li><a href="#exporting-the-attribute-table-to-.csv-format" id="toc-exporting-the-attribute-table-to-.csv-format" class="nav-link active" data-scroll-target="#exporting-the-attribute-table-to-.csv-format">Exporting the attribute table to .csv format</a>
   <ul class="collapse">
-  <li><a href="#the-landfire-product-suite" id="toc-the-landfire-product-suite" class="nav-link" data-scroll-target="#the-landfire-product-suite">The LANDFIRE Product Suite</a></li>
+  <li><a href="#step-by-step-process" id="toc-step-by-step-process" class="nav-link" data-scroll-target="#step-by-step-process">Step-by-step process</a></li>
   </ul></li>
-  <li><a href="#learn-more" id="toc-learn-more" class="nav-link" data-scroll-target="#learn-more">Learn more</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./historical-vegetation.html">The Fire Needs Assessment Process</a></li><li class="breadcrumb-item"><a href="./export-to-csv.html">FNA Process: Export the attribute table</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">LANDFIRE in Fire Needs Assessments</h1>
+<h1 class="title">FNA Process: Export the attribute table</h1>
 </div>
 
 
@@ -235,7 +233,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Sarah Hagen, Jim Smith </p>
+             <p>Sarah Hagen </p>
           </div>
   </div>
     
@@ -248,44 +246,56 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="how-can-landfire-help" class="level2">
-<h2 class="anchored" data-anchor-id="how-can-landfire-help">How can LANDFIRE help?</h2>
-<p>One of the significant challenges in many assessments is the lack of basic data due to limited time and resources. LANDFIRE addresses this issue by providing a set of comprehensive, cross-boundary, consistent vegetation, fuels, and fire information data. Additionally, LANDFIRE has implemented a long-term Operations and Maintenance Plan to keep this data up to date. While LANDFIRE was initially developed for national, regional, and very large landscape analyses, its products are also relevant for smaller geographies after local review. This flexibility makes LANDFIRE a valuable tool for various scales of landscape management.</p>
-<div class="callout callout-style-simple callout-none no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p><a href="https://www.landfire.gov/">LANDFIRE</a> is a shared interagency wildland fire management data program across the United States and Territories. Leadership, management, and oversight are through the U.S. Department of Agriculture Forest Service - Fire and Aviation Management and the U.S. Department of the Interior – Office of Wildland Fire. The LANDFIRE project team includes USGS EROS, EROS Technical Support Services Contract (KBR), The Nature Conservancy, USDA Forest Service (Rocky Mountain Research Station) RMRS, and Forest Inventory &amp; Analysis (FIA).</p>
-<p>LANDFIRE provides more than twenty landscape-scale geospatial products of biological and ecological data, including data such as (900+) vegetation types and (13/40) fire behavior fuel models that support all-lands planning, fire and natural resources management, operations, analyses and assessments.</p>
-<p>Learn more about LANDFIRE’s mission on the <a href="https://www.landfire.gov/about-landfire">LANDFIRE Program website</a>. You can also learn more about each of the LANDFIRE datasets we will be using in the FNA process on our companion <a href="https://landfire-tnc.github.io/LANDFIRE_101/">LANDFIRE 101 website</a>.</p>
-</div>
-</div>
-</div>
-<section id="the-landfire-product-suite" class="level3">
-<h3 class="anchored" data-anchor-id="the-landfire-product-suite">The LANDFIRE Product Suite</h3>
-<p>LANDFIRE offers a large suite of products developed for a wide range of disciplines, including vegetation, fuels, fire regime, and disturbance. These products are essential for various landscape management and planning activities.</p>
-<p>The layers we are predominantly concerned with for these fire needs assessments are:</p>
+<section id="exporting-the-attribute-table-to-.csv-format" class="level2">
+<h2 class="anchored" data-anchor-id="exporting-the-attribute-table-to-.csv-format">Exporting the attribute table to .csv format</h2>
+<p>Exporting your attribute table to CSV (comma separated value) format makes your data versatile and accessible in various programs, such as Microsoft Excel, R, ArcGIS Pro, and QGIS. Follow these steps to export your table in ArcGIS Pro.</p>
+<section id="step-by-step-process" class="level3">
+<h3 class="anchored" data-anchor-id="step-by-step-process">Step-by-step process</h3>
+<p>💡 <em>Screenshots of the process are included below the written instructions for those who find them useful.</em></p>
+<ol type="1">
+<li><strong>Open the Attribute Table</strong>
 <ul>
-<li><a href="https://landfire.gov/vegetation/bps"><strong>Biophysical Settings</strong></a></li>
-<li><a href="https://landfire.gov/vegetation/evt"><strong>Existing Vegetation Type</strong></a></li>
-<li><a href="https://landfire.gov/fire-regime/fri"><strong>Mean Fire Return Interval</strong></a></li>
-<li><a href="https://landfire.gov/fire-regime/frg"><strong>Fire Regime Groups</strong></a></li>
-</ul>
-<p>You may also find some of the fuels datasets helpful in your assessments or your work with fire.</p>
-</section>
-</section>
-<section id="learn-more" class="level2">
-<h2 class="anchored" data-anchor-id="learn-more">Learn more</h2>
-<p>For more detailed information on LANDFIRE and its datasets, please visit the following websites:</p>
+<li>Open the attribute table for the combined raster you just used to join fields.</li>
+</ul></li>
+<li><strong>Access the Export Option</strong>
 <ul>
-<li><a href="https://www.landfire.gov/about-landfire">The LANDFIRE Program website</a></li>
-<li><a href="https://landfire-tnc.github.io/LANDFIRE_101/">LANDFIRE 101</a></li>
-</ul>
-<p>These resources provide an in-depth look at the LANDFIRE program and its applications, ensuring you have all the information needed to utilize these tools effectively.</p>
+<li><p>Click the hamburger (three lines) menu in the top right corner of the attribute table window.</p></li>
+<li><p>Select the “Export” option from the menu.</p></li>
+</ul></li>
+<li><strong>Set Input Table</strong>
+<ul>
+<li>In the Export Table dialogue window, ensure the input table is set to the combined table you just used to join fields.</li>
+</ul></li>
+<li><strong>Set Output Table</strong>
+<ul>
+<li><p>Use the folder icon to choose a meaningful location to save your output table.</p></li>
+<li><p><strong>Important</strong>: Make sure you set the file extension to .csv. If you don’t do this, ArcGIS Pro will default to a .dbf format, which can be read by GIS but is harder to open with spreadsheet programs such as Excel.</p></li>
+</ul></li>
+<li><strong>Complete the Export</strong>
+<ul>
+<li>Confirm your settings and click Export to save the attribute table as a CSV file.</li>
+</ul></li>
+</ol>
+<p>This process ensures your data is saved in a versatile format, making it easy to use in various applications for further analysis and visualization.</p>
+<section id="screenshots-of-exporting-the-attribute-table-to-.csv" class="level4">
+<h4 class="anchored" data-anchor-id="screenshots-of-exporting-the-attribute-table-to-.csv">Screenshots of exporting the attribute table to .csv</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/17-export-table.png" class="img-fluid figure-img" alt="The ArcGIS Pro window showing the attribute table. A box highlights the three lines hamburger menu in the upper right corner of the attribute table window and another box highlights the Export option at the bottom of the subsequent pop-up menu."></p>
+<figcaption>Export the table.</figcaption>
+</figure>
+</div>
+<p>&nbsp;</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/18-save-csv.png" class="img-fluid figure-img" alt="The Export Table window showing the combined raster as the Input Table and the Output Table with the same name as the combined raster but the file extension .csv"></p>
+<figcaption>Save the table as a .csv file on your computer.</figcaption>
+</figure>
+</div>
 
 
+</section>
+</section>
 </section>
 
 <section id="still-have-questions-landfire-is-here-to-help." class="level1">
@@ -860,14 +870,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="An introduction to fire needs assessments">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">An introduction to fire needs assessments</span>
+      <a href="./combine-and-join.html" class="pagination-link" aria-label="FNA Process: Combine rasters and join fields">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">FNA Process: Combine rasters and join fields</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./bps.html" class="pagination-link" aria-label="Fire Needs Assessments Datasets">
-        <span class="nav-page-text">Fire Needs Assessments Datasets</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

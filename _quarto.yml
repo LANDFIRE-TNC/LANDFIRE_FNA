@@ -23,9 +23,13 @@ website:
           - href: evt.qmd
           - href: fire-regimes.qmd
       - section: "The Fire Needs Assessment Process"
-        # href: LANDFIRE_Datasets/2_Fuels/1_fuels.qmd
-        # contents:
-        #   - href: LANDFIRE_Datasets/2_Fuels/1_fuels.qmd
+        href: historical-vegetation.qmd
+        contents:
+           - href: historical-vegetation.qmd
+           - href: current-vegetation.qmd
+           - href: mask-bps.qmd
+           - href: combine-and-join.qmd
+           - href: export-to-csv.qmd
       - section: "Results"
         # href: Get_Data/1-ways-to-get-data.qmd
         # contents:
@@ -58,8 +62,8 @@ website:
 format:
   html:
     theme: 
-      light: [lumen, styles-light.scss]
-      dark: [cyborg, styles-dark.scss]
+      light: [lumen]
+      dark: [cyborg]
     respect-user-color-scheme: true 
     # include-after-body:
     #   text: |

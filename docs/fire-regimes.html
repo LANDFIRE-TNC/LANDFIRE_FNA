@@ -8,7 +8,7 @@
 
 <meta name="author" content="Sarah Hagen">
 
-<title>Fire Regime Datasets – LANDFIRE in Fire Needs Assessments</title>
+<title>Data: Fire Regimes – LANDFIRE in Fire Needs Assessments</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,6 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./historical-vegetation.html" rel="next">
 <link href="./evt.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -83,7 +84,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bps.html">Fire Needs Assessments Datasets</a></li><li class="breadcrumb-item"><a href="./fire-regimes.html">Fire Regime Datasets</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bps.html">Fire Needs Assessments Datasets</a></li><li class="breadcrumb-item"><a href="./fire-regimes.html">Data: Fire Regimes</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -135,26 +136,63 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bps.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Biophysical Settings (BPS)</span></a>
+ <span class="menu-text">Data: Biophysical Settings (BPS)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./evt.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Existing Vegetation (EVT)</span></a>
+ <span class="menu-text">Data: Existing Vegetation (EVT)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./fire-regimes.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Fire Regime Datasets</span></a>
+ <span class="menu-text">Data: Fire Regimes</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">The Fire Needs Assessment Process</span></span>
+      <div class="sidebar-item-container"> 
+            <a href="./historical-vegetation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Fire Needs Assessment Process</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./historical-vegetation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FNA Process: Historical Vegetation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./current-vegetation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FNA Process: Current vegetation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mask-bps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FNA Process: Use EVT to mask BPS</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./combine-and-join.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FNA Process: Combine rasters and join fields</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./export-to-csv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FNA Process: Export the attribute table</span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
@@ -184,9 +222,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bps.html">Fire Needs Assessments Datasets</a></li><li class="breadcrumb-item"><a href="./fire-regimes.html">Fire Regime Datasets</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bps.html">Fire Needs Assessments Datasets</a></li><li class="breadcrumb-item"><a href="./fire-regimes.html">Data: Fire Regimes</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Fire Regime Datasets</h1>
+<h1 class="title">Data: Fire Regimes</h1>
 </div>
 
 
@@ -841,11 +879,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./evt.html" class="pagination-link" aria-label="Existing Vegetation (EVT)">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Existing Vegetation (EVT)</span>
+      <a href="./evt.html" class="pagination-link" aria-label="Data: Existing Vegetation (EVT)">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Data: Existing Vegetation (EVT)</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./historical-vegetation.html" class="pagination-link" aria-label="The Fire Needs Assessment Process">
+        <span class="nav-page-text">The Fire Needs Assessment Process</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

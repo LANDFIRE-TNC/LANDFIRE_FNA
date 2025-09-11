@@ -1,0 +1,41 @@
+---
+title: "FNA Process: Use EVT to mask BPS"
+author: "Sarah Hagen"
+toc: true
+format: html
+---
+
+## Using the EVT raster to mask the BPS raster
+
+To refine your analysis, you can use the extent of the new EVT raster with non-burnable values removed to mask the Biophysical Settings (BpS) raster. This process requires a Spatial Analyst license in ArcGIS Pro.
+
+## Step-by-step process
+
+💡 *Screenshots of the process are included below the written instructions for those who find them useful.*
+
+1.  **Open the Extract by Mask Tool**
+    -   Navigate to the Spatial Analyst toolbox in ArcGIS Pro and open the "Extract by Mask" tool.
+
+2.  **Select the Input Raster**
+    -   For the input raster, select the BpS raster that you previously clipped to your study area.
+
+3.  **Select the Mask Data**
+    -   For the "Input raster or feature mask data," use the new EVT raster with the non-burnable values or other values you don't want to consider removed.
+
+4.  **Set the Extraction Area**
+    -   Set the extraction area to "Inside" to ensure that only the areas within the mask are included in the output.
+
+5.  **Check Environment Settings**
+    -   Before running the tool, check your environment settings:
+        -   Ensure that your output raster will be in the correct coordinate system.
+
+        -   Set the snap raster to your selected snap raster (in this case, the CONUS BpS Raster) to ensure alignment.
+
+6.  **Run the Tool**
+    -   Execute the "Extract by Mask" tool to generate the masked BpS raster.
+
+This process will help you refine your analysis by focusing only on the relevant areas, ensuring that your fire needs assessment is accurate and comprehensive.
+
+#### Screenshot for masking the BPS raster with the EVT raster
+
+![Use the EVT raster to mask your BpS raster. Remember to set appropriate environment settings.](images/12-extract-by-mask-vegetated.png){fig-alt="The ArcGIS Pro window showing the Extract by Mask Geoprocessing tool. The input raster is our BPS_Output raser, the Input raster or feature mask data is the EVT_Output data, the output raster is BPS_Vegetated, the extraction area is Inside and the X and Y Extents are shown."}

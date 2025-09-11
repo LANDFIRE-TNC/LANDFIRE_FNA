@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Sarah Hagen, Jim Smith">
+<meta name="author" content="Sarah Hagen">
 
-<title>LANDFIRE in Fire Needs Assessments</title>
+<title>FNA Process: Use EVT to mask BPS – LANDFIRE in Fire Needs Assessments</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,8 +31,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./bps.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./combine-and-join.html" rel="next">
+<link href="./current-vegetation.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -84,7 +84,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./landfire-overview.html">An overview of the LANDFIRE Program</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./historical-vegetation.html">The Fire Needs Assessment Process</a></li><li class="breadcrumb-item"><a href="./mask-bps.html">FNA Process: Use EVT to mask BPS</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -120,7 +120,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./landfire-overview.html" class="sidebar-item-text sidebar-link active">
+  <a href="./landfire-overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">An overview of the LANDFIRE Program</span></a>
   </div>
 </li>
@@ -176,7 +176,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mask-bps.html" class="sidebar-item-text sidebar-link">
+  <a href="./mask-bps.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">FNA Process: Use EVT to mask BPS</span></a>
   </div>
 </li>
@@ -212,20 +212,17 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#how-can-landfire-help" id="toc-how-can-landfire-help" class="nav-link active" data-scroll-target="#how-can-landfire-help">How can LANDFIRE help?</a>
-  <ul class="collapse">
-  <li><a href="#the-landfire-product-suite" id="toc-the-landfire-product-suite" class="nav-link" data-scroll-target="#the-landfire-product-suite">The LANDFIRE Product Suite</a></li>
-  </ul></li>
-  <li><a href="#learn-more" id="toc-learn-more" class="nav-link" data-scroll-target="#learn-more">Learn more</a></li>
+  <li><a href="#using-the-evt-raster-to-mask-the-bps-raster" id="toc-using-the-evt-raster-to-mask-the-bps-raster" class="nav-link active" data-scroll-target="#using-the-evt-raster-to-mask-the-bps-raster">Using the EVT raster to mask the BPS raster</a></li>
+  <li><a href="#step-by-step-process" id="toc-step-by-step-process" class="nav-link" data-scroll-target="#step-by-step-process">Step-by-step process</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./historical-vegetation.html">The Fire Needs Assessment Process</a></li><li class="breadcrumb-item"><a href="./mask-bps.html">FNA Process: Use EVT to mask BPS</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">LANDFIRE in Fire Needs Assessments</h1>
+<h1 class="title">FNA Process: Use EVT to mask BPS</h1>
 </div>
 
 
@@ -235,7 +232,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Sarah Hagen, Jim Smith </p>
+             <p>Sarah Hagen </p>
           </div>
   </div>
     
@@ -248,44 +245,55 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="how-can-landfire-help" class="level2">
-<h2 class="anchored" data-anchor-id="how-can-landfire-help">How can LANDFIRE help?</h2>
-<p>One of the significant challenges in many assessments is the lack of basic data due to limited time and resources. LANDFIRE addresses this issue by providing a set of comprehensive, cross-boundary, consistent vegetation, fuels, and fire information data. Additionally, LANDFIRE has implemented a long-term Operations and Maintenance Plan to keep this data up to date. While LANDFIRE was initially developed for national, regional, and very large landscape analyses, its products are also relevant for smaller geographies after local review. This flexibility makes LANDFIRE a valuable tool for various scales of landscape management.</p>
-<div class="callout callout-style-simple callout-none no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p><a href="https://www.landfire.gov/">LANDFIRE</a> is a shared interagency wildland fire management data program across the United States and Territories. Leadership, management, and oversight are through the U.S. Department of Agriculture Forest Service - Fire and Aviation Management and the U.S. Department of the Interior – Office of Wildland Fire. The LANDFIRE project team includes USGS EROS, EROS Technical Support Services Contract (KBR), The Nature Conservancy, USDA Forest Service (Rocky Mountain Research Station) RMRS, and Forest Inventory &amp; Analysis (FIA).</p>
-<p>LANDFIRE provides more than twenty landscape-scale geospatial products of biological and ecological data, including data such as (900+) vegetation types and (13/40) fire behavior fuel models that support all-lands planning, fire and natural resources management, operations, analyses and assessments.</p>
-<p>Learn more about LANDFIRE’s mission on the <a href="https://www.landfire.gov/about-landfire">LANDFIRE Program website</a>. You can also learn more about each of the LANDFIRE datasets we will be using in the FNA process on our companion <a href="https://landfire-tnc.github.io/LANDFIRE_101/">LANDFIRE 101 website</a>.</p>
-</div>
-</div>
-</div>
-<section id="the-landfire-product-suite" class="level3">
-<h3 class="anchored" data-anchor-id="the-landfire-product-suite">The LANDFIRE Product Suite</h3>
-<p>LANDFIRE offers a large suite of products developed for a wide range of disciplines, including vegetation, fuels, fire regime, and disturbance. These products are essential for various landscape management and planning activities.</p>
-<p>The layers we are predominantly concerned with for these fire needs assessments are:</p>
-<ul>
-<li><a href="https://landfire.gov/vegetation/bps"><strong>Biophysical Settings</strong></a></li>
-<li><a href="https://landfire.gov/vegetation/evt"><strong>Existing Vegetation Type</strong></a></li>
-<li><a href="https://landfire.gov/fire-regime/fri"><strong>Mean Fire Return Interval</strong></a></li>
-<li><a href="https://landfire.gov/fire-regime/frg"><strong>Fire Regime Groups</strong></a></li>
-</ul>
-<p>You may also find some of the fuels datasets helpful in your assessments or your work with fire.</p>
+<section id="using-the-evt-raster-to-mask-the-bps-raster" class="level2">
+<h2 class="anchored" data-anchor-id="using-the-evt-raster-to-mask-the-bps-raster">Using the EVT raster to mask the BPS raster</h2>
+<p>To refine your analysis, you can use the extent of the new EVT raster with non-burnable values removed to mask the Biophysical Settings (BpS) raster. This process requires a Spatial Analyst license in ArcGIS Pro.</p>
 </section>
-</section>
-<section id="learn-more" class="level2">
-<h2 class="anchored" data-anchor-id="learn-more">Learn more</h2>
-<p>For more detailed information on LANDFIRE and its datasets, please visit the following websites:</p>
+<section id="step-by-step-process" class="level2">
+<h2 class="anchored" data-anchor-id="step-by-step-process">Step-by-step process</h2>
+<p>💡 <em>Screenshots of the process are included below the written instructions for those who find them useful.</em></p>
+<ol type="1">
+<li><strong>Open the Extract by Mask Tool</strong>
 <ul>
-<li><a href="https://www.landfire.gov/about-landfire">The LANDFIRE Program website</a></li>
-<li><a href="https://landfire-tnc.github.io/LANDFIRE_101/">LANDFIRE 101</a></li>
-</ul>
-<p>These resources provide an in-depth look at the LANDFIRE program and its applications, ensuring you have all the information needed to utilize these tools effectively.</p>
+<li>Navigate to the Spatial Analyst toolbox in ArcGIS Pro and open the “Extract by Mask” tool.</li>
+</ul></li>
+<li><strong>Select the Input Raster</strong>
+<ul>
+<li>For the input raster, select the BpS raster that you previously clipped to your study area.</li>
+</ul></li>
+<li><strong>Select the Mask Data</strong>
+<ul>
+<li>For the “Input raster or feature mask data,” use the new EVT raster with the non-burnable values or other values you don’t want to consider removed.</li>
+</ul></li>
+<li><strong>Set the Extraction Area</strong>
+<ul>
+<li>Set the extraction area to “Inside” to ensure that only the areas within the mask are included in the output.</li>
+</ul></li>
+<li><strong>Check Environment Settings</strong>
+<ul>
+<li>Before running the tool, check your environment settings:
+<ul>
+<li><p>Ensure that your output raster will be in the correct coordinate system.</p></li>
+<li><p>Set the snap raster to your selected snap raster (in this case, the CONUS BpS Raster) to ensure alignment.</p></li>
+</ul></li>
+</ul></li>
+<li><strong>Run the Tool</strong>
+<ul>
+<li>Execute the “Extract by Mask” tool to generate the masked BpS raster.</li>
+</ul></li>
+</ol>
+<p>This process will help you refine your analysis by focusing only on the relevant areas, ensuring that your fire needs assessment is accurate and comprehensive.</p>
+<section id="screenshot-for-masking-the-bps-raster-with-the-evt-raster" class="level4">
+<h4 class="anchored" data-anchor-id="screenshot-for-masking-the-bps-raster-with-the-evt-raster">Screenshot for masking the BPS raster with the EVT raster</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/12-extract-by-mask-vegetated.png" class="img-fluid figure-img" alt="The ArcGIS Pro window showing the Extract by Mask Geoprocessing tool. The input raster is our BPS_Output raser, the Input raster or feature mask data is the EVT_Output data, the output raster is BPS_Vegetated, the extraction area is Inside and the X and Y Extents are shown."></p>
+<figcaption>Use the EVT raster to mask your BpS raster. Remember to set appropriate environment settings.</figcaption>
+</figure>
+</div>
 
 
+</section>
 </section>
 
 <section id="still-have-questions-landfire-is-here-to-help." class="level1">
@@ -860,13 +868,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="An introduction to fire needs assessments">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">An introduction to fire needs assessments</span>
+      <a href="./current-vegetation.html" class="pagination-link" aria-label="FNA Process: Current vegetation">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">FNA Process: Current vegetation</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./bps.html" class="pagination-link" aria-label="Fire Needs Assessments Datasets">
-        <span class="nav-page-text">Fire Needs Assessments Datasets</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./combine-and-join.html" class="pagination-link" aria-label="FNA Process: Combine rasters and join fields">
+        <span class="nav-page-text">FNA Process: Combine rasters and join fields</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

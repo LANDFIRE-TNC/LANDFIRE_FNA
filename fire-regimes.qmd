@@ -1,5 +1,5 @@
 ---
-title: "Fire Regime Datasets"
+title: "Data: Fire Regimes"
 author: "Sarah Hagen"
 toc: true
 format: html

@@ -135,26 +135,63 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bps.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Biophysical Settings (BPS)</span></a>
+ <span class="menu-text">Data: Biophysical Settings (BPS)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./evt.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Existing Vegetation (EVT)</span></a>
+ <span class="menu-text">Data: Existing Vegetation (EVT)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./fire-regimes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Fire Regime Datasets</span></a>
+ <span class="menu-text">Data: Fire Regimes</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">The Fire Needs Assessment Process</span></span>
+      <div class="sidebar-item-container"> 
+            <a href="./historical-vegetation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Fire Needs Assessment Process</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./historical-vegetation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FNA Process: Historical Vegetation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./current-vegetation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FNA Process: Current vegetation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mask-bps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FNA Process: Use EVT to mask BPS</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./combine-and-join.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FNA Process: Combine rasters and join fields</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./export-to-csv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FNA Process: Export the attribute table</span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
@@ -214,7 +251,7 @@ ul.task-list li input[type="checkbox"] {
 <p>The frequency and severity of wildfires are changing around the country. To understand their impact on the landscape, federal agencies and states are conducting fire needs assessments. Fire needs assessments help fire stakeholders understand where, what type of, and how much fire needs to occur to reduce the destructive effects of wildfire and restore or maintain ecosystem health and resiliency.</p>
 <section id="what-is-a-fire-needs-assessment" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-a-fire-needs-assessment">What is a Fire Needs Assessment?</h2>
-<p>A fire needs sssessment (FNA) is a structured, science-based process used to evaluate where and to what extent fire is needed on a landscape to restore or maintain ecological integrity, reduce wildfire risk, and meet land management objectives. It integrates ecological principles, historical fire regimes, current vegetation conditions, and spatial data to identify areas where fire—either through prescribed burning or managed wildfire—can be applied beneficially. FNAs help land managers prioritize treatments by assessing the <em>ecological need</em> for fire, not just the <em>risk</em> of fire, which is a critical distinction in fire-adapted ecosystems.</p>
+<p>A fire needs assessment (FNA) is a structured, science-based process used to evaluate where and to what extent fire is needed on a landscape to restore or maintain ecological integrity, reduce wildfire risk, and meet land management objectives. It integrates ecological principles, historical fire regimes, current vegetation conditions, and spatial data to identify areas where fire—either through prescribed burning or managed wildfire—can be applied beneficially. FNAs help land managers prioritize treatments by assessing the <em>ecological need</em> for fire, not just the <em>risk</em> of fire, which is a critical distinction in fire-adapted ecosystems.</p>
 <p>The process typically involves spatial analysis using GIS to compare current vegetation and fire regime conditions against reference conditions (often derived from models like LANDFIRE or local ecological knowledge). This comparison highlights areas of departure—where fire has been excluded or altered—and helps quantify the type, amount, and frequency of fire needed to move the system toward desired conditions. FNAs are essential for aligning fire management with ecological goals, supporting NEPA planning, and justifying funding for prescribed fire programs. By grounding fire planning in ecological need, FNAs promote more strategic, effective, and defensible fire management decisions. Later in this website, we will showcase some examples of fire needs assessments and what programs have done with them.</p>
 </section>
 <section id="the-importance-of-fire-needs-assessments" class="level2">
