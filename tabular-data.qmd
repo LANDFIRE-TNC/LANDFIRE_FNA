@@ -1,0 +1,350 @@
+---
+title: "FNA Process: Working with the tabular data"
+author: "Sarah Hagen"
+toc: true
+format: html
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+## Working with the CSV File in Microsoft Excel
+
+Once you have exported your attribute table to CSV format, you can open
+it in Microsoft Excel or your spreadsheet program of choice. This
+tutorial will focus on Microsoft Excel, so instructions may differ in
+other programs.
+
+### Step-by-Step Process
+
+This process will help you focus on the most relevant data for your
+analysis while retaining the original CSV format for future use if
+needed.
+
+1.  **Open the CSV file**
+    -   Open the CSV file in Microsoft Excel. You will see an exact copy
+        of the attribute table you just exported from ArcGIS Pro.
+2.  **Save a copy as an Excel workbook**
+    -   Before modifying the table, save a copy of it as an Excel
+        workbook (.xlsx). Many changes to the table in the remainder of
+        this process will be incompatible with the CSV format. To ensure
+        you don't lose any data you may need in future analyses, it's
+        best to keep the CSV in-tact and make changes in a working copy.
+3.  **Identify key fields**
+    -   The most relevant fields to this analysis are:
+        -   **EVT_NAME**
+        -   **BPS_NAME**
+        -   **FRI_ALLFIR**
+        -   **Acres**
+        -   **Acres_Year**
+4.  **Delete unnecessary fields**
+    -   Once you've made a copy of the CSV data, you can delete any
+        fields you don't need. In all cases, you can safely delete any
+        fields associated with the colormap, such as **R**, **G**,
+        **B**, **RED**, **GREEN**, **BLUE** as well as the value fields
+        for your BPS_Vegetated and EVT_Vegetated rasters (the ones you
+        used to join fields to the combined raster attribute table.)
+
+This process will help you focus on the most relevant data for your
+analysis while retaining the original CSV data for future use if needed.
+
+## Calculating EVT Acres in Microsoft Excel
+
+Once you've processed your attribute table, the first step is calculate
+how many acres are in each EVT in addition to how many acres are in each
+BpS. To calculate EVT acres, create a new field called EVT acres, which
+will be driven by the count field in the CSV. Here's how to do it:
+
+### Step-by-Step Process
+
+💡 *Screenshots of the process are included below the written
+instructions for those who find them useful.*
+
+1.  **Create a New Field for EVT Acres**
+    -   Insert a new column next to the COUNT field and name it EVT
+        Acres.
+2.  **Calculate Acres Using the Pixel Count Field**
+    -   In the first cell of the new "EVT Acres" column, enter the
+        formula: = \[COUNT\] \* 900 \* 0.000247 Replace \[COUNT\] with
+        the cell reference for the COUNT field in the same row.
+
+::: callout-note
+This is the same calculation we used to calculate BpS Acres in ArcGIS
+Pro. You can do this in either GIS or your spreadsheet program,
+whichever you feel more comfortable working with.
+:::
+
+3.  **Copy the Formula Down the Column**
+    -   Drag the fill handle (a small square at the bottom-right corner
+        of the cell) down the column to apply the formula to all rows.
+
+### Screenshot for calculating EVT acres
+
+![Calculating EVT acres in Excel.](images/19-evt-acres.png){fig-alt="A Microsoft
+Excel window showing the spreadsheet. The column for EVT_acres is
+highlighted with a black box. Another black box surrounds the formula
+=B2*900*0.0002471"}
+
+ 
+
+This process will calculate the EVT acres for each row in your table,
+allowing you to analyze the data more effectively. From here, you can
+add another field to calculate the EVT acres burned per year for a
+comparison with the BpS acres burned per year. You can use the same
+process for this that you used when calculating BpS acres burned per
+year.
+
+::: callout-note
+Right now, we are still assuming that the underlying historical fire
+return interval applies to existing vegetation. This may not be the case
+for your landscape. We will provide options for how to adjust this in a
+later section of this site.
+:::
+
+## Creating a Pivot Table in Microsoft Excel
+
+### Why Use Pivot Tables?
+
+When you combine rasters, the resulting table contains one row per
+unique combination of values from both rasters. This means that, in this
+example, the same EVT can be split into multiple rows, each associated
+with different BPS values. Consequently, you can't simply sum the EVT
+acres directly from the table because the EVT acres are distributed
+across multiple rows.
+
+Pivot tables allow us to summarize and aggregate data effectively.
+Here's why we need to use pivot tables in this context:
+
+1.  **Summarizing EVT Acres**
+    -   Since EVT acres are split across multiple rows, we need to use a
+        pivot table to aggregate the total acres for each EVT. This
+        ensures we get an accurate representation of the total area
+        covered by each vegetation type.
+2.  **Calculating Average Fire Return Interval (FRI)**
+    -   The FRI values are tied to the underlying BpS pixels, meaning
+        different pixels of the same EVT might have different FRI
+        values. Using a pivot table allows us to calculate the average
+        FRI for each EVT by summarizing the FRI values across all
+        relevant rows.
+3.  **Summarizing FRI Acres**
+    -   To understand the total number of acres that should burn
+        annually based on historical fire return intervals, we need to
+        summarize the FRI acres. Pivot tables help us aggregate these
+        values to get a comprehensive view of fire needs for each EVT.
+
+### Step-by-step process
+
+💡 *Screenshots of the process are included below the written
+instructions for those who find them useful.*
+
+1.  **Insert the pivot table**
+    -   Select the range of cells that contains your data. Make sure to
+        include the column headers.
+
+    -   Go to the Insert tab on the Excel ribbon.
+
+    -   Click on PivotTable in the Tables group.
+
+    -   In the Create PivotTable dialog box, ensure the selected range
+        is correct.
+
+    -   Choose to place the pivot table in a new worksheet or an
+        existing worksheet. For this tutorial, select "New Worksheet"
+        and click OK.
+2.  **Set Up Your Pivot Table to summarize EVT data**
+    -   A new worksheet will open with a blank pivot table and the
+        PivotTable Fields pane on the right.
+
+    -   Drag and drop fields into the appropriate areas:
+
+        -   **Rows**: Drag the field you want to categorize your data
+            by. In our case, we want to look at the EVT_NAME field.
+
+        -   **Columns**: Drag the field you want to compare across
+            categories. In our case, we want to look at the value fields
+            we just set, which the pivot table will choose
+            automatically.
+
+        -   **Values**: Drag the fields you want to summarize. In our
+            case, we want to look at FRI_ALLFIR, EVT Acres, and EVT
+            Acres burned per year. By default, Excel will sum these
+            values, but you can change the summary function by clicking
+            on the field in the Values area and selecting "Value Field
+            Settings".
+
+            -   You will want to change the value fields for the
+                FRI_ALLFIR field, as we want to look at the average FRI,
+                not the summed FRI. To do this, click the drop-down
+                arrow next to the field name, then choose Average from
+                the Summarize value fields by options box.
+
+::: callout-note
+This is not a weighted average of the FRI, just a straight average.
+While this number will give you a good starting place, it's best
+practice to use a weighted average -- taking into account how many acres
+of a given BPS were in the underlying EVT area -- to get a more
+representative fire return interval for the landscape. The process for
+creating the weighted average FRI using the pivot table is in the
+following section.
+:::
+
+### Screenshots for creating the pivot table
+
+![Select data and create a pivot
+table.](images/20-create-pivot-table.png){fig-alt="A Microsoft Excel window with
+the PivotTable button highlighted in the ribbon bar. Another window is
+in front of the data window, showing PivotTable from table or range. The
+table/Range is set to the full range of data from the worksheet. The
+radio button next to New Worksheet is checked, choosing to place the
+PivotTable in a new worksheet."}
+
+ 
+
+![Select the pivot table fields.](images/21-pivot-table-fields.png){fig-alt="The
+pivot table window. The PivotTable Fields dialogue box is on the right,
+showing our columns as Values, Rows as EVT_NAME, Values as Sum of FRI,
+Sum of EVT Acres, Sum of EVT Acres Burned/Year"}
+
+ 
+
+![Change the FRI value field to
+average.](images/22-pivot-table-value-field.png){fig-alt="The pivot table with
+the Value Field Settings dialogue box open. Source name is FRI,
+Summarize values field by is set to Average."}
+
+ 
+
+This process will help you summarize your data, making it easier to
+understand and present your fire needs assessment results.
+
+## Creating the weighted average fire return interval
+
+You can use a pivot table to calculate a weighted average, but it
+requires an extra column in the source data. This may sound complicated,
+but you simply need to add the new column to the raw data tab, and then
+create a calculated field in the pivot table.
+
+### Step-by-step process
+
+💡 *Screenshots of the process are included below the written
+instructions for those who find them useful.*
+
+1.  **Create a weight column in the raw data tab**
+    -   Add a new column to the raw data tab - in the screenshots below
+        it is named Average, but you should call it whatever makes the
+        most sense to you.
+2.  **Multiply "score" by "weight" for each row**
+    -   In the new column, create a formula that multiplies your "score"
+        (in this case, FRI) by its "weight" (in this case the Acres
+        column for each row).
+        -   Thus, the calculation here is Average = FRI\*Acres, or H2 =
+            E2\*F2 in the example screenshots below.
+3.  **Copy the formula down the column**
+    -   Drag the fill handle (a small square at the bottom-right corner
+        of the cell) down the column to apply the formula to all rows.
+4.  **Add a calculated field to the pivot table**
+    -   With your pivot table selected, go to the PivotTable Analyze tab
+        on the ribbon bar.
+
+    -   In the Calculations group, click Fields, Items, & Sets, and then
+        select Calculated Field.
+
+    -   In the dialog box that appears, enter a name for your field. In
+        the screenshots below, it is called Average FRI, but you should
+        name it something that makes sense to you.
+
+    -   In the formula box, enter the following formula using your new
+        fields:
+
+        -   Formula: = Average \* EVT_Acres
+    
+    - Click Add, then click OK.
+
+    - Drag the new Weighted Average field into the Values area of the PivotTable Fields dialog
+
+    - Ensure the new field is set to Sum in the value field settings
+    
+#### Screenshots for using the pivot table to calculate the weighted average
+
+![Create the new column and calculate the weighting.](images/23-weight-column.png){fig-alt="A Microsoft Excel window with a new column highlighted and a box around the formula bar which shows the formula =E2*F2, corresponding to FRI*EVT Acres"}
+
+ 
+
+![Add a calculated field to the pivot table.](images/24-pivot-table-calculate-field.png){fig-alt="A box highlights the place on the pivot table ribbon bar showing PivotTable Analyze and the Fields, Items, & Sets button. Below that the menu shows Calculate Field highlighted."}
+
+ 
+
+![Calculate the field for the weighted average.](images/25-pivot-table-calculate-avgfri.png){fig-alt="The Insert Calculated Field window. Name is Weighted Average FRI. the Formula is = Average/'EVT Acres'"}
+
+ 
+
+![Make sure the new field is added as a value and it is being calculated as a sum.](images/26-pivot-table-value-field-sum.png){fig-alt="The
+pivot table window. The PivotTable Fields dialogue box is on the right,
+showing our columns as Values, Rows as EVT_NAME, Values as Sum of FRI,
+Sum of EVT Acres, Sum of EVT Acres Burned/Year, Sum of Weighted Average FRI. The Value Field Settings is open showing the Sum of Weighted FRI is correctly being calculated as a sum."}
+
+## Creating a Summary Table in Microsoft Excel
+
+Once you have summarized EVT Acres, EVT acres burned per year, and the
+weighted average FRI for each EVT using a pivot table, you can create a new table
+in a new worksheet tab to organize this data. This will help you clearly
+see, for each EVT name, the average historical FRI, the total acres of
+each EVT on the landscape, and the acres of that EVT burned each year.
+
+### Step-by-Step Process
+
+💡 *Screenshots of the process are included below the written
+instructions for those who find them useful.*
+
+1.  **Summarize Data in Pivot Table**
+    -   Ensure your pivot table summarizes the following:
+        -   **EVT Acres**: Total acres for each EVT.
+
+        -   **EVT Acres Burned per Year**: Total acres burned annually
+            for each EVT.
+
+        -   **Average FRI**: Average historical fire return interval for
+            each EVT.
+2.  **Copy Pivot Table Data**
+    -   Select the entire pivot table.
+
+    -   Right-click and choose "Copy" or press `Ctrl+C`.
+3.  **Create a New Worksheet Tab**
+    -   Click the "+" icon at the bottom of the Excel window to create a
+        new worksheet tab.
+4.  **Paste Pivot Table Data**
+    -   In the new worksheet tab, right-click in the first cell (A1) and
+        choose "Paste Special".
+
+    -   Select "Values" from the Paste Special options and click "OK".
+        This ensures you are pasting only the values, not the pivot
+        table formatting.
+5.  **Clean Up Table Headers**
+    -   Review the pasted data and update the table headers to something
+        more meaningful. For example:
+        -   **EVT Name**
+
+        -   **Average Historical FRI**
+
+        -   **Total EVT Acres**
+
+        -   **EVT Acres Burned per Year**
+6.  **Format the Table**
+    -   Adjust column widths and apply any necessary formatting to
+        improve readability.
+
+    -   You can also add filters to the headers to make it easier to
+        sort and analyze the data.
+        
+#### Screenshot for creating the summary table
+
+![Final summary table using data from the pivot table.](images/27-summary-table.png){fig-alt="The final summary table in Excel. The column names have been cleaned up and data are displayed in more readable formats. Columns are EVT Name, Average FRI (historical), EVT Acres, EVT Acres Burned/Year, %EVT Burned/Year"}
+
+
+This process will help you create a clear and organized summary table,
+making it easier to understand and present your fire needs assessment
+results.
+
+**Bonus action**: You can also calculate what percent of each EVT should
+burn per year, by adding a column and then using a formula to divide EVT
+acres burned per year by total EVT acres.

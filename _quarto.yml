@@ -30,6 +30,7 @@ website:
            - href: mask-bps.qmd
            - href: combine-and-join.qmd
            - href: export-to-csv.qmd
+           - href: tabular-data.qmd
       - section: "Results"
         # href: Get_Data/1-ways-to-get-data.qmd
         # contents:

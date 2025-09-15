@@ -8,7 +8,7 @@
 
 <meta name="author" content="Sarah Hagen">
 
-<title>FNA Process: Historical Vegetation – LANDFIRE in Fire Needs Assessments</title>
+<title>FNA Process: Working with the tabular data – LANDFIRE in Fire Needs Assessments</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,8 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./current-vegetation.html" rel="next">
-<link href="./fire-regimes.html" rel="prev">
+<link href="./export-to-csv.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -75,35 +74,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -287,7 +257,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./historical-vegetation.html">The Fire Needs Assessment Process</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./historical-vegetation.html">The Fire Needs Assessment Process</a></li><li class="breadcrumb-item"><a href="./tabular-data.html">FNA Process: Working with the tabular data</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -358,7 +328,7 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./historical-vegetation.html" class="sidebar-item-text sidebar-link active">
+            <a href="./historical-vegetation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">The Fire Needs Assessment Process</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -367,7 +337,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./historical-vegetation.html" class="sidebar-item-text sidebar-link active">
+  <a href="./historical-vegetation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">FNA Process: Historical Vegetation</span></a>
   </div>
 </li>
@@ -397,7 +367,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tabular-data.html" class="sidebar-item-text sidebar-link">
+  <a href="./tabular-data.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">FNA Process: Working with the tabular data</span></a>
   </div>
 </li>
@@ -421,9 +391,28 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#understanding-historical-fire-regimes-using-biophysical-settings" id="toc-understanding-historical-fire-regimes-using-biophysical-settings" class="nav-link active" data-scroll-target="#understanding-historical-fire-regimes-using-biophysical-settings">Understanding historical fire regimes using Biophysical Settings</a>
+  <li><a href="#working-with-the-csv-file-in-microsoft-excel" id="toc-working-with-the-csv-file-in-microsoft-excel" class="nav-link active" data-scroll-target="#working-with-the-csv-file-in-microsoft-excel">Working with the CSV File in Microsoft Excel</a>
   <ul class="collapse">
-  <li><a href="#step-by-step-process" id="toc-step-by-step-process" class="nav-link" data-scroll-target="#step-by-step-process">Step-by-step process</a></li>
+  <li><a href="#step-by-step-process" id="toc-step-by-step-process" class="nav-link" data-scroll-target="#step-by-step-process">Step-by-Step Process</a></li>
+  </ul></li>
+  <li><a href="#calculating-evt-acres-in-microsoft-excel" id="toc-calculating-evt-acres-in-microsoft-excel" class="nav-link" data-scroll-target="#calculating-evt-acres-in-microsoft-excel">Calculating EVT Acres in Microsoft Excel</a>
+  <ul class="collapse">
+  <li><a href="#step-by-step-process-1" id="toc-step-by-step-process-1" class="nav-link" data-scroll-target="#step-by-step-process-1">Step-by-Step Process</a></li>
+  <li><a href="#screenshot-for-calculating-evt-acres" id="toc-screenshot-for-calculating-evt-acres" class="nav-link" data-scroll-target="#screenshot-for-calculating-evt-acres">Screenshot for calculating EVT acres</a></li>
+  </ul></li>
+  <li><a href="#creating-a-pivot-table-in-microsoft-excel" id="toc-creating-a-pivot-table-in-microsoft-excel" class="nav-link" data-scroll-target="#creating-a-pivot-table-in-microsoft-excel">Creating a Pivot Table in Microsoft Excel</a>
+  <ul class="collapse">
+  <li><a href="#why-use-pivot-tables" id="toc-why-use-pivot-tables" class="nav-link" data-scroll-target="#why-use-pivot-tables">Why Use Pivot Tables?</a></li>
+  <li><a href="#step-by-step-process-2" id="toc-step-by-step-process-2" class="nav-link" data-scroll-target="#step-by-step-process-2">Step-by-step process</a></li>
+  <li><a href="#screenshots-for-creating-the-pivot-table" id="toc-screenshots-for-creating-the-pivot-table" class="nav-link" data-scroll-target="#screenshots-for-creating-the-pivot-table">Screenshots for creating the pivot table</a></li>
+  </ul></li>
+  <li><a href="#creating-the-weighted-average-fire-return-interval" id="toc-creating-the-weighted-average-fire-return-interval" class="nav-link" data-scroll-target="#creating-the-weighted-average-fire-return-interval">Creating the weighted average fire return interval</a>
+  <ul class="collapse">
+  <li><a href="#step-by-step-process-3" id="toc-step-by-step-process-3" class="nav-link" data-scroll-target="#step-by-step-process-3">Step-by-step process</a></li>
+  </ul></li>
+  <li><a href="#creating-a-summary-table-in-microsoft-excel" id="toc-creating-a-summary-table-in-microsoft-excel" class="nav-link" data-scroll-target="#creating-a-summary-table-in-microsoft-excel">Creating a Summary Table in Microsoft Excel</a>
+  <ul class="collapse">
+  <li><a href="#step-by-step-process-4" id="toc-step-by-step-process-4" class="nav-link" data-scroll-target="#step-by-step-process-4">Step-by-Step Process</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -432,9 +421,9 @@ window.Quarto = {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./historical-vegetation.html">The Fire Needs Assessment Process</a></li><li class="breadcrumb-item"><a href="./tabular-data.html">FNA Process: Working with the tabular data</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">FNA Process: Historical Vegetation</h1>
+<h1 class="title">FNA Process: Working with the tabular data</h1>
 </div>
 
 
@@ -457,30 +446,54 @@ window.Quarto = {
 </header>
 
 
-<section id="understanding-historical-fire-regimes-using-biophysical-settings" class="level2">
-<h2 class="anchored" data-anchor-id="understanding-historical-fire-regimes-using-biophysical-settings">Understanding historical fire regimes using Biophysical Settings</h2>
-<p>Conducting a fire needs assessment involves understanding historical fire regimes and vegetation types to plan for future fire management and restoration efforts. This guide will walk you through the process, focusing on the LANDFIRE Biophysical Settings (BPS) and Fire Regime (FRI) data.</p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This site will walk you through working with LANDFIRE spatial data in ArcGIS Pro. Some of this workflow may be possible in QGIS or other open source GIS sources, but those workflows are not documented here.</p>
-</div>
-</div>
+<section id="working-with-the-csv-file-in-microsoft-excel" class="level2">
+<h2 class="anchored" data-anchor-id="working-with-the-csv-file-in-microsoft-excel">Working with the CSV File in Microsoft Excel</h2>
+<p>Once you have exported your attribute table to CSV format, you can open it in Microsoft Excel or your spreadsheet program of choice. This tutorial will focus on Microsoft Excel, so instructions may differ in other programs.</p>
 <section id="step-by-step-process" class="level3">
-<h3 class="anchored" data-anchor-id="step-by-step-process">Step-by-step process</h3>
+<h3 class="anchored" data-anchor-id="step-by-step-process">Step-by-Step Process</h3>
+<p>This process will help you focus on the most relevant data for your analysis while retaining the original CSV format for future use if needed.</p>
+<ol type="1">
+<li><strong>Open the CSV file</strong>
+<ul>
+<li>Open the CSV file in Microsoft Excel. You will see an exact copy of the attribute table you just exported from ArcGIS Pro.</li>
+</ul></li>
+<li><strong>Save a copy as an Excel workbook</strong>
+<ul>
+<li>Before modifying the table, save a copy of it as an Excel workbook (.xlsx). Many changes to the table in the remainder of this process will be incompatible with the CSV format. To ensure you don’t lose any data you may need in future analyses, it’s best to keep the CSV in-tact and make changes in a working copy.</li>
+</ul></li>
+<li><strong>Identify key fields</strong>
+<ul>
+<li>The most relevant fields to this analysis are:
+<ul>
+<li><strong>EVT_NAME</strong></li>
+<li><strong>BPS_NAME</strong></li>
+<li><strong>FRI_ALLFIR</strong></li>
+<li><strong>Acres</strong></li>
+<li><strong>Acres_Year</strong></li>
+</ul></li>
+</ul></li>
+<li><strong>Delete unnecessary fields</strong>
+<ul>
+<li>Once you’ve made a copy of the CSV data, you can delete any fields you don’t need. In all cases, you can safely delete any fields associated with the colormap, such as <strong>R</strong>, <strong>G</strong>, <strong>B</strong>, <strong>RED</strong>, <strong>GREEN</strong>, <strong>BLUE</strong> as well as the value fields for your BPS_Vegetated and EVT_Vegetated rasters (the ones you used to join fields to the combined raster attribute table.)</li>
+</ul></li>
+</ol>
+<p>This process will help you focus on the most relevant data for your analysis while retaining the original CSV data for future use if needed.</p>
+</section>
+</section>
+<section id="calculating-evt-acres-in-microsoft-excel" class="level2">
+<h2 class="anchored" data-anchor-id="calculating-evt-acres-in-microsoft-excel">Calculating EVT Acres in Microsoft Excel</h2>
+<p>Once you’ve processed your attribute table, the first step is calculate how many acres are in each EVT in addition to how many acres are in each BpS. To calculate EVT acres, create a new field called EVT acres, which will be driven by the count field in the CSV. Here’s how to do it:</p>
+<section id="step-by-step-process-1" class="level3">
+<h3 class="anchored" data-anchor-id="step-by-step-process-1">Step-by-Step Process</h3>
 <p>💡 <em>Screenshots of the process are included below the written instructions for those who find them useful.</em></p>
 <ol type="1">
-<li><strong>Identify historical vegetation types</strong>
+<li><strong>Create a New Field for EVT Acres</strong>
 <ul>
-<li><p><strong>Load LANDFIRE Biophysical Settings Data</strong>: Begin by loading the LANDFIRE Biophysical Settings spatial data into ArcGIS Pro</p></li>
-<li><p><strong>Clip to area of interest</strong>: Use the Clip Raster tool or the Extract by Mask tool (requires a Spatial Analyst license) to clip the BPS spatial data to your specific area of interest. This will help you focus on the relevant geographic region.</p></li>
+<li>Insert a new column next to the COUNT field and name it EVT Acres.</li>
+</ul></li>
+<li><strong>Calculate Acres Using the Pixel Count Field</strong>
+<ul>
+<li>In the first cell of the new “EVT Acres” column, enter the formula: = [COUNT] * 900 * 0.000247 Replace [COUNT] with the cell reference for the COUNT field in the same row.</li>
 </ul></li>
 </ol>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -493,90 +506,252 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Don’t forget to set the environment settings in the tool. Most importantly, make sure the spatial reference of your output raster is correct and set a snap raster (e.g.&nbsp;the BPS_CONUS raster) to ensure your pixel extents match. This will be important later when you use one raster to process another.</p>
+<p>This is the same calculation we used to calculate BpS Acres in ArcGIS Pro. You can do this in either GIS or your spreadsheet program, whichever you feel more comfortable working with.</p>
 </div>
 </div>
-<pre><code>    -   **Identify vegetation types**: Examine the clipped BPS layer to identify the historical vegetation types present in your area.</code></pre>
-<ol start="2" type="1">
-<li><p><strong>Estimate historical fire return intervals</strong></p>
+<ol start="3" type="1">
+<li><strong>Copy the Formula Down the Column</strong>
 <ul>
-<li><strong>Explore fire return interval data</strong>: The BPS data include fire return interval (FRI) information. Display the raster on the FRI_ALLFIR field to explore the historical fire return intervals for the identified vegetation type.</li>
+<li>Drag the fill handle (a small square at the bottom-right corner of the cell) down the column to apply the formula to all rows.</li>
 </ul></li>
 </ol>
-<div class="callout callout-style-default callout-tip callout-titled">
+</section>
+<section id="screenshot-for-calculating-evt-acres" class="level3">
+<h3 class="anchored" data-anchor-id="screenshot-for-calculating-evt-acres">Screenshot for calculating EVT acres</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/19-evt-acres.png" class="img-fluid figure-img" alt="A Microsoft Excel window showing the spreadsheet. The column for EVT_acres is highlighted with a black box. Another black box surrounds the formula =B2*900*0.0002471"></p>
+<figcaption>Calculating EVT acres in Excel.</figcaption>
+</figure>
+</div>
+<p>&nbsp;</p>
+<p>This process will calculate the EVT acres for each row in your table, allowing you to analyze the data more effectively. From here, you can add another field to calculate the EVT acres burned per year for a comparison with the BpS acres burned per year. You can use the same process for this that you used when calculating BpS acres burned per year.</p>
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tip
+Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>LANDFIRE also delivers the fire regime data separately. That dataset includes only fire severity, fire return interval, fire regime groups, and the BPS name and code. Use this if you prefer to work with a simplified version of the data. It will have all the information you need to complete this assessment.</p>
+<p>Right now, we are still assuming that the underlying historical fire return interval applies to existing vegetation. This may not be the case for your landscape. We will provide options for how to adjust this in a later section of this site.</p>
 </div>
 </div>
-<ol start="3" type="1">
-<li><p><strong>Calculate historical fire acreages</strong></p>
+</section>
+</section>
+<section id="creating-a-pivot-table-in-microsoft-excel" class="level2">
+<h2 class="anchored" data-anchor-id="creating-a-pivot-table-in-microsoft-excel">Creating a Pivot Table in Microsoft Excel</h2>
+<section id="why-use-pivot-tables" class="level3">
+<h3 class="anchored" data-anchor-id="why-use-pivot-tables">Why Use Pivot Tables?</h3>
+<p>When you combine rasters, the resulting table contains one row per unique combination of values from both rasters. This means that, in this example, the same EVT can be split into multiple rows, each associated with different BPS values. Consequently, you can’t simply sum the EVT acres directly from the table because the EVT acres are distributed across multiple rows.</p>
+<p>Pivot tables allow us to summarize and aggregate data effectively. Here’s why we need to use pivot tables in this context:</p>
+<ol type="1">
+<li><strong>Summarizing EVT Acres</strong>
 <ul>
-<li><p><strong>Add fields for calculation</strong>: Add an Acres field and an Acres_Year field to your clipped data.</p></li>
-<li><p><strong>Calculate acres</strong>: Use the following formula to calculate the total acres for each vegetation type:</p></li>
-</ul>
-<p><span class="math display">\[
-Acres=!COUNT!*900*0.000247105
-\]</span></p>
-<p>Here, !COUNT! represents the number of pixels for each vegetation type, 900 is the area of each pixel in square meters, and 0.000247105 converts square meters to acres.</p>
+<li>Since EVT acres are split across multiple rows, we need to use a pivot table to aggregate the total acres for each EVT. This ensures we get an accurate representation of the total area covered by each vegetation type.</li>
+</ul></li>
+<li><strong>Calculating Average Fire Return Interval (FRI)</strong>
 <ul>
-<li><strong>Calculate acres burned annually</strong>: Use the following formula to calculate the number of acres that should burn each year for each BPS:</li>
-</ul>
-<p><span class="math display">\[
-Acres\_Year=!Acres!/!FRI\_ALLFIR!
-\]</span></p>
-<p>This calculation will give you an estimate of the annual burned area under historical conditions.</p></li>
+<li>The FRI values are tied to the underlying BpS pixels, meaning different pixels of the same EVT might have different FRI values. Using a pivot table allows us to calculate the average FRI for each EVT by summarizing the FRI values across all relevant rows.</li>
+</ul></li>
+<li><strong>Summarizing FRI Acres</strong>
+<ul>
+<li>To understand the total number of acres that should burn annually based on historical fire return intervals, we need to summarize the FRI acres. Pivot tables help us aggregate these values to get a comprehensive view of fire needs for each EVT.</li>
+</ul></li>
 </ol>
-<section id="screenshots-for-understanding-historical-fire-regime-information" class="level4">
-<h4 class="anchored" data-anchor-id="screenshots-for-understanding-historical-fire-regime-information">Screenshots for understanding historical fire regime information</h4>
+</section>
+<section id="step-by-step-process-2" class="level3">
+<h3 class="anchored" data-anchor-id="step-by-step-process-2">Step-by-step process</h3>
+<p>💡 <em>Screenshots of the process are included below the written instructions for those who find them useful.</em></p>
+<ol type="1">
+<li><strong>Insert the pivot table</strong>
+<ul>
+<li><p>Select the range of cells that contains your data. Make sure to include the column headers.</p></li>
+<li><p>Go to the Insert tab on the Excel ribbon.</p></li>
+<li><p>Click on PivotTable in the Tables group.</p></li>
+<li><p>In the Create PivotTable dialog box, ensure the selected range is correct.</p></li>
+<li><p>Choose to place the pivot table in a new worksheet or an existing worksheet. For this tutorial, select “New Worksheet” and click OK.</p></li>
+</ul></li>
+<li><strong>Set Up Your Pivot Table to summarize EVT data</strong>
+<ul>
+<li><p>A new worksheet will open with a blank pivot table and the PivotTable Fields pane on the right.</p></li>
+<li><p>Drag and drop fields into the appropriate areas:</p>
+<ul>
+<li><p><strong>Rows</strong>: Drag the field you want to categorize your data by. In our case, we want to look at the EVT_NAME field.</p></li>
+<li><p><strong>Columns</strong>: Drag the field you want to compare across categories. In our case, we want to look at the value fields we just set, which the pivot table will choose automatically.</p></li>
+<li><p><strong>Values</strong>: Drag the fields you want to summarize. In our case, we want to look at FRI_ALLFIR, EVT Acres, and EVT Acres burned per year. By default, Excel will sum these values, but you can change the summary function by clicking on the field in the Values area and selecting “Value Field Settings”.</p>
+<ul>
+<li>You will want to change the value fields for the FRI_ALLFIR field, as we want to look at the average FRI, not the summed FRI. To do this, click the drop-down arrow next to the field name, then choose Average from the Summarize value fields by options box.</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is not a weighted average of the FRI, just a straight average. While this number will give you a good starting place, it’s best practice to use a weighted average – taking into account how many acres of a given BPS were in the underlying EVT area – to get a more representative fire return interval for the landscape. The process for creating the weighted average FRI using the pivot table is in the following section.</p>
+</div>
+</div>
+</section>
+<section id="screenshots-for-creating-the-pivot-table" class="level3">
+<h3 class="anchored" data-anchor-id="screenshots-for-creating-the-pivot-table">Screenshots for creating the pivot table</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/5-add-data-bps.png" class="img-fluid figure-img" alt="Adding BPS data to ArcGIS Pro by clicking the Add Data button in the ribbon bar and then selecting LC20_BPS_220.tif"></p>
-<figcaption>Add BPS data to ArcGIS Pro.</figcaption>
+<p><img src="images/20-create-pivot-table.png" class="img-fluid figure-img" alt="A Microsoft Excel window with the PivotTable button highlighted in the ribbon bar. Another window is in front of the data window, showing PivotTable from table or range. The table/Range is set to the full range of data from the worksheet. The radio button next to New Worksheet is checked, choosing to place the PivotTable in a new worksheet."></p>
+<figcaption>Select data and create a pivot table.</figcaption>
 </figure>
 </div>
 <p>&nbsp;</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/6-crop-bps.png" class="img-fluid figure-img" alt="Three panels with geoprocessing windows. The left shows the Extract by Mask tool with BPS as the input raster, the aoi as the input raster or feature mask data, and BPS_Output as the Output raster. The Extraction Area is set to inside and the analysis area is defined. The middle panel shows the Clip Raster tool with the same input and output rasters, the aoi as the output extent, and the X and Y extent defined. The right panel shows the environment settings with the coordinate system set to NAD_1983_Contiguous_USA_Albers to match the BPS coordinate system and the snap raster set to BPS"></p>
-<figcaption>Crop the BPS raster to your area of interest.</figcaption>
+<p><img src="images/21-pivot-table-fields.png" class="img-fluid figure-img" alt="The pivot table window. The PivotTable Fields dialogue box is on the right, showing our columns as Values, Rows as EVT_NAME, Values as Sum of FRI, Sum of EVT Acres, Sum of EVT Acres Burned/Year"></p>
+<figcaption>Select the pivot table fields.</figcaption>
 </figure>
 </div>
 <p>&nbsp;</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/7-bps-attributes.png" class="img-fluid figure-img" alt="The BPS attribute table in ArcGIS Pro. A vertical box highlights the BPS_NAME column and a horizontal box highlights the FRI_REPLAC, FRI_MIXED, FRI_SURFAC, FRI_ALLFIR, PRC_REPLAC, PRC_MIXED, PRC_SURFAC, and FRG_NEW fields"></p>
-<figcaption>Explore BPS attributes on your landscape, including BPS names (shown in the vertical box), and fire regime information (shown in the horizontal box).</figcaption>
+<p><img src="images/22-pivot-table-value-field.png" class="img-fluid figure-img" alt="The pivot table with the Value Field Settings dialogue box open. Source name is FRI, Summarize values field by is set to Average."></p>
+<figcaption>Change the FRI value field to average.</figcaption>
+</figure>
+</div>
+<p>&nbsp;</p>
+<p>This process will help you summarize your data, making it easier to understand and present your fire needs assessment results.</p>
+</section>
+</section>
+<section id="creating-the-weighted-average-fire-return-interval" class="level2">
+<h2 class="anchored" data-anchor-id="creating-the-weighted-average-fire-return-interval">Creating the weighted average fire return interval</h2>
+<p>You can use a pivot table to calculate a weighted average, but it requires an extra column in the source data. This may sound complicated, but you simply need to add the new column to the raw data tab, and then create a calculated field in the pivot table.</p>
+<section id="step-by-step-process-3" class="level3">
+<h3 class="anchored" data-anchor-id="step-by-step-process-3">Step-by-step process</h3>
+<p>💡 <em>Screenshots of the process are included below the written instructions for those who find them useful.</em></p>
+<ol type="1">
+<li><strong>Create a weight column in the raw data tab</strong>
+<ul>
+<li>Add a new column to the raw data tab - in the screenshots below it is named Average, but you should call it whatever makes the most sense to you.</li>
+</ul></li>
+<li><strong>Multiply “score” by “weight” for each row</strong>
+<ul>
+<li>In the new column, create a formula that multiplies your “score” (in this case, FRI) by its “weight” (in this case the Acres column for each row).
+<ul>
+<li>Thus, the calculation here is Average = FRI*Acres, or H2 = E2*F2 in the example screenshots below.</li>
+</ul></li>
+</ul></li>
+<li><strong>Copy the formula down the column</strong>
+<ul>
+<li>Drag the fill handle (a small square at the bottom-right corner of the cell) down the column to apply the formula to all rows.</li>
+</ul></li>
+<li><strong>Add a calculated field to the pivot table</strong>
+<ul>
+<li><p>With your pivot table selected, go to the PivotTable Analyze tab on the ribbon bar.</p></li>
+<li><p>In the Calculations group, click Fields, Items, &amp; Sets, and then select Calculated Field.</p></li>
+<li><p>In the dialog box that appears, enter a name for your field. In the screenshots below, it is called Average FRI, but you should name it something that makes sense to you.</p></li>
+<li><p>In the formula box, enter the following formula using your new fields:</p>
+<ul>
+<li>Formula: = Average * EVT_Acres</li>
+</ul></li>
+<li><p>Click Add, then click OK.</p></li>
+<li><p>Drag the new Weighted Average field into the Values area of the PivotTable Fields dialog</p></li>
+<li><p>Ensure the new field is set to Sum in the value field settings</p></li>
+</ul></li>
+</ol>
+<section id="screenshots-for-using-the-pivot-table-to-calculate-the-weighted-average" class="level4">
+<h4 class="anchored" data-anchor-id="screenshots-for-using-the-pivot-table-to-calculate-the-weighted-average">Screenshots for using the pivot table to calculate the weighted average</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/23-weight-column.png" class="img-fluid figure-img" alt="A Microsoft Excel window with a new column highlighted and a box around the formula bar which shows the formula =E2*F2, corresponding to FRI*EVT Acres"></p>
+<figcaption>Create the new column and calculate the weighting.</figcaption>
 </figure>
 </div>
 <p>&nbsp;</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/8-bps-fri.png" class="img-fluid figure-img" alt="A map of BPS data for the Appalachians displayed on FRI_ALLFIR"></p>
-<figcaption>Examine the fire regime attributes by displaying the primary symbology on FRI_ALLFIR using Unique Values. (Note: the image shown here is using a custom color scheme. Your data may look different.)</figcaption>
+<p><img src="images/24-pivot-table-calculate-field.png" class="img-fluid figure-img" alt="A box highlights the place on the pivot table ribbon bar showing PivotTable Analyze and the Fields, Items, &amp; Sets button. Below that the menu shows Calculate Field highlighted."></p>
+<figcaption>Add a calculated field to the pivot table.</figcaption>
 </figure>
 </div>
 <p>&nbsp;</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/9-add-fields.png" class="img-fluid figure-img" alt="The attribute table in ArcGIS Pro with a box around the Add button at the top of the table next to the word Field. It also shows the Add Fields (multiple) geoprocessing tool on the side, with the BPS_Output as the Input table, and the field names as Acres and Acres_Year. Both are Float (32-bit floating point) field types"></p>
-<figcaption>Add fields to the BpS raster. You can do this either by using the Add button in the attribute table or the Add Fields geoprocessing tool.</figcaption>
+<p><img src="images/25-pivot-table-calculate-avgfri.png" class="img-fluid figure-img" alt="The Insert Calculated Field window. Name is Weighted Average FRI. the Formula is = Average/'EVT Acres'"></p>
+<figcaption>Calculate the field for the weighted average.</figcaption>
 </figure>
 </div>
 <p>&nbsp;</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/10-calculate-field.png" class="img-fluid figure-img" alt="The attribute table in ArcGIS Pro with a box highlighting Calculate Field in the right-click menu. It also shows the Calculate Field geoprocessing tool on the side, with the BPS_Output as the Input table, field name as Acres, and the expression Acres=!Count! * 900 * 0.000247105."></p>
-<figcaption>Calculate the acre field. You can do this by right clicking on the field name in the attribute table and selecting Calculate Field or with the Calculate Field geoprocessing tool. Repeat the process with the appropriate formula to calculate Acres Burned/Year.</figcaption>
+<p><img src="images/26-pivot-table-value-field-sum.png" class="img-fluid figure-img" alt="The pivot table window. The PivotTable Fields dialogue box is on the right, showing our columns as Values, Rows as EVT_NAME, Values as Sum of FRI, Sum of EVT Acres, Sum of EVT Acres Burned/Year, Sum of Weighted Average FRI. The Value Field Settings is open showing the Sum of Weighted FRI is correctly being calculated as a sum."></p>
+<figcaption>Make sure the new field is added as a value and it is being calculated as a sum.</figcaption>
 </figure>
 </div>
+</section>
+</section>
+</section>
+<section id="creating-a-summary-table-in-microsoft-excel" class="level2">
+<h2 class="anchored" data-anchor-id="creating-a-summary-table-in-microsoft-excel">Creating a Summary Table in Microsoft Excel</h2>
+<p>Once you have summarized EVT Acres, EVT acres burned per year, and the weighted average FRI for each EVT using a pivot table, you can create a new table in a new worksheet tab to organize this data. This will help you clearly see, for each EVT name, the average historical FRI, the total acres of each EVT on the landscape, and the acres of that EVT burned each year.</p>
+<section id="step-by-step-process-4" class="level3">
+<h3 class="anchored" data-anchor-id="step-by-step-process-4">Step-by-Step Process</h3>
+<p>💡 <em>Screenshots of the process are included below the written instructions for those who find them useful.</em></p>
+<ol type="1">
+<li><strong>Summarize Data in Pivot Table</strong>
+<ul>
+<li>Ensure your pivot table summarizes the following:
+<ul>
+<li><p><strong>EVT Acres</strong>: Total acres for each EVT.</p></li>
+<li><p><strong>EVT Acres Burned per Year</strong>: Total acres burned annually for each EVT.</p></li>
+<li><p><strong>Average FRI</strong>: Average historical fire return interval for each EVT.</p></li>
+</ul></li>
+</ul></li>
+<li><strong>Copy Pivot Table Data</strong>
+<ul>
+<li><p>Select the entire pivot table.</p></li>
+<li><p>Right-click and choose “Copy” or press <code>Ctrl+C</code>.</p></li>
+</ul></li>
+<li><strong>Create a New Worksheet Tab</strong>
+<ul>
+<li>Click the “+” icon at the bottom of the Excel window to create a new worksheet tab.</li>
+</ul></li>
+<li><strong>Paste Pivot Table Data</strong>
+<ul>
+<li><p>In the new worksheet tab, right-click in the first cell (A1) and choose “Paste Special”.</p></li>
+<li><p>Select “Values” from the Paste Special options and click “OK”. This ensures you are pasting only the values, not the pivot table formatting.</p></li>
+</ul></li>
+<li><strong>Clean Up Table Headers</strong>
+<ul>
+<li>Review the pasted data and update the table headers to something more meaningful. For example:
+<ul>
+<li><p><strong>EVT Name</strong></p></li>
+<li><p><strong>Average Historical FRI</strong></p></li>
+<li><p><strong>Total EVT Acres</strong></p></li>
+<li><p><strong>EVT Acres Burned per Year</strong></p></li>
+</ul></li>
+</ul></li>
+<li><strong>Format the Table</strong>
+<ul>
+<li><p>Adjust column widths and apply any necessary formatting to improve readability.</p></li>
+<li><p>You can also add filters to the headers to make it easier to sort and analyze the data.</p></li>
+</ul></li>
+</ol>
+<section id="screenshot-for-creating-the-summary-table" class="level4">
+<h4 class="anchored" data-anchor-id="screenshot-for-creating-the-summary-table">Screenshot for creating the summary table</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/27-summary-table.png" class="img-fluid figure-img" alt="The final summary table in Excel. The column names have been cleaned up and data are displayed in more readable formats. Columns are EVT Name, Average FRI (historical), EVT Acres, EVT Acres Burned/Year, %EVT Burned/Year"></p>
+<figcaption>Final summary table using data from the pivot table.</figcaption>
+</figure>
+</div>
+<p>This process will help you create a clear and organized summary table, making it easier to understand and present your fire needs assessment results.</p>
+<p><strong>Bonus action</strong>: You can also calculate what percent of each EVT should burn per year, by adding a column and then using a formula to divide EVT acres burned per year by total EVT acres.</p>
 
 
 </section>
@@ -1006,14 +1181,11 @@ Acres\_Year=!Acres!/!FRI\_ALLFIR!
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./fire-regimes.html" class="pagination-link" aria-label="Data: Fire Regimes">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Data: Fire Regimes</span>
+      <a href="./export-to-csv.html" class="pagination-link" aria-label="FNA Process: Export the attribute table">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">FNA Process: Export the attribute table</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./current-vegetation.html" class="pagination-link" aria-label="FNA Process: Current vegetation">
-        <span class="nav-page-text">FNA Process: Current vegetation</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
