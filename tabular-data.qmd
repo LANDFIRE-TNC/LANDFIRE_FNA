@@ -80,10 +80,8 @@ whichever you feel more comfortable working with.
 
 ### Screenshot for calculating EVT acres
 
-![Calculating EVT acres in Excel.](images/19-evt-acres.png){fig-alt="A Microsoft
-Excel window showing the spreadsheet. The column for EVT_acres is
-highlighted with a black box. Another black box surrounds the formula
-=B2*900*0.0002471"}
+![Calculating EVT acres in
+Excel.](images/19-evt-acres.png){fig-alt="A Microsoft Excel window showing the spreadsheet. The column for EVT_acres is highlighted with a black box. Another black box surrounds the formula =B2*900*0.0002471"}
 
  
 
@@ -191,26 +189,17 @@ following section.
 ### Screenshots for creating the pivot table
 
 ![Select data and create a pivot
-table.](images/20-create-pivot-table.png){fig-alt="A Microsoft Excel window with
-the PivotTable button highlighted in the ribbon bar. Another window is
-in front of the data window, showing PivotTable from table or range. The
-table/Range is set to the full range of data from the worksheet. The
-radio button next to New Worksheet is checked, choosing to place the
-PivotTable in a new worksheet."}
+table.](images/20-create-pivot-table.png){fig-alt="A Microsoft Excel window with the PivotTable button highlighted in the ribbon bar. Another window is in front of the data window, showing PivotTable from table or range. The table/Range is set to the full range of data from the worksheet. The radio button next to New Worksheet is checked, choosing to place the PivotTable in a new worksheet."}
 
  
 
-![Select the pivot table fields.](images/21-pivot-table-fields.png){fig-alt="The
-pivot table window. The PivotTable Fields dialogue box is on the right,
-showing our columns as Values, Rows as EVT_NAME, Values as Sum of FRI,
-Sum of EVT Acres, Sum of EVT Acres Burned/Year"}
+![Select the pivot table
+fields.](images/21-pivot-table-fields.png){fig-alt="The pivot table window. The PivotTable Fields dialogue box is on the right, showing our columns as Values, Rows as EVT_NAME, Values as Sum of FRI, Sum of EVT Acres, Sum of EVT Acres Burned/Year"}
 
  
 
 ![Change the FRI value field to
-average.](images/22-pivot-table-value-field.png){fig-alt="The pivot table with
-the Value Field Settings dialogue box open. Source name is FRI,
-Summarize values field by is set to Average."}
+average.](images/22-pivot-table-value-field.png){fig-alt="The pivot table with the Value Field Settings dialogue box open. Source name is FRI, Summarize values field by is set to Average."}
 
  
 
@@ -257,39 +246,43 @@ instructions for those who find them useful.*
         fields:
 
         -   Formula: = Average \* EVT_Acres
-    
-    - Click Add, then click OK.
 
-    - Drag the new Weighted Average field into the Values area of the PivotTable Fields dialog
+    -   Click Add, then click OK.
 
-    - Ensure the new field is set to Sum in the value field settings
-    
+    -   Drag the new Weighted Average field into the Values area of the
+        PivotTable Fields dialog
+
+    -   Ensure the new field is set to Sum in the value field settings
+
 #### Screenshots for using the pivot table to calculate the weighted average
 
-![Create the new column and calculate the weighting.](images/23-weight-column.png){fig-alt="A Microsoft Excel window with a new column highlighted and a box around the formula bar which shows the formula =E2*F2, corresponding to FRI*EVT Acres"}
+![Create the new column and calculate the
+weighting.](images/23-weight-column.png){fig-alt="A Microsoft Excel window with a new column highlighted and a box around the formula bar which shows the formula =E2*F2, corresponding to FRI*EVT Acres"}
 
  
 
-![Add a calculated field to the pivot table.](images/24-pivot-table-calculate-field.png){fig-alt="A box highlights the place on the pivot table ribbon bar showing PivotTable Analyze and the Fields, Items, & Sets button. Below that the menu shows Calculate Field highlighted."}
+![Add a calculated field to the pivot
+table.](images/24-pivot-table-calculate-field.png){fig-alt="A box highlights the place on the pivot table ribbon bar showing PivotTable Analyze and the Fields, Items, & Sets button. Below that the menu shows Calculate Field highlighted."}
 
  
 
-![Calculate the field for the weighted average.](images/25-pivot-table-calculate-avgfri.png){fig-alt="The Insert Calculated Field window. Name is Weighted Average FRI. the Formula is = Average/'EVT Acres'"}
+![Calculate the field for the weighted
+average.](images/25-pivot-table-calculate-avgfri.png){fig-alt="The Insert Calculated Field window. Name is Weighted Average FRI. the Formula is = Average/'EVT Acres'"}
 
  
 
-![Make sure the new field is added as a value and it is being calculated as a sum.](images/26-pivot-table-value-field-sum.png){fig-alt="The
-pivot table window. The PivotTable Fields dialogue box is on the right,
-showing our columns as Values, Rows as EVT_NAME, Values as Sum of FRI,
-Sum of EVT Acres, Sum of EVT Acres Burned/Year, Sum of Weighted Average FRI. The Value Field Settings is open showing the Sum of Weighted FRI is correctly being calculated as a sum."}
+![Make sure the new field is added as a value and it is being calculated
+as a
+sum.](images/26-pivot-table-value-field-sum.png){fig-alt="The pivot table window. The PivotTable Fields dialogue box is on the right, showing our columns as Values, Rows as EVT_NAME, Values as Sum of FRI, Sum of EVT Acres, Sum of EVT Acres Burned/Year, Sum of Weighted Average FRI. The Value Field Settings is open showing the Sum of Weighted FRI is correctly being calculated as a sum."}
 
 ## Creating a Summary Table in Microsoft Excel
 
 Once you have summarized EVT Acres, EVT acres burned per year, and the
-weighted average FRI for each EVT using a pivot table, you can create a new table
-in a new worksheet tab to organize this data. This will help you clearly
-see, for each EVT name, the average historical FRI, the total acres of
-each EVT on the landscape, and the acres of that EVT burned each year.
+weighted average FRI for each EVT using a pivot table, you can create a
+new table in a new worksheet tab to organize this data. This will help
+you clearly see, for each EVT name, the average historical FRI, the
+total acres of each EVT on the landscape, and the acres of that EVT
+burned each year.
 
 ### Step-by-Step Process
 
@@ -335,11 +328,11 @@ instructions for those who find them useful.*
 
     -   You can also add filters to the headers to make it easier to
         sort and analyze the data.
-        
+
 #### Screenshot for creating the summary table
 
-![Final summary table using data from the pivot table.](images/27-summary-table.png){fig-alt="The final summary table in Excel. The column names have been cleaned up and data are displayed in more readable formats. Columns are EVT Name, Average FRI (historical), EVT Acres, EVT Acres Burned/Year, %EVT Burned/Year"}
-
+![Final summary table using data from the pivot
+table.](images/27-summary-table.png){fig-alt="The final summary table in Excel. The column names have been cleaned up and data are displayed in more readable formats. Columns are EVT Name, Average FRI (historical), EVT Acres, EVT Acres Burned/Year, %EVT Burned/Year"}
 
 This process will help you create a clear and organized summary table,
 making it easier to understand and present your fire needs assessment
@@ -348,3 +341,68 @@ results.
 **Bonus action**: You can also calculate what percent of each EVT should
 burn per year, by adding a column and then using a formula to divide EVT
 acres burned per year by total EVT acres.
+
+## Saving the worksheet back to a .csv file
+
+Once you have created your summary table, you will likely want to save
+it back to a CSV file to ensure compatibility with various programs,
+including ArcGIS Pro.
+
+::: callout-important
+CSV files have very particular formatting needs. You will not be able to
+save the pivot table to the .csv format, only the content in the summary
+table worksheet. There is no way to save just one worksheet, so you will first need to
+copy the summary table to a new Excel workbook and save the .csv file
+from there.
+:::
+
+### Step-by-step process
+
+1.  Click on File in the Excel ribbon.
+
+2.  Select Save As.
+
+3.  Choose the location to save the file.
+
+4.  In the Save As type dropdown menu, select CSV (comma delimited)
+    (\*.csv).
+
+5.  Enter a meaningful name for the file and click Save.
+
+## Bringing your CSV file back into ArcGIS Pro
+After saving your worksheet as a CSV file, you can bring the data back into ArcGIS Pro and join it to your EVT raster. 
+
+### Step-by-step process
+💡 *Screenshots of the process are included below the written
+instructions for those who find them useful.*
+
+1.  **Import the CSV file into ArcGIS Pro**
+    - Open ArcGIS Pro and navigate to the Catalog pane.
+    
+    - Right click on Folders and select Add Folder Connection, then navigate to the location of your CSV file.
+    
+    - Drag the CSV file into your project.
+    
+2.  **Join the CSV data to the EVT raster**
+    - Use the Join Field tool found in the Data Management toolbox under Joins and Relates.
+      - For the input table, select your masked EVT raster.
+      
+      - For the input field, select the EVT name field.
+      
+      - For the join table, select your imported CSV file.
+      
+      - For the join field, select the EVT name field in the CSV file.
+      
+      - Transfer the fields for average FRI, acres, and acres burned per year.
+      
+3. **Display the EVT raster**
+You can now display the EVT raster based on the average FRI or the acres burned per year field. This allows you to visually compare it to the BPS raster and analyze historical vegetation needs based on historical vegetation and fire regimes.
+
+#### Screenshots for bringing your CSV file back into ArcGIS Pro
+![Drag the CSV file into the ArcGIS Pro Contents pane.](28-add-csv-arcgis-pro.png){fig-alt="The ArcGIS Pro window. The catalog pane is open on the right side of the screen. A large black arrow points from the catalog pane on the far right to the contents pane on the far left indicating that you should drag the highlighted CSV file across to the catalog pane."}
+
+&nbsp;
+
+![Join the CSV attributes back to the EVT data.](29-join-csv-fields.png){fig-alt="The ArcGIS Pro Join Field tool showing the Input Table as EVT_Vegetated, the Input Field as EVT_NAME, the Join Table as the CSV file, the Join Field as EVT, and the Transfer Fields as FRI, Acres, Acres_Year, PCT_Year"}
+
+&nbsp;

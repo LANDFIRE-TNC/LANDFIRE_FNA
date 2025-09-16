@@ -31,18 +31,8 @@ website:
            - href: combine-and-join.qmd
            - href: export-to-csv.qmd
            - href: tabular-data.qmd
-      - section: "Results"
-        # href: Get_Data/1-ways-to-get-data.qmd
-        # contents:
-        #   - href: Get_Data/1-ways-to-get-data.qmd
-          # - href: Get_Data/2-LANDFIRE-map-viewer.qmd
-          # - href: Get_Data/3-full-extent-mosaics.qmd
-          # - href: Get_Data/4-LANDFIRE-data-streaming.qmd
-          # - href: Get_Data/5-rlandfire.qmd
-      - section: "Next Steps"
-         # href: LANDFIRE_Datasets/2_Fuels/1_fuels.qmd
-         # contents:
-         #   - href: LANDFIRE_Datasets/2_Fuels/1_fuels.qmd
+      - text: "Next Steps"
+        href: next-steps.qmd
 
     
     
