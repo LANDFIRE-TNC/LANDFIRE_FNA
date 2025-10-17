@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Sarah Hagen, Jim Smith">
+<meta name="author" content="Sarah Hagen">
 
-<title>Why Fire Needs Assessments – LANDFIRE in Fire Needs Assessments</title>
+<title>Introduction to Fire Needs Analysis in R – LANDFIRE in Fire Needs Assessments</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,28 +24,28 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./landfire-overview.html" rel="next">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-f9e21da756fc7b4b0afd1102b991a087.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-cecc7a4fd3de2c90c83ff524ca453ac1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-f9e21da756fc7b4b0afd1102b991a087.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../r-workflow/r-setup.html" rel="next">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-f9e21da756fc7b4b0afd1102b991a087.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-cecc7a4fd3de2c90c83ff524ca453ac1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-f9e21da756fc7b4b0afd1102b991a087.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -255,7 +255,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">LANDFIRE in Fire Needs Assessments</span>
     </a>
   </div>
@@ -266,11 +266,11 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Fire Needs Assessments in ArcGIS Pro</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./r-workflow/r-introduction.html"> 
+    <a class="nav-link active" href="../r-workflow/r-introduction.html" aria-current="page"> 
 <span class="menu-text">Fire Needs Assessments in R</span></a>
   </li>  
 </ul>
@@ -285,7 +285,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">An introduction to fire needs assessments</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../r-workflow/r-introduction.html">An introduction to using R for Fire Needs Assessments</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -307,20 +307,26 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">An introduction to fire needs assessments</span></a>
+  <a href="../r-workflow/r-introduction.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">An introduction to using R for Fire Needs Assessments</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./landfire-overview.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">An overview of the LANDFIRE Program</span></a>
+  <a href="../r-workflow/r-setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R setup and packages</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../r-workflow/r-download.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Download LANDFIRE data</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./bps.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Fire Needs Assessments Datasets</span></a>
+            <a href="../r-workflow/r-mask-rasters.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Fire Needs Assessment Process</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -328,77 +334,24 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bps.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data: Biophysical Settings (BPS)</span></a>
+  <a href="../r-workflow/r-mask-rasters.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mask and Analyze Rasters</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./evt.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data: Existing Vegetation (EVT)</span></a>
+  <a href="../r-workflow/r-combine.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Combine BPS and EVT Rasters</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./fire-regimes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data: Fire Regimes</span></a>
+  <a href="../r-workflow/r-tabular.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Working with the Tabular Data</span></a>
   </div>
 </li>
       </ul>
   </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="./historical-vegetation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">The Fire Needs Assessment Process</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./historical-vegetation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FNA Process: Historical Vegetation</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./current-vegetation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FNA Process: Current vegetation</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./mask-bps.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FNA Process: Use EVT to mask BPS</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./combine-and-join.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FNA Process: Combine rasters and join fields</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./export-to-csv.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FNA Process: Export the attribute table</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./tabular-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FNA Process: Working with the tabular data</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./next-steps.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Next Steps</span></a>
-  </div>
-</li>
     </ul>
     </div>
 </nav>
@@ -409,12 +362,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#what-is-a-fire-needs-assessment" id="toc-what-is-a-fire-needs-assessment" class="nav-link active" data-scroll-target="#what-is-a-fire-needs-assessment">What is a Fire Needs Assessment?</a></li>
-  <li><a href="#the-importance-of-fire-needs-assessments" id="toc-the-importance-of-fire-needs-assessments" class="nav-link" data-scroll-target="#the-importance-of-fire-needs-assessments">The importance of fire needs assessments</a>
-  <ul class="collapse">
-  <li><a href="#prescribed-fire-as-a-restoration-tool" id="toc-prescribed-fire-as-a-restoration-tool" class="nav-link" data-scroll-target="#prescribed-fire-as-a-restoration-tool">Prescribed Fire as a Restoration Tool</a></li>
-  </ul></li>
-  <li><a href="#regional-considerations" id="toc-regional-considerations" class="nav-link" data-scroll-target="#regional-considerations">Regional Considerations</a></li>
+  <li><a href="#welcome-to-the-r-based-fire-needs-assessment-tool" id="toc-welcome-to-the-r-based-fire-needs-assessment-tool" class="nav-link active" data-scroll-target="#welcome-to-the-r-based-fire-needs-assessment-tool">Welcome to the R-based Fire Needs Assessment tool</a></li>
+  <li><a href="#what-youll-find-here" id="toc-what-youll-find-here" class="nav-link" data-scroll-target="#what-youll-find-here">What you’ll find here</a></li>
+  <li><a href="#working-example" id="toc-working-example" class="nav-link" data-scroll-target="#working-example">Working example</a></li>
+  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting Started</a></li>
+  <li><a href="#disclaimer" id="toc-disclaimer" class="nav-link" data-scroll-target="#disclaimer">Disclaimer</a></li>
   </ul>
 </nav>
     </div>
@@ -424,7 +376,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Why Fire Needs Assessments</h1>
+<h1 class="title">Introduction to Fire Needs Analysis in R</h1>
 </div>
 
 
@@ -434,7 +386,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Sarah Hagen, Jim Smith </p>
+             <p>Sarah Hagen </p>
           </div>
   </div>
     
@@ -447,44 +399,50 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>The frequency and severity of wildfires are changing around the country. To understand their impact on the landscape, federal agencies and states are conducting fire needs assessments. Fire needs assessments help fire stakeholders understand where, what type of, and how much fire needs to occur to reduce the destructive effects of wildfire and restore or maintain ecosystem health and resiliency.</p>
-<section id="what-is-a-fire-needs-assessment" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-a-fire-needs-assessment">What is a Fire Needs Assessment?</h2>
-<p>A fire needs assessment (FNA) is a structured, science-based process used to evaluate where and to what extent fire is needed on a landscape to restore or maintain ecological integrity, reduce wildfire risk, and meet land management objectives. It integrates ecological principles, historical fire regimes, current vegetation conditions, and spatial data to identify areas where fire—either through prescribed burning or managed wildfire—can be applied beneficially. FNAs help land managers prioritize treatments by assessing the <em>ecological need</em> for fire, not just the <em>risk</em> of fire, which is a critical distinction in fire-adapted ecosystems.</p>
-<p>The process typically involves spatial analysis using GIS to compare current vegetation and fire regime conditions against reference conditions (often derived from models like LANDFIRE or local ecological knowledge). This comparison highlights areas of departure—where fire has been excluded or altered—and helps quantify the type, amount, and frequency of fire needed to move the system toward desired conditions. FNAs are essential for aligning fire management with ecological goals, supporting NEPA planning, and justifying funding for prescribed fire programs. By grounding fire planning in ecological need, FNAs promote more strategic, effective, and defensible fire management decisions. Later in this website, we will showcase some examples of fire needs assessments and what programs have done with them.</p>
+<section id="welcome-to-the-r-based-fire-needs-assessment-tool" class="level2">
+<h2 class="anchored" data-anchor-id="welcome-to-the-r-based-fire-needs-assessment-tool">Welcome to the R-based Fire Needs Assessment tool</h2>
+<p>Do you work in R and want a reproducible, code-driven way to assess fire needs across your landscape? You’re in the right place.</p>
+<p>This site provides a step-by-step R workflow for conducting a Fire Needs Assessment using LANDFIRE datasets. Whether you’re looking to automate your analysis, explore ecological patterns, or replicate the ArcGIS Pro workflow in R, this guide is designed to help you get started—and go deeper.</p>
+<p>We believe in the power of transparent, repeatable code and invite the LANDFIRE community to build on this foundation. The examples here are practical, flexible, and designed to support real-world decision-making.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We strongly recommend that before you run this code, you explore and understand the content and process provided in the rest of the LANDFIRE in Fire Needs Assessment website. This section of the site will give a brief overview and highlight what the code is intended to do, but it will not provide the level of context or information you can find in the rest of the website.</p>
+<p>At a minimum, please review the following sections: <a href="../index.html">an introduction to fire needs assessments</a>, <a href="../landfire-overview.html">an overview of the LANDFIRE program</a>, and all three data sections (<a href="../bps.html">BPS</a>, <a href="../evt.html">EVT</a>, and <a href="../fire-regimes.html">Fire Regimes</a>)</p>
+</div>
+</div>
 </section>
-<section id="the-importance-of-fire-needs-assessments" class="level2">
-<h2 class="anchored" data-anchor-id="the-importance-of-fire-needs-assessments">The importance of fire needs assessments</h2>
-<p>Fire needs assessments are crucial for several reasons:</p>
-<ol type="1">
-<li><p><strong>They elevate ecological need as a planning priority</strong>: FNAs shift the focus from fire <em>risk</em> to fire <em>need</em>, helping managers advocate for fire where it’s ecologically beneficial—even in places where fire has long been absent.</p></li>
-<li><p><strong>They support landscape-scale restoration</strong>: FNAs help identify patterns of fire exclusion and suppression across large areas, guiding coordinated efforts to restore fire regimes that support biodiversity, resilience, and ecosystem health.</p></li>
-<li><p><strong>They strengthen the case for prescribed fire</strong>: By quantifying ecological need, FNAs provide a defensible rationale for prescribed fire programs — supporting NEPA documentation, funding proposals, interagency planning, and more.</p></li>
-<li><p><strong>They foster collaboration and shared understanding</strong>: FNAs offer a common language and framework for land managers, scientists, and stakeholders to discuss fire needs, priorities, and trade-offs across jurisdictions.</p></li>
-<li><p><strong>They help tell the story of fire as a healing force</strong>: FNAs provide the data and context needed to communicate with the public about why fire is essential—not just dangerous—and how it can be used to restore landscapes and protect communities.</p></li>
-</ol>
-<section id="prescribed-fire-as-a-restoration-tool" class="level3">
-<h3 class="anchored" data-anchor-id="prescribed-fire-as-a-restoration-tool">Prescribed Fire as a Restoration Tool</h3>
-<p>One of the most important applications of a fire needs assessment is to effectively plan prescribed fire programs. Prescribed fire is not only a tool for maintaining landscapes but also for restoring them. Here’s how:</p>
-<ol type="1">
-<li><p><strong>Ecosystem Restoration</strong>: Prescribed fire plays a pivotal role in restoring and maintaining healthy ecosystems. It helps in the regeneration of native plant species, which in turn supports the wildlife that depends on these plants.</p></li>
-<li><p><strong>Wildlife Habitat Improvement</strong>: Numerous wildlife species depend on fire-maintained habitats for their survival. Prescribed fire helps create a mosaic of different habitat types, which is essential for biodiversity.</p></li>
-<li><p><strong>Invasive Species Control</strong>: Fire is an effective tool for controlling invasive species that outcompete native plants. By reducing the presence of invasive species, prescribed fire helps restore the natural balance of ecosystems.</p></li>
-<li><p><strong>Reducing Fire Hazards</strong>: By reducing the accumulation of combustible materials, prescribed fire helps lower the risk of severe wildfires. This is particularly important in areas prone to wildfires.</p></li>
-<li><p><strong>Promoting Forest Health</strong>: Fire helps in thinning dense forests, which reduces competition among trees and promotes the growth of healthier, more resilient forests.</p></li>
-<li><p><strong>Carbon Management</strong>: Prescribed fire can help manage carbon levels in the soil and vegetation, contributing to the overall health of the ecosystem.</p></li>
-</ol>
+<section id="what-youll-find-here" class="level2">
+<h2 class="anchored" data-anchor-id="what-youll-find-here">What you’ll find here</h2>
+<ul>
+<li><p><strong>Step 1: Setup</strong> Install required packages and define your Area of Interest (AOI) using a shapefile.</p></li>
+<li><p><strong>Step2: Download LANDFIRE data</strong> Use R functions to access LANDFIRE products for your AOI.</p></li>
+<li><p><strong>Step3: Process rasters</strong> Prepare your data for analysis by masking, transforming, and exporting.</p></li>
+<li><p><strong>Step 4: Export and summarize</strong> Generate CSVs and summary tables to support your fire needs assessment.</p></li>
+</ul>
 </section>
+<section id="working-example" class="level2">
+<h2 class="anchored" data-anchor-id="working-example">Working example</h2>
+<p>This walkthrough uses New York State as the AOI. You can follow along with the provided code or substitute your own shapefile to run the workflow on your landscape.</p>
 </section>
-<section id="regional-considerations" class="level2">
-<h2 class="anchored" data-anchor-id="regional-considerations">Regional Considerations</h2>
-<p>Understanding fire return intervals and historical fire patterns is essential for various regions across the United States:</p>
-<ol type="1">
-<li><p><strong>Northeast US</strong>: In the Northeast, fire needs assessments help manage forest health and reduce the risk of uncontrolled wildfires. Historical fire data can guide the use of prescribed burns to maintain biodiversity and prevent the spread of invasive species.</p></li>
-<li><p><strong>Southeast US</strong>: The Southeast has a long history of fire-adapted ecosystems. Fire needs assessments are crucial for maintaining the health of pine forests and grasslands. Understanding fire return intervals helps in planning prescribed burns to mimic natural fire cycles.</p></li>
-<li><p><strong>Central US</strong>: In the Central US, fire needs assessments are used to manage prairies and savannas. Historical fire data helps in understanding the natural fire regimes and planning restoration activities to maintain these ecosystems.</p></li>
-<li><p><strong>Western US</strong>: The Western US faces frequent and severe wildfires. Fire needs assessments are essential for reducing wildfire risks and managing forest health. Understanding historical fire regimes helps in planning fuel reduction treatments and prescribed burns.</p></li>
-</ol>
+<section id="getting-started" class="level2">
+<h2 class="anchored" data-anchor-id="getting-started">Getting Started</h2>
+<ul>
+<li>Check your R, R-Studio and package versions. We recommend running the most current version of R or R-Studio</li>
+<li>Check file paths - is your your R-Studio project correctly set up?</li>
+<li>Let us know if you run into code bugs: <a href="mailto:landfire@tnc.org">email the TNC LANDFIRE team</a>.</li>
+</ul>
+</section>
+<section id="disclaimer" class="level2">
+<h2 class="anchored" data-anchor-id="disclaimer">Disclaimer</h2>
+<p>The code provided here is offered as-is, without warranty or guarantee of accuracy, functionality, or fitness for a particular purpose. It may not perform identically across all systems, versions of R, RStudio, or associated packages. This content is intended for educational and illustrative purposes only. Users are responsible for validating and adapting the code to suit their specific needs and environments.</p>
 
 
 </section>
@@ -914,8 +872,8 @@ ul.task-list li input[type="checkbox"] {
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./landfire-overview.html" class="pagination-link" aria-label="An overview of the LANDFIRE Program">
-        <span class="nav-page-text">An overview of the LANDFIRE Program</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../r-workflow/r-setup.html" class="pagination-link" aria-label="R setup and packages">
+        <span class="nav-page-text">R setup and packages</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

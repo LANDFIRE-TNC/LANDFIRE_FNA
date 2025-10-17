@@ -1,0 +1,52 @@
+---
+title: "Introduction to Fire Needs Analysis in R"
+author: "Sarah Hagen"
+toc: true
+---
+
+## Welcome to the R-based Fire Needs Assessment tool
+
+Do you work in R and want a reproducible, code-driven way to assess fire needs across your landscape?
+You’re in the right place.
+
+This site provides a step-by-step R workflow for conducting a Fire Needs Assessment using LANDFIRE datasets.
+Whether you're looking to automate your analysis, explore ecological patterns, or replicate the ArcGIS Pro workflow in R, this guide is designed to help you get started—and go deeper.
+
+We believe in the power of transparent, repeatable code and invite the LANDFIRE community to build on this foundation.
+The examples here are practical, flexible, and designed to support real-world decision-making.
+
+::: callout-important
+We strongly recommend that before you run this code, you explore and understand the content and process provided in the rest of the LANDFIRE in Fire Needs Assessment website.
+This section of the site will give a brief overview and highlight what the code is intended to do, but it will not provide the level of context or information you can find in the rest of the website.
+
+At a minimum, please review the following sections: [an introduction to fire needs assessments](../index.qmd), [an overview of the LANDFIRE program](../landfire-overview.qmd), and all three data sections ([BPS](../bps.qmd), [EVT](../evt.qmd), and [Fire Regimes](../fire-regimes.qmd))
+:::
+
+## What you'll find here
+
+-   **Step 1: Setup** Install required packages and define your Area of Interest (AOI) using a shapefile.
+
+-   **Step2: Download LANDFIRE data** Use R functions to access LANDFIRE products for your AOI.
+
+-   **Step3: Process rasters** Prepare your data for analysis by masking, transforming, and exporting.
+
+-   **Step 4: Export and summarize** Generate CSVs and summary tables to support your fire needs assessment.
+
+## Working example
+
+This walkthrough uses New York State as the AOI.
+You can follow along with the provided code or substitute your own shapefile to run the workflow on your landscape.
+
+## Getting Started
+
+-   Check your R, R-Studio and package versions. We recommend running the most current version of R or R-Studio
+-   Check file paths - is your your R-Studio project correctly set up?
+-   Let us know if you run into code bugs: [email the TNC LANDFIRE team](mailto:landfire@tnc.org).
+
+## Disclaimer
+
+The code provided here is offered as-is, without warranty or guarantee of accuracy, functionality, or fitness for a particular purpose.
+It may not perform identically across all systems, versions of R, RStudio, or associated packages.
+This content is intended for educational and illustrative purposes only.
+Users are responsible for validating and adapting the code to suit their specific needs and environments.
+

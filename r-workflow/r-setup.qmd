@@ -1,0 +1,73 @@
+---
+title: "Setup and Packages"
+author: "Sarah Hagen"
+toc: true
+---
+
+## Overview
+
+This section helps you set up your R environment for the Fire Needs Assessment workflow.
+You’ll start by installing and loading the necessary R packages, and then define your Area of Interest (AOI) using a shapefile.
+
+::: callout-important
+Before you begin, you will need to:
+
+1.  Set up a new R-Studio project, i.e. “r_landfire_fna”
+
+2.  Create three directories, “inputs”, "rasters", and “outputs”
+
+3.  Download the file “[fna_r.zip](data/fna_r.zip)” (clicking will initiate the download that will likely land in your “C:” directory) which contains:
+
+    -   A shapefile for New York State
+    -   BpS attributes file as a .csv
+    -   EVT attributes file as a .csv
+
+4.  Extract the “fna_r.zip” files into the “inputs” sub-directory of your r-studio project.
+
+5.  Create and save a new r-script with a name such as “fna_r_code”.
+
+Once this set up is complete, you should be able to copy/paste the code below into the r script you created above.
+:::
+
+## 1. Install and load required packages
+
+``` r
+options(repos = c(CRAN = "https://cloud.r-project.org"))
+
+install.packages("data.table")
+install.packages("foreign")
+install.packages("ggplot2")
+install.packages("httr")
+install.packages("raster")
+install.packages("rlandfire")
+install.packages("sf")
+install.packages("terra")
+install.packages("tidyverse")
+
+library(data.table)
+library(foreign)
+library(ggplot2)
+library(raster)
+library(rlandfire)
+library(sf)
+library(terra)
+library(tidyverse)
+```
+
+## 2. Define your AOI
+
+::: callout-important
+If you are using your own shapefile for the AOI, remember to replace the current boundary.shp (and associated files) in your inputs folder.
+:::
+
+The code below will read in your aoi polygon and project it to the same projection as the LANDFIRE data.
+This will allow you to download the correct data extent and clip those downloaded data to your project area boundary.
+
+``` r
+# read the shapefile of the polygon area you're interested in
+aoi <- st_read("inputs/boundary.shp", quiet = TRUE)
+plot(st_geometry(aoi))
+
+# projection
+aoi <- st_transform(aoi, crs = 5070) # NAD83 / Conus Albers
+```

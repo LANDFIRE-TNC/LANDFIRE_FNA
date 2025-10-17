@@ -9,32 +9,57 @@ website:
   page-navigation: true
   # google-analytics: G-7HYRRL98N6
   sidebar: 
-    style: "docked"
-    search: true
-    contents:
-      - text: "An introduction to fire needs assessments"
-        href: index.qmd
-      - text: "An overview of the LANDFIRE Program"
-        href: landfire-overview.qmd
-      - section: "Fire Needs Assessments Datasets"
-        href: bps.qmd
-        contents:
-          - href: bps.qmd
-          - href: evt.qmd
-          - href: fire-regimes.qmd
-      - section: "The Fire Needs Assessment Process"
-        href: historical-vegetation.qmd
-        contents:
+    - id: main
+      style: "docked"
+      search: true
+      contents:
+        - text: "An introduction to fire needs assessments"
+          href: index.qmd
+        - text: "An overview of the LANDFIRE Program"
+          href: landfire-overview.qmd
+        - section: "Fire Needs Assessments Datasets"
+          href: bps.qmd
+          contents:
+            - href: bps.qmd
+            - href: evt.qmd
+            - href: fire-regimes.qmd
+        - section: "The Fire Needs Assessment Process"
+          href: historical-vegetation.qmd
+          contents:
            - href: historical-vegetation.qmd
            - href: current-vegetation.qmd
            - href: mask-bps.qmd
            - href: combine-and-join.qmd
            - href: export-to-csv.qmd
            - href: tabular-data.qmd
-      - text: "Next Steps"
-        href: next-steps.qmd
+        - text: "Next Steps"
+          href: next-steps.qmd
+    
+    - id: r-workflow-sidebar
+      style: "docked"
+      search: true
+      contents:
+        - text: "An introduction to using R for Fire Needs Assessments"
+          href: r-workflow/r-introduction.qmd
+        - text: "R setup and packages"
+          href: r-workflow/r-setup.qmd
+        - text: "Download LANDFIRE data"
+          href: r-workflow/r-download.qmd
+        - section: "The Fire Needs Assessment Process"
+          href: r-workflow/r-mask-rasters.qmd
+          contents:
+           - href: r-workflow/r-mask-rasters.qmd
+           - href: r-workflow/r-combine.qmd
+           - href: r-workflow/r-tabular.qmd
 
     
+  navbar:
+    left:
+      - text: "Fire Needs Assessments in ArcGIS Pro"
+        href: index.qmd
+      - text: "Fire Needs Assessments in R"
+        href: r-workflow/r-introduction.qmd
+
     
   body-footer: |
     # Still have questions? LANDFIRE is here to help.

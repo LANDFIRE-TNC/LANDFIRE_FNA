@@ -1,0 +1,247 @@
+---
+title: "Combine BPS and EVT Rasters"
+author: "Sarah Hagen"
+toc: true
+---
+
+## Overview
+
+This section walks you through combining the masked BPS and EVT rasters into a single raster that links each unique BPS-EVT pair to a unique ID.
+This combined raster is joined with the BPS and EVT attributes and is used to calculate fire return metrics for ecologically relevant areas.
+
+This code will:
+
+1.  **Load and prepare the burnable BpS and EVT rasters** and their attribute tables
+
+    -   Convert both rasters to numeric layers and extract unique BPS–EVT combinations.
+
+2.  **Create a temporary raster** that combines the numeric BpS and EVT values.
+
+    -   Stack the rasters
+    -   Extract unique pairs
+    -   Calculate a multiplier
+    -   Create a lookup table
+
+3.  **Generate a combined raster** using the lookup table and validate the IDs.
+
+    -   Add attributes
+    -   Calculate frequency
+
+::: callout-note
+This process can be resource-intensive and may take a while to run.
+Make sure your system has enough memory and time to complete it.
+:::
+
+## 1. Load and prepare rasters
+
+``` r
+# **Step 1: Load Burnable_BpS_Raster**
+Burnable_BpS_Raster <- rast("rasters/BpS_Burnable.tif")
+print(Burnable_BpS_Raster)
+
+# Verify attribute table is present
+levels_bps <- levels(Burnable_BpS_Raster)[[1]] # Get the attribute table as a data.frame
+print("Original colnames for levels_bps:")
+print(colnames(levels_bps))
+
+# Add an 'ID' column representing the internal factor levels (row numbers)
+levels_bps$ID <- 1:nrow(levels_bps) # Create ID column
+print("Head of levels_bps AFTER adding ID column:")
+print(head(levels_bps)) # Verify the new ID column is present and correct
+
+
+
+# **Step 2: Load Burnable_EVT_raster**
+Burnable_EVT_raster <- rast("rasters/EVT_Burnable.tif")
+print(Burnable_EVT_raster)
+
+# Verify attribute table is present
+levels_evt <- levels(Burnable_EVT_raster)[[1]] # Get the attribute table as a data.frame
+print("Original colnames for levels_evt:")
+print(colnames(levels_evt))
+
+# Add an 'ID' column representing the internal factor levels (row numbers)
+levels_evt$ID <- 1:nrow(levels_evt) # Create ID column
+print("Head of levels_evt AFTER adding ID column:")
+print(head(levels_evt)) # Verify the new ID column is present and correct
+
+
+
+# **Step 3: Convert factor rasters to numeric**
+levels_bps$VALUE <- as.integer(levels_bps$VALUE)
+levels_evt$VALUE <- as.integer(levels_evt$VALUE)
+BpS_numeric_layer <- classify(Burnable_BpS_Raster, levels_bps[, c("VALUE", "VALUE")])
+EVT_numeric_layer <- classify(Burnable_EVT_raster, levels_evt[, c("VALUE", "VALUE")])
+
+# Rename layers
+names(BpS_numeric_layer) <- 'BpS_Value'
+names(EVT_numeric_layer) <- 'EVT_Value'
+```
+
+## 2. Create a temporary raster that combines the numeric BpS and EVT values
+
+``` r
+# **Step 1: Stack the rasters**
+combined_numeric_stack <- c(BpS_numeric_layer, EVT_numeric_layer)
+
+
+
+# **Step 2: Extract unique pairs and handle NaN/NA**
+all_pairs <- values(combined_numeric_stack, na.rm = FALSE) %>%
+  as.data.frame() %>%
+  setNames(c("BpS_Value", "EVT_Value"))
+
+unique_combinations_in_raster <- all_pairs %>%
+  mutate(
+    BpS_Value = as.integer(BpS_Value), # Explicitly cast to integer here
+    EVT_Value = as.integer(EVT_Value) # And here
+  ) %>%
+  filter(!is.na(BpS_Value) & !is.na(EVT_Value)) %>%
+  distinct()
+
+
+
+# **Step 3: Calculate the multiplier**
+if (nrow(unique_combinations_in_raster) > 0) {
+  max_bps_value_in_data <- max(unique_combinations_in_raster$BpS_Value, na.rm = TRUE)
+  multiplier <- max_bps_value_in_data + 1 # Ensure multiplier is greater than any possible BpS_Value
+} else {
+  # Handle case where no valid combinations exist (e.g., set a default multiplier or throw an error)
+  multiplier <- 1 # Or any suitable default/error handling
+  warning("No valid BpS/EVT combinations found after filtering out NaN values. Multiplier set to default.")
+}
+
+
+
+# **Step 4: Create the 'lookup' table from these *actual* unique combinations**
+lookup <- unique_combinations_in_raster %>%
+  mutate(Combined_Key = as.integer(round(BpS_Value + EVT_Value * multiplier)),
+         Combined_ID = row_number()) %>%
+  select(BpS_Value, EVT_Value, Combined_Key, Combined_ID)
+
+# Ensure Combined_ID is integer
+lookup$Combined_ID <- as.integer(lookup$Combined_ID)
+
+# Print lookup to inspect
+print(head(lookup))
+print(tail(lookup))
+```
+
+## 3. Generate a combined raster
+
+``` r
+# **Step 1: Calculate Combined_Key raster**
+Combined_Key_raster <- BpS_numeric_layer
+values(Combined_Key_raster) <- as.integer(round(values(BpS_numeric_layer) + values(EVT_numeric_layer) * multiplier))
+
+
+
+# **Step 2: Clean lookup table and create substitution matrix**
+subst_matrix_df <- lookup %>%
+  filter(!is.na(Combined_Key) & !is.na(Combined_ID)) %>%
+  select(Combined_Key, Combined_ID)
+
+subst_matrix <- as.matrix(subst_matrix_df)
+
+
+
+# **Step 3: Classify Combined_Key raster to Combined_ID raster**
+Combined_ID_Raster <- classify(Combined_Key_raster, subst_matrix, others = NA)
+
+
+
+# **Step 4: Validate raster IDs**
+raster_ids <- sort(unique(na.omit(values(Combined_ID_Raster))))
+lookup_ids <- sort(unique(lookup$Combined_ID))
+
+if (length(setdiff(raster_ids, lookup_ids)) > 0 || length(setdiff(lookup_ids, raster_ids)) > 0) {
+  stop("ID mismatch detected between raster and lookup table.")
+}
+
+
+
+# **Step 5: Check for invalid values**
+if (any(values(Combined_ID_Raster) <= 0, na.rm = TRUE)) {
+  stop("ERROR: Combined_ID_Raster contains values <= 0, which are invalid.")
+}
+
+
+
+# **Step 6: Build full attribute table**
+combined_rat <- lookup %>%
+  filter(Combined_ID %in% raster_ids) %>%
+  arrange(Combined_ID) %>%
+  select(Combined_ID, BpS_Value, EVT_Value, Combined_Key) %>%
+  rename(ID = Combined_ID)
+
+
+
+# **Step 7: Load external attribute tables and drop unnecessary fields**
+bps_conus_full_att <- fread("inputs/LF20_BPS_220.csv") %>%
+  rename(BpS_Value_Original = VALUE) %>%
+  select(-R, -G, -B, -RED, -GREEN, -BLUE)
+
+evt_conus_full_att <- fread("inputs/LF23_EVT_240.csv") %>%
+  rename(EVT_Value_Original = VALUE) %>%
+  select(-R, -G, -B, -RED, -GREEN, -BLUE)
+
+
+
+# **Step 8: Join BpS and EVT metadata**
+combined_rat <- combined_rat %>%
+  left_join(bps_conus_full_att, by = c("BpS_Value" = "BpS_Value_Original")) %>%
+  left_join(evt_conus_full_att, by = c("EVT_Value" = "EVT_Value_Original"))
+
+if ("FRI_ALLFIR.x" %in% colnames(combined_rat)) {
+  combined_rat <- combined_rat %>%
+    rename(FRI_ALLFIR = FRI_ALLFIR.x)
+}
+
+
+
+# **Step 9: Calculate frequency**
+combined_freq_matrix <- freq(Combined_ID_Raster)
+
+# Convert to data frame
+combined_freq_df <- as.data.frame(combined_freq_matrix)
+
+# Manually assign the correct column names
+colnames(combined_freq_df) <- c("layer", "ID", "COUNT")
+
+# Drop the layer column
+combined_freq_df <- combined_freq_df[, c("ID", "COUNT")]
+
+# Ensure ID is integer for join
+combined_freq_df$ID <- as.integer(combined_freq_df$ID)
+combined_freq_df$COUNT <- as.integer(combined_freq_df$COUNT)
+combined_rat$ID <- as.integer(combined_rat$ID)
+
+# Join frequency and calculate metrics
+combined_rat <- combined_rat %>%
+  left_join(combined_freq_df, by = "ID") %>%
+  filter(!is.na(FRI_ALLFIR) & FRI_ALLFIR != -9999)# %>%
+ 
+ 
+
+# **Step 10: Mask raster to valid IDs only**
+valid_ids <- combined_rat$ID
+Combined_ID_Raster <- classify(Combined_ID_Raster, matrix(c(valid_ids, valid_ids), ncol = 2), others = NA)
+Combined_ID_Raster <- as.factor(Combined_ID_Raster)
+colnames(combined_rat)[colnames(combined_rat) == "ID"] <- "VALUE"
+levels(Combined_ID_Raster)[[1]] <- combined_rat
+activeCat(Combined_ID_Raster) <- "FRI_ALLFIR"
+
+
+
+# **Step 11: Export raster and attribute table**
+writeRaster(Combined_ID_Raster, "outputs/Combined_Raster.tif",
+            gdal = c("COMPRESS=NONE", "TFW=YES"),
+            datatype = "INT2S",
+            overwrite = TRUE)
+fwrite(combined_rat, "outputs/Combined_Raster_Metadata.csv")
+write.dbf(combined_rat, "outputs/Combined_Raster.tif.vat.dbf", factor2char = TRUE)
+
+# Optional: Print summary
+print(paste("Final attribute table rows:", nrow(combined_rat)))
+```
+

@@ -1,0 +1,287 @@
+---
+title: "Downloading LANDFIRE Data"
+author: "Sarah Hagen"
+toc: true
+---
+
+## Overview
+
+This section walks you through downloading LANDFIRE data for your Area of Interest (AOI) using the "rlandfire" package.
+Alternatively, if you've already downloaded the LANDFIRE raster files and clipped them locally, you can skip this section and load them from the "inputs" folder along with the .csv files.
+
+## What this code does
+
+The code below will help you obtain and manage LANDFIRE data from the [LANDFIRE Product Service](https://lfps.usgs.gov/) REST API. To do so, we use the [rlandfire package](https://github.com/bcknr/rlandfire) developed by Mark Buckner.
+Mark's site includes a useful tutorial and more information if you want to learn more about this package and what it does.
+
+This code will:
+
+1.  **Define your AOI** using a shapefile.
+2.  **Set parameters** for the API call: product codes, projection (EPSG:5070), resolution, and your email.
+3.  **Create a temporary file** to store the downloaded data.
+4.  **Call the LANDFIRE API** using a retry-enabled function.
+5.  **Move and rename the downloaded file** to a permanent location.
+6.  **Unzip the contents** into a temporary folder.
+7.  **Rename each unzipped file** for easier access.
+8.  **Clean up temporary files** once processing is complete.
+
+::: callout-note
+Before running this code, ensure you have; - An internet connection - Enough time for the download to complete—it may take several minutes.
+- A shapefile named 'boundary.shp' stored in your inputs folder.
+- A valid email address (required by the LANDFIRE API)
+:::
+
+## 1. Download BPS and EVT data using rlandfire
+
+``` r
+options(timeout = 600)  # Sets timeout to 10 minutes
+
+# Retry-enabled download function
+download_landfire_data <- function(products, aoi, projection, resolution, path, email, num_retries = 3) {
+  for (i in 1:num_retries) {
+    cat(paste("Attempting download (attempt", i, "of", num_retries, ")...\n"))
+    
+    result <- tryCatch({
+      landfireAPIv2(
+        products, 
+        aoi, 
+        projection, 
+        resolution, 
+        path = path,
+        email = email)
+    }, error = function(e) {
+      message("Download failed:", conditionMessage(e))
+      return(NULL)
+    })
+    
+    if (!is.null(result)) {
+      cat("Download successful!\n")
+      return(result)
+    } else {
+      Sys.sleep(10)
+    }
+  }
+  
+  cat("Download failed after multiple retries.\n")
+  return(NULL)
+}
+
+# Define AOI and parameters
+aoi <- st_read("inputs/boundary.shp", quiet = TRUE)
+aoi <- getAOI(aoi)
+
+products <- c("200BPS", "240EVT")
+projection <- 5070
+resolution <- 30
+email <- "youremail@email.com"  # Replace with your email
+
+save_file <- tempfile(fileext = ".zip")
+
+# Run the download
+ncal <- download_landfire_data(
+  products = products, 
+  aoi = aoi, 
+  projection = projection, 
+  resolution = resolution, 
+  path = save_file,
+  email = email)
+
+# Post-download processing
+if (!is.null(ncal)) {
+  dest_file <- file.path("rasters", "landfire_data.zip")
+  file.rename(save_file, dest_file)
+
+  temp_dir <- tempfile()
+  dir.create(temp_dir)
+  unzip(dest_file, exdir = temp_dir)
+
+  unzipped_files <- list.files(temp_dir, full.names = TRUE)
+
+  for (file in unzipped_files) {
+    file_name <- basename(file)
+    file_extension <- sub("^[^.]*", "", file_name)
+    new_file_path <- file.path("rasters", paste0("landfire_data", file_extension))
+    file.rename(file, new_file_path)
+  }
+
+  unlink(temp_dir, recursive = TRUE)
+  cat("LANDFIRE data downloaded and processed successfully.\n")
+} else {
+  cat("LANDFIRE data download failed. Please check your connection and try again.\n")
+}
+```
+
+## 2. Separate rasters from the stack
+
+Once the data are downloaded, they will be stored as a multi-layer raster.
+This step separates each layer so you can work with them individually.
+
+This code will: 1.
+Load the stacked raster using terra::rast().
+2.
+Split the raster into individual layers using assign().
+
+``` r
+# read in stacked raster
+stacked_rasters <- rast("rasters/landfire_data.tif")
+print(stacked_rasters)
+
+# Reproject the entire multi-band raster to NAD83 / Conus Albers (EPSG:5070)
+reprojected_landfire_raster <- project(stacked_rasters, "EPSG:5070", method="near")
+
+# "split" downloaded raster into separate layers
+for(lyr in names(reprojected_landfire_raster)) assign(lyr, reprojected_landfire_raster[[lyr]])
+```
+
+## 3. Clip the BpS and EVT data from LFPS to your aoi
+
+Use this to clip the BpS and EVT data to the aoi boundary after you've downloaded it from LFPS with the rlandfire package.
+You will also load the BpS and EVT attribute tables.
+
+This code will:
+
+1.  **Crop and mask the rasters** to your AOI.
+
+2.  **Join the attribute tables** to get vegetation names and fire return intervals.
+
+3.  **Calculate acres and relative percents** for each BPS and EVT.
+
+4.  **Save the processed rasters** and attribute table for future use.
+
+::: callout-note
+You’ll need the BpS and EVT attribute tables as .csv files.
+If you didn’t download the setup zip file, you can get them from the [LANDFIRE Program Website](https://landfire.gov) by navigating to the individualproduct page for each layer, then scrolling down to the Attribute Tables(CSV, ADD) section and selecting the CSV file.
+We recommend storing that file in the inputs folder within your working directory to make the code work as expected.
+:::
+
+``` r
+# **Step 1: Process and save the BpS Raster**
+
+# Read shapefile
+shp <- st_read("inputs/boundary.shp", quiet = TRUE)
+shp <- st_transform(shp, crs = 5070)
+
+# Crop and mask the BpS_Raster to the AOI
+BpS_Raster <- US_200BPS %>%
+  crop(shp) %>%
+  mask(shp)
+
+plot(BpS_Raster)
+
+# Ensure raster is a factor.
+BpS_Raster <- as.factor(BpS_Raster)
+
+# Load the BpS attribute data
+bps_conus_att <- fread("inputs/LF20_BPS_220.csv")
+
+# Get frequency as a matrix
+bps_freq_matrix <- freq(BpS_Raster)
+
+# Convert to data frame
+bps_freq_table <- as.data.frame(bps_freq_matrix)
+
+# Manually assign correct column names
+colnames(bps_freq_table) <- c("layer", "VALUE", "Freq")
+
+# Drop the 'layer' column
+bps_freq_table <- bps_freq_table[, c("VALUE", "Freq")]
+
+# Convert types
+bps_freq_table$VALUE <- as.integer(bps_freq_table$VALUE)
+bps_freq_table$Freq <- as.integer(bps_freq_table$Freq)
+
+# Extract the RAT from the raster
+bps_rat <- levels(BpS_Raster)[[1]]
+
+# Now rename and convert VALUE
+bps_rat <- bps_rat %>%
+  rename(VALUE = US_200BPS) %>%
+  mutate(VALUE = as.integer(VALUE))
+
+# Join everything and calculate metrics
+bps_rat <- bps_rat %>%
+  left_join(bps_conus_att, by = "VALUE") %>%
+  left_join(bps_freq_table, by ="VALUE") %>%
+  filter(!is.na(Freq)) %>%
+  rename(BPS_Freq = Freq) %>%
+  mutate(BpS_ACRES = round((BPS_Freq * 900 / 4046.86), 0),
+         BpS_REL_PCT = round((BPS_Freq / sum(BPS_Freq)), 3) * 100) %>%
+  select(VALUE, BPS_NAME, GROUPVEG, FRI_ALLFIR, BPS_Freq, BpS_ACRES, BpS_REL_PCT)
+
+# Update the raster's attribute table with the calculated metrics
+levels(BpS_Raster)[[1]] <- bps_rat
+activeCat(BpS_Raster) <- "BPS_NAME"
+
+# Save the BpS Raster and its attribute table
+writeRaster(BpS_Raster, "rasters/BpS_Raster.tif",
+            gdal = c("COMPRESS=NONE", "TFW=YES"),
+            datatype = "INT2S",
+            overwrite = TRUE,
+            filetype = "GTiff")
+
+write.dbf(bps_rat, "rasters/BpS_Raster.tif.vat.dbf", factor2char = TRUE)
+
+
+
+# **Step 2: Process and save the EVT Raster**
+
+# Crop and mask the EVT_Raster to the AOI
+EVT_Raster <- US_240EVT %>%
+  crop(shp) %>%
+  mask(shp)
+
+plot(EVT_Raster)
+
+# Ensure raster is a factor.
+EVT_Raster <- as.factor(EVT_Raster)
+
+# Load the EVT attribute data
+evt_conus_att <- fread("inputs/LF23_EVT_240.csv")
+
+# Get frequency as a matrix
+evt_freq_matrix <- freq(EVT_Raster)
+
+# Convert to data frame
+evt_freq_table <- as.data.frame(evt_freq_matrix)
+
+# Manually assign correct column names
+colnames(evt_freq_table) <- c("layer", "VALUE", "Freq")
+
+# Drop the 'layer' column
+evt_freq_table <- evt_freq_table[, c("VALUE", "Freq")]
+
+# Convert types
+evt_freq_table$VALUE <- as.integer(evt_freq_table$VALUE)
+evt_freq_table$Freq <- as.integer(evt_freq_table$Freq)
+
+# Extract the RAT from the raster
+evt_rat <- levels(EVT_Raster)[[1]]
+
+# Now rename and convert VALUE
+evt_rat <- evt_rat %>%
+  rename(VALUE = US_240EVT) %>%
+  mutate(VALUE = as.integer(VALUE))
+
+# Calculate counts and metrics
+evt_rat <- evt_rat %>%
+  left_join(evt_conus_att, by = "VALUE") %>%
+  left_join(evt_freq_table, by ="VALUE") %>%
+  filter(!is.na(Freq)) %>%
+  rename(EVT_Freq = Freq) %>%
+  mutate(EVT_ACRES = round((EVT_Freq * 900 * 0.0002471), 0),
+         EVT_REL_PCT = round((EVT_Freq / sum(EVT_Freq)), 3) * 100) %>%
+  select(VALUE, EVT_NAME, EVT_LF, EVT_PHYS, EVT_Freq, EVT_ACRES, EVT_REL_PCT)
+
+# Update the raster's attribute table with the calculated metrics
+levels(EVT_Raster)[[1]] <- evt_rat
+activeCat(EVT_Raster) <- "EVT_NAME"
+
+# Save the EVT Raster and its attribute table
+writeRaster(EVT_Raster, "rasters/EVT_Raster.tif",
+            gdal = c("COMPRESS=NONE", "TFW=YES"),
+            datatype = "INT2S",
+            overwrite = TRUE,
+            filetype = "GTiff")
+
+write.dbf(evt_rat, "rasters/EVT_Raster.tif.vat.dbf", factor2char = TRUE)
+```

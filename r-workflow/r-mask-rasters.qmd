@@ -1,0 +1,225 @@
+---
+title: "Mask and Analyze Rasters"
+author: "Sarah Hagen"
+toc: true
+---
+
+## Overview
+
+This section walks you through filtering out non-vegetated areas from the EVT raster and using the resulting burnable zones to mask the BPS raster.
+This ensures that fire return interval calculations are limited to ecologically relevant areas.
+For more detailed information, visit the [FNA Process: Current vegetation](../current-vegetation.qmd) and [FNA Process: Use EVT to mask BPS](../mask-bps.qmd) sections of this website.
+
+## 1. Eliminate 'non-vegetated' EVT classes
+
+This step filters out non-vegetated areas from the EVT raster and calculates the frequency of each burnable EVT type.
+
+This code will:
+
+1.  **Load the EVT raster** and access its attribute table.
+
+2.  **Identify and exclude non-vegetated EVT types** (e.g., urban, agriculture, water).
+
+3.  **Create a binary mask** to isolate vegetated areas.
+
+4.  **Apply the mask** to generate a raster of burnable EVT types.
+
+5.  **Calculate the frequency** (pixel count) of each burnable EVT type.
+
+6.  **Join the frequency data** with the attribute table.
+
+7.  **Assign the updated attribute table** back to the raster.
+
+8.  **Save the processed raster** and its attribute table.
+
+::: callout-note
+Make sure the raster file `EVT_Raster.tif` is saved in your `rasters` folder.
+You’ll also need the EVT attribute table embedded in the raster or accessible via the `cats()` function.
+:::
+
+``` r
+# **Step 1: Load the EVT raster and access the attribute table**
+EVT_Raster <- rast("rasters/EVT_Raster.tif")
+
+evt_levels <- cats(EVT_Raster)[[1]]
+evt_levels$VALUE <- as.integer(evt_levels$VALUE)
+
+
+
+# **Step 2: Define the EVT_PHYS values to exclude (non-vegetated areas)**
+EVT_Fields_to_Exclude <- c(
+  "Agricultural", "Developed", "Developed-High Intensity", "Developed-Low Intensity", "Developed-Medium Intensity", "Developed-Roads", "NA", "Open Water", "Quarries-Strip Mines-Gravel Pits-Well and Wind Pads"
+)
+
+
+
+# **Step 3: Get the VALUE codes for the vegetated areas we want to keep**
+codes_to_keep <- evt_levels %>%
+  filter(!EVT_PHYS %in% EVT_Fields_to_Exclude) %>%
+  pull(VALUE)
+  
+  
+
+# **Step 4: Create a Binary Mask for Vegetated Areas**
+# Convert raster to factor type
+EVT_Raster <- as.factor(EVT_Raster)
+
+# Create a binary mask: 1 for vegetated areas, NA for excluded areas.
+vegetated_mask <- ifel(EVT_Raster %in% codes_to_keep, 1, NA)
+
+# Apply the mask to keep only the vegetated EVT types.
+Burnable_EVTs <- mask(EVT_Raster, vegetated_mask)
+
+# Ensure the masked raster is treated as a factor raster
+Burnable_EVTs <- as.factor(Burnable_EVTs)
+
+
+
+# **Step 5: Calculate the frequency of each vegetated EVT type**
+# Calculate the frequency of each EVT code in the masked raster
+freq_matrix <- freq(Burnable_EVTs)
+freq_table <- as.data.frame(freq_matrix)
+
+# Clean up column names and types
+colnames(freq_table) <- c("layer", "VALUE", "count")
+freq_table <- freq_table[, c("VALUE", "count")]
+
+# Convert value to integer
+freq_table$VALUE <- as.integer(freq_table$VALUE)
+freq_table$count <- as.integer(freq_table$count)
+
+
+
+# **Step 6: Join frequency data back to the attribute table**
+burnable_evt_rat <- evt_levels %>%
+  filter(VALUE %in% codes_to_keep) %>%
+  left_join(freq_table, by = "VALUE") %>%
+  filter(!is.na(count)) %>%
+  select(everything())
+
+
+
+# **Step 7: Assign the updated RAT back to raster**
+levels(Burnable_EVTs)[[1]] <- burnable_evt_rat
+activeCat(Burnable_EVTs) <- "EVT_NAME"
+
+
+
+# **Step 8: Save the resulting raster with the attribute table**
+writeRaster(
+  Burnable_EVTs,
+  "rasters/EVT_Burnable.tif",
+  gdal = c("COMPRESS=NONE", "TFW=YES"),
+  datatype = "INT2S",
+  overwrite = T,
+  filetype = "GTiff"
+)
+burnable_evt_rat <- evt_levels[evt_levels$VALUE %in% codes_to_keep, ]
+burnable_evt_rat <- merge(burnable_evt_rat, freq_table, by = "VALUE", all.x = TRUE)
+burnable_evt_rat <- burnable_evt_rat[!is.na(burnable_evt_rat$count), ]
+
+write.dbf(burnable_evt_rat, "rasters/EVT_Burnable.tif.vat.dbf", factor2char = TRUE)
+
+cat("Burnable EVT raster created and saved successfully.", "\n")
+```
+
+## 2. Mask the BPS raster using burnable EVT
+
+This step masks the BPS raster to include only areas that exactly match the pixel extent of the masked EVT raster we created in the previous section.
+
+This code will:
+
+1.  **Load the BPS raster** and its attribute table.
+
+2.  **Load the burnable EVT raster** and create a binary mask.
+
+3.  **Apply the mask** to the BPS raster.
+
+4.  **Calculate the frequency of BPS classes** within the masked area.
+
+5.  **Join the frequency data** to the BPS attribute table.
+
+6.  **Assign the updated attribute table** to the masked raster.
+
+7.  **Save the masked BPS raster** and its attribute table.
+
+::: callout-note
+Make sure you've already created and saved EVT_Burnable.tif in your 'rasters' folder.
+You'll also need the BPS attribute table (LF20_BPS_220.csv) in your 'inputs' folder.
+:::
+
+``` r
+# **Step 1: Load the BPS raster and attribute table**
+BpS_Raster <- rast("rasters/BpS_Raster.tif")
+bps_conus_att <- fread("inputs/LF20_BPS_220.csv")
+
+
+
+# **Step 2: Load the Vegetated EVT mask**
+# Load the previously saved EVT raster
+evt_mask_reloaded <- rast("rasters/EVT_Burnable.tif")
+
+# Create a binary mask from actual pixel values
+evt_mask <- ifel(!is.na(evt_mask_reloaded), 1, NA)
+
+
+
+# **Step 3: Apply the mask to the BPS raster**
+Burnable_BpS <- mask(BpS_Raster, evt_mask)
+
+# Assign original RAT to the masked raster
+levels(Burnable_BpS) <- levels(BpS_Raster)
+
+# Convert raster to factor
+Burnable_BpS <- as.factor(Burnable_BpS)
+
+
+
+# **Step 4: Calculate the frequency of the BPS classes**
+# Calculate the frequency of each BpS class in the masked raster
+bps_freq <- freq(Burnable_BpS)
+
+
+
+# **Step 5: Join the frequency to the attribute table**
+# Filter attribute table to include only values present in the raster
+bps_conus_att_filtered <- bps_conus_att[bps_conus_att$VALUE %in% bps_freq$value, ]
+
+# Ensure VALUE columns are integers for joining
+bps_conus_att_filtered$VALUE <- as.integer(bps_conus_att_filtered$VALUE)
+bps_freq$value <- as.integer(bps_freq$value)
+
+# Join the frequency counts to the attribute table
+bps_conus_att_final <- left_join(bps_conus_att_filtered, bps_freq, by = c("VALUE" = "value"))
+
+
+
+# **Step 6: Clean and assign the RAT**
+# Ensure VALUE is integer and unique
+bps_conus_att_final$VALUE <- as.integer(bps_conus_att_final$VALUE)
+bps_conus_att_final <- bps_conus_att_final[!duplicated(bps_conus_att_final$VALUE), ]
+
+# Assigned the cleaned attribute table to the raster
+levels(Burnable_BpS)[[1]] <- bps_conus_att_final
+activeCat(Burnable_BpS) <- "BPS_NAME"
+
+
+
+# **Step 7: Save the masked raster and its attribute table**
+writeRaster(Burnable_BpS, "rasters/BpS_Burnable.tif",
+            gdal = c("COMPRESS=NONE", "TFW=YES"),
+            datatype = "INT2S",
+            overwrite = TRUE)
+
+write.csv(bps_conus_att_final, "outputs/BpS_Burnable.csv")
+
+write.dbf(
+  bps_conus_att_final,
+  "rasters/BpS_Burnable.tif.vat.dbf",
+  factor2char = TRUE
+)
+
+# Load and print the saved raster to confirm
+Burnable_BpS_Raster <- rast("rasters/BpS_Burnable.tif")
+print(Burnable_BpS_Raster)
+```

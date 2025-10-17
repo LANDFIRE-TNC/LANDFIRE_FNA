@@ -43,15 +43,15 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-4f94790e89405bf0d1a90041dddd6649.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-fc2e748a24946c51a1a76bdecbc6582f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-4f94790e89405bf0d1a90041dddd6649.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-f9e21da756fc7b4b0afd1102b991a087.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-cecc7a4fd3de2c90c83ff524ca453ac1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-f9e21da756fc7b4b0afd1102b991a087.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+  "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "start",
-  "type": "textbox",
+  "panel-placement": "end",
+  "type": "overlay",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
@@ -77,7 +77,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar docked nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -252,6 +252,34 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">LANDFIRE in Fire Needs Assessments</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
+<span class="menu-text">Fire Needs Assessments in ArcGIS Pro</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./r-workflow/r-introduction.html"> 
+<span class="menu-text">Fire Needs Assessments in R</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -267,19 +295,9 @@ ul.task-list li input[type="checkbox"] {
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="./">
-      LANDFIRE in Fire Needs Assessments
-      </a> 
-        <div class="sidebar-tools-main">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-</div>
-    </div>
-      </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -449,7 +467,7 @@ ul.task-list li input[type="checkbox"] {
 <h2>Summary</h2>
 <p>There are many ways to refine your fire needs assessment once you start understanding fire regimes on your landscape. Feel empowered to use these data and think about them in the way that makes the most sense for your needs. You can also <a href="mailto:landfire@tnc.org">contact the LANDFIRE team</a> to discuss and explore other options for creating a fire needs assessment for your landscape.</p>
 <div id="quarto-navigation-envelope" class="hidden">
-<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyLXRpdGxl">LANDFIRE in Fire Needs Assessments</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXItdGl0bGU=">LANDFIRE in Fire Needs Assessments</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1wcmV2">FNA Process: Working with the tabular data</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9pbmRleC5odG1sQW4taW50cm9kdWN0aW9uLXRvLWZpcmUtbmVlZHMtYXNzZXNzbWVudHM=">An introduction to fire needs assessments</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9sYW5kZmlyZS1vdmVydmlldy5odG1sQW4tb3ZlcnZpZXctb2YtdGhlLUxBTkRGSVJFLVByb2dyYW0=">An overview of the LANDFIRE Program</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOnF1YXJ0by1zaWRlYmFyLXNlY3Rpb24tMQ==">Fire Needs Assessments Datasets</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9icHMuaHRtbERhdGE6LUJpb3BoeXNpY2FsLVNldHRpbmdzLShCUFMp">Data: Biophysical Settings (BPS)</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9ldnQuaHRtbERhdGE6LUV4aXN0aW5nLVZlZ2V0YXRpb24tKEVWVCk=">Data: Existing Vegetation (EVT)</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9maXJlLXJlZ2ltZXMuaHRtbERhdGE6LUZpcmUtUmVnaW1lcw==">Data: Fire Regimes</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOnF1YXJ0by1zaWRlYmFyLXNlY3Rpb24tMg==">The Fire Needs Assessment Process</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9oaXN0b3JpY2FsLXZlZ2V0YXRpb24uaHRtbEZOQS1Qcm9jZXNzOi1IaXN0b3JpY2FsLVZlZ2V0YXRpb24=">FNA Process: Historical Vegetation</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9jdXJyZW50LXZlZ2V0YXRpb24uaHRtbEZOQS1Qcm9jZXNzOi1DdXJyZW50LXZlZ2V0YXRpb24=">FNA Process: Current vegetation</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9tYXNrLWJwcy5odG1sRk5BLVByb2Nlc3M6LVVzZS1FVlQtdG8tbWFzay1CUFM=">FNA Process: Use EVT to mask BPS</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9jb21iaW5lLWFuZC1qb2luLmh0bWxGTkEtUHJvY2VzczotQ29tYmluZS1yYXN0ZXJzLWFuZC1qb2luLWZpZWxkcw==">FNA Process: Combine rasters and join fields</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9leHBvcnQtdG8tY3N2Lmh0bWxGTkEtUHJvY2VzczotRXhwb3J0LXRoZS1hdHRyaWJ1dGUtdGFibGU=">FNA Process: Export the attribute table</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi90YWJ1bGFyLWRhdGEuaHRtbEZOQS1Qcm9jZXNzOi1Xb3JraW5nLXdpdGgtdGhlLXRhYnVsYXItZGF0YQ==">FNA Process: Working with the tabular data</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9uZXh0LXN0ZXBzLmh0bWxOZXh0LVN0ZXBz">Next Steps</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWJyZWFkY3J1bWJzLU5leHQtU3RlcHM=">Next Steps</span></p>
+<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyLXRpdGxl">LANDFIRE in Fire Needs Assessments</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXItdGl0bGU=">LANDFIRE in Fire Needs Assessments</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1wcmV2">FNA Process: Working with the tabular data</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9pbmRleC5odG1sQW4taW50cm9kdWN0aW9uLXRvLWZpcmUtbmVlZHMtYXNzZXNzbWVudHM=">An introduction to fire needs assessments</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9sYW5kZmlyZS1vdmVydmlldy5odG1sQW4tb3ZlcnZpZXctb2YtdGhlLUxBTkRGSVJFLVByb2dyYW0=">An overview of the LANDFIRE Program</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOnF1YXJ0by1zaWRlYmFyLXNlY3Rpb24tMQ==">Fire Needs Assessments Datasets</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9icHMuaHRtbERhdGE6LUJpb3BoeXNpY2FsLVNldHRpbmdzLShCUFMp">Data: Biophysical Settings (BPS)</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9ldnQuaHRtbERhdGE6LUV4aXN0aW5nLVZlZ2V0YXRpb24tKEVWVCk=">Data: Existing Vegetation (EVT)</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9maXJlLXJlZ2ltZXMuaHRtbERhdGE6LUZpcmUtUmVnaW1lcw==">Data: Fire Regimes</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOnF1YXJ0by1zaWRlYmFyLXNlY3Rpb24tMg==">The Fire Needs Assessment Process</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9oaXN0b3JpY2FsLXZlZ2V0YXRpb24uaHRtbEZOQS1Qcm9jZXNzOi1IaXN0b3JpY2FsLVZlZ2V0YXRpb24=">FNA Process: Historical Vegetation</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9jdXJyZW50LXZlZ2V0YXRpb24uaHRtbEZOQS1Qcm9jZXNzOi1DdXJyZW50LXZlZ2V0YXRpb24=">FNA Process: Current vegetation</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9tYXNrLWJwcy5odG1sRk5BLVByb2Nlc3M6LVVzZS1FVlQtdG8tbWFzay1CUFM=">FNA Process: Use EVT to mask BPS</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9jb21iaW5lLWFuZC1qb2luLmh0bWxGTkEtUHJvY2VzczotQ29tYmluZS1yYXN0ZXJzLWFuZC1qb2luLWZpZWxkcw==">FNA Process: Combine rasters and join fields</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9leHBvcnQtdG8tY3N2Lmh0bWxGTkEtUHJvY2VzczotRXhwb3J0LXRoZS1hdHRyaWJ1dGUtdGFibGU=">FNA Process: Export the attribute table</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi90YWJ1bGFyLWRhdGEuaHRtbEZOQS1Qcm9jZXNzOi1Xb3JraW5nLXdpdGgtdGhlLXRhYnVsYXItZGF0YQ==">FNA Process: Working with the tabular data</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9uZXh0LXN0ZXBzLmh0bWxOZXh0LVN0ZXBz">Next Steps</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6RmlyZSBOZWVkcyBBc3Nlc3NtZW50cyBpbiBBcmNHSVMgUHJv">Fire Needs Assessments in ArcGIS Pro</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6L2luZGV4Lmh0bWw=">/index.html</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6RmlyZSBOZWVkcyBBc3Nlc3NtZW50cyBpbiBS">Fire Needs Assessments in R</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6L3Itd29ya2Zsb3cvci1pbnRyb2R1Y3Rpb24uaHRtbA==">/r-workflow/r-introduction.html</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWJyZWFkY3J1bWJzLU5leHQtU3RlcHM=">Next Steps</span></p>
 <div class="hidden quarto-markdown-envelope-contents" data-render-id="Ym9keS1mb290ZXI=">
 <div class="body-footer-item">
 <section id="still-have-questions-landfire-is-here-to-help." class="level1">
