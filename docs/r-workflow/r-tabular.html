@@ -66,6 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../next-steps.html" rel="next">
 <link href="../r-workflow/r-combine.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -78,9 +79,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f9e21da756fc7b4b0afd1102b991a087.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-cecc7a4fd3de2c90c83ff524ca453ac1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-f9e21da756fc7b4b0afd1102b991a087.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-488854ae853ef470fb2beb0d3b878869.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-1e27b693499cf5f5607abf8bcb6936cc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-488854ae853ef470fb2beb0d3b878869.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -302,6 +303,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="../index.html"> 
+<span class="menu-text">An Overview of Fire Needs Assessments</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../ArcGIS/historical-vegetation.html"> 
 <span class="menu-text">Fire Needs Assessments in ArcGIS Pro</span></a>
   </li>  
   <li class="nav-item">
@@ -387,6 +392,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../next-steps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Next Steps</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -398,16 +409,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#prep-the-data-frame-for-analysis" id="toc-prep-the-data-frame-for-analysis" class="nav-link" data-scroll-target="#prep-the-data-frame-for-analysis">Prep the Data Frame for Analysis</a>
-  <ul class="collapse">
-  <li><a href="#calculating-evt-acres-in-r" id="toc-calculating-evt-acres-in-r" class="nav-link" data-scroll-target="#calculating-evt-acres-in-r">Calculating EVT acres in R</a>
+  <li><a href="#prep-the-data-frame-for-analysis" id="toc-prep-the-data-frame-for-analysis" class="nav-link" data-scroll-target="#prep-the-data-frame-for-analysis">1. Prep the Data Frame for Analysis</a></li>
+  <li><a href="#calculating-evt-acres-in-r" id="toc-calculating-evt-acres-in-r" class="nav-link" data-scroll-target="#calculating-evt-acres-in-r">2. Calculating EVT acres in R</a>
   <ul class="collapse">
   <li><a href="#why-this-calculation-matters" id="toc-why-this-calculation-matters" class="nav-link" data-scroll-target="#why-this-calculation-matters">Why this calculation matters</a></li>
   </ul></li>
-  <li><a href="#create-a-grouped-summary-table" id="toc-create-a-grouped-summary-table" class="nav-link" data-scroll-target="#create-a-grouped-summary-table">Create a grouped summary table</a></li>
-  <li><a href="#creating-the-weighted-average-fire-return-interval" id="toc-creating-the-weighted-average-fire-return-interval" class="nav-link" data-scroll-target="#creating-the-weighted-average-fire-return-interval">Creating the weighted average fire return interval</a></li>
+  <li><a href="#create-a-grouped-summary-table" id="toc-create-a-grouped-summary-table" class="nav-link" data-scroll-target="#create-a-grouped-summary-table">3. Create a grouped summary table</a></li>
+  <li><a href="#creating-the-weighted-average-fire-return-interval" id="toc-creating-the-weighted-average-fire-return-interval" class="nav-link" data-scroll-target="#creating-the-weighted-average-fire-return-interval">4. Creating the weighted average fire return interval</a></li>
   <li><a href="#what-next" id="toc-what-next" class="nav-link" data-scroll-target="#what-next">What next?</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
@@ -442,10 +451,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>This section walks you through reviewing and preparing the final output table for analysis. You’ll clean the data, calculate the fire return metrics, and summarize results by vegetation type. This process mirrors the Excel-based workflow shown in the <a href="../tabular-data.html">Working with the tabular data</a>.</p>
+<p>This section walks you through reviewing and preparing the final output table for analysis. You’ll clean the data, calculate the fire return metrics, and summarize results by vegetation type.</p>
 </section>
-<section id="prep-the-data-frame-for-analysis" class="level1">
-<h1>Prep the Data Frame for Analysis</h1>
+<section id="prep-the-data-frame-for-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="prep-the-data-frame-for-analysis">1. Prep the Data Frame for Analysis</h2>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -474,7 +483,7 @@ Always save your table as a copy before making changes to avoid overwriting the 
 </ol>
 <p>You may also consider keeping other FRI and fire severity fields and other EVT or BpS classification fields.</p>
 <ol start="3" type="1">
-<li><p><strong>Delete Unnecessary Fields</strong> - Retain all fields except:</p>
+<li><strong>Delete Unnecessary Fields</strong> - Retain all fields except:
 <ul>
 <li><strong>BpS_Value</strong> value field</li>
 <li><strong>EVT_Value</strong> value field</li>
@@ -489,8 +498,9 @@ Always save your table as a copy before making changes to avoid overwriting the 
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(EVT_NAME, BPS_NAME, FRI_ALLFIR, COUNT)</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(df_cleaned, <span class="st">"outputs/Combined_BpS_EVT_Cleaned.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 <section id="calculating-evt-acres-in-r" class="level2">
-<h2 class="anchored" data-anchor-id="calculating-evt-acres-in-r">Calculating EVT acres in R</h2>
+<h2 class="anchored" data-anchor-id="calculating-evt-acres-in-r">2. Calculating EVT acres in R</h2>
 <p>After cleaning the attribute table, the next step is to calculate the number of acres represented by each EVT (Existing Vegetation Type). This mirrors the Excel workflow where a new column is added based on the pixel count.</p>
 <section id="why-this-calculation-matters" class="level3">
 <h3 class="anchored" data-anchor-id="why-this-calculation-matters">Why this calculation matters</h3>
@@ -507,18 +517,18 @@ Always save your table as a copy before making changes to avoid overwriting the 
 </section>
 </section>
 <section id="create-a-grouped-summary-table" class="level2">
-<h2 class="anchored" data-anchor-id="create-a-grouped-summary-table">Create a grouped summary table</h2>
+<h2 class="anchored" data-anchor-id="create-a-grouped-summary-table">3. Create a grouped summary table</h2>
 <p>In Excel, pivot tables are used to summarize data when multiple rows represent the same category — in this case, when the same EVT_NAME appears across multiple rows due to different combinations with BPS values. The pivot table aggregates these rows to give meaningful totals and averages.</p>
 <p>In R, we replicate this functionality using a grouped summary table with dplyr.</p>
 <p>This code will:</p>
 <ol type="1">
-<li><p><strong>Summarize the attribute table</strong> by EVT_Name, calculating:</p>
+<li><strong>Summarize the attribute table</strong> by EVT_Name, calculating:
 <ul>
-<li><p><em>Total Acres -</em> (sum(ACRES))</p></li>
-<li><p><em>Total_Acres_Per_Year</em> - (sum(Acres_Per_Year))</p></li>
-<li><p><em>Average FRI</em> - (mean(FRI_ALLFIR))</p></li>
+<li><em>Total Acres -</em> (sum(ACRES))</li>
+<li><em>Total_Acres_Per_Year</em> - (sum(Acres_Per_Year))</li>
+<li><em>Average FRI</em> - (mean(FRI_ALLFIR))</li>
 </ul></li>
-<li><p><strong>Create a summary table</strong> with:</p>
+<li><strong>Create a summary table</strong> with:
 <ul>
 <li>Total area covered by each existing vegetation type.</li>
 <li>Estimated annual fire needs based on historical fire return intervals.</li>
@@ -541,7 +551,7 @@ Always save your table as a copy before making changes to avoid overwriting the 
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(summary_table, <span class="st">"outputs/EVT_Summary.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="creating-the-weighted-average-fire-return-interval" class="level2">
-<h2 class="anchored" data-anchor-id="creating-the-weighted-average-fire-return-interval">Creating the weighted average fire return interval</h2>
+<h2 class="anchored" data-anchor-id="creating-the-weighted-average-fire-return-interval">4. Creating the weighted average fire return interval</h2>
 <p>When summarizing FRI for each EVT, each row in the dataset represents a different number of acres – some rows represent more area than others. To get a meaningful average, we need to weight the FRI values by the number of acres they represent. This gives us a weighted average FRI, which better reflects the fire regime across the full extent of each vegetation type.</p>
 <p>This code will:</p>
 <ol type="1">
@@ -571,7 +581,6 @@ Always save your table as a copy before making changes to avoid overwriting the 
 <p>This concludes the R-based Fire Needs Assessment workflow. By using reproducible code and LANDFIRE datasets, you’ve built a flexible analysis that mirrors the ArcGIS workflow while offering automation and customization. Whether you’re using the outputs of this analysis as they are or exploring further using some of the options discussed on the <a href="../next-steps.html">Next Steps</a> page, this R workflow provides a solid foundation for ecological insights and decision-making. We hope it supports your work—and grows with it.</p>
 
 
-</section>
 </section>
 
 <section id="still-have-questions-landfire-is-here-to-help." class="level1">
@@ -1002,6 +1011,9 @@ Always save your table as a copy before making changes to avoid overwriting the 
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../next-steps.html" class="pagination-link" aria-label="Next Steps">
+        <span class="nav-page-text">Next Steps</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

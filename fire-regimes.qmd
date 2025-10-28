@@ -11,7 +11,7 @@ The [Fire Return Interval (FRI) data](https://landfire.gov/fire-regime/fri) desc
 
 For example, the FRI layer shows that certain grasslands historically experienced frequent fires, with intervals of 3-5 years. This information helps us plan prescribed burns to mimic natural fire cycles and maintain the health of these ecosystems.
 
-The FRI layer is intended to describe one component of historical fire regime characteristics in the context of the broader historical time period represented by the LANDFIRE Biophysical Settings (BPS) models. FRI is derived from the vegetation dynamics model. This layer is created by linking the BpS Group attribute in the BpS layer with modeled FRI.
+The FRI layer is intended to describe one component of historical fire regime characteristics in the context of the broader historical time period represented by the LANDFIRE Biophysical Settings (BPS) models. FRI is derived from the vegetation dynamics model. This layer is created by linking the BPS Group attribute in the BPS layer with modeled FRI.
 
 ## Fire Regime Groups (FRG)
 ![Fire Regime Groups for the United States are displayed on the FRG_NEW attribute. This map explores the fire regime groups of the Biophysical Settings data, with more frequent fire areas in reds and oranges, moderate frequency fire areas in yellow and pale green, and lower frequency fire areas in shades of blue. This map was designed using a custom color ramp created by Sarah Hagen.](images/4-frg-map.bmp){fig-alt="A map of the Fire Return Groups data for the Contiguous United States, Alaska, and Hawaii."}

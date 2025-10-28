@@ -1,0 +1,114 @@
+---
+title: "FNA Process: Summary Table"
+author: "Sarah Hagen"
+toc: true
+format: html
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+## Creating a Summary Table in Microsoft Excel
+
+Once you have summarized EVT Acres, EVT acres burned per year, and the
+weighted average FRI for each EVT using a pivot table, you can create a
+new table in a new worksheet tab to organize this data. This will help
+you clearly see, for each EVT name, the average historical FRI, the
+total acres of each EVT on the landscape, and the acres of that EVT
+burned each year.
+
+### Step-by-Step Process
+
+*Screenshots of the process are included below the written instructions
+for those who find them useful.*
+
+1.  **Summarize Data in Pivot Table**
+
+    -   Ensure your pivot table summarizes the following:
+        -   **EVT Acres**: Total acres for each EVT.
+
+        -   **EVT Acres Burned per Year**: Total acres burned annually
+            for each EVT.
+
+        -   **Average FRI**: Average historical fire return interval for
+            each EVT.
+
+2.  **Copy Pivot Table Data**
+
+    -   Select the entire pivot table.
+
+    -   Right-click and choose "Copy" or press `Ctrl+C`.
+
+3.  **Create a New Worksheet Tab**
+
+    -   Click the "+" icon at the bottom of the Excel window to create a
+        new worksheet tab.
+
+4.  **Paste Pivot Table Data**
+
+    -   In the new worksheet tab, right-click in the first cell (A1) and
+        choose "Paste Special".
+
+    -   Select "Values" from the Paste Special options and click "OK".
+        This ensures you are pasting only the values, not the pivot
+        table formatting.
+
+5.  **Clean Up Table Headers**
+
+    -   Review the pasted data and update the table headers to something
+        more meaningful. For example:
+        -   **EVT Name**
+
+        -   **Average Historical FRI**
+
+        -   **Total EVT Acres**
+
+        -   **EVT Acres Burned per Year**
+
+6.  **Format the Table**
+
+    -   Adjust column widths and apply any necessary formatting to
+        improve readability.
+
+    -   You can also add filters to the headers to make it easier to
+        sort and analyze the data.
+
+#### Screenshot for creating the summary table
+&nbsp;
+![Final summary table using data from the pivot
+table.](../images/27-summary-table.png){fig-alt="The final summary table in Excel. The column names have been cleaned up and data are displayed in more readable formats. Columns are EVT Name, Average FRI (historical), EVT Acres, EVT Acres Burned/Year, %EVT Burned/Year"}
+
+This process will help you create a clear and organized summary table,
+making it easier to understand and present your fire needs assessment
+results.
+
+**Bonus action**: You can also calculate what percent of each EVT should
+burn per year, by adding a column and then using a formula to divide EVT
+acres burned per year by total EVT acres.
+
+## Saving the worksheet back to a .csv file
+
+Once you have created your summary table, you will likely want to save
+it back to a CSV file to ensure compatibility with various programs,
+including ArcGIS Pro.
+
+::: callout-important
+CSV files have very particular formatting needs. You will not be able to
+save the pivot table to the .csv format, only the content in the summary
+table worksheet. There is no way to save just one worksheet, so you will
+first need to copy the summary table to a new Excel workbook and save
+the .csv file from there.
+:::
+
+### Step-by-step process
+
+1.  Click on File in the Excel ribbon.
+
+2.  Select Save As.
+
+3.  Choose the location to save the file.
+
+4.  In the Save As type dropdown menu, select CSV (comma delimited)
+    (\*.csv).
+
+5.  Enter a meaningful name for the file and click Save.

@@ -12,18 +12,15 @@ This combined raster is joined with the BPS and EVT attributes and is used to ca
 This code will:
 
 1.  **Load and prepare the burnable BpS and EVT rasters** and their attribute tables
-
     -   Convert both rasters to numeric layers and extract unique BPS–EVT combinations.
 
 2.  **Create a temporary raster** that combines the numeric BpS and EVT values.
-
     -   Stack the rasters
     -   Extract unique pairs
     -   Calculate a multiplier
     -   Create a lookup table
 
 3.  **Generate a combined raster** using the lookup table and validate the IDs.
-
     -   Add attributes
     -   Calculate frequency
 

@@ -6,24 +6,22 @@ toc: true
 
 ## Overview
 
-This section walks you through downloading LANDFIRE data for your Area of Interest (AOI) using the "rlandfire" package.
-Alternatively, if you've already downloaded the LANDFIRE raster files and clipped them locally, you can skip this section and load them from the "inputs" folder along with the .csv files.
+This section walks you through downloading LANDFIRE data for your Area of Interest (AOI) using the "rlandfire" package. Alternatively, if you've already downloaded the LANDFIRE raster files and clipped them locally, you can skip this section and load them from the "inputs" folder along with the .csv files.
 
 ## What this code does
 
-The code below will help you obtain and manage LANDFIRE data from the [LANDFIRE Product Service](https://lfps.usgs.gov/) REST API. To do so, we use the [rlandfire package](https://github.com/bcknr/rlandfire) developed by Mark Buckner.
-Mark's site includes a useful tutorial and more information if you want to learn more about this package and what it does.
+The code below will help you obtain and manage LANDFIRE data from the [LANDFIRE Product Service](https://lfps.usgs.gov/) REST API. To do so, we use the [rlandfire package](https://github.com/bcknr/rlandfire) developed by Mark Buckner. Mark's site includes a useful tutorial and more information if you want to learn more about this package and what it does.
 
 This code will:
 
-1.  **Define your AOI** using a shapefile.
-2.  **Set parameters** for the API call: product codes, projection (EPSG:5070), resolution, and your email.
-3.  **Create a temporary file** to store the downloaded data.
-4.  **Call the LANDFIRE API** using a retry-enabled function.
-5.  **Move and rename the downloaded file** to a permanent location.
-6.  **Unzip the contents** into a temporary folder.
-7.  **Rename each unzipped file** for easier access.
-8.  **Clean up temporary files** once processing is complete.
+  1.  **Define your AOI** using a shapefile.
+  2.  **Set parameters** for the API call: product codes, projection (EPSG:5070), resolution, and your email.
+  3.  **Create a temporary file** to store the downloaded data.
+  4.  **Call the LANDFIRE API** using a retry-enabled function.
+  5.  **Move and rename the downloaded file** to a permanent location.
+  6.  **Unzip the contents** into a temporary folder.
+  7.  **Rename each unzipped file** for easier access.
+  8.  **Clean up temporary files** once processing is complete.
 
 ::: callout-note
 Before running this code, ensure you have; - An internet connection - Enough time for the download to complete—it may take several minutes.
@@ -116,10 +114,9 @@ if (!is.null(ncal)) {
 Once the data are downloaded, they will be stored as a multi-layer raster.
 This step separates each layer so you can work with them individually.
 
-This code will: 1.
-Load the stacked raster using terra::rast().
-2.
-Split the raster into individual layers using assign().
+This code will: 
+  1.  Load the stacked raster using terra::rast().
+  2.  Split the raster into individual layers using assign().
 
 ``` r
 # read in stacked raster
@@ -149,9 +146,7 @@ This code will:
 4.  **Save the processed rasters** and attribute table for future use.
 
 ::: callout-note
-You’ll need the BpS and EVT attribute tables as .csv files.
-If you didn’t download the setup zip file, you can get them from the [LANDFIRE Program Website](https://landfire.gov) by navigating to the individualproduct page for each layer, then scrolling down to the Attribute Tables(CSV, ADD) section and selecting the CSV file.
-We recommend storing that file in the inputs folder within your working directory to make the code work as expected.
+You’ll need the BpS and EVT attribute tables as .csv files. If you didn’t download the setup zip file, you can get them from the [LANDFIRE Program Website](https://landfire.gov) by navigating to the individualproduct page for each layer, then scrolling down to the Attribute Tables(CSV, ADD) section and selecting the CSV file. We recommend storing that file in the inputs folder within your working directory to make the code work as expected.
 :::
 
 ``` r

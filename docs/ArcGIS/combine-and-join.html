@@ -8,7 +8,7 @@
 
 <meta name="author" content="Sarah Hagen">
 
-<title>Introduction to Fire Needs Analysis in R – LANDFIRE in Fire Needs Assessments</title>
+<title>FNA Process: Combine rasters and join fields – LANDFIRE in Fire Needs Assessments</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +31,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../r-workflow/r-setup.html" rel="next">
+<link href="../ArcGIS/export-to-csv.html" rel="next">
+<link href="../ArcGIS/mask-bps.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -270,11 +271,11 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">An Overview of Fire Needs Assessments</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../ArcGIS/historical-vegetation.html"> 
+    <a class="nav-link active" href="../ArcGIS/historical-vegetation.html" aria-current="page"> 
 <span class="menu-text">Fire Needs Assessments in ArcGIS Pro</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../r-workflow/r-introduction.html" aria-current="page"> 
+    <a class="nav-link" href="../r-workflow/r-introduction.html"> 
 <span class="menu-text">Fire Needs Assessments in R</span></a>
   </li>  
 </ul>
@@ -289,7 +290,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../r-workflow/r-introduction.html">An introduction to using R for Fire Needs Assessments</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ArcGIS/historical-vegetation.html">The Fire Needs Assessment Process</a></li><li class="breadcrumb-item"><a href="../ArcGIS/historical-vegetation.html">Processing your data</a></li><li class="breadcrumb-item"><a href="../ArcGIS/combine-and-join.html">FNA Process: Combine rasters and join fields</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -309,59 +310,111 @@ ul.task-list li input[type="checkbox"] {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../r-workflow/r-introduction.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">An introduction to using R for Fire Needs Assessments</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../r-workflow/r-setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">R setup and packages</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../r-workflow/r-download.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Download LANDFIRE data</span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../r-workflow/r-mask-rasters.html" class="sidebar-item-text sidebar-link">
+            <a href="../ArcGIS/historical-vegetation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">The Fire Needs Assessment Process</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Processing your data</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../r-workflow/r-mask-rasters.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Mask and Analyze Rasters</span></a>
+  <a href="../ArcGIS/historical-vegetation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FNA Process: Historical Vegetation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../r-workflow/r-combine.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Combine BPS and EVT Rasters</span></a>
+  <a href="../ArcGIS/current-vegetation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FNA Process: Current vegetation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../r-workflow/r-tabular.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Working with the Tabular Data</span></a>
+  <a href="../ArcGIS/mask-bps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FNA Process: Use EVT to mask BPS</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ArcGIS/combine-and-join.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">FNA Process: Combine rasters and join fields</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ArcGIS/export-to-csv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FNA Process: Export the attribute table</span></a>
   </div>
 </li>
       </ul>
   </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Analyzing your data</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ArcGIS/tabular-csv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FNA Process: Working with the CSV file</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ArcGIS/tabular-evt-acres.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FNA Process: Calculate EVT Acres</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ArcGIS/tabular-pivot-table.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FNA Process: Working with Pivot Tables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ArcGIS/tabular-weighted-average.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FNA Process: Weighted Average FRI</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ArcGIS/tabular-summary-table.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FNA Process: Summary Table</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ArcGIS/tabular-import-csv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FNA Process: Bring the CSV into ArcGIS Pro</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../next-steps.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Next Steps</span></a>
   </div>
 </li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -372,11 +425,15 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#welcome-to-the-r-based-fire-needs-assessment-tool" id="toc-welcome-to-the-r-based-fire-needs-assessment-tool" class="nav-link active" data-scroll-target="#welcome-to-the-r-based-fire-needs-assessment-tool">Welcome to the R-based Fire Needs Assessment tool</a></li>
-  <li><a href="#what-youll-find-here" id="toc-what-youll-find-here" class="nav-link" data-scroll-target="#what-youll-find-here">What you’ll find here</a></li>
-  <li><a href="#working-example" id="toc-working-example" class="nav-link" data-scroll-target="#working-example">Working example</a></li>
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting Started</a></li>
-  <li><a href="#disclaimer" id="toc-disclaimer" class="nav-link" data-scroll-target="#disclaimer">Disclaimer</a></li>
+  <li><a href="#combining-evt-and-bps-rasters" id="toc-combining-evt-and-bps-rasters" class="nav-link active" data-scroll-target="#combining-evt-and-bps-rasters">Combining EVT and BPS rasters</a>
+  <ul class="collapse">
+  <li><a href="#step-by-step-process" id="toc-step-by-step-process" class="nav-link" data-scroll-target="#step-by-step-process">Step-by-step process</a></li>
+  </ul></li>
+  <li><a href="#adding-attributes-to-the-combined-raster" id="toc-adding-attributes-to-the-combined-raster" class="nav-link" data-scroll-target="#adding-attributes-to-the-combined-raster">Adding attributes to the combined raster</a>
+  <ul class="collapse">
+  <li><a href="#joining-the-bps-and-fire-regime-fields" id="toc-joining-the-bps-and-fire-regime-fields" class="nav-link" data-scroll-target="#joining-the-bps-and-fire-regime-fields">Joining the BPS and fire regime fields</a></li>
+  <li><a href="#adding-evt-values" id="toc-adding-evt-values" class="nav-link" data-scroll-target="#adding-evt-values">Adding EVT Values</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -384,9 +441,9 @@ ul.task-list li input[type="checkbox"] {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ArcGIS/historical-vegetation.html">The Fire Needs Assessment Process</a></li><li class="breadcrumb-item"><a href="../ArcGIS/historical-vegetation.html">Processing your data</a></li><li class="breadcrumb-item"><a href="../ArcGIS/combine-and-join.html">FNA Process: Combine rasters and join fields</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Introduction to Fire Needs Analysis in R</h1>
+<h1 class="title">FNA Process: Combine rasters and join fields</h1>
 </div>
 
 
@@ -409,52 +466,159 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="welcome-to-the-r-based-fire-needs-assessment-tool" class="level2">
-<h2 class="anchored" data-anchor-id="welcome-to-the-r-based-fire-needs-assessment-tool">Welcome to the R-based Fire Needs Assessment tool</h2>
-<p>Do you work in R and want a reproducible, code-driven way to assess fire needs across your landscape? You’re in the right place.</p>
-<p>This site provides a step-by-step R workflow for conducting a Fire Needs Assessment using LANDFIRE datasets. Whether you’re looking to automate your analysis, explore ecological patterns, or replicate the ArcGIS Pro workflow in R, this guide is designed to help you get started—and go deeper.</p>
-<p>We believe in the power of transparent, repeatable code and invite the LANDFIRE community to build on this foundation. The examples here are practical, flexible, and designed to support real-world decision-making.</p>
-<div class="callout callout-style-default callout-important callout-titled">
+<section id="combining-evt-and-bps-rasters" class="level2">
+<h2 class="anchored" data-anchor-id="combining-evt-and-bps-rasters">Combining EVT and BPS rasters</h2>
+<p>To understand how Biophysical Settings (BPS), Existing Vegetation Type (EVT), and historical fire return intervals work together on the landscape, you need to combine the new EVT and BPS rasters. This process requires a Spatial Analyst license in ArcGIS Pro.</p>
+<section id="step-by-step-process" class="level3">
+<h3 class="anchored" data-anchor-id="step-by-step-process">Step-by-step process</h3>
+<p><em>Screenshots of the process are included below the written instructions for those who find them useful.</em></p>
+<ol type="1">
+<li><p>Navigate to the Spatial Analyst toolbox in ArcGIS Pro.</p></li>
+<li><p>Within the Spatial Analyst toolbox, select the Local toolbox.</p></li>
+<li><p>Open the Combine tool within the Local toolbox.</p></li>
+<li><p>Within the Combine tool:</p>
+<ul>
+<li><p><strong>Input Rasters</strong>: Select the new BPS and EVT rasters you created in the last step as input rasters.</p></li>
+<li><p><strong>Output Raster</strong>: Set the output raster to something meaningful, such as “Combined_BPS_EVT”.</p></li>
+</ul></li>
+<li><p>Check Environment Settings</p>
+<ul>
+<li><p><strong>Coordinate System</strong>: Ensure that you are using the correct coordinate system.</p></li>
+<li><p><strong>Masks</strong>: Make sure any masks are in place if needed.</p></li>
+<li><p><strong>Snap Raster</strong>: Choose the correct Snap Raster (e.g., the CONUS BPS Raster) to ensure alignment.</p></li>
+</ul></li>
+<li><p><strong>Run the Tool</strong></p>
+<ul>
+<li>Execute the Combine tool to generate the combined raster.</li>
+</ul></li>
+</ol>
+<p>This process will help you join fields and start understanding how BPS, EVT, and historic fire return intervals interact on the landscape, providing a comprehensive view for your fire needs assessment.</p>
+<section id="screenshots-for-combining-the-bps-and-evt-rasters" class="level4">
+<h4 class="anchored" data-anchor-id="screenshots-for-combining-the-bps-and-evt-rasters">Screenshots for combining the BPS and EVT rasters</h4>
+<p>&nbsp; <img src="../images/12-extract-by-mask-vegetated.png" class="img-fluid" alt="The ArcGIS Pro window showing the locationof the Combine tool within the geospatial toolbox. The tool is in Spatial Analyst Tools, Local, Combine."></p>
+<p>&nbsp;</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/14-combine-rasters.png" class="img-fluid figure-img" alt="The ArcGIS Pro window showing the Combine Geoprocessing tool. The input rasters are our BPS_Vegetated and EVT_Vegetated rasters, the output raster is BPS_EVT_Vegetated."></p>
+<figcaption>Add the BpS and EVT rasters to be combined. Remember to set appropriate environment settings.</figcaption>
+</figure>
+</div>
+</section>
+</section>
+</section>
+<section id="adding-attributes-to-the-combined-raster" class="level2">
+<h2 class="anchored" data-anchor-id="adding-attributes-to-the-combined-raster">Adding attributes to the combined raster</h2>
+<p>After running the combine tool, you will get a raster attribute table with a few columns, such as Object ID, Value, Count, and the value fields from the BpS and EVT rasters. To make this data useful for analysis, you need to add the relevant attributes. This involves using the Join Field tool twice: once to join the BpS and Fire Return Interval values, and once to join the EVT values</p>
+<section id="joining-the-bps-and-fire-regime-fields" class="level3">
+<h3 class="anchored" data-anchor-id="joining-the-bps-and-fire-regime-fields">Joining the BPS and fire regime fields</h3>
+<p><em>Screenshots of the process are included below the written instructions for those who find them useful.</em></p>
+<ol type="1">
+<li><strong>Navigate to the Join Field Tool</strong>
+<ul>
+<li>Go to the Data Management toolbox in ArcGIS Pro.</li>
+<li>Navigate to Joins and Relates -&gt; Join Fields.</li>
+</ul></li>
+<li><strong>Set Input Table</strong>
+<ul>
+<li>For the input table, choose the output of your combine tool.</li>
+</ul></li>
+<li><strong>Select Input Field</strong>
+<ul>
+<li>For the Input field, first choose the BPS value field. This will allow you to add the BPS name and fire regime information first.</li>
+</ul></li>
+<li><strong>Select Join Table</strong>
+<ul>
+<li>For the Join Table, select your new BPS raster (the same one you used for the combine).</li>
+</ul></li>
+<li><strong>Select Join Field</strong>
+<ul>
+<li>For the Join Field, select the value field. This is the field in the BPS raster that will be common between the combine and the BPS raster.</li>
+</ul></li>
+<li><strong>Transfer Fields</strong>
+<ul>
+<li>Transfer the following fields, either by selecting transfer fields or using field mapping (you can change this with the drop-down arrow):
+<ul>
+<li><p><strong>BPS_CODE</strong></p></li>
+<li><p><strong>BPS_NAME</strong></p></li>
+<li><p><strong>GROUPVEG</strong></p></li>
+<li><p><strong>FRI_ALLFIR</strong></p></li>
+<li><p>The new acre fields you created earlier:</p>
+<ul>
+<li><strong>Acres</strong></li>
+<li><strong>Acres_Year</strong></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Important
+Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>We strongly recommend that before you run this code, you explore and understand the content and process provided in the rest of the LANDFIRE in Fire Needs Assessment website. This section of the site will give a brief overview and highlight what the code is intended to do, but it will not provide the level of context or information you can find in the rest of the website.</p>
-<p>At a minimum, please review the following sections: <a href="../intro-to-fna.html">an introduction to fire needs assessments</a>, <a href="../landfire-overview.html">an overview of the LANDFIRE program</a>, and all three data sections (<a href="../bps.html">BPS</a>, <a href="../evt.html">EVT</a>, and <a href="../fire-regimes.html">Fire Regimes</a>)</p>
+<p>You can add other fire regime fields if you want, including information on Fire Regime Group and Fire Severity, but Fire Return Interval is the one we will use during this tutorial.</p>
 </div>
 </div>
+<section id="screenshots-for-joining-the-bps-and-fire-regime-fields" class="level4">
+<h4 class="anchored" data-anchor-id="screenshots-for-joining-the-bps-and-fire-regime-fields">Screenshots for joining the BPS and fire regime fields</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/15-join-bps-fields.png" class="img-fluid figure-img" alt="The ArcGIS Pro window showing the Join Field Geoprocessing tool. The input table is our BPS_EVT_Vegetated raster, the Input field is our BPS_Vegetated field, the Join Table is our BPS_Vegetated raster, the Join Field is Value, The Transfer Fields are BPS_CODE, BPS_NAME, GROUPVEG, FRI_ALLFIR, Acres, and Acres_Year."></p>
+<figcaption>Join the BpS and Fire Regime fields using the Join Field tool.</figcaption>
+</figure>
+</div>
+<p>&nbsp;</p>
 </section>
-<section id="what-youll-find-here" class="level2">
-<h2 class="anchored" data-anchor-id="what-youll-find-here">What you’ll find here</h2>
+</section>
+<section id="adding-evt-values" class="level3">
+<h3 class="anchored" data-anchor-id="adding-evt-values">Adding EVT Values</h3>
+<p><em>Screenshots of the process are included below the written instructions for those who find them useful.</em> To add EVT fields, the process is the same, but you will need to change a few settings.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To re-run a tool in ArcGIS Pro with the same settings and parameters, you can use the history pane, which will show you all the tools you have run in this project in the past. The History Pane should also open when you open the Geoprocessing pane and run any Geoprocessing tool. You can use this to open the Join Field tool you just ran and change a few settings, rather than starting the tool from scratch.</p>
+</div>
+</div>
+<ol type="1">
+<li><strong>Input Field</strong>
 <ul>
-<li><p><strong>Step 1: Setup</strong> Install required packages and define your Area of Interest (AOI) using a shapefile.</p></li>
-<li><p><strong>Step 2: Download LANDFIRE data</strong> Use R functions to access LANDFIRE products for your AOI.</p></li>
-<li><p><strong>Step 3: Process rasters</strong> Prepare your data for analysis by masking, transforming, and exporting.</p></li>
-<li><p><strong>Step 4: Export and summarize</strong> Generate CSVs and summary tables to support your fire needs assessment.</p></li>
-</ul>
-</section>
-<section id="working-example" class="level2">
-<h2 class="anchored" data-anchor-id="working-example">Working example</h2>
-<p>This walkthrough uses New York State as the AOI. You can follow along with the provided code or substitute your own shapefile to run the workflow on your landscape.</p>
-</section>
-<section id="getting-started" class="level2">
-<h2 class="anchored" data-anchor-id="getting-started">Getting Started</h2>
+<li><p>Leave the Input Table and the Join Field the same (assuming you did not change the name of the Value field in either your EVT or BPS raster).</p></li>
+<li><p>Change the Input Field to the field in the combine that contains the values of your EVT raster.</p></li>
+</ul></li>
+<li><strong>Join Table</strong>
 <ul>
-<li>Check your R, R-Studio and package versions. We recommend running the most current version of R or R-Studio</li>
-<li>Check file paths - is your your R-Studio project correctly set up?</li>
-<li>Let us know if you run into code bugs: <a href="mailto:landfire@tnc.org">email the TNC LANDFIRE team</a>.</li>
-</ul>
-</section>
-<section id="disclaimer" class="level2">
-<h2 class="anchored" data-anchor-id="disclaimer">Disclaimer</h2>
-<p>The code provided here is offered as-is, without warranty or guarantee of accuracy, functionality, or fitness for a particular purpose. It may not perform identically across all systems, versions of R, RStudio, or associated packages. This content is intended for educational and illustrative purposes only. Users are responsible for validating and adapting the code to suit their specific needs and environments.</p>
+<li>Select your EVT raster used in the combine.</li>
+</ul></li>
+<li><strong>Transfer Fields</strong>
+<ul>
+<li>Transfer the following fields:
+<ul>
+<li><p><strong>EVT_NAME</strong></p></li>
+<li><p><strong>EVT_LF</strong></p></li>
+<li><p><strong>EVT_GP_N</strong></p></li>
+<li><p>Optional: You can add the <strong>R</strong>, <strong>G</strong>, <strong>B</strong>, and <strong>RED</strong>, <strong>GREEN</strong>, <strong>BLUE</strong> fields to use the EVT colormap in any maps you make for the project.</p></li>
+</ul></li>
+</ul></li>
+</ol>
+<p>This process will enrich your combined raster with the necessary attributes, allowing you to analyze how BPS, EVT, and historic fire return intervals interact on the landscape.</p>
+<section id="screenshots-for-joining-the-bps-and-fire-regime-fields-1" class="level4">
+<h4 class="anchored" data-anchor-id="screenshots-for-joining-the-bps-and-fire-regime-fields-1">Screenshots for joining the BPS and fire regime fields</h4>
+<p>&nbsp; <img src="../images/16-join-evt-fields.png" class="img-fluid" alt="The ArcGIS Pro window showing the Join Field Geoprocessing tool. The input table is our BPS_EVT_Vegetated raster, the Input field is our EVT_Vegetated field, the Join Table is our EVT_Vegetated raster, the Join Field is Value, The Transfer Fields are EVT_NAME, EVT_LF, EVT_PHYS, EVT_GP_N, and the colormap fields."></p>
 
 
+</section>
+</section>
 </section>
 
 <section id="still-have-questions-landfire-is-here-to-help." class="level1">
@@ -880,10 +1044,13 @@ Important
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../ArcGIS/mask-bps.html" class="pagination-link" aria-label="FNA Process: Use EVT to mask BPS">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">FNA Process: Use EVT to mask BPS</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../r-workflow/r-setup.html" class="pagination-link" aria-label="R setup and packages">
-        <span class="nav-page-text">R setup and packages</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../ArcGIS/export-to-csv.html" class="pagination-link" aria-label="FNA Process: Export the attribute table">
+        <span class="nav-page-text">FNA Process: Export the attribute table</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

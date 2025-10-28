@@ -79,9 +79,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f9e21da756fc7b4b0afd1102b991a087.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-cecc7a4fd3de2c90c83ff524ca453ac1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-f9e21da756fc7b4b0afd1102b991a087.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-488854ae853ef470fb2beb0d3b878869.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-1e27b693499cf5f5607abf8bcb6936cc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-488854ae853ef470fb2beb0d3b878869.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -303,6 +303,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="../index.html"> 
+<span class="menu-text">An Overview of Fire Needs Assessments</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../ArcGIS/historical-vegetation.html"> 
 <span class="menu-text">Fire Needs Assessments in ArcGIS Pro</span></a>
   </li>  
   <li class="nav-item">
@@ -388,6 +392,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../next-steps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Next Steps</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -435,21 +445,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>This section walks you through filtering out non-vegetated areas from the EVT raster and using the resulting burnable zones to mask the BPS raster. This ensures that fire return interval calculations are limited to ecologically relevant areas. For more detailed information, visit the <a href="../current-vegetation.html">FNA Process: Current vegetation</a> and <a href="../mask-bps.html">FNA Process: Use EVT to mask BPS</a> sections of this website.</p>
+<p>This section walks you through filtering out non-vegetated areas from the EVT raster and using the resulting burnable zones to mask the BPS raster. This ensures that fire return interval calculations are limited to ecologically relevant areas.</p>
 </section>
 <section id="eliminate-non-vegetated-evt-classes" class="level2">
 <h2 class="anchored" data-anchor-id="eliminate-non-vegetated-evt-classes">1. Eliminate ‘non-vegetated’ EVT classes</h2>
 <p>This step filters out non-vegetated areas from the EVT raster and calculates the frequency of each burnable EVT type.</p>
 <p>This code will:</p>
 <ol type="1">
-<li><p><strong>Load the EVT raster</strong> and access its attribute table.</p></li>
-<li><p><strong>Identify and exclude non-vegetated EVT types</strong> (e.g., urban, agriculture, water).</p></li>
-<li><p><strong>Create a binary mask</strong> to isolate vegetated areas.</p></li>
-<li><p><strong>Apply the mask</strong> to generate a raster of burnable EVT types.</p></li>
-<li><p><strong>Calculate the frequency</strong> (pixel count) of each burnable EVT type.</p></li>
-<li><p><strong>Join the frequency data</strong> with the attribute table.</p></li>
-<li><p><strong>Assign the updated attribute table</strong> back to the raster.</p></li>
-<li><p><strong>Save the processed raster</strong> and its attribute table.</p></li>
+<li><strong>Load the EVT raster</strong> and access its attribute table.</li>
+<li><strong>Identify and exclude non-vegetated EVT types</strong> (e.g., urban, agriculture, water).</li>
+<li><strong>Create a binary mask</strong> to isolate vegetated areas.</li>
+<li><strong>Apply the mask</strong> to generate a raster of burnable EVT types.</li>
+<li><strong>Calculate the frequency</strong> (pixel count) of each burnable EVT type.</li>
+<li><strong>Join the frequency data</strong> with the attribute table.</li>
+<li><strong>Assign the updated attribute table</strong> back to the raster.</li>
+<li><strong>Save the processed raster</strong> and its attribute table.</li>
 </ol>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -553,13 +563,13 @@ Note
 <p>This step masks the BPS raster to include only areas that exactly match the pixel extent of the masked EVT raster we created in the previous section.</p>
 <p>This code will:</p>
 <ol type="1">
-<li><p><strong>Load the BPS raster</strong> and its attribute table.</p></li>
-<li><p><strong>Load the burnable EVT raster</strong> and create a binary mask.</p></li>
-<li><p><strong>Apply the mask</strong> to the BPS raster.</p></li>
-<li><p><strong>Calculate the frequency of BPS classes</strong> within the masked area.</p></li>
-<li><p><strong>Join the frequency data</strong> to the BPS attribute table.</p></li>
-<li><p><strong>Assign the updated attribute table</strong> to the masked raster.</p></li>
-<li><p><strong>Save the masked BPS raster</strong> and its attribute table.</p></li>
+<li><strong>Load the BPS raster</strong> and its attribute table.</li>
+<li><strong>Load the burnable EVT raster</strong> and create a binary mask.</li>
+<li><strong>Apply the mask</strong> to the BPS raster.</li>
+<li><strong>Calculate the frequency of BPS classes</strong> within the masked area.</li>
+<li><strong>Join the frequency data</strong> to the BPS attribute table.</li>
+<li><strong>Assign the updated attribute table</strong> to the masked raster.</li>
+<li><strong>Save the masked BPS raster</strong> and its attribute table.</li>
 </ol>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">

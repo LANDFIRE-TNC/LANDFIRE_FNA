@@ -8,7 +8,7 @@
 
 <meta name="author" content="Sarah Hagen">
 
-<title>FNA Process: Current vegetation – LANDFIRE in Fire Needs Assessments</title>
+<title>FNA Process: Bring the CSV into ArcGIS Pro – LANDFIRE in Fire Needs Assessments</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,29 +24,29 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./mask-bps.html" rel="next">
-<link href="./historical-vegetation.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-f9e21da756fc7b4b0afd1102b991a087.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-cecc7a4fd3de2c90c83ff524ca453ac1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-f9e21da756fc7b4b0afd1102b991a087.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../next-steps.html" rel="next">
+<link href="../ArcGIS/tabular-summary-table.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-488854ae853ef470fb2beb0d3b878869.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-1e27b693499cf5f5607abf8bcb6936cc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-488854ae853ef470fb2beb0d3b878869.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -256,7 +256,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">LANDFIRE in Fire Needs Assessments</span>
     </a>
   </div>
@@ -267,11 +267,15 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">An Overview of Fire Needs Assessments</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../ArcGIS/historical-vegetation.html" aria-current="page"> 
 <span class="menu-text">Fire Needs Assessments in ArcGIS Pro</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./r-workflow/r-introduction.html"> 
+    <a class="nav-link" href="../r-workflow/r-introduction.html"> 
 <span class="menu-text">Fire Needs Assessments in R</span></a>
   </li>  
 </ul>
@@ -286,7 +290,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./historical-vegetation.html">The Fire Needs Assessment Process</a></li><li class="breadcrumb-item"><a href="./current-vegetation.html">FNA Process: Current vegetation</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ArcGIS/historical-vegetation.html">The Fire Needs Assessment Process</a></li><li class="breadcrumb-item"><a href="../ArcGIS/tabular-csv.html">Analyzing your data</a></li><li class="breadcrumb-item"><a href="../ArcGIS/tabular-import-csv.html">FNA Process: Bring the CSV into ArcGIS Pro</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -306,100 +310,111 @@ ul.task-list li input[type="checkbox"] {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">An introduction to fire needs assessments</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./landfire-overview.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">An overview of the LANDFIRE Program</span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./bps.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Fire Needs Assessments Datasets</span></a>
+            <a href="../ArcGIS/historical-vegetation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Fire Needs Assessment Process</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./bps.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data: Biophysical Settings (BPS)</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./evt.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data: Existing Vegetation (EVT)</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./fire-regimes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data: Fire Regimes</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
+          <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./historical-vegetation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">The Fire Needs Assessment Process</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Processing your data</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./historical-vegetation.html" class="sidebar-item-text sidebar-link">
+  <a href="../ArcGIS/historical-vegetation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">FNA Process: Historical Vegetation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./current-vegetation.html" class="sidebar-item-text sidebar-link active">
+  <a href="../ArcGIS/current-vegetation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">FNA Process: Current vegetation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mask-bps.html" class="sidebar-item-text sidebar-link">
+  <a href="../ArcGIS/mask-bps.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">FNA Process: Use EVT to mask BPS</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./combine-and-join.html" class="sidebar-item-text sidebar-link">
+  <a href="../ArcGIS/combine-and-join.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">FNA Process: Combine rasters and join fields</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./export-to-csv.html" class="sidebar-item-text sidebar-link">
+  <a href="../ArcGIS/export-to-csv.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">FNA Process: Export the attribute table</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./tabular-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FNA Process: Working with the tabular data</span></a>
   </div>
 </li>
       </ul>
   </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Analyzing your data</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./next-steps.html" class="sidebar-item-text sidebar-link">
+  <a href="../ArcGIS/tabular-csv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FNA Process: Working with the CSV file</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ArcGIS/tabular-evt-acres.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FNA Process: Calculate EVT Acres</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ArcGIS/tabular-pivot-table.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FNA Process: Working with Pivot Tables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ArcGIS/tabular-weighted-average.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FNA Process: Weighted Average FRI</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ArcGIS/tabular-summary-table.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FNA Process: Summary Table</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ArcGIS/tabular-import-csv.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">FNA Process: Bring the CSV into ArcGIS Pro</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../next-steps.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Next Steps</span></a>
   </div>
 </li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -410,7 +425,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#examining-existing-vegetation-types" id="toc-examining-existing-vegetation-types" class="nav-link active" data-scroll-target="#examining-existing-vegetation-types">Examining existing vegetation types</a>
+  <li><a href="#bringing-your-csv-file-back-into-arcgis-pro" id="toc-bringing-your-csv-file-back-into-arcgis-pro" class="nav-link active" data-scroll-target="#bringing-your-csv-file-back-into-arcgis-pro">Bringing your CSV file back into ArcGIS Pro</a>
   <ul class="collapse">
   <li><a href="#step-by-step-process" id="toc-step-by-step-process" class="nav-link" data-scroll-target="#step-by-step-process">Step-by-step process</a></li>
   </ul></li>
@@ -421,9 +436,9 @@ ul.task-list li input[type="checkbox"] {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./historical-vegetation.html">The Fire Needs Assessment Process</a></li><li class="breadcrumb-item"><a href="./current-vegetation.html">FNA Process: Current vegetation</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ArcGIS/historical-vegetation.html">The Fire Needs Assessment Process</a></li><li class="breadcrumb-item"><a href="../ArcGIS/tabular-csv.html">Analyzing your data</a></li><li class="breadcrumb-item"><a href="../ArcGIS/tabular-import-csv.html">FNA Process: Bring the CSV into ArcGIS Pro</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">FNA Process: Current vegetation</h1>
+<h1 class="title">FNA Process: Bring the CSV into ArcGIS Pro</h1>
 </div>
 
 
@@ -446,50 +461,43 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="examining-existing-vegetation-types" class="level2">
-<h2 class="anchored" data-anchor-id="examining-existing-vegetation-types">Examining existing vegetation types</h2>
-<p>Assessing current fire needs involves understanding the current vegetation types and adjusting historical fire return intervals to reflect current management practices. This guide will walk you through the process using ArcGIS Pro, focusing on the LANDFIRE Existing Vegetation Type (EVT) data.</p>
-<div class="callout callout-style-simple callout-none no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-A note on Fire Return Intervals
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>For now, we are still using historical fire return intervals, even though we are looking at current systems. We acknowledge that current fire return intervals may or may not be the same as the fire return intervals for the underlying Biophysical Settings. We will share examples of how others have updated these intervals later. For now, we are trying to get a sense of how historical intervals relate to current vegetation, so we can begin refining our estimates of fire needs within the analysis area.</p>
-</div>
-</div>
+<section id="bringing-your-csv-file-back-into-arcgis-pro" class="level2">
+<h2 class="anchored" data-anchor-id="bringing-your-csv-file-back-into-arcgis-pro">Bringing your CSV file back into ArcGIS Pro</h2>
+<p>After saving your worksheet as a CSV file, you can bring the data back into ArcGIS Pro and join it to your EVT raster.</p>
 <section id="step-by-step-process" class="level3">
 <h3 class="anchored" data-anchor-id="step-by-step-process">Step-by-step process</h3>
-<p>💡 <em>Screenshots of the process are included below the written instructions for those who find them useful. Steps that are the same as those we covered in the section on historical fire regimes have been omitted.</em></p>
+<p><em>Screenshots of the process are included below the written instructions for those who find them useful.</em></p>
 <ol type="1">
-<li><p><strong>Identify Current Vegetation Types</strong></p>
+<li><p><strong>Import the CSV file into ArcGIS Pro</strong></p>
 <ul>
-<li><p><strong>Load LANDFIRE Existing Vegetation Type Data</strong>: Begin by loading the LANDFIRE Existing Vegetation Type layer into ArcGIS Pro.</p></li>
-<li><p><strong>Clip to Area of Interest</strong>: Use the Clip Raster tool or the Extract by Mask tool to clip the EVT data to your specific area of interest. This will help you focus on the relevant geographic region.</p></li>
+<li><p>Open ArcGIS Pro and navigate to the Catalog pane.</p></li>
+<li><p>Right click on Folders and select Add Folder Connection, then navigate to the location of your CSV file.</p></li>
+<li><p>Drag the CSV file into your project.</p></li>
 </ul></li>
-<li><p><strong>Examine Vegetation Types</strong>: Review the vegetation types for your area and decide which to keep in the analysis and which you do not want to count in fire needs planning. At a minimum, we recommend removing urban areas, agricultural areas, open water, no data values, and the grouped value of ‘quarries, strip mines, gravel pits, wind and well pads’.</p></li>
-<li><p><strong>Eliminate Non-Relevant Vegetation Classes</strong></p>
+<li><p><strong>Join the CSV data to the EVT raster</strong></p>
 <ul>
-<li><strong>Use the “Extract by Attributes” Tool</strong>: In ArcGIS Pro, use the Extract by Attributes tool to exclude non-relevant vegetation types.
+<li>Use the Join Field tool found in the Data Management toolbox under Joins and Relates.
 <ul>
-<li><p>For the Input Raster, select your clipped EVT raster.</p></li>
-<li><p>In the where clause, include the following, in addition to any other vegetation types you’ve elected to exclude: EVT_PHYS &lt;&gt; ‘Agricultural’ AND EVT_PHYS &lt;&gt; ‘Developed’ AND EVT_PHYS &lt;&gt; ‘Developed-High Intensity’ AND EVT_PHYS &lt;&gt; ‘Developed-Low Intensity’ AND EVT_PHYS &lt;&gt; ‘Developed-Medium Intensity’ AND EVT_PHYS &lt;&gt; ‘Developed-Roads’ AND EVT_PHYS &lt;&gt; ‘NA’ AND EVT_PHYS &lt;&gt; ‘Open Water’ AND EVT_PHYS &lt;&gt; ‘Quarries-Strip Mines-Gravel Pits-Well and Wind Pads’</p></li>
-</ul>
-This will remove any non-fire types or other vegetation types you wish to exclude from analysis. Next, we will use this new EVT extent to adjust the extent of our Biophysical Settings, and therefore our Fire Return Intervals and acres of fire needs.</li>
+<li><p>For the input table, select your masked EVT raster.</p></li>
+<li><p>For the input field, select the EVT name field.</p></li>
+<li><p>For the join table, select your imported CSV file.</p></li>
+<li><p>For the join field, select the EVT name field in the CSV file.</p></li>
+<li><p>Transfer the fields for average FRI, acres, and acres burned per year.</p></li>
 </ul></li>
+</ul></li>
+<li><p><strong>Display the EVT raster</strong> You can now display the EVT raster based on the average FRI or the acres burned per year field. This allows you to visually compare it to the BPS raster and analyze historical vegetation needs based on historical vegetation and fire regimes.</p></li>
 </ol>
-<section id="screenshot-for-examining-existing-vegetation-types" class="level4">
-<h4 class="anchored" data-anchor-id="screenshot-for-examining-existing-vegetation-types">Screenshot for examining existing vegetation types</h4>
+<section id="screenshots-for-bringing-your-csv-file-back-into-arcgis-pro" class="level4">
+<h4 class="anchored" data-anchor-id="screenshots-for-bringing-your-csv-file-back-into-arcgis-pro">Screenshots for bringing your CSV file back into ArcGIS Pro</h4>
+<p>&nbsp; <img src="../images/28-add-csv-arcgis-pro.png" class="img-fluid" alt="The ArcGIS Pro window. The catalog pane is open on the right side of the screen. A large black arrow points from the catalog pane on the far right to the contents pane on the far left indicating that you should drag the highlighted CSV file across to the catalog pane."></p>
+<p>&nbsp;</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/11-extract-by-attributes-evt.png" class="img-fluid figure-img" alt="Three panels with geoprocessing windows. The left shows the Extract by Attributes tool with EVT as the input raster and the pick list of selectors for the attribute filled in. The middle panel shows the same tool with the same input and output rasters, but is setting the attribute query as an SQL code as described above. The right panel shows the environment settings with the coordinate system set to NAD_1983_Contiguous_USA_Albers to match the EVT coordinate system and the snap raster set to BPS"></p>
-<figcaption>Remove unwanted vegetation types from the EVT layer using ArcGIS Pro’s selectors or SQL queries. Remember to set appropriate environment settings.</figcaption>
+<p><img src="../images/29-join-csv-fields.png" class="img-fluid figure-img" alt="The ArcGIS Pro Join Field tool showing the Input Table as EVT_Vegetated, the Input Field as EVT_NAME, the Join Table as the CSV file, the Join Field as EVT, and the Transfer Fields as FRI, Acres, Acres_Year, PCT_Year"></p>
+<figcaption>Join the CSV attributes back to the EVT data.</figcaption>
 </figure>
 </div>
+<p>&nbsp;</p>
 
 
 </section>
@@ -919,13 +927,13 @@ This will remove any non-fire types or other vegetation types you wish to exclud
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./historical-vegetation.html" class="pagination-link" aria-label="The Fire Needs Assessment Process">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">The Fire Needs Assessment Process</span>
+      <a href="../ArcGIS/tabular-summary-table.html" class="pagination-link" aria-label="FNA Process: Summary Table">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">FNA Process: Summary Table</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./mask-bps.html" class="pagination-link" aria-label="FNA Process: Use EVT to mask BPS">
-        <span class="nav-page-text">FNA Process: Use EVT to mask BPS</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../next-steps.html" class="pagination-link" aria-label="Next Steps">
+        <span class="nav-page-text">Next Steps</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

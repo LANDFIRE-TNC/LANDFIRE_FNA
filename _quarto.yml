@@ -13,9 +13,11 @@ website:
       style: "docked"
       search: true
       contents:
-        - text: "An introduction to fire needs assessments"
+        - text: "Fire Needs Assessments: A landscape management tool"
           href: index.qmd
-        - text: "An overview of the LANDFIRE Program"
+        - text: "An introduction to Fire Needs Assessments"
+          href: intro-to-fna.qmd
+        - text: "How can LANDFIRE help?"
           href: landfire-overview.qmd
         - section: "Fire Needs Assessments Datasets"
           href: bps.qmd
@@ -23,17 +25,33 @@ website:
             - href: bps.qmd
             - href: evt.qmd
             - href: fire-regimes.qmd
+        - text: "An overview of the FNA Process"
+          href: fna-overview.qmd
+          
+    - id: ArcGIS-sidebar
+      style: "docked"
+      search: true
+      contents:     
         - section: "The Fire Needs Assessment Process"
-          href: historical-vegetation.qmd
+          href: ArcGIS/historical-vegetation.qmd
           contents:
-           - href: historical-vegetation.qmd
-           - href: current-vegetation.qmd
-           - href: mask-bps.qmd
-           - href: combine-and-join.qmd
-           - href: export-to-csv.qmd
-           - href: tabular-data.qmd
-        - text: "Next Steps"
-          href: next-steps.qmd
+          - section: Processing your data
+            contents:
+              - href: ArcGIS/historical-vegetation.qmd
+              - href: ArcGIS/current-vegetation.qmd
+              - href: ArcGIS/mask-bps.qmd
+              - href: ArcGIS/combine-and-join.qmd
+              - href: ArcGIS/export-to-csv.qmd
+          - section: Analyzing your data
+            contents:
+              - href: ArcGIS/tabular-csv.qmd
+              - href: ArcGIS/tabular-evt-acres.qmd
+              - href: ArcGIS/tabular-pivot-table.qmd
+              - href: ArcGIS/tabular-weighted-average.qmd
+              - href: ArcGIS/tabular-summary-table.qmd
+              - href: ArcGIS/tabular-import-csv.qmd
+          - text: "Next Steps"
+            href: next-steps.qmd
     
     - id: r-workflow-sidebar
       style: "docked"
@@ -51,12 +69,16 @@ website:
            - href: r-workflow/r-mask-rasters.qmd
            - href: r-workflow/r-combine.qmd
            - href: r-workflow/r-tabular.qmd
+        - text: "Next Steps"
+          href: next-steps.qmd
 
     
   navbar:
     left:
-      - text: "Fire Needs Assessments in ArcGIS Pro"
+      - text: "An Overview of Fire Needs Assessments"
         href: index.qmd
+      - text: "Fire Needs Assessments in ArcGIS Pro"
+        href: ArcGIS/historical-vegetation.qmd
       - text: "Fire Needs Assessments in R"
         href: r-workflow/r-introduction.qmd
 
@@ -78,8 +100,8 @@ website:
 format:
   html:
     theme: 
-      light: [lumen]
-      dark: [cyborg]
+      light: [lumen, styles-light.scss]
+      dark: [cyborg, styles-dark.scss]
     respect-user-color-scheme: true 
     # include-after-body:
     #   text: |

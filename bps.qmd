@@ -23,16 +23,16 @@ For example, in many regions across the United States, the Biophysical Settings 
 
 BPS is a valuable tool in fire needs assessments for several reasons:
 
--   **Understanding Historical Vegetation**: BpS helps us understand what vegetation was historically present in an area. This information is crucial for planning restoration and management decisions.
+-   **Understanding Historical Vegetation**: BPS helps us understand what vegetation was historically present in an area. This information is crucial for planning restoration and management decisions.
 
--   **Fire Regime Data**: BpS is directly tied to fire regime data, which helps us understand how much of the landscape burned historically. This information is essential for planning prescribed burns and other fire management activities.
+-   **Fire Regime Data**: BPS is directly tied to fire regime data, which helps us understand how much of the landscape burned historically. This information is essential for planning prescribed burns and other fire management activities.
 
--   **Reference Conditions**: While we can conduct a fire needs assessment without BpS, it provides useful information on reference conditions, helping us make more informed decisions.
+-   **Reference Conditions**: While we can conduct a fire needs assessment without BPS, it provides useful information on reference conditions, helping us make more informed decisions.
 
 ::: callout-note
 ### Biophysical Settings as reference conditions
 
-We are not looking at climate change, and we are not necessarily saying that reference conditions are the same as "Desired Future Conditions." However, they do help us understand the conditions that ecosystems evolved with and to which they adapted over time. In some ecosystems, departure from reference conditions means higher vulnerabiligy to climate change, and we can look at the reference vs. current conditions to assess what we might need to do to adapt.
+We are not looking at climate change, and we are not necessarily saying that reference conditions are the same as "Desired Future Conditions." However, they do help us understand the conditions that ecosystems evolved with and to which they adapted over time. In some ecosystems, departure from reference conditions means higher vulnerability to climate change, and we can look at the reference vs. current conditions to assess what we might need to do to adapt.
 :::
 
 ## BPS models and SyncroSim
@@ -41,7 +41,7 @@ We are not looking at climate change, and we are not necessarily saying that ref
 
 SyncroSim and ST-Sim, have been supported by several agencies, including The Nature Conservancy, U.S. Forest Service, U.S. Geological Survey, and LANDFIRE. As a result, it is available as a free download.
 
-The LANDFIRE Reference Condition table is a MS Excel file that provides LANDFIRE’s modeled estimate of historical fire frequency and severity for every BpS. This information is also in the attribute tables of the LANDFIRE Fire Return Interval and Percent Fire Severity spatial layers. This will directly plug into the process to help us understand historic and current fire on the landscape.
+The LANDFIRE Reference Condition table is a MS Excel file that provides LANDFIRE’s modeled estimate of historical fire frequency and severity for every BPS. This information is also in the attribute tables of the LANDFIRE Fire Return Interval and Percent Fire Severity spatial layers. This will directly plug into the process to help us understand historic and current fire on the landscape.
 
 You can (and are encouraged to) re-define fire return intervals to better match what is on your landscape. The TNC LANDFIRE team encourages you to submit your modifications to us for possible inclusion in future iterations of LANDFIRE data.
 

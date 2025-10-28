@@ -1,0 +1,56 @@
+---
+title: "FNA Process: Working with the CSV file"
+author: "Sarah Hagen"
+toc: true
+format: html
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+## Working with the CSV File in Microsoft Excel
+
+Once you have exported your attribute table to CSV format, you can open
+it in Microsoft Excel or your spreadsheet program of choice. This
+tutorial will focus on Microsoft Excel, so instructions may differ in
+other programs.
+
+### Step-by-Step Process
+
+This process will help you focus on the most relevant data for your
+analysis while retaining the original CSV format for future use if
+needed.
+
+1.  **Open the CSV file**
+
+    -   Open the CSV file in Microsoft Excel. You will see an exact copy
+        of the attribute table you just exported from ArcGIS Pro.
+
+2.  **Save a copy as an Excel workbook**
+
+    -   Before modifying the table, save a copy of it as an Excel
+        workbook (.xlsx). Many changes to the table in the remainder of
+        this process will be incompatible with the CSV format. To ensure
+        you don't lose any data you may need in future analyses, it's
+        best to keep the CSV in-tact and make changes in a working copy.
+
+3.  **Identify key fields**
+
+    -   The most relevant fields to this analysis are:
+        -   **EVT_NAME**
+        -   **BPS_NAME**
+        -   **FRI_ALLFIR**
+        -   **Acres**
+        -   **Acres_Year**
+
+4.  **Delete unnecessary fields**
+
+    -   Once you've made a copy of the CSV data, you can delete any
+        fields you don't need. In all cases, you can safely delete any
+        fields associated with the colormap, such as **R**, **G**,
+        **B**, **RED**, **GREEN**, **BLUE** as well as the value fields
+        for your BPS_Vegetated and EVT_Vegetated rasters (the ones you
+        used to join fields to the combined raster attribute table.)
+
+This process will help you focus on the most relevant data for your
+analysis while retaining the original CSV data for future use if needed.

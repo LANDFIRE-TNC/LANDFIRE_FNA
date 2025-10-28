@@ -8,7 +8,7 @@
 
 <meta name="author" content="Sarah Hagen">
 
-<title>Introduction to Fire Needs Analysis in R – LANDFIRE in Fire Needs Assessments</title>
+<title>FNA Process: Calculate EVT Acres – LANDFIRE in Fire Needs Assessments</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +31,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../r-workflow/r-setup.html" rel="next">
+<link href="../ArcGIS/tabular-pivot-table.html" rel="next">
+<link href="../ArcGIS/tabular-csv.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -270,11 +271,11 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">An Overview of Fire Needs Assessments</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../ArcGIS/historical-vegetation.html"> 
+    <a class="nav-link active" href="../ArcGIS/historical-vegetation.html" aria-current="page"> 
 <span class="menu-text">Fire Needs Assessments in ArcGIS Pro</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../r-workflow/r-introduction.html" aria-current="page"> 
+    <a class="nav-link" href="../r-workflow/r-introduction.html"> 
 <span class="menu-text">Fire Needs Assessments in R</span></a>
   </li>  
 </ul>
@@ -289,7 +290,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../r-workflow/r-introduction.html">An introduction to using R for Fire Needs Assessments</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ArcGIS/historical-vegetation.html">The Fire Needs Assessment Process</a></li><li class="breadcrumb-item"><a href="../ArcGIS/tabular-csv.html">Analyzing your data</a></li><li class="breadcrumb-item"><a href="../ArcGIS/tabular-evt-acres.html">FNA Process: Calculate EVT Acres</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -309,59 +310,111 @@ ul.task-list li input[type="checkbox"] {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../r-workflow/r-introduction.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">An introduction to using R for Fire Needs Assessments</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../r-workflow/r-setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">R setup and packages</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../r-workflow/r-download.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Download LANDFIRE data</span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../r-workflow/r-mask-rasters.html" class="sidebar-item-text sidebar-link">
+            <a href="../ArcGIS/historical-vegetation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">The Fire Needs Assessment Process</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Processing your data</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../r-workflow/r-mask-rasters.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Mask and Analyze Rasters</span></a>
+  <a href="../ArcGIS/historical-vegetation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FNA Process: Historical Vegetation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../r-workflow/r-combine.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Combine BPS and EVT Rasters</span></a>
+  <a href="../ArcGIS/current-vegetation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FNA Process: Current vegetation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../r-workflow/r-tabular.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Working with the Tabular Data</span></a>
+  <a href="../ArcGIS/mask-bps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FNA Process: Use EVT to mask BPS</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ArcGIS/combine-and-join.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FNA Process: Combine rasters and join fields</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ArcGIS/export-to-csv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FNA Process: Export the attribute table</span></a>
   </div>
 </li>
       </ul>
   </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Analyzing your data</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ArcGIS/tabular-csv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FNA Process: Working with the CSV file</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ArcGIS/tabular-evt-acres.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">FNA Process: Calculate EVT Acres</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ArcGIS/tabular-pivot-table.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FNA Process: Working with Pivot Tables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ArcGIS/tabular-weighted-average.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FNA Process: Weighted Average FRI</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ArcGIS/tabular-summary-table.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FNA Process: Summary Table</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ArcGIS/tabular-import-csv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FNA Process: Bring the CSV into ArcGIS Pro</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../next-steps.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Next Steps</span></a>
   </div>
 </li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -372,11 +425,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#welcome-to-the-r-based-fire-needs-assessment-tool" id="toc-welcome-to-the-r-based-fire-needs-assessment-tool" class="nav-link active" data-scroll-target="#welcome-to-the-r-based-fire-needs-assessment-tool">Welcome to the R-based Fire Needs Assessment tool</a></li>
-  <li><a href="#what-youll-find-here" id="toc-what-youll-find-here" class="nav-link" data-scroll-target="#what-youll-find-here">What you’ll find here</a></li>
-  <li><a href="#working-example" id="toc-working-example" class="nav-link" data-scroll-target="#working-example">Working example</a></li>
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting Started</a></li>
-  <li><a href="#disclaimer" id="toc-disclaimer" class="nav-link" data-scroll-target="#disclaimer">Disclaimer</a></li>
+  <li><a href="#calculating-evt-acres-in-microsoft-excel" id="toc-calculating-evt-acres-in-microsoft-excel" class="nav-link active" data-scroll-target="#calculating-evt-acres-in-microsoft-excel">Calculating EVT Acres in Microsoft Excel</a>
+  <ul class="collapse">
+  <li><a href="#step-by-step-process" id="toc-step-by-step-process" class="nav-link" data-scroll-target="#step-by-step-process">Step-by-Step Process</a></li>
+  <li><a href="#screenshot-for-calculating-evt-acres" id="toc-screenshot-for-calculating-evt-acres" class="nav-link" data-scroll-target="#screenshot-for-calculating-evt-acres">Screenshot for calculating EVT acres</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -384,9 +437,9 @@ ul.task-list li input[type="checkbox"] {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ArcGIS/historical-vegetation.html">The Fire Needs Assessment Process</a></li><li class="breadcrumb-item"><a href="../ArcGIS/tabular-csv.html">Analyzing your data</a></li><li class="breadcrumb-item"><a href="../ArcGIS/tabular-evt-acres.html">FNA Process: Calculate EVT Acres</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Introduction to Fire Needs Analysis in R</h1>
+<h1 class="title">FNA Process: Calculate EVT Acres</h1>
 </div>
 
 
@@ -409,52 +462,68 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="welcome-to-the-r-based-fire-needs-assessment-tool" class="level2">
-<h2 class="anchored" data-anchor-id="welcome-to-the-r-based-fire-needs-assessment-tool">Welcome to the R-based Fire Needs Assessment tool</h2>
-<p>Do you work in R and want a reproducible, code-driven way to assess fire needs across your landscape? You’re in the right place.</p>
-<p>This site provides a step-by-step R workflow for conducting a Fire Needs Assessment using LANDFIRE datasets. Whether you’re looking to automate your analysis, explore ecological patterns, or replicate the ArcGIS Pro workflow in R, this guide is designed to help you get started—and go deeper.</p>
-<p>We believe in the power of transparent, repeatable code and invite the LANDFIRE community to build on this foundation. The examples here are practical, flexible, and designed to support real-world decision-making.</p>
-<div class="callout callout-style-default callout-important callout-titled">
+<section id="calculating-evt-acres-in-microsoft-excel" class="level2">
+<h2 class="anchored" data-anchor-id="calculating-evt-acres-in-microsoft-excel">Calculating EVT Acres in Microsoft Excel</h2>
+<p>Once you’ve processed your attribute table, the first step is calculate how many acres are in each EVT in addition to how many acres are in each BpS. To calculate EVT acres, create a new field called EVT acres, which will be driven by the count field in the CSV. Here’s how to do it:</p>
+<section id="step-by-step-process" class="level3">
+<h3 class="anchored" data-anchor-id="step-by-step-process">Step-by-Step Process</h3>
+<p><em>Screenshots of the process are included below the written instructions for those who find them useful.</em></p>
+<ol type="1">
+<li><p><strong>Create a New Field for EVT Acres</strong></p>
+<ul>
+<li>Insert a new column next to the COUNT field and name it EVT Acres.</li>
+</ul></li>
+<li><p><strong>Calculate Acres Using the Pixel Count Field</strong></p>
+<ul>
+<li>In the first cell of the new “EVT Acres” column, enter the formula: = [COUNT] * 900 * 0.000247 Replace [COUNT] with the cell reference for the COUNT field in the same row.</li>
+</ul></li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Important
+Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>We strongly recommend that before you run this code, you explore and understand the content and process provided in the rest of the LANDFIRE in Fire Needs Assessment website. This section of the site will give a brief overview and highlight what the code is intended to do, but it will not provide the level of context or information you can find in the rest of the website.</p>
-<p>At a minimum, please review the following sections: <a href="../intro-to-fna.html">an introduction to fire needs assessments</a>, <a href="../landfire-overview.html">an overview of the LANDFIRE program</a>, and all three data sections (<a href="../bps.html">BPS</a>, <a href="../evt.html">EVT</a>, and <a href="../fire-regimes.html">Fire Regimes</a>)</p>
+<p>This is the same calculation we used to calculate BpS Acres in ArcGIS Pro. You can do this in either GIS or your spreadsheet program, whichever you feel more comfortable working with.</p>
 </div>
 </div>
-</section>
-<section id="what-youll-find-here" class="level2">
-<h2 class="anchored" data-anchor-id="what-youll-find-here">What you’ll find here</h2>
+<ol start="3" type="1">
+<li><strong>Copy the Formula Down the Column</strong>
 <ul>
-<li><p><strong>Step 1: Setup</strong> Install required packages and define your Area of Interest (AOI) using a shapefile.</p></li>
-<li><p><strong>Step 2: Download LANDFIRE data</strong> Use R functions to access LANDFIRE products for your AOI.</p></li>
-<li><p><strong>Step 3: Process rasters</strong> Prepare your data for analysis by masking, transforming, and exporting.</p></li>
-<li><p><strong>Step 4: Export and summarize</strong> Generate CSVs and summary tables to support your fire needs assessment.</p></li>
-</ul>
+<li>Drag the fill handle (a small square at the bottom-right corner of the cell) down the column to apply the formula to all rows.</li>
+</ul></li>
+</ol>
 </section>
-<section id="working-example" class="level2">
-<h2 class="anchored" data-anchor-id="working-example">Working example</h2>
-<p>This walkthrough uses New York State as the AOI. You can follow along with the provided code or substitute your own shapefile to run the workflow on your landscape.</p>
-</section>
-<section id="getting-started" class="level2">
-<h2 class="anchored" data-anchor-id="getting-started">Getting Started</h2>
-<ul>
-<li>Check your R, R-Studio and package versions. We recommend running the most current version of R or R-Studio</li>
-<li>Check file paths - is your your R-Studio project correctly set up?</li>
-<li>Let us know if you run into code bugs: <a href="mailto:landfire@tnc.org">email the TNC LANDFIRE team</a>.</li>
-</ul>
-</section>
-<section id="disclaimer" class="level2">
-<h2 class="anchored" data-anchor-id="disclaimer">Disclaimer</h2>
-<p>The code provided here is offered as-is, without warranty or guarantee of accuracy, functionality, or fitness for a particular purpose. It may not perform identically across all systems, versions of R, RStudio, or associated packages. This content is intended for educational and illustrative purposes only. Users are responsible for validating and adapting the code to suit their specific needs and environments.</p>
+<section id="screenshot-for-calculating-evt-acres" class="level3">
+<h3 class="anchored" data-anchor-id="screenshot-for-calculating-evt-acres">Screenshot for calculating EVT acres</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/19-evt-acres.png" class="img-fluid figure-img" alt="A Microsoft Excel window showing the spreadsheet. The column for EVT_acres is highlighted with a black box. Another black box surrounds the formula =B2*900*0.0002471"></p>
+<figcaption>Calculating EVT acres in Excel.</figcaption>
+</figure>
+</div>
+<p>&nbsp;</p>
+<p>This process will calculate the EVT acres for each row in your table, allowing you to analyze the data more effectively. From here, you can add another field to calculate the EVT acres burned per year for a comparison with the BpS acres burned per year. You can use the same process for this that you used when calculating BpS acres burned per year.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Right now, we are still assuming that the underlying historical fire return interval applies to existing vegetation. This may not be the case for your landscape. We will provide options for how to adjust this in a later section of this site.</p>
+</div>
+</div>
 
 
+</section>
 </section>
 
 <section id="still-have-questions-landfire-is-here-to-help." class="level1">
@@ -880,10 +949,13 @@ Important
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../ArcGIS/tabular-csv.html" class="pagination-link" aria-label="FNA Process: Working with the CSV file">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">FNA Process: Working with the CSV file</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../r-workflow/r-setup.html" class="pagination-link" aria-label="R setup and packages">
-        <span class="nav-page-text">R setup and packages</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../ArcGIS/tabular-pivot-table.html" class="pagination-link" aria-label="FNA Process: Working with Pivot Tables">
+        <span class="nav-page-text">FNA Process: Working with Pivot Tables</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

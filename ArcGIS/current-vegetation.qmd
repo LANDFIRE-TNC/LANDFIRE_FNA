@@ -13,7 +13,7 @@ For now, we are still using historical fire return intervals, even though we are
 :::
 
 ### Step-by-step process
-💡 *Screenshots of the process are included below the written instructions for those who find them useful. Steps that are the same as those we covered in the section on historical fire regimes have been omitted.*
+*Screenshots of the process are included below the written instructions for those who find them useful. Steps that are the same as those we covered in the section on historical fire regimes have been omitted.*
 
 1. **Identify Current Vegetation Types**
     - **Load LANDFIRE Existing Vegetation Type Data**: Begin by loading the LANDFIRE Existing Vegetation Type layer into ArcGIS Pro.
@@ -32,4 +32,5 @@ For now, we are still using historical fire return intervals, even though we are
         This will remove any non-fire types or other vegetation types you wish to exclude from analysis. Next, we will use this new EVT extent to adjust the extent of our Biophysical Settings, and therefore our Fire Return Intervals and acres of fire needs.
 
 #### Screenshot for examining existing vegetation types
-![Remove unwanted vegetation types from the EVT layer using ArcGIS Pro’s selectors or SQL queries. Remember to set appropriate environment settings. ](images/11-extract-by-attributes-evt.png){fig-alt="Three panels with geoprocessing windows. The left shows the Extract by Attributes tool with EVT as the input raster and the pick list of selectors for the attribute filled in. The middle panel shows the same tool with the same input and output rasters, but is setting the attribute query as an SQL code as described above. The right panel shows the environment settings with the coordinate system set to NAD_1983_Contiguous_USA_Albers to match the EVT coordinate system and the snap raster set to BPS"}
+&nbsp;
+![Remove unwanted vegetation types from the EVT layer using ArcGIS Pro’s selectors or SQL queries. Remember to set appropriate environment settings. ](../images/11-extract-by-attributes-evt.png){fig-alt="Three panels with geoprocessing windows. The left shows the Extract by Attributes tool with EVT as the input raster and the pick list of selectors for the attribute filled in. The middle panel shows the same tool with the same input and output rasters, but is setting the attribute query as an SQL code as described above. The right panel shows the environment settings with the coordinate system set to NAD_1983_Contiguous_USA_Albers to match the EVT coordinate system and the snap raster set to BPS"}

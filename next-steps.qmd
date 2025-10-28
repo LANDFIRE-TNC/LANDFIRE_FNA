@@ -10,24 +10,37 @@ format: html
 There are many ways to refine your fire needs assessment once you start understanding fire regimes on your landscape. We encourage you to explore other fire needs assessments and think about ways you can apply these approaches on your landscape. The following web app highlights fire needs assessments from around the US. Click on each state to get a pop up with details such as the area, title, year, author, and links to the assessments.
 
 ```{=html}
-<iframe src="https://arcg.is/0OWyfz0"width="90%" height="600px" style="border:1;" allowfullscreen="" loading="lazy"
-</iframe>
+<iframe src="https://www.arcgis.com/apps/dashboards/c208d725c22b48069e0542742956a7d5" width="90%" height="600px" style="border:1;" allowfullscreen="" loading="lazy"></iframe>
 ```
+
 
 ### A few highlighted approaches
 
-**Illinois Fire Needs Assessment**: Illinois took the process outlined here and built on it by crosswalking EVT and BpS to better understand Fire Return Intervals (FRI) in the EVT systems, rather than just using the underlying BpS. They also conducted a survey of experts to understand current fire return intervals. This approach provided a more nuanced understanding of fire needs in their landscape. [Read more about their assessment](https://www.illinoisprescribedfirecouncil.org/uploads/1/0/5/8/105892833/il_fire_needs_assessment.pdf) (opens a pdf).
+**Illinois Fire Needs Assessment**: Illinois took the process outlined here and built on it by crosswalking EVT and BpS to better understand Fire Return Intervals (FRI) in the EVT systems, rather than just using the underlying BpS.
+They also conducted a survey of experts to understand current fire return intervals.
+This approach provided a more nuanced understanding of fire needs in their landscape.
+[Read more about their assessment](https://www.illinoisprescribedfirecouncil.org/uploads/1/0/5/8/105892833/il_fire_needs_assessment.pdf) (opens a pdf).
 
-**Michigan Fire Needs Assessments**: Michigan used GIS-based multicriteria decision analysis to assess the ecological need for prescribed fire. This method allowed them to integrate various factors and make informed decisions about fire management. They also developed a prescribed fire model to visualize and plan fire needs. [View their story map](https://storymaps.arcgis.com/stories/02094dd68d874331a9977fc80d6d7247) or [read their published paper](https://www.mdpi.com/1424-2818/13/3/100).
+**Michigan Fire Needs Assessments**: Michigan used GIS-based multicriteria decision analysis to assess the ecological need for prescribed fire.
+This method allowed them to integrate various factors and make informed decisions about fire management.
+They also developed a prescribed fire model to visualize and plan fire needs.
+[View their story map](https://storymaps.arcgis.com/stories/02094dd68d874331a9977fc80d6d7247) or [read their published paper](https://www.mdpi.com/1424-2818/13/3/100).
 
-**Minnesota Fire Needs Assessment**: Minnesota crosswalked EVT with local vegetation classifications and summarized by county and by agency to better understand fire needs in their local landscapes. This approach helped them tailor their fire management practices to the specific needs of their region. [Explore their assessment](https://www.mnprescribedfire.org/mnfireneedsassessment).
+**Minnesota Fire Needs Assessment**: Minnesota crosswalked EVT with local vegetation classifications and summarized by county and by agency to better understand fire needs in their local landscapes.
+This approach helped them tailor their fire management practices to the specific needs of their region.
+[Explore their assessment](https://www.mnprescribedfire.org/mnfireneedsassessment).
 
-**Wisconsin Fire Needs Assessments**: Wisconsin took a more methodological approach to assess fire needs. Their detailed analysis provided insights into fire management practices and helped them develop effective strategies. [Learn more about their initial assessment](http://lakestatesfiresci.net/docs/LSFSC_Oct82014_Assessing%20Needs%20Hmielowski_TPOS_LS%20FINAL.pdf) (opens a pdf) and [explore the more recent update](https://staceymarion.com/fna/).
+**Wisconsin Fire Needs Assessments**: Wisconsin took a more methodological approach to assess fire needs.
+Their detailed analysis provided insights into fire management practices and helped them develop effective strategies.
+[Learn more about their initial assessment](http://lakestatesfiresci.net/docs/LSFSC_Oct82014_Assessing%20Needs%20Hmielowski_TPOS_LS%20FINAL.pdf) (opens a pdf) and [explore the more recent update](https://staceymarion.com/fna/).
 
 ### Exploring other approaches
 
-There are many other approaches to fire needs assessments, including using LANDFIRE BpS models and ST-Sim to explore changing fire regimes and disturbance pathways and their effects on the landscape. For more information on the BpS models and ST-Sim, visit the [LANDFIRE BpS Models page](https://landfire-tnc.github.io/LANDFIRE_101/LANDFIRE_Datasets/1_Vegetation/Biophysical_Settings/4-bps-models.html) on the LANDFIRE 101 website.
+There are many other approaches to fire needs assessments, including using LANDFIRE BpS models and ST-Sim to explore changing fire regimes and disturbance pathways and their effects on the landscape.
+For more information on the BpS models and ST-Sim, visit the [LANDFIRE BpS Models page](https://landfire-tnc.github.io/LANDFIRE_101/LANDFIRE_Datasets/1_Vegetation/Biophysical_Settings/4-bps-models.html) on the LANDFIRE 101 website.
 
 ## Summary
 
-There are many ways to refine your fire needs assessment once you start understanding fire regimes on your landscape. Feel empowered to use these data and think about them in the way that makes the most sense for your needs. You can also [contact the LANDFIRE team](mailto:landfire@tnc.org) to discuss and explore other options for creating a fire needs assessment for your landscape.
+There are many ways to refine your fire needs assessment once you start understanding fire regimes on your landscape.
+Feel empowered to use these data and think about them in the way that makes the most sense for your needs.
+You can also [contact the LANDFIRE team](mailto:landfire@tnc.org) to discuss and explore other options for creating a fire needs assessment for your landscape.

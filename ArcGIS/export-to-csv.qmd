@@ -8,7 +8,7 @@ format: html
 Exporting your attribute table to CSV (comma separated value) format makes your data versatile and accessible in various programs, such as Microsoft Excel, R, ArcGIS Pro, and QGIS. Follow these steps to export your table in ArcGIS Pro. 
 
 ### Step-by-step process
-💡 *Screenshots of the process are included below the written instructions for those who find them useful.*
+**Screenshots of the process are included below the written instructions for those who find them useful.*
 
 1. **Open the Attribute Table**
     - Open the attribute table for the combined raster you just used to join fields.
@@ -32,8 +32,8 @@ Exporting your attribute table to CSV (comma separated value) format makes your 
 This process ensures your data is saved in a versatile format, making it easy to use in various applications for further analysis and visualization.
 
 #### Screenshots of exporting the attribute table to .csv
-![Export the table.](images/17-export-table.png){fig-alt="The ArcGIS Pro window showing the attribute table. A box highlights the three lines hamburger menu in the upper right corner of the attribute table window and another box highlights the Export option at the bottom of the subsequent pop-up menu."}
+![Export the table.](../images/17-export-table.png){fig-alt="The ArcGIS Pro window showing the attribute table. A box highlights the three lines hamburger menu in the upper right corner of the attribute table window and another box highlights the Export option at the bottom of the subsequent pop-up menu."}
 
 &nbsp;
 
-![Save the table as a .csv file on your computer.](images/18-save-csv.png){fig-alt="The Export Table window showing the combined raster as the Input Table and the Output Table with the same name as the combined raster but the file extension .csv"}
+![Save the table as a .csv file on your computer.](../images/18-save-csv.png){fig-alt="The Export Table window showing the combined raster as the Input Table and the Output Table with the same name as the combined raster but the file extension .csv"}

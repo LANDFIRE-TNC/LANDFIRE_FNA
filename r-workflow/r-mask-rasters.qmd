@@ -6,9 +6,7 @@ toc: true
 
 ## Overview
 
-This section walks you through filtering out non-vegetated areas from the EVT raster and using the resulting burnable zones to mask the BPS raster.
-This ensures that fire return interval calculations are limited to ecologically relevant areas.
-For more detailed information, visit the [FNA Process: Current vegetation](../current-vegetation.qmd) and [FNA Process: Use EVT to mask BPS](../mask-bps.qmd) sections of this website.
+This section walks you through filtering out non-vegetated areas from the EVT raster and using the resulting burnable zones to mask the BPS raster. This ensures that fire return interval calculations are limited to ecologically relevant areas.
 
 ## 1. Eliminate 'non-vegetated' EVT classes
 
@@ -16,21 +14,14 @@ This step filters out non-vegetated areas from the EVT raster and calculates the
 
 This code will:
 
-1.  **Load the EVT raster** and access its attribute table.
-
-2.  **Identify and exclude non-vegetated EVT types** (e.g., urban, agriculture, water).
-
-3.  **Create a binary mask** to isolate vegetated areas.
-
-4.  **Apply the mask** to generate a raster of burnable EVT types.
-
-5.  **Calculate the frequency** (pixel count) of each burnable EVT type.
-
-6.  **Join the frequency data** with the attribute table.
-
-7.  **Assign the updated attribute table** back to the raster.
-
-8.  **Save the processed raster** and its attribute table.
+  1.  **Load the EVT raster** and access its attribute table.
+  2.  **Identify and exclude non-vegetated EVT types** (e.g., urban, agriculture, water).
+  3.  **Create a binary mask** to isolate vegetated areas.
+  4.  **Apply the mask** to generate a raster of burnable EVT types.
+  5.  **Calculate the frequency** (pixel count) of each burnable EVT type.
+  6.  **Join the frequency data** with the attribute table.
+  7.  **Assign the updated attribute table** back to the raster.
+  8.  **Save the processed raster** and its attribute table.
 
 ::: callout-note
 Make sure the raster file `EVT_Raster.tif` is saved in your `rasters` folder.
@@ -129,19 +120,13 @@ This step masks the BPS raster to include only areas that exactly match the pixe
 
 This code will:
 
-1.  **Load the BPS raster** and its attribute table.
-
-2.  **Load the burnable EVT raster** and create a binary mask.
-
-3.  **Apply the mask** to the BPS raster.
-
-4.  **Calculate the frequency of BPS classes** within the masked area.
-
-5.  **Join the frequency data** to the BPS attribute table.
-
-6.  **Assign the updated attribute table** to the masked raster.
-
-7.  **Save the masked BPS raster** and its attribute table.
+  1.  **Load the BPS raster** and its attribute table.
+  2.  **Load the burnable EVT raster** and create a binary mask.
+  3.  **Apply the mask** to the BPS raster.
+  4.  **Calculate the frequency of BPS classes** within the masked area.
+  5.  **Join the frequency data** to the BPS attribute table.
+  6.  **Assign the updated attribute table** to the masked raster.
+  7.  **Save the masked BPS raster** and its attribute table.
 
 ::: callout-note
 Make sure you've already created and saved EVT_Burnable.tif in your 'rasters' folder.

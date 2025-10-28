@@ -1,0 +1,85 @@
+---
+title: "FNA Process: Weighted Average FRI"
+author: "Sarah Hagen"
+toc: true
+format: html
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+## Creating the weighted average fire return interval
+
+You can use a pivot table to calculate a weighted average, but it
+requires an extra column in the source data. This may sound complicated,
+but you simply need to add the new column to the raw data tab, and then
+create a calculated field in the pivot table.
+
+### Step-by-step process
+
+*Screenshots of the process are included below the written instructions
+for those who find them useful.*
+
+1.  **Create a weight column in the raw data tab**
+
+    -   Add a new column to the raw data tab - in the screenshots below
+        it is named Average, but you should call it whatever makes the
+        most sense to you.
+
+2.  **Multiply "score" by "weight" for each row**
+
+    -   In the new column, create a formula that multiplies your "score"
+        (in this case, FRI) by its "weight" (in this case the Acres
+        column for each row).
+        -   Thus, the calculation here is Average = FRI\*Acres, or H2 =
+            E2\*F2 in the example screenshots below.
+
+3.  **Copy the formula down the column**
+
+    -   Drag the fill handle (a small square at the bottom-right corner
+        of the cell) down the column to apply the formula to all rows.
+
+4.  **Add a calculated field to the pivot table**
+
+    -   With your pivot table selected, go to the PivotTable Analyze tab
+        on the ribbon bar.
+
+    -   In the Calculations group, click Fields, Items, & Sets, and then
+        select Calculated Field.
+
+    -   In the dialog box that appears, enter a name for your field. In
+        the screenshots below, it is called Average FRI, but you should
+        name it something that makes sense to you.
+
+    -   In the formula box, enter the following formula using your new
+        fields:
+
+        -   Formula: = Average \* EVT_Acres
+
+    -   Click Add, then click OK.
+
+    -   Drag the new Weighted Average field into the Values area of the
+        PivotTable Fields dialog
+
+    -   Ensure the new field is set to Sum in the value field settings
+
+#### Screenshots for using the pivot table to calculate the weighted average
+&nbsp;
+![Create the new column and calculate the
+weighting.](../images/23-weight-column.png){fig-alt="A Microsoft Excel window with a new column highlighted and a box around the formula bar which shows the formula =E2*F2, corresponding to FRI*EVT Acres"}
+
+ 
+
+![Add a calculated field to the pivot
+table.](../images/24-pivot-table-calculate-field.png){fig-alt="A box highlights the place on the pivot table ribbon bar showing PivotTable Analyze and the Fields, Items, & Sets button. Below that the menu shows Calculate Field highlighted."}
+
+ 
+
+![Calculate the field for the weighted
+average.](../images/25-pivot-table-calculate-avgfri.png){fig-alt="The Insert Calculated Field window. Name is Weighted Average FRI. the Formula is = Average/'EVT Acres'"}
+
+ 
+
+![Make sure the new field is added as a value and it is being calculated
+as a
+sum.](../images/26-pivot-table-value-field-sum.png){fig-alt="The pivot table window. The PivotTable Fields dialogue box is on the right, showing our columns as Values, Rows as EVT_NAME, Values as Sum of FRI, Sum of EVT Acres, Sum of EVT Acres Burned/Year, Sum of Weighted Average FRI. The Value Field Settings is open showing the Sum of Weighted FRI is correctly being calculated as a sum."}

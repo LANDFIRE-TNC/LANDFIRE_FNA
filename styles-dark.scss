@@ -1,0 +1,71 @@
+/*-- scss:defaults --*/
+@import "layout";
+
+$link-color:#66b2ff;
+
+/*-- scss:rules --*/
+/* Dark mode styles */
+  a {
+    color: $link-color; /* Light blue for dark backgrounds */
+  }
+
+  a:hover,
+  a:focus {
+    color: $link-color;
+  }
+  
+  body .sidebar nav[role=doc-toc] ul {
+    font-size: 1rem;
+  }
+  
+  .nav-page a {
+    color: white;
+  }
+  
+  .sidebar-navigation a {
+    color: #fff; /* Desired default color: white */
+  }
+
+  .figcaption, .blockquote, .breadcrumb-item {
+    color: #fff;
+  }
+
+.pagination-link {
+  color: white;
+}
+
+
+/* Include specific overrides for sidebar toc in toggle mode */
+.sidebar nav[role=doc-toc] ul > li > a.active,
+.sidebar nav[role=doc-toc] ul > li > ul > li > a.active {
+  color: $link-color !important; /* Adjust color for toggle dark mode */
+  border-left: 1px solid $link-color !important;
+}
+
+.sidebar nav[role=doc-toc] ul > li > a.focus,
+.sidebar nav[role=doc-toc] ul > li > ul > li > a.focus,
+.sidebar nav[role=doc-toc] ul > li > a.hover,
+.sidebar nav[role=doc-toc] ul > li > ul > li > a.hover {
+  color: #99ccff !important; /* Adjust hover/focus color for toggle dark mode */
+  border-left: 1px solid #99ccff !important;
+}
+
+.sidebar .sidebar-link.active {
+  font-weight: bold;
+  color: #99ccff !important;
+  border-left: 2px solid #99ccff !important;
+}
+
+/* Styling for class A cells */
+.xl8199 {
+  color:#000;
+	background:#B5E6A2;
+}
+
+/* Styling for class A cell with larger border*/
+.xl8299 {
+  color:#000;
+	border-right:1.5pt solid;
+	border-left:.5pt solid;
+	background:#B5E6A2;
+}

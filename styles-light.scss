@@ -1,0 +1,41 @@
+/*-- scss:defaults --*/
+@import "layout";
+
+$link-color:#004085;
+
+/*-- scss:rules --*/
+/* light mode specific styles */
+  a {
+    color: $link-color;
+  }
+  
+  body .sidebar nav[role=doc-toc] ul {
+    font-size: 1rem;
+  }
+  
+  body .sidebar nav[role=doc-toc] ul > li > a.active, 
+  body .sidebar nav[role=doc-toc] ul > li > ul > li > a.active {
+  color: $link-color !important; /* Use !important if necessary to override Bootstrap's */
+  border-left: 1px solid $link-color !important; /* Override the border as well */
+  }
+  
+  body .sidebar nav[role=doc-toc] ul > li > a:focus, 
+  body .sidebar nav[role=doc-toc] ul > li > ul > li > a:focus,
+  body .sidebar nav[role=doc-toc] ul > li > a:hover, 
+  body .sidebar nav[role=doc-toc] ul > li > ul > li > a:hover {
+  color: #002752 !important; /* Use !important if necessary to override Bootstrap's */
+  border-left: 1px solid #002752 !important; /* Override the border as well */
+  }
+
+  a:hover,
+  a:focus {
+    color: #002752;
+  }
+  
+  
+.sidebar .sidebar-link.active {
+  font-weight: 700;
+  color: $link-color !important;
+  border-left: 2px solid $link-color !important;
+}
+ 

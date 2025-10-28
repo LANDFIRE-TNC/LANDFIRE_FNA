@@ -8,7 +8,7 @@
 
 <meta name="author" content="Sarah Hagen">
 
-<title>Introduction to Fire Needs Analysis in R – LANDFIRE in Fire Needs Assessments</title>
+<title>Creating a Fire Needs Assessment – LANDFIRE in Fire Needs Assessments</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,28 +24,28 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../r-workflow/r-setup.html" rel="next">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-488854ae853ef470fb2beb0d3b878869.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-1e27b693499cf5f5607abf8bcb6936cc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-488854ae853ef470fb2beb0d3b878869.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./fire-regimes.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-488854ae853ef470fb2beb0d3b878869.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-1e27b693499cf5f5607abf8bcb6936cc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-488854ae853ef470fb2beb0d3b878869.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -255,7 +255,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">LANDFIRE in Fire Needs Assessments</span>
     </a>
   </div>
@@ -266,15 +266,15 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
 <span class="menu-text">An Overview of Fire Needs Assessments</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../ArcGIS/historical-vegetation.html"> 
+    <a class="nav-link" href="./ArcGIS/historical-vegetation.html"> 
 <span class="menu-text">Fire Needs Assessments in ArcGIS Pro</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../r-workflow/r-introduction.html" aria-current="page"> 
+    <a class="nav-link" href="./r-workflow/r-introduction.html"> 
 <span class="menu-text">Fire Needs Assessments in R</span></a>
   </li>  
 </ul>
@@ -289,7 +289,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../r-workflow/r-introduction.html">An introduction to using R for Fire Needs Assessments</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./fna-overview.html">An overview of the FNA Process</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -311,26 +311,26 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../r-workflow/r-introduction.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">An introduction to using R for Fire Needs Assessments</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fire Needs Assessments: A landscape management tool</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../r-workflow/r-setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">R setup and packages</span></a>
+  <a href="./intro-to-fna.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">An introduction to Fire Needs Assessments</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../r-workflow/r-download.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Download LANDFIRE data</span></a>
+  <a href="./landfire-overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">How can LANDFIRE help?</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../r-workflow/r-mask-rasters.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">The Fire Needs Assessment Process</span></a>
+            <a href="./bps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fire Needs Assessments Datasets</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -338,28 +338,28 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../r-workflow/r-mask-rasters.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Mask and Analyze Rasters</span></a>
+  <a href="./bps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data: Biophysical Settings (BPS)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../r-workflow/r-combine.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Combine BPS and EVT Rasters</span></a>
+  <a href="./evt.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data: Existing Vegetation (EVT)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../r-workflow/r-tabular.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Working with the Tabular Data</span></a>
+  <a href="./fire-regimes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data: Fire Regimes</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../next-steps.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Next Steps</span></a>
+  <a href="./fna-overview.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">An overview of the FNA Process</span></a>
   </div>
 </li>
     </ul>
@@ -372,11 +372,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#welcome-to-the-r-based-fire-needs-assessment-tool" id="toc-welcome-to-the-r-based-fire-needs-assessment-tool" class="nav-link active" data-scroll-target="#welcome-to-the-r-based-fire-needs-assessment-tool">Welcome to the R-based Fire Needs Assessment tool</a></li>
-  <li><a href="#what-youll-find-here" id="toc-what-youll-find-here" class="nav-link" data-scroll-target="#what-youll-find-here">What you’ll find here</a></li>
-  <li><a href="#working-example" id="toc-working-example" class="nav-link" data-scroll-target="#working-example">Working example</a></li>
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting Started</a></li>
-  <li><a href="#disclaimer" id="toc-disclaimer" class="nav-link" data-scroll-target="#disclaimer">Disclaimer</a></li>
+  <li><a href="#an-overview-of-the-fire-needs-assessment-process" id="toc-an-overview-of-the-fire-needs-assessment-process" class="nav-link active" data-scroll-target="#an-overview-of-the-fire-needs-assessment-process">An overview of the fire needs assessment process</a></li>
+  <li><a href="#the-fire-needs-assessment-workflow" id="toc-the-fire-needs-assessment-workflow" class="nav-link" data-scroll-target="#the-fire-needs-assessment-workflow">The Fire Needs Assessment workflow</a>
+  <ul class="collapse">
+  <li><a href="#step-1-calculate-historical-acres-burned" id="toc-step-1-calculate-historical-acres-burned" class="nav-link" data-scroll-target="#step-1-calculate-historical-acres-burned">Step 1: Calculate Historical Acres Burned</a></li>
+  <li><a href="#step-2-understand-current-vegetation" id="toc-step-2-understand-current-vegetation" class="nav-link" data-scroll-target="#step-2-understand-current-vegetation">Step 2: Understand Current Vegetation</a></li>
+  <li><a href="#step-3-calculate-current-fire-need" id="toc-step-3-calculate-current-fire-need" class="nav-link" data-scroll-target="#step-3-calculate-current-fire-need">Step 3: Calculate Current Fire Need</a></li>
+  </ul></li>
+  <li><a href="#where-to-go-from-here" id="toc-where-to-go-from-here" class="nav-link" data-scroll-target="#where-to-go-from-here">Where to go from here?</a></li>
   </ul>
 </nav>
     </div>
@@ -386,7 +389,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Introduction to Fire Needs Analysis in R</h1>
+<h1 class="title">Creating a Fire Needs Assessment</h1>
 </div>
 
 
@@ -409,50 +412,72 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="welcome-to-the-r-based-fire-needs-assessment-tool" class="level2">
-<h2 class="anchored" data-anchor-id="welcome-to-the-r-based-fire-needs-assessment-tool">Welcome to the R-based Fire Needs Assessment tool</h2>
-<p>Do you work in R and want a reproducible, code-driven way to assess fire needs across your landscape? You’re in the right place.</p>
-<p>This site provides a step-by-step R workflow for conducting a Fire Needs Assessment using LANDFIRE datasets. Whether you’re looking to automate your analysis, explore ecological patterns, or replicate the ArcGIS Pro workflow in R, this guide is designed to help you get started—and go deeper.</p>
-<p>We believe in the power of transparent, repeatable code and invite the LANDFIRE community to build on this foundation. The examples here are practical, flexible, and designed to support real-world decision-making.</p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>We strongly recommend that before you run this code, you explore and understand the content and process provided in the rest of the LANDFIRE in Fire Needs Assessment website. This section of the site will give a brief overview and highlight what the code is intended to do, but it will not provide the level of context or information you can find in the rest of the website.</p>
-<p>At a minimum, please review the following sections: <a href="../intro-to-fna.html">an introduction to fire needs assessments</a>, <a href="../landfire-overview.html">an overview of the LANDFIRE program</a>, and all three data sections (<a href="../bps.html">BPS</a>, <a href="../evt.html">EVT</a>, and <a href="../fire-regimes.html">Fire Regimes</a>)</p>
-</div>
+<section id="an-overview-of-the-fire-needs-assessment-process" class="level2">
+<h2 class="anchored" data-anchor-id="an-overview-of-the-fire-needs-assessment-process">An overview of the fire needs assessment process</h2>
+<p>The Fire Needs Assessment process outlined in this website is organized into three key steps that guide users through understanding historical fire patterns to estimating current fire needs on their landscape. This structure helps users apply LANDFIRE data products in a meaningful way, whether through spatial analysis in ArcGIS or reproducible workflows in R.</p>
+<p>Each step builds on the previous one, moving from historical conditions to understanding current vegetation and finally to estimating fire needs. The graphic below illustrates this process.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/fna-process-overview.jpg" class="img-fluid figure-img" alt="Flowchart showing the three-step Fire Needs Assessment process: Step 1 - Historical Acres Burned; Step 2 - Current Vegetation; Step 3 - Current Fire Need, with sub-tasks listed under each step."></p>
+<figcaption>The Fire Needs Assessment process consists of three sequential steps that guide users through understanding historical fire patterns to estimating current fire needs using LANDFIRE datasets.</figcaption>
+</figure>
 </div>
 </section>
-<section id="what-youll-find-here" class="level2">
-<h2 class="anchored" data-anchor-id="what-youll-find-here">What you’ll find here</h2>
+<section id="the-fire-needs-assessment-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="the-fire-needs-assessment-workflow">The Fire Needs Assessment workflow</h2>
+<section id="step-1-calculate-historical-acres-burned" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-calculate-historical-acres-burned">Step 1: Calculate Historical Acres Burned</h3>
 <ul>
-<li><p><strong>Step 1: Setup</strong> Install required packages and define your Area of Interest (AOI) using a shapefile.</p></li>
-<li><p><strong>Step 2: Download LANDFIRE data</strong> Use R functions to access LANDFIRE products for your AOI.</p></li>
-<li><p><strong>Step 3: Process rasters</strong> Prepare your data for analysis by masking, transforming, and exporting.</p></li>
-<li><p><strong>Step 4: Export and summarize</strong> Generate CSVs and summary tables to support your fire needs assessment.</p></li>
+<li><strong>Examine Historical Vegetation</strong>
+<ul>
+<li>Determine how many acres of each LANDFIRE Biophysical Setting (BPS) were present on the landscape prior to European Colonization.</li>
+</ul></li>
+<li><strong>Calculate Acres Burned</strong>
+<ul>
+<li>Use the Fire Return Interval (FRI) to estimate how many acres of each BPS would have burned annually under historical conditions.</li>
+</ul></li>
 </ul>
 </section>
-<section id="working-example" class="level2">
-<h2 class="anchored" data-anchor-id="working-example">Working example</h2>
-<p>This walkthrough uses New York State as the AOI. You can follow along with the provided code or substitute your own shapefile to run the workflow on your landscape.</p>
-</section>
-<section id="getting-started" class="level2">
-<h2 class="anchored" data-anchor-id="getting-started">Getting Started</h2>
+<section id="step-2-understand-current-vegetation" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-understand-current-vegetation">Step 2: Understand Current Vegetation</h3>
 <ul>
-<li>Check your R, R-Studio and package versions. We recommend running the most current version of R or R-Studio</li>
-<li>Check file paths - is your your R-Studio project correctly set up?</li>
-<li>Let us know if you run into code bugs: <a href="mailto:landfire@tnc.org">email the TNC LANDFIRE team</a>.</li>
+<li><strong>Examine Existing Vegetation</strong>
+<ul>
+<li>Look at LANDFIRE Existing Vegetation Type (EVT) for your landscape and identify and exclude vegetation classes that are not burnable or relevant to fire needs (e.g.&nbsp;agriculture, urban, barren).</li>
+</ul></li>
+<li><strong>Match Vegetation Extents</strong>
+<ul>
+<li>Use the adjusted EVT layer to mask out non-burnable areas and focus on burnable pixels within each BPS/</li>
+</ul></li>
 </ul>
 </section>
-<section id="disclaimer" class="level2">
-<h2 class="anchored" data-anchor-id="disclaimer">Disclaimer</h2>
-<p>The code provided here is offered as-is, without warranty or guarantee of accuracy, functionality, or fitness for a particular purpose. It may not perform identically across all systems, versions of R, RStudio, or associated packages. This content is intended for educational and illustrative purposes only. Users are responsible for validating and adapting the code to suit their specific needs and environments.</p>
+<section id="step-3-calculate-current-fire-need" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-calculate-current-fire-need">Step 3: Calculate Current Fire Need</h3>
+<ul>
+<li><strong>Calculate Fire Return Intervals</strong>
+<ul>
+<li>Apply historical FRI values to the current vegetation distribution to estimate fire needs under present conditions.</li>
+</ul></li>
+<li><strong>Adjust for Local Conditions</strong>
+<ul>
+<li>Modify fire return intervals based on local knowledge, ecological goals, or additional analysis to better reflect management needs.</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="where-to-go-from-here" class="level2">
+<h2 class="anchored" data-anchor-id="where-to-go-from-here">Where to go from here?</h2>
+<p>We have created sections to walk you through the FNA process from start to finish using either ArcGIS Pro and Microsoft Excel or using code in R-studio. Please click a link below or navigate via the top navigation bar to begin exploring the FNA process in the tool of your choice.</p>
+<ul>
+<li><a href="https://landfire-tnc.github.io/LANDFIRE_FNA/ArcGIS/historical-vegetation.html"><strong>Explore the ArcGIS Pro workflow</strong></a>
+<ul>
+<li>For users working primarily in ArcGIS, this workflow guides you through spatial analysis using ArcGIS Pro geoprocessing tools.</li>
+</ul></li>
+<li><a href="https://landfire-tnc.github.io/LANDFIRE_FNA/r-workflow/r-introduction.html"><strong>Explore the R workflow</strong></a>
+<ul>
+<li>For users working in R, this workflow provides reproducible code and documentation for conducting the FNA using R-based tools.</li>
+</ul></li>
+</ul>
 
 
 </section>
@@ -880,11 +905,11 @@ Important
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./fire-regimes.html" class="pagination-link" aria-label="Data: Fire Regimes">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Data: Fire Regimes</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../r-workflow/r-setup.html" class="pagination-link" aria-label="R setup and packages">
-        <span class="nav-page-text">R setup and packages</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

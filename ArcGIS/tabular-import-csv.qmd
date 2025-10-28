@@ -1,0 +1,61 @@
+---
+title: "FNA Process: Bring the CSV into ArcGIS Pro"
+author: "Sarah Hagen"
+toc: true
+format: html
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+## Bringing your CSV file back into ArcGIS Pro
+
+After saving your worksheet as a CSV file, you can bring the data back
+into ArcGIS Pro and join it to your EVT raster.
+
+### Step-by-step process
+
+*Screenshots of the process are included below the written instructions
+for those who find them useful.*
+
+1.  **Import the CSV file into ArcGIS Pro**
+
+    -   Open ArcGIS Pro and navigate to the Catalog pane.
+
+    -   Right click on Folders and select Add Folder Connection, then
+        navigate to the location of your CSV file.
+
+    -   Drag the CSV file into your project.
+
+2.  **Join the CSV data to the EVT raster**
+
+    -   Use the Join Field tool found in the Data Management toolbox
+        under Joins and Relates.
+        -   For the input table, select your masked EVT raster.
+
+        -   For the input field, select the EVT name field.
+
+        -   For the join table, select your imported CSV file.
+
+        -   For the join field, select the EVT name field in the CSV
+            file.
+
+        -   Transfer the fields for average FRI, acres, and acres burned
+            per year.
+
+3.  **Display the EVT raster** You can now display the EVT raster based
+    on the average FRI or the acres burned per year field. This allows
+    you to visually compare it to the BPS raster and analyze historical
+    vegetation needs based on historical vegetation and fire regimes.
+
+#### Screenshots for bringing your CSV file back into ArcGIS Pro
+&nbsp;
+![Drag the CSV file into the ArcGIS Pro Contents
+pane.](../images/28-add-csv-arcgis-pro.png){fig-alt="The ArcGIS Pro window. The catalog pane is open on the right side of the screen. A large black arrow points from the catalog pane on the far right to the contents pane on the far left indicating that you should drag the highlighted CSV file across to the catalog pane."}
+
+ 
+
+![Join the CSV attributes back to the EVT
+data.](../images/29-join-csv-fields.png){fig-alt="The ArcGIS Pro Join Field tool showing the Input Table as EVT_Vegetated, the Input Field as EVT_NAME, the Join Table as the CSV file, the Join Field as EVT, and the Transfer Fields as FRI, Acres, Acres_Year, PCT_Year"}
+
+ 

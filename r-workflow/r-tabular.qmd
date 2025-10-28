@@ -8,14 +8,12 @@ toc: true
 
 This section walks you through reviewing and preparing the final output table for analysis.
 You'll clean the data, calculate the fire return metrics, and summarize results by vegetation type.
-This process mirrors the Excel-based workflow shown in the [Working with the tabular data](../tabular-data.qmd).
 
-# Prep the Data Frame for Analysis
+## 1. Prep the Data Frame for Analysis
 
 ::: callout-important
 **Save a copy before editing!**\
-Always save your table as a copy before making changes to avoid overwriting the original `.csv` or `.dbf` file.
-You can load a copy and perform calculations safely.
+Always save your table as a copy before making changes to avoid overwriting the original `.csv` or `.dbf` file. You can load a copy and perform calculations safely.
 :::
 
 This code will:
@@ -23,7 +21,6 @@ This code will:
 1.  **Open the final data frame** - Open the table in R and list the column names.
 
 2.  **Identify Key Fields** - The fields we're most interested in are:
-
     -   **EVT_NAME**
     -   **BPS_NAME**
     -   **FRI_ALLFIR**
@@ -33,7 +30,6 @@ This code will:
 You may also consider keeping other FRI and fire severity fields and other EVT or BpS classification fields.
 
 3.  **Delete Unnecessary Fields** - Retain all fields except:
-
     -   **BpS_Value** value field
     -   **EVT_Value** value field
     -   Any fields associated with the colormap, such as **R**, **G**, **B**, **RED**, **GREEN**, **BLUE** fields
@@ -49,20 +45,20 @@ df_cleaned <- df %>%
 write_csv(df_cleaned, "outputs/Combined_BpS_EVT_Cleaned.csv")
 ```
 
-## Calculating EVT acres in R
+## 2. Calculating EVT acres in R
 
-After cleaning the attribute table, the next step is to calculate the number of acres represented by each EVT (Existing Vegetation Type).
-This mirrors the Excel workflow where a new column is added based on the pixel count.
+After cleaning the attribute table, the next step is to calculate the number of acres represented by each EVT (Existing Vegetation Type). This mirrors the Excel workflow where a new column is added based on the pixel count.
 
 ### Why this calculation matters
 
-Each row in the attribute table represents a group of pixels.
-To understand the spatial extent of each EVT, we convert the pixel count (COUNT) into acres.
-This allows for meaningful comparisons and summaries across vegetation types.
+Each row in the attribute table represents a group of pixels. To understand the spatial extent of each EVT, we convert the pixel count (COUNT) into acres. This allows for meaningful comparisons and summaries across vegetation types.
 
 In Excel, the formula used is: = \[COUNT\] \* 900 \* 0.000247
 
-Where: - COUNT is the number of pixels - 900 is the area of each pixel in square meters (30m × 30m) - 0.000247 is the conversion factor from square meters to acres
+Where: 
+  - COUNT is the number of pixels 
+  - 900 is the area of each pixel in square meters (30m × 30m) 
+  - 0.000247 is the conversion factor from square meters to acres
 
 In R, we use the same logic, but with slightly more precision:
 
@@ -75,25 +71,20 @@ df_cleaned <- df_cleaned %>%
 )
 ```
 
-## Create a grouped summary table
+## 3. Create a grouped summary table
 
-In Excel, pivot tables are used to summarize data when multiple rows represent the same category — in this case, when the same EVT_NAME appears across multiple rows due to different combinations with BPS values.
-The pivot table aggregates these rows to give meaningful totals and averages.
+In Excel, pivot tables are used to summarize data when multiple rows represent the same category — in this case, when the same EVT_NAME appears across multiple rows due to different combinations with BPS values. The pivot table aggregates these rows to give meaningful totals and averages.
 
 In R, we replicate this functionality using a grouped summary table with dplyr.
 
 This code will:
 
 1.  **Summarize the attribute table** by EVT_Name, calculating:
-
     -   *Total Acres -* (sum(ACRES))
-
     -   *Total_Acres_Per_Year* - (sum(Acres_Per_Year))
-
     -   *Average FRI* - (mean(FRI_ALLFIR))
 
 2.  **Create a summary table** with:
-
     -   Total area covered by each existing vegetation type.
     -   Estimated annual fire needs based on historical fire return intervals.
     -   Average fire return interval for each vegetation type.
@@ -115,22 +106,19 @@ print(summary_table)
 write_csv(summary_table, "outputs/EVT_Summary.csv")
 ```
 
-## Creating the weighted average fire return interval
+## 4. Creating the weighted average fire return interval
 
-When summarizing FRI for each EVT, each row in the dataset represents a different number of acres -- some rows represent more area than others.
-To get a meaningful average, we need to weight the FRI values by the number of acres they represent.
-This gives us a weighted average FRI, which better reflects the fire regime across the full extent of each vegetation type.
+When summarizing FRI for each EVT, each row in the dataset represents a different number of acres -- some rows represent more area than others. To get a meaningful average, we need to weight the FRI values by the number of acres they represent. This gives us a weighted average FRI, which better reflects the fire regime across the full extent of each vegetation type.
 
 This code will:
 
-1.  **Group the data** by vegetation type.
+  1.  **Group the data** by vegetation type.
 
-2.  **Calculate total acres** for each EVT.
+  2.  **Calculate total acres** for each EVT.
 
-3.  **Sum the estimated annual acres burned**.
+  3.  **Sum the estimated annual acres burned**.
 
-4.  **Provide a weighted average FRI**, where each FRI value is multiplied by the number of acres it represents.
-    The result is divided by the total acres to get the average weighted by area.
+  4.  **Provide a weighted average FRI**, where each FRI value is multiplied by the number of acres it represents. The result is divided by the total acres to get the average weighted by area.
 
 ``` r
 
@@ -152,8 +140,5 @@ write_csv(weighted_summary, "../Outputs/Weighted_FRI_Summary.csv")
 
 ## What next?
 
-This concludes the R-based Fire Needs Assessment workflow.
-By using reproducible code and LANDFIRE datasets, you've built a flexible analysis that mirrors the ArcGIS workflow while offering automation and customization.
-Whether you're using the outputs of this analysis as they are or exploring further using some of the options discussed on the [Next Steps](../next-steps.qmd) page, this R workflow provides a solid foundation for ecological insights and decision-making.
-We hope it supports your work—and grows with it.
+This concludes the R-based Fire Needs Assessment workflow. By using reproducible code and LANDFIRE datasets, you've built a flexible analysis that mirrors the ArcGIS workflow while offering automation and customization. Whether you're using the outputs of this analysis as they are or exploring further using some of the options discussed on the [Next Steps](../next-steps.qmd) page, this R workflow provides a solid foundation for ecological insights and decision-making. We hope it supports your work—and grows with it.
 

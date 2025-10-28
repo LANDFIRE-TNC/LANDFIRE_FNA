@@ -1,76 +1,79 @@
 ---
-title: "Why Fire Needs Assessments"
+title: " Fire Needs Assessments: A Landscape Management Tool"
 author: "Sarah Hagen, Jim Smith"
 toc: true
 format: html
 ---
+&nbsp;
+<div class="logo-row">
+<div class="flex-logo"><img src="images/usda-logo-color.png" alt="USDA logo"/></div><div class="flex-logo"><img src="images/green usfas.png" alt="US Forest Service logo"/></div><div class="flex-logo"><img src="images/DOI.png" alt="US Department of the Interior logo"/></div>
+<div class="flex-logo"><img src="images/LANDFIRE.png" alt="LANDFIRE program logo"/></div>
+</div>
+
+::: callout
+[LANDFIRE](https://www.landfire.gov/), *Landscape Fire and Resource Management Planning Tools*, is a shared interagency wildland fire management data program across the United States and Territories.
+Leadership, management, and oversight are through the U.S.
+Department of Agriculture Forest Service - Fire and Aviation Management and the U.S.
+Department of the Interior - Office of Wildland Fire.
+
+LANDFIRE provides more than twenty landscape-scale geospatial products of biological and ecological data, including data such as (900+) vegetation types and (13/40) fire behavior fuel models that support all-lands planning, fire and natural resources management, operations, analyses, and assessments.
+
+The LANDFIRE Project team is: [USGS EROS](https://www.usgs.gov/centers/eros), EROS Technical Support Services Contract (KBR), [The Nature Conservancy](https://www.nature.org/en-us/), [USDA Forest Service (Rocky Mountain Research Station) RMRS](https://research.fs.usda.gov/rmrs), and [Forest Inventory and Analysis (FIA)](https://research.fs.usda.gov/programs/fia).
+
+LANDFIRE Partners are: [USGS Gap Analysis](https://www.usgs.gov/programs/gap-analysis-project), [USGS National Land Imaging Program](https://www.usgs.gov/programs/national-land-imaging-program).
+
+Learn more about LANDFIRE’s mission on the [LANDFIRE Program website](https://www.landfire.gov/about-landfire).
+
+You can also learn more about each of the LANDFIRE datasets we will be using in the FNA process on our companion [LANDFIRE 101 website](https://landfire-tnc.github.io/LANDFIRE_101/).
+:::
+
+## Why Fire Needs Assessments?
 
 The frequency and severity of wildfires are changing around the country.
 To understand their impact on the landscape, federal agencies and states are conducting fire needs assessments.
 Fire needs assessments help fire stakeholders understand where, what type of, and how much fire needs to occur to reduce the destructive effects of wildfire and restore or maintain ecosystem health and resiliency.
 
+Fire is a natural and necessary process in many ecosystems, but its role can vary widely depending on landscape conditions, ecological goals, and management history.
+In some places, fire is missing where it’s needed.
+In others, it’s occurring too frequently or with damaging severity.
+Understanding where and how fire should be applied—or avoided—is essential for effective landscape management.
+
+A Fire Needs Assessment (FNA) helps land managers and ecologists evaluate the ecological role of fire across their landscapes.
+It provides a spatial framework for identifying where fire can support ecological health, and where it may be causing harm.
+
+### Do you have questions like these?
+
+-   Is ecologically beneficial fire lacking on your landscape?
+-   Is fire damaging your landscape?
+-   Where do I need more fire to maintain or improve ecological condition?
+-   Where do I need less fire to maintain or improve ecological condition?
+
+If any of these apply to you, a Fire Needs Assessment might be useful.
+
 ## What is a Fire Needs Assessment?
 
-A fire needs assessment (FNA) is a structured, science-based process used to evaluate where and to what extent fire is needed on a landscape to restore or maintain ecological integrity, reduce wildfire risk, and meet land management objectives.
-It integrates ecological principles, historical fire regimes, current vegetation conditions, and spatial data to identify areas where fire—either through prescribed burning or managed wildfire—can be applied beneficially.
-FNAs help land managers prioritize treatments by assessing the *ecological need* for fire, not just the *risk* of fire, which is a critical distinction in fire-adapted ecosystems.
+An Fire Needs Assessment is a spatial analysis that identifies where fire is needed—or not—to support ecological condition.
+It integrates fire history, vegetation data, and ecological models to guide fire-related decisions.
 
-The process typically involves spatial analysis using GIS to compare current vegetation and fire regime conditions against reference conditions (often derived from models like LANDFIRE or local ecological knowledge).
-This comparison highlights areas of departure—where fire has been excluded or altered—and helps quantify the type, amount, and frequency of fire needed to move the system toward desired conditions.
-FNAs are essential for aligning fire management with ecological goals, supporting NEPA planning, and justifying funding for prescribed fire programs.
-By grounding fire planning in ecological need, FNAs promote more strategic, effective, and defensible fire management decisions.
-Later in this website, we will showcase some examples of fire needs assessments and what programs have done with them.
+## Why would you create a Fire Needs Assessment?
 
-## The importance of fire needs assessments
+-   To prioritize areas for prescribed fire, fuels treatments, or restoration.
+-   To identify where fire is missing or excessive.
+-   To support planning and collaboration across landscapes.
 
-Fire needs assessments are crucial for several reasons:
+## How would you create a Fire Needs Assessment?
 
-1.  **They elevate ecological need as a planning priority**: FNAs shift the focus from fire *risk* to fire *need*, helping managers advocate for fire where it’s ecologically beneficial—even in places where fire has long been absent.
+Creating a Fire Needs Assessment involves using spatial data and ecological models to evaluate where fire is needed—or not—across a landscape.
+The process compares current vegetation and fire regime conditions to reference conditions, highlighting areas where fire has been excluded or altered.
 
-2.  **They support landscape-scale restoration**: FNAs help identify patterns of fire exclusion and suppression across large areas, guiding coordinated efforts to restore fire regimes that support biodiversity, resilience, and ecosystem health.
+LANDFIRE datasets provide foundational inputs, such as vegetation type, fire return intervals, and departure metrics, that help identify ecological fire needs and guide restoration, prescribed fire planning, and landscape-scale prioritization.
 
-3.  **They strengthen the case for prescribed fire**: By quantifying ecological need, FNAs provide a defensible rationale for prescribed fire programs — supporting NEPA documentation, funding proposals, interagency planning, and more.
+## Want to get started?
 
-4.  **They foster collaboration and shared understanding**: FNAs offer a common language and framework for land managers, scientists, and stakeholders to discuss fire needs, priorities, and trade-offs across jurisdictions.
+Explore the rest of this site to dive into the data, tools, and steps for building your own Fire Needs Assessment using LANDFIRE products.
 
-5.  **They help tell the story of fire as a healing force**: FNAs provide the data and context needed to communicate with the public about why fire is essential—not just dangerous—and how it can be used to restore landscapes and protect communities.
-
-### Prescribed Fire as a Restoration Tool
-
-One of the most important applications of a fire needs assessment is to effectively plan prescribed fire programs.
-Prescribed fire is not only a tool for maintaining landscapes but also for restoring them.
-Here’s how:
-
-1.  **Ecosystem Restoration**: Prescribed fire plays a pivotal role in restoring and maintaining healthy ecosystems.
-    It helps in the regeneration of native plant species, which in turn supports the wildlife that depends on these plants.
-
-2.  **Wildlife Habitat Improvement**: Numerous wildlife species depend on fire-maintained habitats for their survival.
-    Prescribed fire helps create a mosaic of different habitat types, which is essential for biodiversity.
-
-3.  **Invasive Species Control**: Fire is an effective tool for controlling invasive species that outcompete native plants.
-    By reducing the presence of invasive species, prescribed fire helps restore the natural balance of ecosystems.
-
-4.  **Reducing Fire Hazards**: By reducing the accumulation of combustible materials, prescribed fire helps lower the risk of severe wildfires.
-    This is particularly important in areas prone to wildfires.
-
-5.  **Promoting Forest Health**: Fire helps in thinning dense forests, which reduces competition among trees and promotes the growth of healthier, more resilient forests.
-
-6.  **Carbon Management**: Prescribed fire can help manage carbon levels in the soil and vegetation, contributing to the overall health of the ecosystem.
-
-## Regional Considerations
-
-Understanding fire return intervals and historical fire patterns is essential for various regions across the United States:
-
-1.  **Northeast US**: In the Northeast, fire needs assessments help manage forest health and reduce the risk of uncontrolled wildfires.
-    Historical fire data can guide the use of prescribed burns to maintain biodiversity and prevent the spread of invasive species.
-
-2.  **Southeast US**: The Southeast has a long history of fire-adapted ecosystems.
-    Fire needs assessments are crucial for maintaining the health of pine forests and grasslands.
-    Understanding fire return intervals helps in planning prescribed burns to mimic natural fire cycles.
-
-3.  **Central US**: In the Central US, fire needs assessments are used to manage prairies and savannas.
-    Historical fire data helps in understanding the natural fire regimes and planning restoration activities to maintain these ecosystems.
-
-4.  **Western US**: The Western US faces frequent and severe wildfires.
-    Fire needs assessments are essential for reducing wildfire risks and managing forest health.
-    Understanding historical fire regimes helps in planning fuel reduction treatments and prescribed burns.
+::: callout
+<div class="tnc-logo-contain">
+<img src="images/site-header-tnc-logo.png" alt="The Nature Conservancy logo" class="tnc-logo"/> <div class="tnc-text"><p>The Nature Conservancy's LANDFIRE Team created this website under a Cooperative Agreement with the LANDFIRE Program.</p></div>
+</div>
+:::

@@ -7,11 +7,12 @@ format: html
 
 ## Combining EVT and BPS rasters
 
-To understand how Biophysical Settings (BPS), Existing Vegetation Type (EVT), and historical fire return intervals work together on the landscape, you need to combine the new EVT and BPS rasters. This process requires a Spatial Analyst license in ArcGIS Pro.
+To understand how Biophysical Settings (BPS), Existing Vegetation Type (EVT), and historical fire return intervals work together on the landscape, you need to combine the new EVT and BPS rasters.
+This process requires a Spatial Analyst license in ArcGIS Pro.
 
 ### Step-by-step process
 
-💡 *Screenshots of the process are included below the written instructions for those who find them useful.*
+*Screenshots of the process are included below the written instructions for those who find them useful.*
 
 1.  Navigate to the Spatial Analyst toolbox in ArcGIS Pro.
 
@@ -41,44 +42,34 @@ This process will help you join fields and start understanding how BPS, EVT, and
 
 #### Screenshots for combining the BPS and EVT rasters
 
-![Use the EVT raster to mask your BpS raster. Remember to set appropriate environment settings.](images/12-extract-by-mask-vegetated.png){fig-alt="The ArcGIS Pro window showing the locationof the Combine tool within the geospatial toolbox. The tool is in Spatial Analyst Tools, Local, Combine."}
+  ![Use the EVT raster to mask your BpS raster. Remember to set appropriate environment settings.](../images/12-extract-by-mask-vegetated.png){fig-alt="The ArcGIS Pro window showing the locationof the Combine tool within the geospatial toolbox. The tool is in Spatial Analyst Tools, Local, Combine."}
 
  
 
-![Add the BpS and EVT rasters to be combined. Remember to set appropriate environment settings.](images/14-combine-rasters.png){fig-alt="The ArcGIS Pro window showing the Combine Geoprocessing tool. The input rasters are our BPS_Vegetated and EVT_Vegetated rasters, the output raster is BPS_EVT_Vegetated."}
+![Add the BpS and EVT rasters to be combined. Remember to set appropriate environment settings.](../images/14-combine-rasters.png){fig-alt="The ArcGIS Pro window showing the Combine Geoprocessing tool. The input rasters are our BPS_Vegetated and EVT_Vegetated rasters, the output raster is BPS_EVT_Vegetated."}
 
 ## Adding attributes to the combined raster
 
-After running the combine tool, you will get a raster attribute table with a few columns, such as Object ID, Value, Count, and the value fields from the BpS and EVT rasters. To make this data useful for analysis, you need to add the relevant attributes. This involves using the Join Field tool twice: once to join the BpS and Fire Return Interval values, and once to join the EVT values
+After running the combine tool, you will get a raster attribute table with a few columns, such as Object ID, Value, Count, and the value fields from the BpS and EVT rasters.
+To make this data useful for analysis, you need to add the relevant attributes.
+This involves using the Join Field tool twice: once to join the BpS and Fire Return Interval values, and once to join the EVT values
 
 ### Joining the BPS and fire regime fields
 
-💡 *Screenshots of the process are included below the written instructions for those who find them useful.*
+*Screenshots of the process are included below the written instructions for those who find them useful.*
 
 1.  **Navigate to the Join Field Tool**
-
     -   Go to the Data Management toolbox in ArcGIS Pro.
-
     -   Navigate to Joins and Relates -\> Join Fields.
-
 2.  **Set Input Table**
-
     -   For the input table, choose the output of your combine tool.
-
 3.  **Select Input Field**
-
     -   For the Input field, first choose the BPS value field. This will allow you to add the BPS name and fire regime information first.
-
 4.  **Select Join Table**
-
     -   For the Join Table, select your new BPS raster (the same one you used for the combine).
-
 5.  **Select Join Field**
-
     -   For the Join Field, select the value field. This is the field in the BPS raster that will be common between the combine and the BPS raster.
-
 6.  **Transfer Fields**
-
     -   Transfer the following fields, either by selecting transfer fields or using field mapping (you can change this with the drop-down arrow):
         -   **BPS_CODE**
 
@@ -91,7 +82,6 @@ After running the combine tool, you will get a raster attribute table with a few
         -   The new acre fields you created earlier:
 
             -   **Acres**
-
             -   **Acres_Year**
 
 ::: callout-note
@@ -100,26 +90,26 @@ You can add other fire regime fields if you want, including information on Fire 
 
 #### Screenshots for joining the BPS and fire regime fields
 
-![Join the BpS and Fire Regime fields using the Join Field tool.](images/15-join-bps-fields.png){fig-alt="The ArcGIS Pro window showing the Join Field Geoprocessing tool. The input table is our BPS_EVT_Vegetated raster, the Input field is our BPS_Vegetated field, the Join Table is our BPS_Vegetated raster, the Join Field is Value, The Transfer Fields are BPS_CODE, BPS_NAME, GROUPVEG, FRI_ALLFIR, Acres, and Acres_Year."}
+![Join the BpS and Fire Regime fields using the Join Field tool.](../images/15-join-bps-fields.png){fig-alt="The ArcGIS Pro window showing the Join Field Geoprocessing tool. The input table is our BPS_EVT_Vegetated raster, the Input field is our BPS_Vegetated field, the Join Table is our BPS_Vegetated raster, the Join Field is Value, The Transfer Fields are BPS_CODE, BPS_NAME, GROUPVEG, FRI_ALLFIR, Acres, and Acres_Year."}
 
-&nbsp;
+ 
 
 ### Adding EVT Values
 
-💡 *Screenshots of the process are included below the written instructions for those who find them useful.* To add EVT fields, the process is the same, but you will need to change a few settings.
+*Screenshots of the process are included below the written instructions for those who find them useful.* To add EVT fields, the process is the same, but you will need to change a few settings.
 
 ::: callout-tip
-To re-run a tool in ArcGIS Pro with the same settings and parameters, you can use the history pane, which will show you all the tools you have run in this project in the past. The History Pane should also open when you open the Geoprocessing pane and run any Geoprocessing tool. You can use this to open the Join Field tool you just ran and change a few settings, rather than starting the tool from scratch.
+To re-run a tool in ArcGIS Pro with the same settings and parameters, you can use the history pane, which will show you all the tools you have run in this project in the past.
+The History Pane should also open when you open the Geoprocessing pane and run any Geoprocessing tool.
+You can use this to open the Join Field tool you just ran and change a few settings, rather than starting the tool from scratch.
 :::
 
 1.  **Input Field**
     -   Leave the Input Table and the Join Field the same (assuming you did not change the name of the Value field in either your EVT or BPS raster).
 
     -   Change the Input Field to the field in the combine that contains the values of your EVT raster.
-
 2.  **Join Table**
     -   Select your EVT raster used in the combine.
-
 3.  **Transfer Fields**
     -   Transfer the following fields:
         -   **EVT_NAME**
@@ -133,5 +123,5 @@ To re-run a tool in ArcGIS Pro with the same settings and parameters, you can us
 This process will enrich your combined raster with the necessary attributes, allowing you to analyze how BPS, EVT, and historic fire return intervals interact on the landscape.
 
 #### Screenshots for joining the BPS and fire regime fields
-
-![Join the EVT values using the Join Field tool.](images/16-join-evt-fields.png){fig-alt="The ArcGIS Pro window showing the Join Field Geoprocessing tool. The input table is our BPS_EVT_Vegetated raster, the Input field is our EVT_Vegetated field, the Join Table is our EVT_Vegetated raster, the Join Field is Value, The Transfer Fields are EVT_NAME, EVT_LF, EVT_PHYS, EVT_GP_N, and the colormap fields."}
+&nbsp;
+![Join the EVT values using the Join Field tool.](../images/16-join-evt-fields.png){fig-alt="The ArcGIS Pro window showing the Join Field Geoprocessing tool. The input table is our BPS_EVT_Vegetated raster, the Input field is our EVT_Vegetated field, the Join Table is our EVT_Vegetated raster, the Join Field is Value, The Transfer Fields are EVT_NAME, EVT_LF, EVT_PHYS, EVT_GP_N, and the colormap fields."}
