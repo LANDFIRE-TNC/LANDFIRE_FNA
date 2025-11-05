@@ -9,9 +9,9 @@ format: html
 
 There are many ways to refine your fire needs assessment once you start understanding fire regimes on your landscape. We encourage you to explore other fire needs assessments and think about ways you can apply these approaches on your landscape. The following web app highlights fire needs assessments from around the US. Click on each state to get a pop up with details such as the area, title, year, author, and links to the assessments.
 
-```{=html}
-<iframe src="https://www.arcgis.com/apps/dashboards/c208d725c22b48069e0542742956a7d5" width="90%" height="600px" style="border:1;" allowfullscreen="" loading="lazy"></iframe>
-```
+::: {#dashboard-container}
+<!-- The iframe will be injected here based on screen size -->
+:::
 
 
 ### A few highlighted approaches
@@ -44,3 +44,49 @@ For more information on the BpS models and ST-Sim, visit the [LANDFIRE BpS Model
 There are many ways to refine your fire needs assessment once you start understanding fire regimes on your landscape.
 Feel empowered to use these data and think about them in the way that makes the most sense for your needs.
 You can also [contact the LANDFIRE team](mailto:landfire@tnc.org) to discuss and explore other options for creating a fire needs assessment for your landscape.
+
+
+
+
+``{=html}
+<script>
+  function loadResponsiveDashboard() {
+    const container = document.getElementById("dashboard-container");
+    if (!container) return;
+
+    const width = window.innerWidth;
+    container.innerHTML = ""; // Clear previous content
+
+    if (width < 600) {
+      // Show a link instead of iframe on mobile
+      const link = document.createElement("a");
+      link.href = "https://www.arcgis.com/apps/dashboards/c208d725c22b48069e0542742956a7d5";
+      link.textContent = "Click to view the Fire Needs Assessment Dashboard on ArcGIS Online";
+      link.target = "_blank";
+      link.style.display = "block";
+      link.style.fontSize = "1.2em";
+      link.style.margin = "1em 0";
+      container.appendChild(link);
+    } else {
+      // Show iframe on tablet and desktop
+      const iframe = document.createElement("iframe");
+      iframe.src = "https://www.arcgis.com/apps/dashboards/c208d725c22b48069e0542742956a7d5";
+      iframe.style.width = "100%";
+      iframe.style.height = "600px";
+      iframe.style.border = "1px solid #ccc";
+      iframe.setAttribute("allowfullscreen", "");
+      iframe.setAttribute("loading", "lazy");
+      container.appendChild(iframe);
+    }
+  }
+
+  window.addEventListener("load", loadResponsiveDashboard);
+  window.addEventListener("resize", () => {
+    clearTimeout(window.dashboardResizeTimer);
+    window.dashboardResizeTimer = setTimeout(loadResponsiveDashboard, 300);
+  });
+</script>
+```
+
+
+

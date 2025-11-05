@@ -26,7 +26,7 @@ This site will walk you through working with LANDFIRE spatial data in ArcGIS Pro
     
 ::: callout-note
 Don't forget to set the environment settings in the tool. Most importantly, make sure the spatial reference of your output raster is correct and set a snap raster (e.g. the BPS_CONUS raster) to ensure your pixel extents match. This will be important later when you use one raster to process another.
-::
+:::
 
 2.  **Estimate historical fire return intervals**
 

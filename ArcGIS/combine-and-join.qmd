@@ -42,7 +42,7 @@ This process will help you join fields and start understanding how BPS, EVT, and
 
 #### Screenshots for combining the BPS and EVT rasters
 
-  ![Use the EVT raster to mask your BpS raster. Remember to set appropriate environment settings.](../images/12-extract-by-mask-vegetated.png){fig-alt="The ArcGIS Pro window showing the locationof the Combine tool within the geospatial toolbox. The tool is in Spatial Analyst Tools, Local, Combine."}
+  ![Use the EVT raster to mask your BpS raster. Remember to set appropriate environment settings.](../images/13-combine-tool.png){fig-alt="The ArcGIS Pro window showing the location of the Combine tool within the geospatial toolbox. The tool is in Spatial Analyst Tools, Local, Combine."}
 
  
 

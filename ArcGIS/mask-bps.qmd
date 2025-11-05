@@ -44,4 +44,4 @@ This process will help you refine your analysis by focusing only on the relevant
 
 #### Screenshot for masking the BPS raster with the EVT raster
 &nbsp;
-![Use the EVT raster to mask your BpS raster. Remember to set appropriate environment settings.](images/12-extract-by-mask-vegetated.png){fig-alt="The ArcGIS Pro window showing the Extract by Mask Geoprocessing tool. The input raster is our BPS_Output raser, the Input raster or feature mask data is the EVT_Output data, the output raster is BPS_Vegetated, the extraction area is Inside and the X and Y Extents are shown."}
+![Use the EVT raster to mask your BpS raster. Remember to set appropriate environment settings.](../images/12-extract-by-mask-vegetated.png){fig-alt="The ArcGIS Pro window showing the Extract by Mask Geoprocessing tool. The input raster is our BPS_Output raser, the Input raster or feature mask data is the EVT_Output data, the output raster is BPS_Vegetated, the extraction area is Inside and the X and Y Extents are shown."}

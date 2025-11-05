@@ -126,11 +126,19 @@ body {
     min-height: 90px; /* Set a minimum height for headers */
   }
   
-  .flex-logo {
-    flex: 1 1 24%;
+ .flex-logo {
+    flex: 1 1 20%;
+    max-width: 20%;
   }
-  
-  .tnc-logo-contain {
+
+  .flex-logo img {
+    max-width: 80%; /* Shrinks the logo inside the box */
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+
+ .tnc-logo-contain {
     padding: 1%;
     flex-wrap: nowrap;
   }
