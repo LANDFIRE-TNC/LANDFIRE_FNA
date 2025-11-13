@@ -428,11 +428,14 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#combining-evt-and-bps-rasters" id="toc-combining-evt-and-bps-rasters" class="nav-link active" data-scroll-target="#combining-evt-and-bps-rasters">Combining EVT and BPS rasters</a>
   <ul class="collapse">
   <li><a href="#step-by-step-process" id="toc-step-by-step-process" class="nav-link" data-scroll-target="#step-by-step-process">Step-by-step process</a></li>
+  <li><a href="#screenshots-for-combining-the-bps-and-evt-rasters" id="toc-screenshots-for-combining-the-bps-and-evt-rasters" class="nav-link" data-scroll-target="#screenshots-for-combining-the-bps-and-evt-rasters">Screenshots for combining the BPS and EVT rasters</a></li>
   </ul></li>
   <li><a href="#adding-attributes-to-the-combined-raster" id="toc-adding-attributes-to-the-combined-raster" class="nav-link" data-scroll-target="#adding-attributes-to-the-combined-raster">Adding attributes to the combined raster</a>
   <ul class="collapse">
   <li><a href="#joining-the-bps-and-fire-regime-fields" id="toc-joining-the-bps-and-fire-regime-fields" class="nav-link" data-scroll-target="#joining-the-bps-and-fire-regime-fields">Joining the BPS and fire regime fields</a></li>
+  <li><a href="#screenshots-for-joining-the-bps-and-fire-regime-fields" id="toc-screenshots-for-joining-the-bps-and-fire-regime-fields" class="nav-link" data-scroll-target="#screenshots-for-joining-the-bps-and-fire-regime-fields">Screenshots for joining the BPS and fire regime fields</a></li>
   <li><a href="#adding-evt-values" id="toc-adding-evt-values" class="nav-link" data-scroll-target="#adding-evt-values">Adding EVT Values</a></li>
+  <li><a href="#screenshots-for-joining-the-bps-and-fire-regime-fields-1" id="toc-screenshots-for-joining-the-bps-and-fire-regime-fields-1" class="nav-link" data-scroll-target="#screenshots-for-joining-the-bps-and-fire-regime-fields-1">Screenshots for joining the BPS and fire regime fields</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -493,9 +496,15 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ol>
 <p>This process will help you join fields and start understanding how BPS, EVT, and historic fire return intervals interact on the landscape, providing a comprehensive view for your fire needs assessment.</p>
-<section id="screenshots-for-combining-the-bps-and-evt-rasters" class="level4">
-<h4 class="anchored" data-anchor-id="screenshots-for-combining-the-bps-and-evt-rasters">Screenshots for combining the BPS and EVT rasters</h4>
-<p>&nbsp; <img src="../images/13-combine-tool.png" class="img-fluid" alt="The ArcGIS Pro window showing the location of the Combine tool within the geospatial toolbox. The tool is in Spatial Analyst Tools, Local, Combine."></p>
+</section>
+<section id="screenshots-for-combining-the-bps-and-evt-rasters" class="level3">
+<h3 class="anchored" data-anchor-id="screenshots-for-combining-the-bps-and-evt-rasters">Screenshots for combining the BPS and EVT rasters</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/13-combine-tool.png" class="img-fluid figure-img" alt="The ArcGIS Pro window showing the location of the Combine tool within the geospatial toolbox. The tool is in Spatial Analyst Tools, Local, Combine."></p>
+<figcaption>Use the EVT raster to mask your BpS raster. Remember to set appropriate environment settings.</figcaption>
+</figure>
+</div>
 <p>&nbsp;</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -503,7 +512,6 @@ ul.task-list li input[type="checkbox"] {
 <figcaption>Add the BpS and EVT rasters to be combined. Remember to set appropriate environment settings.</figcaption>
 </figure>
 </div>
-</section>
 </section>
 </section>
 <section id="adding-attributes-to-the-combined-raster" class="level2">
@@ -563,8 +571,9 @@ Note
 <p>You can add other fire regime fields if you want, including information on Fire Regime Group and Fire Severity, but Fire Return Interval is the one we will use during this tutorial.</p>
 </div>
 </div>
-<section id="screenshots-for-joining-the-bps-and-fire-regime-fields" class="level4">
-<h4 class="anchored" data-anchor-id="screenshots-for-joining-the-bps-and-fire-regime-fields">Screenshots for joining the BPS and fire regime fields</h4>
+</section>
+<section id="screenshots-for-joining-the-bps-and-fire-regime-fields" class="level3">
+<h3 class="anchored" data-anchor-id="screenshots-for-joining-the-bps-and-fire-regime-fields">Screenshots for joining the BPS and fire regime fields</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/15-join-bps-fields.png" class="img-fluid figure-img" alt="The ArcGIS Pro window showing the Join Field Geoprocessing tool. The input table is our BPS_EVT_Vegetated raster, the Input field is our BPS_Vegetated field, the Join Table is our BPS_Vegetated raster, the Join Field is Value, The Transfer Fields are BPS_CODE, BPS_NAME, GROUPVEG, FRI_ALLFIR, Acres, and Acres_Year."></p>
@@ -572,7 +581,6 @@ Note
 </figure>
 </div>
 <p>&nbsp;</p>
-</section>
 </section>
 <section id="adding-evt-values" class="level3">
 <h3 class="anchored" data-anchor-id="adding-evt-values">Adding EVT Values</h3>
@@ -612,12 +620,17 @@ Tip
 </ul></li>
 </ol>
 <p>This process will enrich your combined raster with the necessary attributes, allowing you to analyze how BPS, EVT, and historic fire return intervals interact on the landscape.</p>
-<section id="screenshots-for-joining-the-bps-and-fire-regime-fields-1" class="level4">
-<h4 class="anchored" data-anchor-id="screenshots-for-joining-the-bps-and-fire-regime-fields-1">Screenshots for joining the BPS and fire regime fields</h4>
-<p>&nbsp; <img src="../images/16-join-evt-fields.png" class="img-fluid" alt="The ArcGIS Pro window showing the Join Field Geoprocessing tool. The input table is our BPS_EVT_Vegetated raster, the Input field is our EVT_Vegetated field, the Join Table is our EVT_Vegetated raster, the Join Field is Value, The Transfer Fields are EVT_NAME, EVT_LF, EVT_PHYS, EVT_GP_N, and the colormap fields."></p>
-
-
 </section>
+<section id="screenshots-for-joining-the-bps-and-fire-regime-fields-1" class="level3">
+<h3 class="anchored" data-anchor-id="screenshots-for-joining-the-bps-and-fire-regime-fields-1">Screenshots for joining the BPS and fire regime fields</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/16-join-evt-fields.png" class="img-fluid figure-img" alt="The ArcGIS Pro window showing the Join Field Geoprocessing tool. The input table is our BPS_EVT_Vegetated raster, the Input field is our EVT_Vegetated field, the Join Table is our EVT_Vegetated raster, the Join Field is Value, The Transfer Fields are EVT_NAME, EVT_LF, EVT_PHYS, EVT_GP_N, and the colormap fields."></p>
+<figcaption>Join the EVT values using the Join Field tool.</figcaption>
+</figure>
+</div>
+
+
 </section>
 </section>
 

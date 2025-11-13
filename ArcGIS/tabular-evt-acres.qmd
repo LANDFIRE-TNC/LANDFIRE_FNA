@@ -42,11 +42,10 @@ whichever you feel more comfortable working with.
         of the cell) down the column to apply the formula to all rows.
 
 ### Screenshot for calculating EVT acres
-
 ![Calculating EVT acres in
 Excel.](../images/19-evt-acres.png){fig-alt="A Microsoft Excel window showing the spreadsheet. The column for EVT_acres is highlighted with a black box. Another black box surrounds the formula =B2*900*0.0002471"}
 
- 
+&nbsp;
 
 This process will calculate the EVT acres for each row in your table,
 allowing you to analyze the data more effectively. From here, you can

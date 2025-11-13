@@ -456,6 +456,7 @@ window.Quarto = {
   <li><a href="#understanding-historical-fire-regimes-using-biophysical-settings" id="toc-understanding-historical-fire-regimes-using-biophysical-settings" class="nav-link active" data-scroll-target="#understanding-historical-fire-regimes-using-biophysical-settings">Understanding historical fire regimes using Biophysical Settings</a>
   <ul class="collapse">
   <li><a href="#step-by-step-process" id="toc-step-by-step-process" class="nav-link" data-scroll-target="#step-by-step-process">Step-by-step process</a></li>
+  <li><a href="#screenshots-for-understanding-historical-fire-regime-information" id="toc-screenshots-for-understanding-historical-fire-regime-information" class="nav-link" data-scroll-target="#screenshots-for-understanding-historical-fire-regime-information">Screenshots for understanding historical fire regime information</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -502,7 +503,7 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This site will walk you through working with LANDFIRE spatial data in ArcGIS Pro. Some of this workflow may be possible in QGIS or other open source GIS sources, but those workflows are not documented here.</p>
+<p>This site will walk you through working with LANDFIRE spatial data in ArcGIS Pro. Please note that this workflow requires the Spatial Analyst extension. Some of the steps may work in QGIS or other open source GIS sources, but those workflows are not documented here. As an alternative, please explore the <a href="r-workflow/r-introduction.qmd">Fire Needs Assessments in R section</a> if you would like to complete the process and do not have Spatial Analyst or access to ArcGIS Pro.</p>
 </div>
 </div>
 <section id="step-by-step-process" class="level3">
@@ -545,7 +546,7 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>LANDFIRE also delivers the fire regime data separately. That dataset includes only fire severity, fire return interval, fire regime groups, and the BPS name and code. Use this if you prefer to work with a simplified version of the data. It will have all the information you need to complete this assessment.</p>
+<p>LANDFIRE also delivers the fire regime data separately. That dataset includes only fire severity, fire return interval, fire regime groups, and the BPS name and code. If your work is soley focused on fire regimes we suggest working with the <a href="https://landfire.gov/fire-regime/fri">fire return interval dataset</a>. It will have all the information you need to complete this assessment.</p>
 </div>
 </div>
 <ol start="3" type="1">
@@ -566,9 +567,9 @@ Acres\_Year=!Acres!/!FRI\_ALLFIR!
 \]</span></p>
 <p>This calculation will give you an estimate of the annual burned area under historical conditions.</p></li>
 </ol>
-<section id="screenshots-for-understanding-historical-fire-regime-information" class="level4">
-<h4 class="anchored" data-anchor-id="screenshots-for-understanding-historical-fire-regime-information">Screenshots for understanding historical fire regime information</h4>
-<p>&nbsp;</p>
+</section>
+<section id="screenshots-for-understanding-historical-fire-regime-information" class="level3">
+<h3 class="anchored" data-anchor-id="screenshots-for-understanding-historical-fire-regime-information">Screenshots for understanding historical fire regime information</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/5-add-data-bps.png" class="img-fluid figure-img" alt="Adding BPS data to ArcGIS Pro by clicking the Add Data button in the ribbon bar and then selecting LC20_BPS_220.tif"></p>
@@ -612,7 +613,6 @@ Acres\_Year=!Acres!/!FRI\_ALLFIR!
 </div>
 
 
-</section>
 </section>
 </section>
 

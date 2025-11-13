@@ -10,6 +10,8 @@ This section helps you set up your R environment for the Fire Needs Assessment w
 You’ll start by installing and loading the necessary R packages, and then define your Area of Interest (AOI) using a shapefile.
 
 ::: callout-important
+This code was created in RStudio 2025.09.2+418 "Cucumberleaf Sunflower" Release for windows. If you are using a different version of RStudio, some code may not work correctly.
+
 Before you begin, you will need to:
 
 1.  Set up a new R-Studio project, i.e. “r_landfire_fna”

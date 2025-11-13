@@ -102,21 +102,20 @@ following section.
 :::
 
 ### Screenshots for creating the pivot table
-&nbsp;
 ![Select data and create a pivot
 table.](../images/20-create-pivot-table.png){fig-alt="A Microsoft Excel window with the PivotTable button highlighted in the ribbon bar. Another window is in front of the data window, showing PivotTable from table or range. The table/Range is set to the full range of data from the worksheet. The radio button next to New Worksheet is checked, choosing to place the PivotTable in a new worksheet."}
 
- 
+&nbsp;
 
 ![Select the pivot table
 fields.](../images/21-pivot-table-fields.png){fig-alt="The pivot table window. The PivotTable Fields dialogue box is on the right, showing our columns as Values, Rows as EVT_NAME, Values as Sum of FRI, Sum of EVT Acres, Sum of EVT Acres Burned/Year"}
 
- 
+&nbsp;
 
 ![Change the FRI value field to
 average.](../images/22-pivot-table-value-field.png){fig-alt="The pivot table with the Value Field Settings dialogue box open. Source name is FRI, Summarize values field by is set to Average."}
 
- 
+&nbsp;
 
 This process will help you summarize your data, making it easier to
 understand and present your fire needs assessment results.

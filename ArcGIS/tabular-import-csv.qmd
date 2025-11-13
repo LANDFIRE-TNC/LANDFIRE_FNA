@@ -48,14 +48,12 @@ for those who find them useful.*
     you to visually compare it to the BPS raster and analyze historical
     vegetation needs based on historical vegetation and fire regimes.
 
-#### Screenshots for bringing your CSV file back into ArcGIS Pro
-&nbsp;
+### Screenshots for bringing your CSV file back into ArcGIS Pro
 ![Drag the CSV file into the ArcGIS Pro Contents
 pane.](../images/28-add-csv-arcgis-pro.png){fig-alt="The ArcGIS Pro window. The catalog pane is open on the right side of the screen. A large black arrow points from the catalog pane on the far right to the contents pane on the far left indicating that you should drag the highlighted CSV file across to the catalog pane."}
 
- 
+&nbsp;
 
 ![Join the CSV attributes back to the EVT
 data.](../images/29-join-csv-fields.png){fig-alt="The ArcGIS Pro Join Field tool showing the Input Table as EVT_Vegetated, the Input Field as EVT_NAME, the Join Table as the CSV file, the Join Field as EVT, and the Transfer Fields as FRI, Acres, Acres_Year, PCT_Year"}
 
- 

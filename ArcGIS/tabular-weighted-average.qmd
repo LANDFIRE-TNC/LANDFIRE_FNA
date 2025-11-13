@@ -63,22 +63,21 @@ for those who find them useful.*
 
     -   Ensure the new field is set to Sum in the value field settings
 
-#### Screenshots for using the pivot table to calculate the weighted average
-&nbsp;
+### Screenshots for using the pivot table to calculate the weighted average
 ![Create the new column and calculate the
 weighting.](../images/23-weight-column.png){fig-alt="A Microsoft Excel window with a new column highlighted and a box around the formula bar which shows the formula =E2*F2, corresponding to FRI*EVT Acres"}
 
- 
+&nbsp;
 
 ![Add a calculated field to the pivot
 table.](../images/24-pivot-table-calculate-field.png){fig-alt="A box highlights the place on the pivot table ribbon bar showing PivotTable Analyze and the Fields, Items, & Sets button. Below that the menu shows Calculate Field highlighted."}
 
- 
+&nbsp;
 
 ![Calculate the field for the weighted
 average.](../images/25-pivot-table-calculate-avgfri.png){fig-alt="The Insert Calculated Field window. Name is Weighted Average FRI. the Formula is = Average/'EVT Acres'"}
 
- 
+&nbsp;
 
 ![Make sure the new field is added as a value and it is being calculated
 as a

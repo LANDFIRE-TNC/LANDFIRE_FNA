@@ -73,8 +73,7 @@ for those who find them useful.*
     -   You can also add filters to the headers to make it easier to
         sort and analyze the data.
 
-#### Screenshot for creating the summary table
-&nbsp;
+### Screenshot for creating the summary table
 ![Final summary table using data from the pivot
 table.](../images/27-summary-table.png){fig-alt="The final summary table in Excel. The column names have been cleaned up and data are displayed in more readable formats. Columns are EVT Name, Average FRI (historical), EVT Acres, EVT Acres Burned/Year, %EVT Burned/Year"}
 

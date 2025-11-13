@@ -10,7 +10,7 @@ format: html
 Conducting a fire needs assessment involves understanding historical fire regimes and vegetation types to plan for future fire management and restoration efforts. This guide will walk you through the process, focusing on the LANDFIRE Biophysical Settings (BPS) and Fire Regime (FRI) data.
 
 ::: callout-important
-This site will walk you through working with LANDFIRE spatial data in ArcGIS Pro. Some of this workflow may be possible in QGIS or other open source GIS sources, but those workflows are not documented here.
+This site will walk you through working with LANDFIRE spatial data in ArcGIS Pro. Please note that this workflow requires the Spatial Analyst extension. Some of the steps may work in QGIS or other open source GIS sources, but those workflows are not documented here. As an alternative, please explore the [Fire Needs Assessments in R section](r-workflow/r-introduction.qmd) if you would like to complete the process and do not have Spatial Analyst or access to ArcGIS Pro.
 :::
 
 ### Step-by-step process
@@ -33,7 +33,7 @@ Don't forget to set the environment settings in the tool. Most importantly, make
     -   **Explore fire return interval data**: The BPS data include fire return interval (FRI) information. Display the raster on the FRI_ALLFIR field to explore the historical fire return intervals for the identified vegetation type.
 
 ::: callout-tip
-LANDFIRE also delivers the fire regime data separately. That dataset includes only fire severity, fire return interval, fire regime groups, and the BPS name and code. Use this if you prefer to work with a simplified version of the data. It will have all the information you need to complete this assessment.
+LANDFIRE also delivers the fire regime data separately. That dataset includes only fire severity, fire return interval, fire regime groups, and the BPS name and code. If your work is soley focused on fire regimes we suggest working with the [fire return interval dataset](https://landfire.gov/fire-regime/fri). It will have all the information you need to complete this assessment.
 :::
 
 3.  **Calculate historical fire acreages**
@@ -56,9 +56,7 @@ LANDFIRE also delivers the fire regime data separately. That dataset includes on
 
     This calculation will give you an estimate of the annual burned area under historical conditions.
 
-#### Screenshots for understanding historical fire regime information
-&nbsp;
-
+### Screenshots for understanding historical fire regime information
 ![Add BPS data to ArcGIS Pro.](../images/5-add-data-bps.png){fig-alt="Adding BPS data to ArcGIS Pro by clicking the Add Data button in the ribbon bar and then selecting LC20_BPS_220.tif"}
 
  
