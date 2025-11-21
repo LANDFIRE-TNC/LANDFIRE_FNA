@@ -5,6 +5,12 @@ toc: true
 format: html
 ---
 
+:::callout-important
+If you prefer to work in an automated format, we have created an [ArcGIS Pro toolbox](data/Fire Needs Assessment Tools.zip) (opens a zip file) for each step of this workflow from data process throught table export. It is still recommended that you follow the guidance written on each FNA Process page as you run the tools so that you better understand the process and do not miss important context for what the tool is asking you to input in each box. The toolbox has simply been provided for your convenience should you choose to use it.
+
+**Note:** This toolbox was created in ArcGIS Pro version 3.2.2 and will require the Spatial Analyst extension. If you are working in a different version of the software or do not have a Spatial Analyst license, some of these tools may not work as expected.
+:::
+
 ## Understanding historical fire regimes using Biophysical Settings
 
 Conducting a fire needs assessment involves understanding historical fire regimes and vegetation types to plan for future fire management and restoration efforts. This guide will walk you through the process, focusing on the LANDFIRE Biophysical Settings (BPS) and Fire Regime (FRI) data.
