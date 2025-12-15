@@ -1,0 +1,84 @@
+---
+title: "Join Attributes and Export"
+author: "Sarah Hagen"
+toc: true
+---
+## Overview
+The combined raster currently contains only basic fields (e.g., Object ID, Value, Count, and the value fields from BPS and EVT). To make this data useful for analysis, we need to join additional attributes from the original BPS and EVT rasters and then export the table for further processing. This table will serve as the foundation for calculating fire return metrics and summarizing results by vegetation type.
+
+## This code will:
+- Join BPS attributes to the combined raster using `JoinField`:
+  - Fields include: `BPS_NAME`, `BPS_MODEL`, `GROUPVEG`, fire return interval fields (`FRI_ALLFIR`, `FRI_REPLAC`, `FRI_MIXED`, `FRI_SURFAC`), fire severity percentages, and acreage fields (`Acres`, `Acres_Year`).
+- Join EVT attributes to the combined raster using `JoinField`:
+  - Fields include: `EVT_NAME`, `EVT_PHYS`, `EVT_GP_N`.
+- Export the updated raster attribute table to a CSV file for further analysis.
+
+:::callout-note
+- Ensure the combined raster and join tables exist in the specified geodatabase.
+- Update field lists if your analysis requires additional attributes.
+- The exported table will be saved to the `Outputs` folder as a `.csv` file.
+:::
+
+## Step 5: Join fields and export table
+```python
+# Set model inputs. Replace with your own files if you are not using the demo.
+Combined_BPS_EVT_Raster = r".//Rasters.gdb//NY_BPS_EVT_Burnable" # input raster to which table will be joined
+BPS_Field = "NY_BPS_Burnable"
+BPS_Join_Table = r".//Rasters.gdb//NY_BPS_Burnable"
+BPS_Join_Field = "value"
+BPS_Transfer_Fields = ["BPS_NAME", "BPS_MODEL", "GROUPVEG", "FRI_ALLFIR", "FRI_REPLAC", "FRI_MIXED", "FRI_SURFAC", "PRC_REPLAC", "PRC_MIXED", "PRC_SURFAC", "FRG_NEW", "Acres", "Acres_Year"]
+EVT_Field = "NY_EVT_Burnable"
+EVT_Join_Table = r".//Rasters.gdb//NY_EVT_Burnable"
+EVT_Join_Field = "value"
+EVT_Transfer_Fields = ["EVT_NAME", "EVT_PHYS", "EVT_GP_N"]
+Combined_BPS_EVT_Table = r".//Outputs//NY_BPS_EVT_Burnable.csv"
+
+
+#For inline variable substitution, parameters passed as a String are evaluated using locals(), globals() and isinstance(). To override, substitute values directly.
+def Join_BPS_Variables():  # Model
+    # Process: Join BPS Variables (Join Field) (management)
+    try:
+        print(f"Attempting join field for : {Combined_BPS_EVT_Raster} and {BPS_Join_Table}")
+        arcpy.management.JoinField(Combined_BPS_EVT_Raster, BPS_Field, BPS_Join_Table, BPS_Join_Field, BPS_Transfer_Fields, fm_option="NOT_USE_FM", index_join_fields="NO_INDEXES")
+        print(f"BPS fields successfully joined")
+
+    except arcpy.ExecuteError:
+        print(f"Failed: ArcPy Execution Error in combine.")
+        print(arcpy.GetMessages(2)) # prints error messages
+    except Exception as e:
+        # catches other potential Python errors (e.g. indentation, syntax)
+        print(f"Failed: A general error occurred in join fields: {e}")                    
+
+    # Process: Join EVT variables (Join Field) (management)
+    try:
+        print(f"Attempting join field for : {Combined_BPS_EVT_Raster} and {EVT_Join_Table}")
+        arcpy.management.JoinField(Combined_BPS_EVT_Raster, EVT_Field, EVT_Join_Table, EVT_Join_Field, EVT_Transfer_Fields, fm_option="NOT_USE_FM", index_join_fields="NO_INDEXES")
+        print(f"BPS fields successfully joined")
+
+    except arcpy.ExecuteError:
+        print(f"Failed: ArcPy Execution Error in combine.")
+        print(arcpy.GetMessages(2)) # prints error messages
+    except Exception as e:
+        # catches other potential Python errors (e.g. indentation, syntax)
+        print(f"Failed: A general error occurred in join fields: {e}")
+    
+
+    # Process: Export Table (Export Table) (conversion)
+    try:
+        print(f"Attempting to export: {Combined_BPS_EVT_Table}")
+        arcpy.conversion.ExportTable(Combined_BPS_EVT_Raster, Combined_BPS_EVT_Table, use_field_alias_as_name="NOT_USE_ALIAS")
+        print(f"table successfully exported to {Combined_BPS_EVT_Table}")
+
+    except arcpy.ExecuteError:
+        print(f"Failed: ArcPy Execution Error in combine.")
+        print(arcpy.GetMessages(2)) # prints error messages
+    except Exception as e:
+        # catches other potential Python errors (e.g. indentation, syntax)
+        print(f"Failed: A general error occurred in join fields: {e}")
+
+if __name__ == '__main__':
+    # When the script is run directly, this calls the main function Join_BPS_Variables
+    Join_BPS_Variables()
+
+```
+

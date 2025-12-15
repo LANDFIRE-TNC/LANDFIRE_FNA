@@ -1,0 +1,95 @@
+---
+title: "Mask BPS raster using burnable EVT"
+author: "Sarah Hagen"
+toc: true
+---
+
+## Overview
+Assessing fire needs requires refining the analysis to focus only on ecologically relevant areas. After creating the burnable EVT raster in the previous step, we now use it to mask the Biophysical Settings (BPS) raster. This ensures that fire return interval calculations apply only to zones where vegetation can burn.
+
+## This code will:
+- Load the masked BPS raster (`Masked_BPS`) and the burnable EVT raster (`Burnable_EVTs`) from the project geodatabase.
+- Apply a mask to the BPS raster using the burnable EVT raster (`ExtractByMask`) to produce `Burnable_BPSs`.
+- Add fields `Acres` and `Acres_Year` to the output raster’s table **if they are missing**.
+- Calculate `Acres` from `COUNT` using `COUNT × 900 × 0.0002471` *(assumes 30 m pixels)*.
+- If the interval field (`FRI_ALLFIR`) exists, calculate `Acres_Year` as `Acres / FRI_ALLFIR`.
+- Save the masked BPS raster to the project geodatabase.
+
+## Step 3: Mask BPS by EVT
+```python
+# Set model inputs. Replace with your own rasters if you are not using the demo.
+Masked_BPS = r".//Rasters.gdb//NY_BpS"      # input raster to be masked
+Burnable_EVTs=r".//Rasters.gdb//NY_EVT_Burnable"   # mask raster
+Burnable_BPSs = r".//Rasters.gdb//NY_BPS_Burnable"  # output raster after masking
+
+#For inline variable substitution, parameters passed as a String are evaluated using locals(), globals() and isinstance(). To override, substitute values directly.
+def Extract_BPS():
+    
+    # Process: Extract BPS by mask (Extract by Mask) (sa)
+    Extract_BPS_by_mask = Burnable_BPSs
+    try:
+        print(f"Attempting Extract by Mask for BPS raster: {Masked_BPS}")
+        arcpy.sa.ExtractByMask(Masked_BPS, Burnable_EVTs).save(Burnable_BPSs)
+        print(f"BPS raster successfully masked and saved to {Burnable_BPSs}")
+
+    except arcpy.ExecuteError:
+        print(f"Failed: ArcPy Execution Error in BPS Mask.")
+        print(arcpy.GetMessages(2)) # prints error messages
+    except Exception as e:
+        # catches other potential Python errors (e.g. indentation, syntax)
+        print(f"Failed: A general error occurred in BPS mask: {e}")
+
+    # Add fields (Acres, Acres_Year) if missing
+    def field_exists(table, name):
+        return any(f.name.lower() == name.lower() for f in arcpy.ListFields(table))
+
+    for fld, alias in [("Acres","Acres"), ("Acres_Year","Acres per Year")]:
+        if field_exists(Burnable_BPSs, fld):
+            print(f"Field '{fld}' already exists—skipping.")
+        else:
+            print(f"Adding field '{fld}'...")
+            arcpy.management.AddField(Burnable_BPSs, fld, "DOUBLE", field_alias=alias)
+            print(f"Added field '{fld}'.")
+
+# Calculate Acres from COUNT (30 m pixels)
+    try:
+        arcpy.management.CalculateField(
+            in_table=Burnable_BPSs,
+            field="Acres",
+            expression="!COUNT! * 900 * 0.0002471",
+            expression_type="PYTHON3"
+        )
+        print("Calculated 'Acres' using COUNT * 900 * 0.0002471.")
+    except arcpy.ExecuteError:
+        print("ArcPy error calculating 'Acres'.")
+        print(arcpy.GetMessages(2))
+    except Exception as e:
+        print(f"General error calculating 'Acres': {e}")
+
+    # Calculate Acres_Year if your interval field exists
+    FRI_FIELD = "FRI_ALLFIR"  # your interval field
+    try:
+        if field_exists(Burnable_BPSs, FRI_FIELD):
+            print(f"Calculating 'Acres_Year' = !Acres! / !{FRI_FIELD}!")
+            arcpy.management.CalculateField(
+                in_table=Burnable_BPSs,
+                field="Acres_Year",
+                expression=f"!Acres! / !{FRI_FIELD}!",
+                expression_type="PYTHON3"
+            )
+            print(f"Calculated 'Acres_Year' using '{FRI_FIELD}'.")
+        else:
+            print(f"Skipped 'Acres_Year': '{FRI_FIELD}' field not found.")
+    except arcpy.ExecuteError:
+        print("ArcPy error calculating 'Acres_Year'.")
+        print(arcpy.GetMessages(2))
+    except Exception as e:
+        print(f"General error calculating 'Acres_Year': {e}")
+
+
+if __name__ == '__main__':
+    # When the script is run directly, this calls the main function Extract_BPS_by_EVT
+    Extract_BPS()
+
+```
+

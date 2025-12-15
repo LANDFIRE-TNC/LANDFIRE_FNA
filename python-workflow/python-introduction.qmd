@@ -1,0 +1,56 @@
+---
+title: "Introduction to Fire Needs Analysis in Python"
+author: "Sarah Hagen"
+toc: true
+---
+## Welcome to the Python-based Fire Needs Assessment tool
+
+Do you work in Python and want a reproducible, code-driven way to assess fire needs across your landscape? You’re in the right place.
+
+This site provides a step-by-step Python workflow for conducting a Fire Needs Assessment using LANDFIRE datasets. Whether you're looking to automate your analysis, explore ecological patterns, or replicate the ArcGIS Pro workflow using Python, this guide is designed to help you get started—and go deeper.
+
+We believe in the power of transparent, repeatable code and invite the LANDFIRE community to build on this foundation. The examples here are practical, flexible, and designed to support real-world decision-making.
+
+::: callout-important
+If you prefer to work in a self-contained file, we have created an **[ArcPy enabled Jupyter Notebook](../data/FireNeedsAssessment_Python.zip)** (downloads a zip file) for each step of this workflow from data processing through table export. We strongly recommend that before you run this code, you explore and understand the content and process provided in the rest of the LANDFIRE in Fire Needs Assessment website. This section of the site will give a brief overview and highlight what the code is intended to do, but it will not provide the level of context or information you can find in the rest of the website.
+
+At a minimum, please review the following sections: [an introduction to fire needs assessments](../intro-to-fna.qmd), [an overview of the LANDFIRE program](../landfire-overview.qmd), and all three data sections ([BPS](../bps.qmd), [EVT](../evt.qmd), and [Fire Regimes](../fire-regimes.qmd))
+:::
+
+::: callout-note
+Currently, our Python workflow utilizes ArcPy and still requires access to ArcGIS Pro tools and extensions. We are working on an open source version using GeoPandas, and will provide that when it is available. For now, these pages mimic the ArcGIS Pro workflow pages, but include Python code snippets to help you run the tools in a Python workflow.
+:::
+
+## What you'll find here
+
+-   **Setup:** Install required packages and define your Global Environment settings.
+
+-   **Step 1: Extract the LANDFIRE rasters** Use Python and ArcPy to extract the rasters to your AOI.
+
+-   **Step 2: Mask EVT by attributes** Filter out non-vegetated areas from the EVT raster.
+
+-   **Step 3: Mask the BPS raster** Use the masked EVT to extract the new BPS extent.
+
+-   **Step 4: Combine BPS and EVT** Combine the rasters into a single raster to link via a unique value.
+
+-   **Step 5:Join Attributes and Export the CSV** Join in relevant fields and export the .csv file for analysis.
+
+## Working example
+
+This walkthrough uses New York State as the AOI.
+
+You can follow along with the provided code or substitute your own shapefile to run the workflow on your landscape.
+
+## Getting Started
+
+-   Check your Python, Jupyter Notebooks, and ArcGIS Pro versions.
+-   Check file paths - is your your Python notebook correctly set up?
+-   Let us know if you run into code bugs: [email the TNC LANDFIRE team](mailto:landfire@tnc.org).
+
+## Disclaimer
+
+The code provided here is offered as-is, without warranty or guarantee of accuracy, functionality, or fitness for a particular purpose.
+It may not perform identically across all systems or versions of Python, ArcGIS Pro, or Jupyter notebooks.
+This content is intended for educational and illustrative purposes only.
+Users are responsible for validating and adapting the code to suit their specific needs and environments.
+

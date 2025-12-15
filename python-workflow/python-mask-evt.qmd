@@ -1,0 +1,54 @@
+---
+title: "Examining Existing Vegetation Types"
+author: "Sarah Hagen"
+toc: true
+---
+## Overview
+Assessing current fire needs involves understanding the current vegetation types and adjusting historical fire return intervals to reflect current management practices. This step filters out non-vegetated areas from the EVT raster and uses the resulting burnable zones to mask the Biophysical Settings (BPS) raster. This ensures that fire return interval calculations are limited to ecologically relevant areas.
+
+::: callout-note
+## A Note on Fire Return Intervals
+We are still using historical fire return intervals, even though we are analyzing current systems. Current fire return intervals may differ from those for the underlying Biophysical Settings. Later, we will share examples of how others have updated these intervals. For now, the goal is to understand how historical intervals relate to current vegetation so we can begin refining fire needs estimates within the analysis area.
+:::
+
+## This code will:
+- Define a SQL where clause to exclude non-burnable classes (e.g., Agricultural, Developed, Open Water).
+- Apply the `ExtractByAttributes` function to the masked EVT raster using the specified where clause.
+- Save the resulting raster of burnable EVT types to the project geodatabase.
+
+::: callout-important
+Ensure the Spatial Analyst extension is available and the input raster includes the `EVT_PHYS` field for filtering.
+:::
+
+## Step 2: Mask EVT by attributes
+
+```python
+# Set model inputs. Replace with your own rasters if you are not using the demo.
+Where_clause="EVT_PHYS <> 'Agricultural' And EVT_PHYS <> 'Developed' And EVT_PHYS <> 'Developed-High Intensity' And EVT_PHYS <> 'Developed-Low Intensity' And EVT_PHYS <> 'Developed-Medium Intensity' And EVT_PHYS <> 'Developed-Roads' And EVT_PHYS <> 'NA' And EVT_PHYS <> 'Open Water' And EVT_PHYS <> 'Quarries-Strip Mines-Gravel Pits-Well and Wind Pads'" # Update these to include or exclude EVT values as desired
+Burnable_EVTs=".//Rasters.gdb//NY_EVT_Burnable"
+
+#Masked_EVT, Where_clause, Burnable_EVTs
+#For inline variable substitution, parameters passed as a String are evaluated using locals(), globals() and isinstance(). To override, substitute values directly.
+def Extract_EVT():
+
+    # Process: Extract EVT by Attributes (Extract by Attributes) (sa)
+    Extract_EVT_by_Attributes = Burnable_EVTs
+    try:
+        print(f"Attempting Extract by Attributes for EVT raster: {Masked_EVT}")
+        arcpy.sa.ExtractByAttributes(Masked_EVT, Where_clause).save(Burnable_EVTs)
+        print(f"EVT raster successfully masked and saved to {Burnable_EVTs}")
+
+    except arcpy.ExecuteError:
+        print(f"Failed: ArcPy Execution Error in EVT Mask.")
+        print(arcpy.GetMessages(2)) # prints error messages
+    except Exception as e:
+        # catches other potential Python errors (e.g. indentation, syntax)
+        print(f"Failed: A general error occurred in EVT mask: {e}")
+
+
+if __name__ == '__main__':
+    # When the script is run directly, this calls the main function Extract_EVT_by_Attributes
+    Extract_EVT()
+
+```
+

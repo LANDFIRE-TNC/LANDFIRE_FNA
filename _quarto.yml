@@ -71,6 +71,26 @@ website:
            - href: r-workflow/r-tabular.qmd
         - text: "Next Steps"
           href: next-steps.qmd
+          
+    - id: python-workflow-sidebar
+      style: "docked"
+      search: true
+      contents:
+        - text: "Introduction to Fire Needs Analysis in Python"
+          href: python-workflow/python-introduction.qmd
+        - text: "Python setup and environment settings"
+          href: python-workflow/python-setup.qmd
+        - text: "Clip Rasters to AOI"
+          href: python-workflow/python-aoi.qmd
+        - section: "The Fire Needs Assessment Process"
+          href: python-workflow/python-mask-evt.qmd
+          contents:
+          - href: python-workflow/python-mask-evt.qmd
+          - href: python-workflow/python-mask-bps.qmd
+          - href: python-workflow/python-combine.qmd
+          - href: python-workflow/python-export.qmd
+        - text: "Next Steps"
+          href: python-workflow/python-next-steps.qmd
 
     
   navbar:
@@ -81,6 +101,8 @@ website:
         href: ArcGIS/historical-vegetation.qmd
       - text: "Fire Needs Assessments in R"
         href: r-workflow/r-introduction.qmd
+      - text: "Fire Needs Assessments in Python"
+        href: python-workflow/python-introduction.qmd
 
     
   body-footer: |

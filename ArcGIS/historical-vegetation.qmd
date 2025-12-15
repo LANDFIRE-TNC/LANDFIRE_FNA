@@ -6,7 +6,7 @@ format: html
 ---
 
 :::callout-important
-If you prefer to work in an automated format, we have created an **[ArcGIS Pro toolbox](data/Fire Needs Assessment Tools.zip)** (downloads a zip file) and an **[ArcPy enabled Jupyter Notebook](data/FireNeedsAssessment_Python.zip)** (downloads a zip file) for each step of this workflow from data processing throught table export. It is still recommended that you follow the guidance written on each FNA Process page as you run the tools so that you better understand the process and do not miss important context for what the tool is asking you to input in each box. The toolbox has simply been provided for your convenience should you choose to use it.
+If you prefer to work in an automated format, we have created an **[ArcGIS Pro toolbox](data/Fire Needs Assessment Tools.zip)** (downloads a zip file) for each step of this workflow from data processing through table export. It is still recommended that you follow the guidance written on each FNA Process page as you run the tools so that you better understand the process and do not miss important context for what the tool is asking you to input in each box. The toolbox has simply been provided for your convenience should you choose to use it.
 
 **Note:** These tools were created in ArcGIS Pro version 3.2.2 and will require the Spatial Analyst extension. If you are working in a different version of the software or do not have a Spatial Analyst license, some of these tools may not work as expected.
 :::
@@ -16,7 +16,9 @@ If you prefer to work in an automated format, we have created an **[ArcGIS Pro t
 Conducting a fire needs assessment involves understanding historical fire regimes and vegetation types to plan for future fire management and restoration efforts. This guide will walk you through the process, focusing on the LANDFIRE Biophysical Settings (BPS) and Fire Regime (FRI) data.
 
 ::: callout-important
-This site will walk you through working with LANDFIRE spatial data in ArcGIS Pro. Please note that this workflow requires the Spatial Analyst extension. Some of the steps may work in QGIS or other open source GIS sources, but those workflows are not documented here. As an alternative, please explore the [Fire Needs Assessments in R section](r-workflow/r-introduction.qmd) if you would like to complete the process and do not have Spatial Analyst or access to ArcGIS Pro.
+This site will walk you through working with LANDFIRE spatial data in ArcGIS Pro. Please note that this workflow requires the Spatial Analyst extension. Some of the steps may work in QGIS or other open source GIS sources, but those workflows are not documented here. As an alternative, please explore the [Fire Needs Assessments in R section](../r-workflow/r-introduction.qmd) if you would like to complete the process and do not have Spatial Analyst or access to ArcGIS Pro.
+
+We have also created a replica of this workflow using Python and Jupyter notebooks. It does require ArcPy and Spatial Analyst, but is set up in a more automated format. If you would like to work this way, please explore the [Fire Needs Assessments in Python section](../python-workflow/python-introduction.qmd) of this website.
 :::
 
 ### Step-by-step process

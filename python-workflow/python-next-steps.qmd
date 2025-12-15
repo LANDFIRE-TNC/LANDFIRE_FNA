@@ -1,0 +1,24 @@
+---
+title: "Next Steps"
+author: "Sarah Hagen"
+toc: true
+---
+
+The combined BPS–EVT table has been exported as a CSV file. From this point forward, the workflow for analyzing and summarizing the data is the same as in the ArcGIS Pro and R tutorials.
+
+To continue:
+
+## If you prefer Excel  
+Follow the instructions starting with [Working with the CSV File](https://landfire-tnc.github.io/LANDFIRE_FNA/ArcGIS/tabular-csv.html) in the Fire Needs Assessments in ArcGIS Pro section of the [LANDFIRE in Fire Needs Assessments website](https://landfire-tnc.github.io/LANDFIRE_FNA/).
+
+## If you prefer R  
+Follow the instructions starting with [Working with the Tabular Data](https://landfire-tnc.github.io/LANDFIRE_FNA/r-workflow/r-tabular.html#calculating-evt-acres-in-r) in the Fire Needs Assessments in R section of the [LANDFIRE in Fire Needs Assessments website](https://landfire-tnc.github.io/LANDFIRE_FNA/).
+
+These resources will guide you through:
+- Reviewing and cleaning the table,
+- Calculating fire return metrics,
+- Summarizing results by vegetation type.
+
+:::callout-note
+The Python workflow ends here. All subsequent steps for data manipulation and analysis should follow the Excel or R workflows linked above.
+:::

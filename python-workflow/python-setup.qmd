@@ -1,0 +1,70 @@
+---
+title: "Setup and Environment Settings"
+author: "Sarah Hagen"
+toc: true
+---
+
+## Overview
+
+This section helps you set up your Python and ArcGIS Pro environment for the Fire Needs Assessment workflow.
+You’ll start by installing and loading the necessary Python packages, and then define your Global Environment settings.
+
+::: callout-note
+These tools were created in ArcGIS Pro version 3.2.2 and will require the Spatial Analyst extension. If you are working in a different version of the software or do not have a Spatial Analyst license, some of these tools may not work as expected.
+:::
+
+## Download Data
+Before you begin, you will need to download the file “[FireNeedsAssessment_Python.zip](..ArcGIS/data/FireNeedsAssessment_Python.zip)” (clicking will initiate the download that will likely land in your “C:” directory). This contains an Inputs.gdb, a Rasters.gdb, an Outputs folder, and the Jupyter Notebook that also contains the code.
+
+:::callout-important
+This zip file is large (5.13GB) and will likely take a long time to download. Please plan your space and download time accordingly.
+:::
+
+The inputs.gdb contains:
+
+    -   A shapefile for New York State
+    -   The LANDFIRE CONUS BpS raster
+    -   The LANDFIRE CONUS EVT raster
+
+Once this set up is complete, you should be able to open a new Python script or notebook and copy/paste the code in this and subsequent sections.
+
+
+## 1. Import packages and set global environment settings
+
+``` python
+#Required only when there are SubModel(s)
+import sys 
+sys.path.append(r"C:\Users\shagen\AppData\Local\Temp\ArcGISProTemp32472")
+# -*- coding: utf-8 -*-
+
+import arcpy
+from arcpy.sa import *
+from arcpy.sa import *
+from sys import argv
+
+import os
+os.chdir("D:\\LANDFIRE\\GIS\\GIS_Projects\\Current\\FNA\\Python")
+
+# =======================================================
+# Define Global Environment Settings
+# =======================================================
+# To allow overwriting outputs change overwriteOutput option to True.
+arcpy.env.overwriteOutput = True
+
+# Check out any necessary licenses.
+arcpy.CheckOutExtension("spatial")
+
+# Set the snap raster environment
+arcpy.env.snapRaster = ".\\Inputs.gdb\\BpS"
+
+# Define Cell Size
+arcpy.env.cellSize = "30"
+
+# Define Output Coordinate System
+arcpy.env.outputCoordinateSystem = "PROJCS[\"NAD_1983_Contiguous_USA_Albers\",GEOGCS[\"GCS_North_American_1983\",DATUM[\"D_North_American_1983\",SPHEROID[\"GRS_1980\",6378137.0,298.257222101]],PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Albers\"],PARAMETER[\"False_Easting\",0.0],PARAMETER[\"False_Northing\",0.0],PARAMETER[\"Central_Meridian\",-96.0],PARAMETER[\"Standard_Parallel_1\",29.5],PARAMETER[\"Standard_Parallel_2\",45.5],PARAMETER[\"Latitude_Of_Origin\",23.0],UNIT[\"Meter\",1.0]]"
+
+# Also set the default scratch and output workspaces globally
+arcpy.env.scratchWorkspace = ".\\Rasters.gdb"
+arcpy.env.workspace = ".\\Rasters.gdb"
+# =======================================================
+```

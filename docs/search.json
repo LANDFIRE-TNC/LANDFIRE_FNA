@@ -194,6 +194,208 @@
     ]
   },
   {
+    "objectID": "python-workflow/python-setup.html",
+    "href": "python-workflow/python-setup.html",
+    "title": "Setup and Environment Settings",
+    "section": "",
+    "text": "This section helps you set up your Python and ArcGIS Pro environment for the Fire Needs Assessment workflow. You’ll start by installing and loading the necessary Python packages, and then define your Global Environment settings.\n\n\n\n\n\n\nNote\n\n\n\nThese tools were created in ArcGIS Pro version 3.2.2 and will require the Spatial Analyst extension. If you are working in a different version of the software or do not have a Spatial Analyst license, some of these tools may not work as expected.",
+    "crumbs": [
+      "Fire Needs Assessments in Python",
+      "Python setup and environment settings"
+    ]
+  },
+  {
+    "objectID": "python-workflow/python-setup.html#overview",
+    "href": "python-workflow/python-setup.html#overview",
+    "title": "Setup and Environment Settings",
+    "section": "",
+    "text": "This section helps you set up your Python and ArcGIS Pro environment for the Fire Needs Assessment workflow. You’ll start by installing and loading the necessary Python packages, and then define your Global Environment settings.\n\n\n\n\n\n\nNote\n\n\n\nThese tools were created in ArcGIS Pro version 3.2.2 and will require the Spatial Analyst extension. If you are working in a different version of the software or do not have a Spatial Analyst license, some of these tools may not work as expected.",
+    "crumbs": [
+      "Fire Needs Assessments in Python",
+      "Python setup and environment settings"
+    ]
+  },
+  {
+    "objectID": "python-workflow/python-setup.html#download-data",
+    "href": "python-workflow/python-setup.html#download-data",
+    "title": "Setup and Environment Settings",
+    "section": "Download Data",
+    "text": "Download Data\nBefore you begin, you will need to download the file “FireNeedsAssessment_Python.zip” (clicking will initiate the download that will likely land in your “C:” directory). This contains an Inputs.gdb, a Rasters.gdb, an Outputs folder, and the Jupyter Notebook that also contains the code.\n\n\n\n\n\n\nImportant\n\n\n\nThis zip file is large (5.13GB) and will likely take a long time to download. Please plan your space and download time accordingly.\n\n\nThe inputs.gdb contains:\n-   A shapefile for New York State\n-   The LANDFIRE CONUS BpS raster\n-   The LANDFIRE CONUS EVT raster\nOnce this set up is complete, you should be able to open a new Python script or notebook and copy/paste the code in this and subsequent sections.",
+    "crumbs": [
+      "Fire Needs Assessments in Python",
+      "Python setup and environment settings"
+    ]
+  },
+  {
+    "objectID": "python-workflow/python-setup.html#import-packages-and-set-global-environment-settings",
+    "href": "python-workflow/python-setup.html#import-packages-and-set-global-environment-settings",
+    "title": "Setup and Environment Settings",
+    "section": "1. Import packages and set global environment settings",
+    "text": "1. Import packages and set global environment settings\n#Required only when there are SubModel(s)\nimport sys \nsys.path.append(r\"C:\\Users\\shagen\\AppData\\Local\\Temp\\ArcGISProTemp32472\")\n# -*- coding: utf-8 -*-\n\nimport arcpy\nfrom arcpy.sa import *\nfrom arcpy.sa import *\nfrom sys import argv\n\nimport os\nos.chdir(\"D:\\\\LANDFIRE\\\\GIS\\\\GIS_Projects\\\\Current\\\\FNA\\\\Python\")\n\n# =======================================================\n# Define Global Environment Settings\n# =======================================================\n# To allow overwriting outputs change overwriteOutput option to True.\narcpy.env.overwriteOutput = True\n\n# Check out any necessary licenses.\narcpy.CheckOutExtension(\"spatial\")\n\n# Set the snap raster environment\narcpy.env.snapRaster = \".\\\\Inputs.gdb\\\\BpS\"\n\n# Define Cell Size\narcpy.env.cellSize = \"30\"\n\n# Define Output Coordinate System\narcpy.env.outputCoordinateSystem = \"PROJCS[\\\"NAD_1983_Contiguous_USA_Albers\\\",GEOGCS[\\\"GCS_North_American_1983\\\",DATUM[\\\"D_North_American_1983\\\",SPHEROID[\\\"GRS_1980\\\",6378137.0,298.257222101]],PRIMEM[\\\"Greenwich\\\",0.0],UNIT[\\\"Degree\\\",0.0174532925199433]],PROJECTION[\\\"Albers\\\"],PARAMETER[\\\"False_Easting\\\",0.0],PARAMETER[\\\"False_Northing\\\",0.0],PARAMETER[\\\"Central_Meridian\\\",-96.0],PARAMETER[\\\"Standard_Parallel_1\\\",29.5],PARAMETER[\\\"Standard_Parallel_2\\\",45.5],PARAMETER[\\\"Latitude_Of_Origin\\\",23.0],UNIT[\\\"Meter\\\",1.0]]\"\n\n# Also set the default scratch and output workspaces globally\narcpy.env.scratchWorkspace = \".\\\\Rasters.gdb\"\narcpy.env.workspace = \".\\\\Rasters.gdb\"\n# =======================================================",
+    "crumbs": [
+      "Fire Needs Assessments in Python",
+      "Python setup and environment settings"
+    ]
+  },
+  {
+    "objectID": "python-workflow/python-mask-evt.html",
+    "href": "python-workflow/python-mask-evt.html",
+    "title": "Examining Existing Vegetation Types",
+    "section": "",
+    "text": "Assessing current fire needs involves understanding the current vegetation types and adjusting historical fire return intervals to reflect current management practices. This step filters out non-vegetated areas from the EVT raster and uses the resulting burnable zones to mask the Biophysical Settings (BPS) raster. This ensures that fire return interval calculations are limited to ecologically relevant areas.\n\n\n\n\n\n\nA Note on Fire Return Intervals\n\n\n\nWe are still using historical fire return intervals, even though we are analyzing current systems. Current fire return intervals may differ from those for the underlying Biophysical Settings. Later, we will share examples of how others have updated these intervals. For now, the goal is to understand how historical intervals relate to current vegetation so we can begin refining fire needs estimates within the analysis area.",
+    "crumbs": [
+      "Fire Needs Assessments in Python",
+      "The Fire Needs Assessment Process"
+    ]
+  },
+  {
+    "objectID": "python-workflow/python-mask-evt.html#overview",
+    "href": "python-workflow/python-mask-evt.html#overview",
+    "title": "Examining Existing Vegetation Types",
+    "section": "",
+    "text": "Assessing current fire needs involves understanding the current vegetation types and adjusting historical fire return intervals to reflect current management practices. This step filters out non-vegetated areas from the EVT raster and uses the resulting burnable zones to mask the Biophysical Settings (BPS) raster. This ensures that fire return interval calculations are limited to ecologically relevant areas.\n\n\n\n\n\n\nA Note on Fire Return Intervals\n\n\n\nWe are still using historical fire return intervals, even though we are analyzing current systems. Current fire return intervals may differ from those for the underlying Biophysical Settings. Later, we will share examples of how others have updated these intervals. For now, the goal is to understand how historical intervals relate to current vegetation so we can begin refining fire needs estimates within the analysis area.",
+    "crumbs": [
+      "Fire Needs Assessments in Python",
+      "The Fire Needs Assessment Process"
+    ]
+  },
+  {
+    "objectID": "python-workflow/python-mask-evt.html#this-code-will",
+    "href": "python-workflow/python-mask-evt.html#this-code-will",
+    "title": "Examining Existing Vegetation Types",
+    "section": "This code will:",
+    "text": "This code will:\n\nDefine a SQL where clause to exclude non-burnable classes (e.g., Agricultural, Developed, Open Water).\nApply the ExtractByAttributes function to the masked EVT raster using the specified where clause.\nSave the resulting raster of burnable EVT types to the project geodatabase.\n\n\n\n\n\n\n\nImportant\n\n\n\nEnsure the Spatial Analyst extension is available and the input raster includes the EVT_PHYS field for filtering.",
+    "crumbs": [
+      "Fire Needs Assessments in Python",
+      "The Fire Needs Assessment Process"
+    ]
+  },
+  {
+    "objectID": "python-workflow/python-mask-evt.html#step-2-mask-evt-by-attributes",
+    "href": "python-workflow/python-mask-evt.html#step-2-mask-evt-by-attributes",
+    "title": "Examining Existing Vegetation Types",
+    "section": "Step 2: Mask EVT by attributes",
+    "text": "Step 2: Mask EVT by attributes\n# Set model inputs. Replace with your own rasters if you are not using the demo.\nWhere_clause=\"EVT_PHYS &lt;&gt; 'Agricultural' And EVT_PHYS &lt;&gt; 'Developed' And EVT_PHYS &lt;&gt; 'Developed-High Intensity' And EVT_PHYS &lt;&gt; 'Developed-Low Intensity' And EVT_PHYS &lt;&gt; 'Developed-Medium Intensity' And EVT_PHYS &lt;&gt; 'Developed-Roads' And EVT_PHYS &lt;&gt; 'NA' And EVT_PHYS &lt;&gt; 'Open Water' And EVT_PHYS &lt;&gt; 'Quarries-Strip Mines-Gravel Pits-Well and Wind Pads'\" # Update these to include or exclude EVT values as desired\nBurnable_EVTs=\".//Rasters.gdb//NY_EVT_Burnable\"\n\n#Masked_EVT, Where_clause, Burnable_EVTs\n#For inline variable substitution, parameters passed as a String are evaluated using locals(), globals() and isinstance(). To override, substitute values directly.\ndef Extract_EVT():\n\n    # Process: Extract EVT by Attributes (Extract by Attributes) (sa)\n    Extract_EVT_by_Attributes = Burnable_EVTs\n    try:\n        print(f\"Attempting Extract by Attributes for EVT raster: {Masked_EVT}\")\n        arcpy.sa.ExtractByAttributes(Masked_EVT, Where_clause).save(Burnable_EVTs)\n        print(f\"EVT raster successfully masked and saved to {Burnable_EVTs}\")\n\n    except arcpy.ExecuteError:\n        print(f\"Failed: ArcPy Execution Error in EVT Mask.\")\n        print(arcpy.GetMessages(2)) # prints error messages\n    except Exception as e:\n        # catches other potential Python errors (e.g. indentation, syntax)\n        print(f\"Failed: A general error occurred in EVT mask: {e}\")\n\n\nif __name__ == '__main__':\n    # When the script is run directly, this calls the main function Extract_EVT_by_Attributes\n    Extract_EVT()",
+    "crumbs": [
+      "Fire Needs Assessments in Python",
+      "The Fire Needs Assessment Process"
+    ]
+  },
+  {
+    "objectID": "python-workflow/python-introduction.html",
+    "href": "python-workflow/python-introduction.html",
+    "title": "Introduction to Fire Needs Analysis in Python",
+    "section": "",
+    "text": "Do you work in Python and want a reproducible, code-driven way to assess fire needs across your landscape? You’re in the right place.\nThis site provides a step-by-step Python workflow for conducting a Fire Needs Assessment using LANDFIRE datasets. Whether you’re looking to automate your analysis, explore ecological patterns, or replicate the ArcGIS Pro workflow using Python, this guide is designed to help you get started—and go deeper.\nWe believe in the power of transparent, repeatable code and invite the LANDFIRE community to build on this foundation. The examples here are practical, flexible, and designed to support real-world decision-making.\n\n\n\n\n\n\nImportant\n\n\n\nIf you prefer to work in a self-contained file, we have created an ArcPy enabled Jupyter Notebook (downloads a zip file) for each step of this workflow from data processing through table export. We strongly recommend that before you run this code, you explore and understand the content and process provided in the rest of the LANDFIRE in Fire Needs Assessment website. This section of the site will give a brief overview and highlight what the code is intended to do, but it will not provide the level of context or information you can find in the rest of the website.\nAt a minimum, please review the following sections: an introduction to fire needs assessments, an overview of the LANDFIRE program, and all three data sections (BPS, EVT, and Fire Regimes)\n\n\n\n\n\n\n\n\nNote\n\n\n\nCurrently, our Python workflow utilizes ArcPy and still requires access to ArcGIS Pro tools and extensions. We are working on an open source version using GeoPandas, and will provide that when it is available. For now, these pages mimic the ArcGIS Pro workflow pages, but include Python code snippets to help you run the tools in a Python workflow.",
+    "crumbs": [
+      "Fire Needs Assessments in Python",
+      "Introduction to Fire Needs Analysis in Python"
+    ]
+  },
+  {
+    "objectID": "python-workflow/python-introduction.html#welcome-to-the-python-based-fire-needs-assessment-tool",
+    "href": "python-workflow/python-introduction.html#welcome-to-the-python-based-fire-needs-assessment-tool",
+    "title": "Introduction to Fire Needs Analysis in Python",
+    "section": "",
+    "text": "Do you work in Python and want a reproducible, code-driven way to assess fire needs across your landscape? You’re in the right place.\nThis site provides a step-by-step Python workflow for conducting a Fire Needs Assessment using LANDFIRE datasets. Whether you’re looking to automate your analysis, explore ecological patterns, or replicate the ArcGIS Pro workflow using Python, this guide is designed to help you get started—and go deeper.\nWe believe in the power of transparent, repeatable code and invite the LANDFIRE community to build on this foundation. The examples here are practical, flexible, and designed to support real-world decision-making.\n\n\n\n\n\n\nImportant\n\n\n\nIf you prefer to work in a self-contained file, we have created an ArcPy enabled Jupyter Notebook (downloads a zip file) for each step of this workflow from data processing through table export. We strongly recommend that before you run this code, you explore and understand the content and process provided in the rest of the LANDFIRE in Fire Needs Assessment website. This section of the site will give a brief overview and highlight what the code is intended to do, but it will not provide the level of context or information you can find in the rest of the website.\nAt a minimum, please review the following sections: an introduction to fire needs assessments, an overview of the LANDFIRE program, and all three data sections (BPS, EVT, and Fire Regimes)\n\n\n\n\n\n\n\n\nNote\n\n\n\nCurrently, our Python workflow utilizes ArcPy and still requires access to ArcGIS Pro tools and extensions. We are working on an open source version using GeoPandas, and will provide that when it is available. For now, these pages mimic the ArcGIS Pro workflow pages, but include Python code snippets to help you run the tools in a Python workflow.",
+    "crumbs": [
+      "Fire Needs Assessments in Python",
+      "Introduction to Fire Needs Analysis in Python"
+    ]
+  },
+  {
+    "objectID": "python-workflow/python-introduction.html#what-youll-find-here",
+    "href": "python-workflow/python-introduction.html#what-youll-find-here",
+    "title": "Introduction to Fire Needs Analysis in Python",
+    "section": "What you’ll find here",
+    "text": "What you’ll find here\n\nSetup: Install required packages and define your Global Environment settings.\nStep 1: Extract the LANDFIRE rasters Use Python and ArcPy to extract the rasters to your AOI.\nStep 2: Mask EVT by attributes Filter out non-vegetated areas from the EVT raster.\nStep 3: Mask the BPS raster Use the masked EVT to extract the new BPS extent.\nStep 4: Combine BPS and EVT Combine the rasters into a single raster to link via a unique value.\nStep 5:Join Attributes and Export the CSV Join in relevant fields and export the .csv file for analysis.",
+    "crumbs": [
+      "Fire Needs Assessments in Python",
+      "Introduction to Fire Needs Analysis in Python"
+    ]
+  },
+  {
+    "objectID": "python-workflow/python-introduction.html#working-example",
+    "href": "python-workflow/python-introduction.html#working-example",
+    "title": "Introduction to Fire Needs Analysis in Python",
+    "section": "Working example",
+    "text": "Working example\nThis walkthrough uses New York State as the AOI.\nYou can follow along with the provided code or substitute your own shapefile to run the workflow on your landscape.",
+    "crumbs": [
+      "Fire Needs Assessments in Python",
+      "Introduction to Fire Needs Analysis in Python"
+    ]
+  },
+  {
+    "objectID": "python-workflow/python-introduction.html#getting-started",
+    "href": "python-workflow/python-introduction.html#getting-started",
+    "title": "Introduction to Fire Needs Analysis in Python",
+    "section": "Getting Started",
+    "text": "Getting Started\n\nCheck your Python, Jupyter Notebooks, and ArcGIS Pro versions.\nCheck file paths - is your your Python notebook correctly set up?\nLet us know if you run into code bugs: email the TNC LANDFIRE team.",
+    "crumbs": [
+      "Fire Needs Assessments in Python",
+      "Introduction to Fire Needs Analysis in Python"
+    ]
+  },
+  {
+    "objectID": "python-workflow/python-introduction.html#disclaimer",
+    "href": "python-workflow/python-introduction.html#disclaimer",
+    "title": "Introduction to Fire Needs Analysis in Python",
+    "section": "Disclaimer",
+    "text": "Disclaimer\nThe code provided here is offered as-is, without warranty or guarantee of accuracy, functionality, or fitness for a particular purpose. It may not perform identically across all systems or versions of Python, ArcGIS Pro, or Jupyter notebooks. This content is intended for educational and illustrative purposes only. Users are responsible for validating and adapting the code to suit their specific needs and environments.",
+    "crumbs": [
+      "Fire Needs Assessments in Python",
+      "Introduction to Fire Needs Analysis in Python"
+    ]
+  },
+  {
+    "objectID": "python-workflow/python-combine.html",
+    "href": "python-workflow/python-combine.html",
+    "title": "Combine BPS and EVT",
+    "section": "",
+    "text": "Understanding how Biophysical Settings (BPS), Existing Vegetation Type (EVT), and historical fire return intervals interact on the landscape requires combining the burnable BPS and EVT rasters. This step combines the BPS and EVT rasters into a single raster that links each unique BPS–EVT pair to a unique ID. This combined raster will be used in later steps to join attributes and calculate fire return metrics for ecologically relevant areas.",
+    "crumbs": [
+      "Fire Needs Assessments in Python",
+      "The Fire Needs Assessment Process",
+      "Combine BPS and EVT"
+    ]
+  },
+  {
+    "objectID": "python-workflow/python-combine.html#overview",
+    "href": "python-workflow/python-combine.html#overview",
+    "title": "Combine BPS and EVT",
+    "section": "",
+    "text": "Understanding how Biophysical Settings (BPS), Existing Vegetation Type (EVT), and historical fire return intervals interact on the landscape requires combining the burnable BPS and EVT rasters. This step combines the BPS and EVT rasters into a single raster that links each unique BPS–EVT pair to a unique ID. This combined raster will be used in later steps to join attributes and calculate fire return metrics for ecologically relevant areas.",
+    "crumbs": [
+      "Fire Needs Assessments in Python",
+      "The Fire Needs Assessment Process",
+      "Combine BPS and EVT"
+    ]
+  },
+  {
+    "objectID": "python-workflow/python-combine.html#this-code-will",
+    "href": "python-workflow/python-combine.html#this-code-will",
+    "title": "Combine BPS and EVT",
+    "section": "This code will:",
+    "text": "This code will:\n\nLoad the burnable BPS raster (Burnable_BPSs) and burnable EVT raster (Burnable_EVTs) from the project geodatabase.\nUse the Combine function to merge both rasters into a single raster (Combined_BPS_EVT).\nSave the combined raster to the project geodatabase.",
+    "crumbs": [
+      "Fire Needs Assessments in Python",
+      "The Fire Needs Assessment Process",
+      "Combine BPS and EVT"
+    ]
+  },
+  {
+    "objectID": "python-workflow/python-combine.html#step-4-combine-burnable-bps-and-burnable-evt",
+    "href": "python-workflow/python-combine.html#step-4-combine-burnable-bps-and-burnable-evt",
+    "title": "Combine BPS and EVT",
+    "section": "Step 4: Combine Burnable BPS and Burnable EVT",
+    "text": "Step 4: Combine Burnable BPS and Burnable EVT\n# Set model inputs. Replace with your own rasters if you are not using the demo.\nBurnable_BPSs = r\".//Rasters.gdb//NY_BPS_Burnable\"  # input BPS raster\nBurnable_EVTs = r\".//Rasters.gdb//NY_EVT_Burnable\"   # input EVT raster\nCombined_BPS_EVT = r\".//Rasters.gdb//NY_BPS_EVT_Burnable\"  # output raster after combine\n\n#For inline variable substitution, parameters passed as a String are evaluated using locals(), globals() and isinstance(). To override, substitute values directly.\ndef Combine_BPS_EVT():\n    # Process: Combine (Combine) (sa)\n    Combine_BPS_EVT = Combined_BPS_EVT\n    try:\n        print(f\"Attempting combine for : {Burnable_BPSs} and {Burnable_EVTs}\")\n        arcpy.sa.Combine([Burnable_BPSs, Burnable_EVTs]).save(Combined_BPS_EVT)\n        print(f\"BPS raster successfully masked and saved to {Combined_BPS_EVT}\")\n\n    except arcpy.ExecuteError:\n        print(f\"Failed: ArcPy Execution Error in combine.\")\n        print(arcpy.GetMessages(2)) # prints error messages\n    except Exception as e:\n        # catches other potential Python errors (e.g. indentation, syntax)\n        print(f\"Failed: A general error occurred in combine: {e}\")\n\nif __name__ == '__main__':\n    # When the script is run directly, this calls the main function Extract_BPS_by_EVT\n    Combine_BPS_EVT()",
+    "crumbs": [
+      "Fire Needs Assessments in Python",
+      "The Fire Needs Assessment Process",
+      "Combine BPS and EVT"
+    ]
+  },
+  {
     "objectID": "next-steps.html",
     "href": "next-steps.html",
     "title": "Next Steps: Refining your fire needs assessment",
@@ -593,7 +795,7 @@
     "href": "ArcGIS/historical-vegetation.html",
     "title": "FNA Process: Historical Vegetation",
     "section": "",
-    "text": "Important\n\n\n\nIf you prefer to work in an automated format, we have created an ArcGIS Pro toolbox (downloads a zip file) and an ArcPy enabled Jupyter Notebook (downloads a zip file) for each step of this workflow from data processing throught table export. It is still recommended that you follow the guidance written on each FNA Process page as you run the tools so that you better understand the process and do not miss important context for what the tool is asking you to input in each box. The toolbox has simply been provided for your convenience should you choose to use it.\nNote: These tools were created in ArcGIS Pro version 3.2.2 and will require the Spatial Analyst extension. If you are working in a different version of the software or do not have a Spatial Analyst license, some of these tools may not work as expected.",
+    "text": "Important\n\n\n\nIf you prefer to work in an automated format, we have created an ArcGIS Pro toolbox (downloads a zip file) for each step of this workflow from data processing through table export. It is still recommended that you follow the guidance written on each FNA Process page as you run the tools so that you better understand the process and do not miss important context for what the tool is asking you to input in each box. The toolbox has simply been provided for your convenience should you choose to use it.\nNote: These tools were created in ArcGIS Pro version 3.2.2 and will require the Spatial Analyst extension. If you are working in a different version of the software or do not have a Spatial Analyst license, some of these tools may not work as expected.",
     "crumbs": [
       "Fire Needs Assessments in ArcGIS Pro",
       "The Fire Needs Assessment Process"
@@ -604,7 +806,7 @@
     "href": "ArcGIS/historical-vegetation.html#understanding-historical-fire-regimes-using-biophysical-settings",
     "title": "FNA Process: Historical Vegetation",
     "section": "Understanding historical fire regimes using Biophysical Settings",
-    "text": "Understanding historical fire regimes using Biophysical Settings\nConducting a fire needs assessment involves understanding historical fire regimes and vegetation types to plan for future fire management and restoration efforts. This guide will walk you through the process, focusing on the LANDFIRE Biophysical Settings (BPS) and Fire Regime (FRI) data.\n\n\n\n\n\n\nImportant\n\n\n\nThis site will walk you through working with LANDFIRE spatial data in ArcGIS Pro. Please note that this workflow requires the Spatial Analyst extension. Some of the steps may work in QGIS or other open source GIS sources, but those workflows are not documented here. As an alternative, please explore the Fire Needs Assessments in R section if you would like to complete the process and do not have Spatial Analyst or access to ArcGIS Pro.\n\n\n\nStep-by-step process\nScreenshots of the process are included below the written instructions for those who find them useful.\n\nIdentify historical vegetation types\n\nLoad LANDFIRE Biophysical Settings Data: Begin by loading the LANDFIRE Biophysical Settings spatial data into ArcGIS Pro\nClip to area of interest: Use the Clip Raster tool or the Extract by Mask tool (requires a Spatial Analyst license) to clip the BPS spatial data to your specific area of interest. This will help you focus on the relevant geographic region.\nIdentify vegetation types: Examine the clipped BPS layer to identify the historical vegetation types present in your area.\n\n\n\n\n\n\n\n\nNote\n\n\n\nDon’t forget to set the environment settings in the tool. Most importantly, make sure the spatial reference of your output raster is correct and set a snap raster (e.g. the BPS_CONUS raster) to ensure your pixel extents match. This will be important later when you use one raster to process another.\n\n\n\nEstimate historical fire return intervals\n\nExplore fire return interval data: The BPS data include fire return interval (FRI) information. Display the raster on the FRI_ALLFIR field to explore the historical fire return intervals for the identified vegetation type.\n\n\n\n\n\n\n\n\nTip\n\n\n\nLANDFIRE also delivers the fire regime data separately. That dataset includes only fire severity, fire return interval, fire regime groups, and the BPS name and code. If your work is soley focused on fire regimes we suggest working with the fire return interval dataset. It will have all the information you need to complete this assessment.\n\n\n\nCalculate historical fire acreages\n\nAdd fields for calculation: Add an Acres field and an Acres_Year field to your clipped data.\nCalculate acres: Use the following formula to calculate the total acres for each vegetation type:\n\n\\[\nAcres=!COUNT!*900*0.000247105\n\\]\nHere, !COUNT! represents the number of pixels for each vegetation type, 900 is the area of each pixel in square meters, and 0.000247105 converts square meters to acres.\n\nCalculate acres burned annually: Use the following formula to calculate the number of acres that should burn each year for each BPS:\n\n\\[\nAcres\\_Year=!Acres!/!FRI\\_ALLFIR!\n\\]\nThis calculation will give you an estimate of the annual burned area under historical conditions.\n\n\n\nScreenshots for understanding historical fire regime information\n\n\n\nAdd BPS data to ArcGIS Pro.\n\n\n \n\n\n\nCrop the BPS raster to your area of interest.\n\n\n \n\n\n\nExplore BPS attributes on your landscape, including BPS names (shown in the vertical box), and fire regime information (shown in the horizontal box).\n\n\n \n\n\n\nExamine the fire regime attributes by displaying the primary symbology on FRI_ALLFIR using Unique Values. (Note: the image shown here is using a custom color scheme. Your data may look different.)\n\n\n \n\n\n\nAdd fields to the BpS raster. You can do this either by using the Add button in the attribute table or the Add Fields geoprocessing tool.\n\n\n \n\n\n\nCalculate the acre field. You can do this by right clicking on the field name in the attribute table and selecting Calculate Field or with the Calculate Field geoprocessing tool. Repeat the process with the appropriate formula to calculate Acres Burned/Year.",
+    "text": "Understanding historical fire regimes using Biophysical Settings\nConducting a fire needs assessment involves understanding historical fire regimes and vegetation types to plan for future fire management and restoration efforts. This guide will walk you through the process, focusing on the LANDFIRE Biophysical Settings (BPS) and Fire Regime (FRI) data.\n\n\n\n\n\n\nImportant\n\n\n\nThis site will walk you through working with LANDFIRE spatial data in ArcGIS Pro. Please note that this workflow requires the Spatial Analyst extension. Some of the steps may work in QGIS or other open source GIS sources, but those workflows are not documented here. As an alternative, please explore the Fire Needs Assessments in R section if you would like to complete the process and do not have Spatial Analyst or access to ArcGIS Pro.\nWe have also created a replica of this workflow using Python and Jupyter notebooks. It does require ArcPy and Spatial Analyst, but is set up in a more automated format. If you would like to work this way, please explore the Fire Needs Assessments in Python section of this website.\n\n\n\nStep-by-step process\nScreenshots of the process are included below the written instructions for those who find them useful.\n\nIdentify historical vegetation types\n\nLoad LANDFIRE Biophysical Settings Data: Begin by loading the LANDFIRE Biophysical Settings spatial data into ArcGIS Pro\nClip to area of interest: Use the Clip Raster tool or the Extract by Mask tool (requires a Spatial Analyst license) to clip the BPS spatial data to your specific area of interest. This will help you focus on the relevant geographic region.\nIdentify vegetation types: Examine the clipped BPS layer to identify the historical vegetation types present in your area.\n\n\n\n\n\n\n\n\nNote\n\n\n\nDon’t forget to set the environment settings in the tool. Most importantly, make sure the spatial reference of your output raster is correct and set a snap raster (e.g. the BPS_CONUS raster) to ensure your pixel extents match. This will be important later when you use one raster to process another.\n\n\n\nEstimate historical fire return intervals\n\nExplore fire return interval data: The BPS data include fire return interval (FRI) information. Display the raster on the FRI_ALLFIR field to explore the historical fire return intervals for the identified vegetation type.\n\n\n\n\n\n\n\n\nTip\n\n\n\nLANDFIRE also delivers the fire regime data separately. That dataset includes only fire severity, fire return interval, fire regime groups, and the BPS name and code. If your work is soley focused on fire regimes we suggest working with the fire return interval dataset. It will have all the information you need to complete this assessment.\n\n\n\nCalculate historical fire acreages\n\nAdd fields for calculation: Add an Acres field and an Acres_Year field to your clipped data.\nCalculate acres: Use the following formula to calculate the total acres for each vegetation type:\n\n\\[\nAcres=!COUNT!*900*0.000247105\n\\]\nHere, !COUNT! represents the number of pixels for each vegetation type, 900 is the area of each pixel in square meters, and 0.000247105 converts square meters to acres.\n\nCalculate acres burned annually: Use the following formula to calculate the number of acres that should burn each year for each BPS:\n\n\\[\nAcres\\_Year=!Acres!/!FRI\\_ALLFIR!\n\\]\nThis calculation will give you an estimate of the annual burned area under historical conditions.\n\n\n\nScreenshots for understanding historical fire regime information\n\n\n\nAdd BPS data to ArcGIS Pro.\n\n\n \n\n\n\nCrop the BPS raster to your area of interest.\n\n\n \n\n\n\nExplore BPS attributes on your landscape, including BPS names (shown in the vertical box), and fire regime information (shown in the horizontal box).\n\n\n \n\n\n\nExamine the fire regime attributes by displaying the primary symbology on FRI_ALLFIR using Unique Values. (Note: the image shown here is using a custom color scheme. Your data may look different.)\n\n\n \n\n\n\nAdd fields to the BpS raster. You can do this either by using the Add button in the attribute table or the Add Fields geoprocessing tool.\n\n\n \n\n\n\nCalculate the acre field. You can do this by right clicking on the field name in the attribute table and selecting Calculate Field or with the Calculate Field geoprocessing tool. Repeat the process with the appropriate formula to calculate Acres Burned/Year.",
     "crumbs": [
       "Fire Needs Assessments in ArcGIS Pro",
       "The Fire Needs Assessment Process"
@@ -958,6 +1160,190 @@
     "crumbs": [
       "An Overview of Fire Needs Assessments",
       "How can LANDFIRE help?"
+    ]
+  },
+  {
+    "objectID": "python-workflow/python-aoi.html",
+    "href": "python-workflow/python-aoi.html",
+    "title": "Clip Rasters to AOI",
+    "section": "",
+    "text": "This step clips the LANDFIRE Biophysical Settings (BpS) and Existing Vegetation Type (EVT) rasters to your analysis boundary using the ExtractByMask tool. This ensures that subsequent processing focuses only on your area of interest.",
+    "crumbs": [
+      "Fire Needs Assessments in Python",
+      "Clip Rasters to AOI"
+    ]
+  },
+  {
+    "objectID": "python-workflow/python-aoi.html#overview",
+    "href": "python-workflow/python-aoi.html#overview",
+    "title": "Clip Rasters to AOI",
+    "section": "",
+    "text": "This step clips the LANDFIRE Biophysical Settings (BpS) and Existing Vegetation Type (EVT) rasters to your analysis boundary using the ExtractByMask tool. This ensures that subsequent processing focuses only on your area of interest.",
+    "crumbs": [
+      "Fire Needs Assessments in Python",
+      "Clip Rasters to AOI"
+    ]
+  },
+  {
+    "objectID": "python-workflow/python-aoi.html#prerequisites",
+    "href": "python-workflow/python-aoi.html#prerequisites",
+    "title": "Clip Rasters to AOI",
+    "section": "Prerequisites",
+    "text": "Prerequisites\n\nArcGIS Pro 3.2.2 or later with the Spatial Analyst extension enabled.\nProject directories set up:\n\nInputs.gdb containing the CONUS BpS and EVT rasters and your boundary feature class.\nRasters.gdb for intermediate outputs.\nOutputs folder for final tables.\n\nGlobal environment settings configured:\n\narcpy.env.snapRaster set to the CONUS BpS raster.\narcpy.env.cellSize set to 30 meters.\narcpy.env.outputCoordinateSystem set to NAD 1983 Albers (CONUS).",
+    "crumbs": [
+      "Fire Needs Assessments in Python",
+      "Clip Rasters to AOI"
+    ]
+  },
+  {
+    "objectID": "python-workflow/python-aoi.html#this-code-will",
+    "href": "python-workflow/python-aoi.html#this-code-will",
+    "title": "Clip Rasters to AOI",
+    "section": "This code will:",
+    "text": "This code will:\n\nClip the BpS raster to the boundary feature class and save it as NY_BpS in Rasters.gdb.\nClip the EVT raster to the same boundary and save it as NY_EVT in Rasters.gdb.\n\n\nIf you do not have the Spatial Analyst extension, you can use the Raster Clip tool instead, but subsequent steps require Spatial Analyst.\nEnsure your boundary feature class and rasters share the same projection before running this step.",
+    "crumbs": [
+      "Fire Needs Assessments in Python",
+      "Clip Rasters to AOI"
+    ]
+  },
+  {
+    "objectID": "python-workflow/python-aoi.html#step-1-clipextract-landfire-rasters-to-analysis-extent",
+    "href": "python-workflow/python-aoi.html#step-1-clipextract-landfire-rasters-to-analysis-extent",
+    "title": "Clip Rasters to AOI",
+    "section": "Step 1: Clip/Extract LANDFIRE rasters to analysis extent",
+    "text": "Step 1: Clip/Extract LANDFIRE rasters to analysis extent\n# Set model inputs. Replace with your own rasters and your own boundary if you are not using the demo.\nBoundary=\".\\\\Inputs.gdb\\\\NY_boundary\"\nBpS_Raster=\".\\\\Inputs.gdb\\\\BpS\"\nMasked_BpS=\".\\\\Rasters.gdb\\\\NY_BpS\"\nEVT_Raster=\".\\\\Inputs.gdb\\\\EVT\"\nMasked_EVT=\".\\\\Rasters.gdb\\\\NY_EVT\"\n\n#Boundary=\".\\\\Inputs.gdb\\\\NY_boundary\", BpS_Raster=\".\\\\Inputs.gdb\\\\BpS\", Masked_BpS=\".\\\\Rasters.gdb\\\\NY_BpS\", EVT_Raster=\".\\\\Inputs.gdb\\\\EVT\", Masked_EVT=\".\\\\Rasters.gdb\\\\NY_EVT\"\n\n# For inline variable substitution, parameters passed as a String are evaluated using locals(), globals() and isinstance(). To override, substitute values directly.\ndef Extract_to_Boundary():  # Extract LANDFIRE rasters to boundary.\n\n    # Process: Extract BpS to boundary (Extract by Mask) (sa)\n    Extract_BpS_to_boundary = Masked_BpS\n    try:\n        print(f\"Attempting Extract by Mask for BPS raster: {BpS_Raster}\")\n        arcpy.sa.ExtractByMask(BpS_Raster, Boundary).save(Masked_BpS)\n        print(f\"BPS data successfully masked and saved to {Masked_BpS}\")\n\n    except arcpy.ExecuteError:\n        print(f\"Failed: ArcPy Execution Error in BpS Process.\")\n        print(arcpy.GetMessages(2)) # prints error messages\n    except Exception as e:\n        # catches other potential Python errors (e.g. indentation, syntax)\n        print(f\"Failed: A general error occurred in BpS process: {e}\")\n\n\n    # Process: Extract EVT to boundary (Extract by Mask) (sa)\n    Extract_EVT_to_boundary = Masked_EVT\n    try:\n        print(f\"Attempting Extract by Mask for EVT raster: {EVT_Raster}\")\n        arcpy.sa.ExtractByMask(EVT_Raster, Boundary).save(Masked_EVT)\n        print(f\"EVT data successfully masked and saved to {Masked_EVT}\")\n\n    except arcpy.ExecuteError:\n        print(\"Failed: ArcPy Execution Error in EVT Process.\")\n        print(arcpy.GetMessages(2)) # prints error messages\n    except Exception as e:\n        # catches other potential Python errors (e.g. indentation, syntax)\n        print(f\"Failed: A general error occurred in BpS process: {e}\")\n\n    print(\"Extract_to_Boundary execution finished.\")\n\nif __name__ == '__main__':\n    # When the script is run directly, this calls the main function Extract_to_Boundary\n    Extract_to_Boundary()",
+    "crumbs": [
+      "Fire Needs Assessments in Python",
+      "Clip Rasters to AOI"
+    ]
+  },
+  {
+    "objectID": "python-workflow/python-export.html",
+    "href": "python-workflow/python-export.html",
+    "title": "Join Attributes and Export",
+    "section": "",
+    "text": "The combined raster currently contains only basic fields (e.g., Object ID, Value, Count, and the value fields from BPS and EVT). To make this data useful for analysis, we need to join additional attributes from the original BPS and EVT rasters and then export the table for further processing. This table will serve as the foundation for calculating fire return metrics and summarizing results by vegetation type.",
+    "crumbs": [
+      "Fire Needs Assessments in Python",
+      "The Fire Needs Assessment Process",
+      "Join Attributes and Export"
+    ]
+  },
+  {
+    "objectID": "python-workflow/python-export.html#overview",
+    "href": "python-workflow/python-export.html#overview",
+    "title": "Join Attributes and Export",
+    "section": "",
+    "text": "The combined raster currently contains only basic fields (e.g., Object ID, Value, Count, and the value fields from BPS and EVT). To make this data useful for analysis, we need to join additional attributes from the original BPS and EVT rasters and then export the table for further processing. This table will serve as the foundation for calculating fire return metrics and summarizing results by vegetation type.",
+    "crumbs": [
+      "Fire Needs Assessments in Python",
+      "The Fire Needs Assessment Process",
+      "Join Attributes and Export"
+    ]
+  },
+  {
+    "objectID": "python-workflow/python-export.html#this-code-will",
+    "href": "python-workflow/python-export.html#this-code-will",
+    "title": "Join Attributes and Export",
+    "section": "This code will:",
+    "text": "This code will:\n\nJoin BPS attributes to the combined raster using JoinField:\n\nFields include: BPS_NAME, BPS_MODEL, GROUPVEG, fire return interval fields (FRI_ALLFIR, FRI_REPLAC, FRI_MIXED, FRI_SURFAC), fire severity percentages, and acreage fields (Acres, Acres_Year).\n\nJoin EVT attributes to the combined raster using JoinField:\n\nFields include: EVT_NAME, EVT_PHYS, EVT_GP_N.\n\nExport the updated raster attribute table to a CSV file for further analysis.\n\n\n\n\n\n\n\nNote\n\n\n\n\nEnsure the combined raster and join tables exist in the specified geodatabase.\nUpdate field lists if your analysis requires additional attributes.\nThe exported table will be saved to the Outputs folder as a .csv file.",
+    "crumbs": [
+      "Fire Needs Assessments in Python",
+      "The Fire Needs Assessment Process",
+      "Join Attributes and Export"
+    ]
+  },
+  {
+    "objectID": "python-workflow/python-export.html#step-5-join-fields-and-export-table",
+    "href": "python-workflow/python-export.html#step-5-join-fields-and-export-table",
+    "title": "Join Attributes and Export",
+    "section": "Step 5: Join fields and export table",
+    "text": "Step 5: Join fields and export table\n# Set model inputs. Replace with your own files if you are not using the demo.\nCombined_BPS_EVT_Raster = r\".//Rasters.gdb//NY_BPS_EVT_Burnable\" # input raster to which table will be joined\nBPS_Field = \"NY_BPS_Burnable\"\nBPS_Join_Table = r\".//Rasters.gdb//NY_BPS_Burnable\"\nBPS_Join_Field = \"value\"\nBPS_Transfer_Fields = [\"BPS_NAME\", \"BPS_MODEL\", \"GROUPVEG\", \"FRI_ALLFIR\", \"FRI_REPLAC\", \"FRI_MIXED\", \"FRI_SURFAC\", \"PRC_REPLAC\", \"PRC_MIXED\", \"PRC_SURFAC\", \"FRG_NEW\", \"Acres\", \"Acres_Year\"]\nEVT_Field = \"NY_EVT_Burnable\"\nEVT_Join_Table = r\".//Rasters.gdb//NY_EVT_Burnable\"\nEVT_Join_Field = \"value\"\nEVT_Transfer_Fields = [\"EVT_NAME\", \"EVT_PHYS\", \"EVT_GP_N\"]\nCombined_BPS_EVT_Table = r\".//Outputs//NY_BPS_EVT_Burnable.csv\"\n\n\n#For inline variable substitution, parameters passed as a String are evaluated using locals(), globals() and isinstance(). To override, substitute values directly.\ndef Join_BPS_Variables():  # Model\n    # Process: Join BPS Variables (Join Field) (management)\n    try:\n        print(f\"Attempting join field for : {Combined_BPS_EVT_Raster} and {BPS_Join_Table}\")\n        arcpy.management.JoinField(Combined_BPS_EVT_Raster, BPS_Field, BPS_Join_Table, BPS_Join_Field, BPS_Transfer_Fields, fm_option=\"NOT_USE_FM\", index_join_fields=\"NO_INDEXES\")\n        print(f\"BPS fields successfully joined\")\n\n    except arcpy.ExecuteError:\n        print(f\"Failed: ArcPy Execution Error in combine.\")\n        print(arcpy.GetMessages(2)) # prints error messages\n    except Exception as e:\n        # catches other potential Python errors (e.g. indentation, syntax)\n        print(f\"Failed: A general error occurred in join fields: {e}\")                    \n\n    # Process: Join EVT variables (Join Field) (management)\n    try:\n        print(f\"Attempting join field for : {Combined_BPS_EVT_Raster} and {EVT_Join_Table}\")\n        arcpy.management.JoinField(Combined_BPS_EVT_Raster, EVT_Field, EVT_Join_Table, EVT_Join_Field, EVT_Transfer_Fields, fm_option=\"NOT_USE_FM\", index_join_fields=\"NO_INDEXES\")\n        print(f\"BPS fields successfully joined\")\n\n    except arcpy.ExecuteError:\n        print(f\"Failed: ArcPy Execution Error in combine.\")\n        print(arcpy.GetMessages(2)) # prints error messages\n    except Exception as e:\n        # catches other potential Python errors (e.g. indentation, syntax)\n        print(f\"Failed: A general error occurred in join fields: {e}\")\n    \n\n    # Process: Export Table (Export Table) (conversion)\n    try:\n        print(f\"Attempting to export: {Combined_BPS_EVT_Table}\")\n        arcpy.conversion.ExportTable(Combined_BPS_EVT_Raster, Combined_BPS_EVT_Table, use_field_alias_as_name=\"NOT_USE_ALIAS\")\n        print(f\"table successfully exported to {Combined_BPS_EVT_Table}\")\n\n    except arcpy.ExecuteError:\n        print(f\"Failed: ArcPy Execution Error in combine.\")\n        print(arcpy.GetMessages(2)) # prints error messages\n    except Exception as e:\n        # catches other potential Python errors (e.g. indentation, syntax)\n        print(f\"Failed: A general error occurred in join fields: {e}\")\n\nif __name__ == '__main__':\n    # When the script is run directly, this calls the main function Join_BPS_Variables\n    Join_BPS_Variables()",
+    "crumbs": [
+      "Fire Needs Assessments in Python",
+      "The Fire Needs Assessment Process",
+      "Join Attributes and Export"
+    ]
+  },
+  {
+    "objectID": "python-workflow/python-mask-bps.html",
+    "href": "python-workflow/python-mask-bps.html",
+    "title": "Mask BPS raster using burnable EVT",
+    "section": "",
+    "text": "Assessing fire needs requires refining the analysis to focus only on ecologically relevant areas. After creating the burnable EVT raster in the previous step, we now use it to mask the Biophysical Settings (BPS) raster. This ensures that fire return interval calculations apply only to zones where vegetation can burn.",
+    "crumbs": [
+      "Fire Needs Assessments in Python",
+      "The Fire Needs Assessment Process",
+      "Mask BPS raster using burnable EVT"
+    ]
+  },
+  {
+    "objectID": "python-workflow/python-mask-bps.html#overview",
+    "href": "python-workflow/python-mask-bps.html#overview",
+    "title": "Mask BPS raster using burnable EVT",
+    "section": "",
+    "text": "Assessing fire needs requires refining the analysis to focus only on ecologically relevant areas. After creating the burnable EVT raster in the previous step, we now use it to mask the Biophysical Settings (BPS) raster. This ensures that fire return interval calculations apply only to zones where vegetation can burn.",
+    "crumbs": [
+      "Fire Needs Assessments in Python",
+      "The Fire Needs Assessment Process",
+      "Mask BPS raster using burnable EVT"
+    ]
+  },
+  {
+    "objectID": "python-workflow/python-mask-bps.html#this-code-will",
+    "href": "python-workflow/python-mask-bps.html#this-code-will",
+    "title": "Mask BPS raster using burnable EVT",
+    "section": "This code will:",
+    "text": "This code will:\n\nLoad the masked BPS raster (Masked_BPS) and the burnable EVT raster (Burnable_EVTs) from the project geodatabase.\nApply a mask to the BPS raster using the burnable EVT raster (ExtractByMask) to produce Burnable_BPSs.\nAdd fields Acres and Acres_Year to the output raster’s table if they are missing.\nCalculate Acres from COUNT using COUNT × 900 × 0.0002471 (assumes 30 m pixels).\nIf the interval field (FRI_ALLFIR) exists, calculate Acres_Year as Acres / FRI_ALLFIR.\nSave the masked BPS raster to the project geodatabase.",
+    "crumbs": [
+      "Fire Needs Assessments in Python",
+      "The Fire Needs Assessment Process",
+      "Mask BPS raster using burnable EVT"
+    ]
+  },
+  {
+    "objectID": "python-workflow/python-mask-bps.html#step-3-mask-bps-by-evt",
+    "href": "python-workflow/python-mask-bps.html#step-3-mask-bps-by-evt",
+    "title": "Mask BPS raster using burnable EVT",
+    "section": "Step 3: Mask BPS by EVT",
+    "text": "Step 3: Mask BPS by EVT\n# Set model inputs. Replace with your own rasters if you are not using the demo.\nMasked_BPS = r\".//Rasters.gdb//NY_BpS\"      # input raster to be masked\nBurnable_EVTs=r\".//Rasters.gdb//NY_EVT_Burnable\"   # mask raster\nBurnable_BPSs = r\".//Rasters.gdb//NY_BPS_Burnable\"  # output raster after masking\n\n#For inline variable substitution, parameters passed as a String are evaluated using locals(), globals() and isinstance(). To override, substitute values directly.\ndef Extract_BPS():\n    \n    # Process: Extract BPS by mask (Extract by Mask) (sa)\n    Extract_BPS_by_mask = Burnable_BPSs\n    try:\n        print(f\"Attempting Extract by Mask for BPS raster: {Masked_BPS}\")\n        arcpy.sa.ExtractByMask(Masked_BPS, Burnable_EVTs).save(Burnable_BPSs)\n        print(f\"BPS raster successfully masked and saved to {Burnable_BPSs}\")\n\n    except arcpy.ExecuteError:\n        print(f\"Failed: ArcPy Execution Error in BPS Mask.\")\n        print(arcpy.GetMessages(2)) # prints error messages\n    except Exception as e:\n        # catches other potential Python errors (e.g. indentation, syntax)\n        print(f\"Failed: A general error occurred in BPS mask: {e}\")\n\n    # Add fields (Acres, Acres_Year) if missing\n    def field_exists(table, name):\n        return any(f.name.lower() == name.lower() for f in arcpy.ListFields(table))\n\n    for fld, alias in [(\"Acres\",\"Acres\"), (\"Acres_Year\",\"Acres per Year\")]:\n        if field_exists(Burnable_BPSs, fld):\n            print(f\"Field '{fld}' already exists—skipping.\")\n        else:\n            print(f\"Adding field '{fld}'...\")\n            arcpy.management.AddField(Burnable_BPSs, fld, \"DOUBLE\", field_alias=alias)\n            print(f\"Added field '{fld}'.\")\n\n# Calculate Acres from COUNT (30 m pixels)\n    try:\n        arcpy.management.CalculateField(\n            in_table=Burnable_BPSs,\n            field=\"Acres\",\n            expression=\"!COUNT! * 900 * 0.0002471\",\n            expression_type=\"PYTHON3\"\n        )\n        print(\"Calculated 'Acres' using COUNT * 900 * 0.0002471.\")\n    except arcpy.ExecuteError:\n        print(\"ArcPy error calculating 'Acres'.\")\n        print(arcpy.GetMessages(2))\n    except Exception as e:\n        print(f\"General error calculating 'Acres': {e}\")\n\n    # Calculate Acres_Year if your interval field exists\n    FRI_FIELD = \"FRI_ALLFIR\"  # your interval field\n    try:\n        if field_exists(Burnable_BPSs, FRI_FIELD):\n            print(f\"Calculating 'Acres_Year' = !Acres! / !{FRI_FIELD}!\")\n            arcpy.management.CalculateField(\n                in_table=Burnable_BPSs,\n                field=\"Acres_Year\",\n                expression=f\"!Acres! / !{FRI_FIELD}!\",\n                expression_type=\"PYTHON3\"\n            )\n            print(f\"Calculated 'Acres_Year' using '{FRI_FIELD}'.\")\n        else:\n            print(f\"Skipped 'Acres_Year': '{FRI_FIELD}' field not found.\")\n    except arcpy.ExecuteError:\n        print(\"ArcPy error calculating 'Acres_Year'.\")\n        print(arcpy.GetMessages(2))\n    except Exception as e:\n        print(f\"General error calculating 'Acres_Year': {e}\")\n\n\nif __name__ == '__main__':\n    # When the script is run directly, this calls the main function Extract_BPS_by_EVT\n    Extract_BPS()",
+    "crumbs": [
+      "Fire Needs Assessments in Python",
+      "The Fire Needs Assessment Process",
+      "Mask BPS raster using burnable EVT"
+    ]
+  },
+  {
+    "objectID": "python-workflow/python-next-steps.html",
+    "href": "python-workflow/python-next-steps.html",
+    "title": "Next Steps",
+    "section": "",
+    "text": "The combined BPS–EVT table has been exported as a CSV file. From this point forward, the workflow for analyzing and summarizing the data is the same as in the ArcGIS Pro and R tutorials.\nTo continue:",
+    "crumbs": [
+      "Fire Needs Assessments in Python",
+      "Next Steps"
+    ]
+  },
+  {
+    "objectID": "python-workflow/python-next-steps.html#if-you-prefer-excel",
+    "href": "python-workflow/python-next-steps.html#if-you-prefer-excel",
+    "title": "Next Steps",
+    "section": "If you prefer Excel",
+    "text": "If you prefer Excel\nFollow the instructions starting with Working with the CSV File in the Fire Needs Assessments in ArcGIS Pro section of the LANDFIRE in Fire Needs Assessments website.",
+    "crumbs": [
+      "Fire Needs Assessments in Python",
+      "Next Steps"
+    ]
+  },
+  {
+    "objectID": "python-workflow/python-next-steps.html#if-you-prefer-r",
+    "href": "python-workflow/python-next-steps.html#if-you-prefer-r",
+    "title": "Next Steps",
+    "section": "If you prefer R",
+    "text": "If you prefer R\nFollow the instructions starting with Working with the Tabular Data in the Fire Needs Assessments in R section of the LANDFIRE in Fire Needs Assessments website.\nThese resources will guide you through: - Reviewing and cleaning the table, - Calculating fire return metrics, - Summarizing results by vegetation type.\n\n\n\n\n\n\nNote\n\n\n\nThe Python workflow ends here. All subsequent steps for data manipulation and analysis should follow the Excel or R workflows linked above.",
+    "crumbs": [
+      "Fire Needs Assessments in Python",
+      "Next Steps"
     ]
   },
   {

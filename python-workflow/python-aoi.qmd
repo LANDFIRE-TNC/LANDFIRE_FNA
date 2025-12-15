@@ -1,0 +1,82 @@
+---
+title: "Clip Rasters to AOI"
+author: "Sarah Hagen"
+toc: true
+---
+## Overview
+This step clips the LANDFIRE Biophysical Settings (BpS) and Existing Vegetation Type (EVT) rasters to your analysis boundary using the ExtractByMask tool. This ensures that subsequent processing focuses only on your area of interest.
+
+## Prerequisites
+- ArcGIS Pro 3.2.2 or later with the Spatial Analyst extension enabled.
+- Project directories set up:
+  - Inputs.gdb containing the CONUS BpS and EVT rasters and your boundary feature class.
+  - Rasters.gdb for intermediate outputs.
+  - Outputs folder for final tables.
+- Global environment settings configured:
+  - arcpy.env.snapRaster set to the CONUS BpS raster.
+  - arcpy.env.cellSize set to 30 meters.
+  - arcpy.env.outputCoordinateSystem set to NAD 1983 Albers (CONUS).
+
+## This code will:
+- Clip the BpS raster to the boundary feature class and save it as NY_BpS in Rasters.gdb.
+- Clip the EVT raster to the same boundary and save it as NY_EVT in Rasters.gdb.
+
+:::Callout-note
+If you do not have the Spatial Analyst extension, you can use the Raster Clip tool instead, but subsequent steps require Spatial Analyst.
+
+Ensure your boundary feature class and rasters share the same projection before running this step.
+:::
+
+## Step 1: Clip/Extract LANDFIRE rasters to analysis extent
+
+```python
+# Set model inputs. Replace with your own rasters and your own boundary if you are not using the demo.
+Boundary=".\\Inputs.gdb\\NY_boundary"
+BpS_Raster=".\\Inputs.gdb\\BpS"
+Masked_BpS=".\\Rasters.gdb\\NY_BpS"
+EVT_Raster=".\\Inputs.gdb\\EVT"
+Masked_EVT=".\\Rasters.gdb\\NY_EVT"
+
+#Boundary=".\\Inputs.gdb\\NY_boundary", BpS_Raster=".\\Inputs.gdb\\BpS", Masked_BpS=".\\Rasters.gdb\\NY_BpS", EVT_Raster=".\\Inputs.gdb\\EVT", Masked_EVT=".\\Rasters.gdb\\NY_EVT"
+
+# For inline variable substitution, parameters passed as a String are evaluated using locals(), globals() and isinstance(). To override, substitute values directly.
+def Extract_to_Boundary():  # Extract LANDFIRE rasters to boundary.
+
+    # Process: Extract BpS to boundary (Extract by Mask) (sa)
+    Extract_BpS_to_boundary = Masked_BpS
+    try:
+        print(f"Attempting Extract by Mask for BPS raster: {BpS_Raster}")
+        arcpy.sa.ExtractByMask(BpS_Raster, Boundary).save(Masked_BpS)
+        print(f"BPS data successfully masked and saved to {Masked_BpS}")
+
+    except arcpy.ExecuteError:
+        print(f"Failed: ArcPy Execution Error in BpS Process.")
+        print(arcpy.GetMessages(2)) # prints error messages
+    except Exception as e:
+        # catches other potential Python errors (e.g. indentation, syntax)
+        print(f"Failed: A general error occurred in BpS process: {e}")
+
+
+    # Process: Extract EVT to boundary (Extract by Mask) (sa)
+    Extract_EVT_to_boundary = Masked_EVT
+    try:
+        print(f"Attempting Extract by Mask for EVT raster: {EVT_Raster}")
+        arcpy.sa.ExtractByMask(EVT_Raster, Boundary).save(Masked_EVT)
+        print(f"EVT data successfully masked and saved to {Masked_EVT}")
+
+    except arcpy.ExecuteError:
+        print("Failed: ArcPy Execution Error in EVT Process.")
+        print(arcpy.GetMessages(2)) # prints error messages
+    except Exception as e:
+        # catches other potential Python errors (e.g. indentation, syntax)
+        print(f"Failed: A general error occurred in BpS process: {e}")
+
+    print("Extract_to_Boundary execution finished.")
+
+if __name__ == '__main__':
+    # When the script is run directly, this calls the main function Extract_to_Boundary
+    Extract_to_Boundary()
+
+
+```
+

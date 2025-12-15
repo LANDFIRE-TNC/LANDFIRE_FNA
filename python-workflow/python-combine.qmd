@@ -1,0 +1,41 @@
+---
+title: "Combine BPS and EVT"
+author: "Sarah Hagen"
+toc: true
+---
+## Overview
+Understanding how Biophysical Settings (BPS), Existing Vegetation Type (EVT), and historical fire return intervals interact on the landscape requires combining the burnable BPS and EVT rasters. This step combines the BPS and EVT rasters into a single raster that links each unique BPS–EVT pair to a unique ID. This combined raster will be used in later steps to join attributes and calculate fire return metrics for ecologically relevant areas.
+
+## This code will:
+- Load the burnable BPS raster (`Burnable_BPSs`) and burnable EVT raster (`Burnable_EVTs`) from the project geodatabase.
+- Use the `Combine` function to merge both rasters into a single raster (`Combined_BPS_EVT`).
+- Save the combined raster to the project geodatabase.
+
+## Step 4: Combine Burnable BPS and Burnable EVT
+```python
+# Set model inputs. Replace with your own rasters if you are not using the demo.
+Burnable_BPSs = r".//Rasters.gdb//NY_BPS_Burnable"  # input BPS raster
+Burnable_EVTs = r".//Rasters.gdb//NY_EVT_Burnable"   # input EVT raster
+Combined_BPS_EVT = r".//Rasters.gdb//NY_BPS_EVT_Burnable"  # output raster after combine
+
+#For inline variable substitution, parameters passed as a String are evaluated using locals(), globals() and isinstance(). To override, substitute values directly.
+def Combine_BPS_EVT():
+    # Process: Combine (Combine) (sa)
+    Combine_BPS_EVT = Combined_BPS_EVT
+    try:
+        print(f"Attempting combine for : {Burnable_BPSs} and {Burnable_EVTs}")
+        arcpy.sa.Combine([Burnable_BPSs, Burnable_EVTs]).save(Combined_BPS_EVT)
+        print(f"BPS raster successfully masked and saved to {Combined_BPS_EVT}")
+
+    except arcpy.ExecuteError:
+        print(f"Failed: ArcPy Execution Error in combine.")
+        print(arcpy.GetMessages(2)) # prints error messages
+    except Exception as e:
+        # catches other potential Python errors (e.g. indentation, syntax)
+        print(f"Failed: A general error occurred in combine: {e}")
+
+if __name__ == '__main__':
+    # When the script is run directly, this calls the main function Extract_BPS_by_EVT
+    Combine_BPS_EVT()
+```
+

@@ -8,7 +8,7 @@
 
 <meta name="author" content="Sarah Hagen">
 
-<title>FNA Process: Historical Vegetation – LANDFIRE in Fire Needs Assessments</title>
+<title>Join Attributes and Export – LANDFIRE in Fire Needs Assessments</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +21,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -31,7 +66,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../ArcGIS/current-vegetation.html" rel="next">
+<link href="../python-workflow/python-next-steps.html" rel="next">
+<link href="../python-workflow/python-combine.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -74,35 +110,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -299,7 +306,7 @@ window.Quarto = {
 <span class="menu-text">An Overview of Fire Needs Assessments</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../ArcGIS/historical-vegetation.html" aria-current="page"> 
+    <a class="nav-link" href="../ArcGIS/historical-vegetation.html"> 
 <span class="menu-text">Fire Needs Assessments in ArcGIS Pro</span></a>
   </li>  
   <li class="nav-item">
@@ -307,7 +314,7 @@ window.Quarto = {
 <span class="menu-text">Fire Needs Assessments in R</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../python-workflow/python-introduction.html"> 
+    <a class="nav-link active" href="../python-workflow/python-introduction.html" aria-current="page"> 
 <span class="menu-text">Fire Needs Assessments in Python</span></a>
   </li>  
 </ul>
@@ -322,7 +329,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ArcGIS/historical-vegetation.html">The Fire Needs Assessment Process</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../python-workflow/python-mask-evt.html">The Fire Needs Assessment Process</a></li><li class="breadcrumb-item"><a href="../python-workflow/python-export.html">Join Attributes and Export</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -342,111 +349,65 @@ window.Quarto = {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../python-workflow/python-introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Fire Needs Analysis in Python</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../python-workflow/python-setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Python setup and environment settings</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../python-workflow/python-aoi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Clip Rasters to AOI</span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../ArcGIS/historical-vegetation.html" class="sidebar-item-text sidebar-link active">
+            <a href="../python-workflow/python-mask-evt.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">The Fire Needs Assessment Process</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Processing your data</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../ArcGIS/historical-vegetation.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">FNA Process: Historical Vegetation</span></a>
+  <a href="../python-workflow/python-mask-evt.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Examining Existing Vegetation Types</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../ArcGIS/current-vegetation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FNA Process: Current vegetation</span></a>
+  <a href="../python-workflow/python-mask-bps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mask BPS raster using burnable EVT</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../ArcGIS/mask-bps.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FNA Process: Use EVT to mask BPS</span></a>
+  <a href="../python-workflow/python-combine.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Combine BPS and EVT</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../ArcGIS/combine-and-join.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FNA Process: Combine rasters and join fields</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../ArcGIS/export-to-csv.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FNA Process: Export the attribute table</span></a>
+  <a href="../python-workflow/python-export.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Join Attributes and Export</span></a>
   </div>
 </li>
       </ul>
   </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
- <span class="menu-text">Analyzing your data</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../ArcGIS/tabular-csv.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FNA Process: Working with the CSV file</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../ArcGIS/tabular-evt-acres.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FNA Process: Calculate EVT Acres</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../ArcGIS/tabular-pivot-table.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FNA Process: Working with Pivot Tables</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../ArcGIS/tabular-weighted-average.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FNA Process: Weighted Average FRI</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../ArcGIS/tabular-summary-table.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FNA Process: Summary Table</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../ArcGIS/tabular-import-csv.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FNA Process: Bring the CSV into ArcGIS Pro</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../next-steps.html" class="sidebar-item-text sidebar-link">
+  <a href="../python-workflow/python-next-steps.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Next Steps</span></a>
   </div>
 </li>
-      </ul>
-  </li>
     </ul>
     </div>
 </nav>
@@ -457,11 +418,9 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#understanding-historical-fire-regimes-using-biophysical-settings" id="toc-understanding-historical-fire-regimes-using-biophysical-settings" class="nav-link active" data-scroll-target="#understanding-historical-fire-regimes-using-biophysical-settings">Understanding historical fire regimes using Biophysical Settings</a>
-  <ul class="collapse">
-  <li><a href="#step-by-step-process" id="toc-step-by-step-process" class="nav-link" data-scroll-target="#step-by-step-process">Step-by-step process</a></li>
-  <li><a href="#screenshots-for-understanding-historical-fire-regime-information" id="toc-screenshots-for-understanding-historical-fire-regime-information" class="nav-link" data-scroll-target="#screenshots-for-understanding-historical-fire-regime-information">Screenshots for understanding historical fire regime information</a></li>
-  </ul></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#this-code-will" id="toc-this-code-will" class="nav-link" data-scroll-target="#this-code-will">This code will:</a></li>
+  <li><a href="#step-5-join-fields-and-export-table" id="toc-step-5-join-fields-and-export-table" class="nav-link" data-scroll-target="#step-5-join-fields-and-export-table">Step 5: Join fields and export table</a></li>
   </ul>
 </nav>
     </div>
@@ -469,9 +428,9 @@ window.Quarto = {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../python-workflow/python-mask-evt.html">The Fire Needs Assessment Process</a></li><li class="breadcrumb-item"><a href="../python-workflow/python-export.html">Join Attributes and Export</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">FNA Process: Historical Vegetation</h1>
+<h1 class="title">Join Attributes and Export</h1>
 </div>
 
 
@@ -494,48 +453,23 @@ window.Quarto = {
 </header>
 
 
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>If you prefer to work in an automated format, we have created an <strong><a href="data/Fire Needs Assessment Tools.zip">ArcGIS Pro toolbox</a></strong> (downloads a zip file) for each step of this workflow from data processing through table export. It is still recommended that you follow the guidance written on each FNA Process page as you run the tools so that you better understand the process and do not miss important context for what the tool is asking you to input in each box. The toolbox has simply been provided for your convenience should you choose to use it.</p>
-<p><strong>Note:</strong> These tools were created in ArcGIS Pro version 3.2.2 and will require the Spatial Analyst extension. If you are working in a different version of the software or do not have a Spatial Analyst license, some of these tools may not work as expected.</p>
-</div>
-</div>
-<section id="understanding-historical-fire-regimes-using-biophysical-settings" class="level2">
-<h2 class="anchored" data-anchor-id="understanding-historical-fire-regimes-using-biophysical-settings">Understanding historical fire regimes using Biophysical Settings</h2>
-<p>Conducting a fire needs assessment involves understanding historical fire regimes and vegetation types to plan for future fire management and restoration efforts. This guide will walk you through the process, focusing on the LANDFIRE Biophysical Settings (BPS) and Fire Regime (FRI) data.</p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This site will walk you through working with LANDFIRE spatial data in ArcGIS Pro. Please note that this workflow requires the Spatial Analyst extension. Some of the steps may work in QGIS or other open source GIS sources, but those workflows are not documented here. As an alternative, please explore the <a href="../r-workflow/r-introduction.html">Fire Needs Assessments in R section</a> if you would like to complete the process and do not have Spatial Analyst or access to ArcGIS Pro.</p>
-<p>We have also created a replica of this workflow using Python and Jupyter notebooks. It does require ArcPy and Spatial Analyst, but is set up in a more automated format. If you would like to work this way, please explore the <a href="../python-workflow/python-introduction.html">Fire Needs Assessments in Python section</a> of this website.</p>
-</div>
-</div>
-<section id="step-by-step-process" class="level3">
-<h3 class="anchored" data-anchor-id="step-by-step-process">Step-by-step process</h3>
-<p><em>Screenshots of the process are included below the written instructions for those who find them useful.</em></p>
-<ol type="1">
-<li><strong>Identify historical vegetation types</strong>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>The combined raster currently contains only basic fields (e.g., Object ID, Value, Count, and the value fields from BPS and EVT). To make this data useful for analysis, we need to join additional attributes from the original BPS and EVT rasters and then export the table for further processing. This table will serve as the foundation for calculating fire return metrics and summarizing results by vegetation type.</p>
+</section>
+<section id="this-code-will" class="level2">
+<h2 class="anchored" data-anchor-id="this-code-will">This code will:</h2>
 <ul>
-<li><p><strong>Load LANDFIRE Biophysical Settings Data</strong>: Begin by loading the LANDFIRE Biophysical Settings spatial data into ArcGIS Pro</p></li>
-<li><p><strong>Clip to area of interest</strong>: Use the Clip Raster tool or the Extract by Mask tool (requires a Spatial Analyst license) to clip the BPS spatial data to your specific area of interest. This will help you focus on the relevant geographic region.</p></li>
-<li><p><strong>Identify vegetation types</strong>: Examine the clipped BPS layer to identify the historical vegetation types present in your area.</p></li>
+<li>Join BPS attributes to the combined raster using <code>JoinField</code>:
+<ul>
+<li>Fields include: <code>BPS_NAME</code>, <code>BPS_MODEL</code>, <code>GROUPVEG</code>, fire return interval fields (<code>FRI_ALLFIR</code>, <code>FRI_REPLAC</code>, <code>FRI_MIXED</code>, <code>FRI_SURFAC</code>), fire severity percentages, and acreage fields (<code>Acres</code>, <code>Acres_Year</code>).</li>
 </ul></li>
-</ol>
+<li>Join EVT attributes to the combined raster using <code>JoinField</code>:
+<ul>
+<li>Fields include: <code>EVT_NAME</code>, <code>EVT_PHYS</code>, <code>EVT_GP_N</code>.</li>
+</ul></li>
+<li>Export the updated raster attribute table to a CSV file for further analysis.</li>
+</ul>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -546,93 +480,76 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Don’t forget to set the environment settings in the tool. Most importantly, make sure the spatial reference of your output raster is correct and set a snap raster (e.g.&nbsp;the BPS_CONUS raster) to ensure your pixel extents match. This will be important later when you use one raster to process another.</p>
-</div>
-</div>
-<ol start="2" type="1">
-<li><p><strong>Estimate historical fire return intervals</strong></p>
 <ul>
-<li><strong>Explore fire return interval data</strong>: The BPS data include fire return interval (FRI) information. Display the raster on the FRI_ALLFIR field to explore the historical fire return intervals for the identified vegetation type.</li>
-</ul></li>
-</ol>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>LANDFIRE also delivers the fire regime data separately. That dataset includes only fire severity, fire return interval, fire regime groups, and the BPS name and code. If your work is soley focused on fire regimes we suggest working with the <a href="https://landfire.gov/fire-regime/fri">fire return interval dataset</a>. It will have all the information you need to complete this assessment.</p>
-</div>
-</div>
-<ol start="3" type="1">
-<li><p><strong>Calculate historical fire acreages</strong></p>
-<ul>
-<li><p><strong>Add fields for calculation</strong>: Add an Acres field and an Acres_Year field to your clipped data.</p></li>
-<li><p><strong>Calculate acres</strong>: Use the following formula to calculate the total acres for each vegetation type:</p></li>
+<li>Ensure the combined raster and join tables exist in the specified geodatabase.</li>
+<li>Update field lists if your analysis requires additional attributes.</li>
+<li>The exported table will be saved to the <code>Outputs</code> folder as a <code>.csv</code> file.</li>
 </ul>
-<p><span class="math display">\[
-Acres=!COUNT!*900*0.000247105
-\]</span></p>
-<p>Here, !COUNT! represents the number of pixels for each vegetation type, 900 is the area of each pixel in square meters, and 0.000247105 converts square meters to acres.</p>
-<ul>
-<li><strong>Calculate acres burned annually</strong>: Use the following formula to calculate the number of acres that should burn each year for each BPS:</li>
-</ul>
-<p><span class="math display">\[
-Acres\_Year=!Acres!/!FRI\_ALLFIR!
-\]</span></p>
-<p>This calculation will give you an estimate of the annual burned area under historical conditions.</p></li>
-</ol>
+</div>
+</div>
 </section>
-<section id="screenshots-for-understanding-historical-fire-regime-information" class="level3">
-<h3 class="anchored" data-anchor-id="screenshots-for-understanding-historical-fire-regime-information">Screenshots for understanding historical fire regime information</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../images/5-add-data-bps.png" class="img-fluid figure-img" alt="Adding BPS data to ArcGIS Pro by clicking the Add Data button in the ribbon bar and then selecting LC20_BPS_220.tif"></p>
-<figcaption>Add BPS data to ArcGIS Pro.</figcaption>
-</figure>
-</div>
-<p>&nbsp;</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../images/6-crop-bps.png" class="img-fluid figure-img" alt="Three panels with geoprocessing windows. The left shows the Extract by Mask tool with BPS as the input raster, the aoi as the input raster or feature mask data, and BPS_Output as the Output raster. The Extraction Area is set to inside and the analysis area is defined. The middle panel shows the Clip Raster tool with the same input and output rasters, the aoi as the output extent, and the X and Y extent defined. The right panel shows the environment settings with the coordinate system set to NAD_1983_Contiguous_USA_Albers to match the BPS coordinate system and the snap raster set to BPS"></p>
-<figcaption>Crop the BPS raster to your area of interest.</figcaption>
-</figure>
-</div>
-<p>&nbsp;</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../images/7-bps-attributes.png" class="img-fluid figure-img" alt="The BPS attribute table in ArcGIS Pro. A vertical box highlights the BPS_NAME column and a horizontal box highlights the FRI_REPLAC, FRI_MIXED, FRI_SURFAC, FRI_ALLFIR, PRC_REPLAC, PRC_MIXED, PRC_SURFAC, and FRG_NEW fields"></p>
-<figcaption>Explore BPS attributes on your landscape, including BPS names (shown in the vertical box), and fire regime information (shown in the horizontal box).</figcaption>
-</figure>
-</div>
-<p>&nbsp;</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../images/8-bps-fri.png" class="img-fluid figure-img" alt="A map of BPS data for the Appalachians displayed on FRI_ALLFIR"></p>
-<figcaption>Examine the fire regime attributes by displaying the primary symbology on FRI_ALLFIR using Unique Values. (Note: the image shown here is using a custom color scheme. Your data may look different.)</figcaption>
-</figure>
-</div>
-<p>&nbsp;</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../images/9-add-fields.png" class="img-fluid figure-img" alt="The attribute table in ArcGIS Pro with a box around the Add button at the top of the table next to the word Field. It also shows the Add Fields (multiple) geoprocessing tool on the side, with the BPS_Output as the Input table, and the field names as Acres and Acres_Year. Both are Float (32-bit floating point) field types"></p>
-<figcaption>Add fields to the BpS raster. You can do this either by using the Add button in the attribute table or the Add Fields geoprocessing tool.</figcaption>
-</figure>
-</div>
-<p>&nbsp;</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../images/10-calculate-field.png" class="img-fluid figure-img" alt="The attribute table in ArcGIS Pro with a box highlighting Calculate Field in the right-click menu. It also shows the Calculate Field geoprocessing tool on the side, with the BPS_Output as the Input table, field name as Acres, and the expression Acres=!Count! * 900 * 0.000247105."></p>
-<figcaption>Calculate the acre field. You can do this by right clicking on the field name in the attribute table and selecting Calculate Field or with the Calculate Field geoprocessing tool. Repeat the process with the appropriate formula to calculate Acres Burned/Year.</figcaption>
-</figure>
-</div>
+<section id="step-5-join-fields-and-export-table" class="level2">
+<h2 class="anchored" data-anchor-id="step-5-join-fields-and-export-table">Step 5: Join fields and export table</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set model inputs. Replace with your own files if you are not using the demo.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>Combined_BPS_EVT_Raster <span class="op">=</span> <span class="vs">r"</span><span class="dv">.</span><span class="vs">//Rasters</span><span class="dv">.</span><span class="vs">gdb//NY_BPS_EVT_Burnable"</span> <span class="co"># input raster to which table will be joined</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>BPS_Field <span class="op">=</span> <span class="st">"NY_BPS_Burnable"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>BPS_Join_Table <span class="op">=</span> <span class="vs">r"</span><span class="dv">.</span><span class="vs">//Rasters</span><span class="dv">.</span><span class="vs">gdb//NY_BPS_Burnable"</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>BPS_Join_Field <span class="op">=</span> <span class="st">"value"</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>BPS_Transfer_Fields <span class="op">=</span> [<span class="st">"BPS_NAME"</span>, <span class="st">"BPS_MODEL"</span>, <span class="st">"GROUPVEG"</span>, <span class="st">"FRI_ALLFIR"</span>, <span class="st">"FRI_REPLAC"</span>, <span class="st">"FRI_MIXED"</span>, <span class="st">"FRI_SURFAC"</span>, <span class="st">"PRC_REPLAC"</span>, <span class="st">"PRC_MIXED"</span>, <span class="st">"PRC_SURFAC"</span>, <span class="st">"FRG_NEW"</span>, <span class="st">"Acres"</span>, <span class="st">"Acres_Year"</span>]</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>EVT_Field <span class="op">=</span> <span class="st">"NY_EVT_Burnable"</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>EVT_Join_Table <span class="op">=</span> <span class="vs">r"</span><span class="dv">.</span><span class="vs">//Rasters</span><span class="dv">.</span><span class="vs">gdb//NY_EVT_Burnable"</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>EVT_Join_Field <span class="op">=</span> <span class="st">"value"</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>EVT_Transfer_Fields <span class="op">=</span> [<span class="st">"EVT_NAME"</span>, <span class="st">"EVT_PHYS"</span>, <span class="st">"EVT_GP_N"</span>]</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>Combined_BPS_EVT_Table <span class="op">=</span> <span class="vs">r"</span><span class="dv">.</span><span class="vs">//Outputs//NY_BPS_EVT_Burnable</span><span class="dv">.</span><span class="vs">csv"</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">#For inline variable substitution, parameters passed as a String are evaluated using locals(), globals() and isinstance(). To override, substitute values directly.</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Join_BPS_Variables():  <span class="co"># Model</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Process: Join BPS Variables (Join Field) (management)</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Attempting join field for : </span><span class="sc">{</span>Combined_BPS_EVT_Raster<span class="sc">}</span><span class="ss"> and </span><span class="sc">{</span>BPS_Join_Table<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        arcpy.management.JoinField(Combined_BPS_EVT_Raster, BPS_Field, BPS_Join_Table, BPS_Join_Field, BPS_Transfer_Fields, fm_option<span class="op">=</span><span class="st">"NOT_USE_FM"</span>, index_join_fields<span class="op">=</span><span class="st">"NO_INDEXES"</span>)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"BPS fields successfully joined"</span>)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> arcpy.ExecuteError:</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Failed: ArcPy Execution Error in combine."</span>)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(arcpy.GetMessages(<span class="dv">2</span>)) <span class="co"># prints error messages</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>        <span class="co"># catches other potential Python errors (e.g. indentation, syntax)</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Failed: A general error occurred in join fields: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)                    </span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Process: Join EVT variables (Join Field) (management)</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Attempting join field for : </span><span class="sc">{</span>Combined_BPS_EVT_Raster<span class="sc">}</span><span class="ss"> and </span><span class="sc">{</span>EVT_Join_Table<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>        arcpy.management.JoinField(Combined_BPS_EVT_Raster, EVT_Field, EVT_Join_Table, EVT_Join_Field, EVT_Transfer_Fields, fm_option<span class="op">=</span><span class="st">"NOT_USE_FM"</span>, index_join_fields<span class="op">=</span><span class="st">"NO_INDEXES"</span>)</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"BPS fields successfully joined"</span>)</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> arcpy.ExecuteError:</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Failed: ArcPy Execution Error in combine."</span>)</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(arcpy.GetMessages(<span class="dv">2</span>)) <span class="co"># prints error messages</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>        <span class="co"># catches other potential Python errors (e.g. indentation, syntax)</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Failed: A general error occurred in join fields: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Process: Export Table (Export Table) (conversion)</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Attempting to export: </span><span class="sc">{</span>Combined_BPS_EVT_Table<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>        arcpy.conversion.ExportTable(Combined_BPS_EVT_Raster, Combined_BPS_EVT_Table, use_field_alias_as_name<span class="op">=</span><span class="st">"NOT_USE_ALIAS"</span>)</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"table successfully exported to </span><span class="sc">{</span>Combined_BPS_EVT_Table<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> arcpy.ExecuteError:</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Failed: ArcPy Execution Error in combine."</span>)</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(arcpy.GetMessages(<span class="dv">2</span>)) <span class="co"># prints error messages</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>        <span class="co"># catches other potential Python errors (e.g. indentation, syntax)</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Failed: A general error occurred in join fields: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>    <span class="co"># When the script is run directly, this calls the main function Join_BPS_Variables</span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>    Join_BPS_Variables()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
-</section>
 </section>
 
 <section id="still-have-questions-landfire-is-here-to-help." class="level1">
@@ -1058,10 +975,13 @@ Acres\_Year=!Acres!/!FRI\_ALLFIR!
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../python-workflow/python-combine.html" class="pagination-link" aria-label="Combine BPS and EVT">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Combine BPS and EVT</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../ArcGIS/current-vegetation.html" class="pagination-link" aria-label="FNA Process: Current vegetation">
-        <span class="nav-page-text">FNA Process: Current vegetation</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../python-workflow/python-next-steps.html" class="pagination-link" aria-label="Next Steps">
+        <span class="nav-page-text">Next Steps</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
