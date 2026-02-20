@@ -7,7 +7,7 @@ project:
 website:
   title: "LANDFIRE in Fire Needs Assessments"
   page-navigation: true
-  # google-analytics: G-7HYRRL98N6
+  google-analytics: G-BGYZ87XWDR
   sidebar: 
     - id: main
       style: "docked"
@@ -125,9 +125,9 @@ format:
       light: [lumen, styles-light.scss]
       dark: [cyborg, styles-dark.scss]
     respect-user-color-scheme: true 
-    # include-after-body:
-    #   text: |
-    #     <script type="application/javascript" src="/assets/js/fix-accessibility.js"></script>
+    include-after-body:
+       text: |
+         <script type="application/javascript" src="/assets/js/fix-accessibility.js"></script>
     toc: false
     grid:
       sidebar-width: 300px

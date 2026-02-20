@@ -48,7 +48,7 @@ You can also [contact the LANDFIRE team](mailto:landfire@tnc.org) to discuss and
 
 
 
-``{=html}
+```{=html}
 <script>
   function loadResponsiveDashboard() {
     const container = document.getElementById("dashboard-container");

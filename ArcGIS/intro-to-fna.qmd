@@ -11,6 +11,9 @@ A fire needs assessment (FNA) is a structured, science-based process used to eva
 
 The process typically involves spatial analysis using GIS to compare current vegetation and fire regime conditions against reference conditions (often derived from models like LANDFIRE or local ecological knowledge). This comparison highlights areas of departure—where fire has been excluded or altered—and helps quantify the type, amount, and frequency of fire needed to move the system toward desired conditions. FNAs are essential for aligning fire management with ecological goals, supporting NEPA planning, and justifying funding for prescribed fire programs. By grounding fire planning in ecological need, FNAs promote more strategic, effective, and defensible fire management decisions.
 
+**For more on What Fire Needs Assessments are and why they matter, please view this short video:**
+<iframe width="75%" height="315" src="https://www.youtube.com/embed/rLFQRTOMcGY?si=kMdN9r2G_hLe4SsE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 :::callout
 ## Prescribed Fire as a Restoration Tool
 

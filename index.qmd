@@ -4,11 +4,26 @@ author: "Sarah Hagen, Jim Smith"
 toc: true
 format: html
 ---
-&nbsp;
-<div class="logo-row">
-<div class="flex-logo"><img src="images/usda-logo-color.png" alt="USDA logo"/></div><div class="flex-logo"><img src="images/green usfas.png" alt="US Forest Service logo"/></div><div class="flex-logo"><img src="images/DOI.png" alt="US Department of the Interior logo"/></div>
-<div class="flex-logo"><img src="images/LANDFIRE.png" alt="LANDFIRE program logo"/></div>
-</div>
+
+ 
+
+::::::: logo-row
+::: flex-logo
+<img src="images/usda-logo-color.png" alt="USDA logo"/>
+:::
+
+::: flex-logo
+<img src="images/green usfas.png" alt="US Forest Service logo"/>
+:::
+
+::: flex-logo
+<img src="images/DOI.png" alt="US Department of the Interior logo"/>
+:::
+
+::: flex-logo
+<img src="images/LANDFIRE.png" alt="LANDFIRE program logo"/>
+:::
+:::::::
 
 ::: callout
 [LANDFIRE](https://www.landfire.gov/), *Landscape Fire and Resource Management Planning Tools*, is a shared interagency wildland fire management data program across the United States and Territories.
@@ -52,7 +67,7 @@ If any of these apply to you, a Fire Needs Assessment might be useful.
 
 ## What is a Fire Needs Assessment?
 
-An Fire Needs Assessment is a spatial analysis that identifies where fire is needed—or not—to support ecological condition.
+A Fire Needs Assessment is a spatial analysis that identifies where fire is needed—or not—to support ecological condition.
 It integrates fire history, vegetation data, and ecological models to guide fire-related decisions.
 
 ## Why would you create a Fire Needs Assessment?
@@ -72,8 +87,15 @@ LANDFIRE datasets provide foundational inputs, such as vegetation type, fire ret
 
 Explore the rest of this site to dive into the data, tools, and steps for building your own Fire Needs Assessment using LANDFIRE products.
 
-::: callout
-<div class="tnc-logo-contain">
-<img src="images/site-header-tnc-logo.png" alt="The Nature Conservancy logo" class="tnc-logo"/> <div class="tnc-text"><p>The Nature Conservancy's LANDFIRE Team created this website under a Cooperative Agreement with the LANDFIRE Program.</p></div>
-</div>
+**For more on how to use this website, please view our 6 minute video:** 
+<iframe width="75%" height="315" src="https://www.youtube.com/embed/rLFQRTOMcGY?si=I2U5S8V3PULYj2I_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+::::: callout
+:::: tnc-logo-contain
+<img src="images/site-header-tnc-logo.png" alt="The Nature Conservancy logo" class="tnc-logo"/>
+
+::: tnc-text
+<p>The Nature Conservancy's LANDFIRE Team created this website under a Cooperative Agreement with the LANDFIRE Program.</p>
 :::
+::::
+:::::
