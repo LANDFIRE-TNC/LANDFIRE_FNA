@@ -7,21 +7,24 @@ format: html
 
 ## What is a Fire Needs Assessment?
 
-A fire needs assessment (FNA) is a structured, science-based process used to evaluate where and to what extent fire is needed on a landscape to restore or maintain ecological integrity, reduce wildfire risk, and meet land management objectives. It integrates ecological principles, historical fire regimes, current vegetation conditions, and spatial data to identify areas where fire—either through prescribed burning or managed wildfire—can be applied beneficially. FNAs help land managers prioritize treatments by assessing the *ecological need* for fire, not just the *risk* of fire, which is a critical distinction in fire-adapted ecosystems.
+A fire needs assessment (FNA) is a structured, science-based process used to evaluate where and to what extent fire is needed on a landscape to restore or maintain ecological integrity, reduce wildfire risk, and meet land management objectives.
+It integrates ecological principles, historical fire regimes, current vegetation conditions, and spatial data to identify areas where fire—either through prescribed burning or managed wildfire—can be applied beneficially.
+FNAs help land managers prioritize treatments by assessing the *ecological need* for fire, not just the *risk* of fire, which is a critical distinction in fire-adapted ecosystems.
 
-The process typically involves spatial analysis using GIS to compare current vegetation and fire regime conditions against reference conditions (often derived from models like LANDFIRE or local ecological knowledge). This comparison highlights areas of departure—where fire has been excluded or altered—and helps quantify the type, amount, and frequency of fire needed to move the system toward desired conditions. FNAs are essential for aligning fire management with ecological goals, supporting NEPA planning, and justifying funding for prescribed fire programs. By grounding fire planning in ecological need, FNAs promote more strategic, effective, and defensible fire management decisions.
+The process typically involves spatial analysis using GIS to compare current vegetation and fire regime conditions against reference conditions (often derived from models like LANDFIRE or local ecological knowledge).
+This comparison highlights areas of departure—where fire has been excluded or altered—and helps quantify the type, amount, and frequency of fire needed to move the system toward desired conditions.
+FNAs are essential for aligning fire management with ecological goals, supporting NEPA planning, and justifying funding for prescribed fire programs.
+By grounding fire planning in ecological need, FNAs promote more strategic, effective, and defensible fire management decisions.
 
-**For more on What Fire Needs Assessments are and why they matter, please view this short video:**
-<iframe width="75%" height="315" src="https://www.youtube.com/embed/rLFQRTOMcGY?si=kMdN9r2G_hLe4SsE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-:::callout
+::: callout
 ## Prescribed Fire as a Restoration Tool
 
 One of the most important applications of a fire needs assessment is to effectively plan prescribed fire programs.
 Prescribed fire is not only a tool for maintaining landscapes but also for restoring them.
 Here’s how:
 
-1.  **Ecosystem Restoration**: Prescribed fire plays a pivotal role in restoring and maintaining healthy ecosystems. It helps in the regeneration of native plant species, which in turn supports the wildlife that depends on these plants.
+1.  **Ecosystem Restoration**: Prescribed fire plays a pivotal role in restoring and maintaining healthy ecosystems.
+    It helps in the regeneration of native plant species, which in turn supports the wildlife that depends on these plants.
 
 2.  **Wildlife Habitat Improvement**: Numerous wildlife species depend on fire-maintained habitats for their survival.
     Prescribed fire helps create a mosaic of different habitat types, which is essential for biodiversity.
@@ -52,16 +55,18 @@ Fire needs assessments are crucial for several reasons:
 5.  **They help tell the story of fire as a healing force**: FNAs provide the data and context needed to communicate with the public about why fire is essential—not just dangerous—and how it can be used to restore landscapes and protect communities.
 
 ### An example from Minnesota
-Minnesota applied the Fire Needs Assessment framework to better understand fire needs across its diverse landscapes. The team summarized fire needs by county and by managing agency, allowing them to tailor fire management strategies to local ecological conditions and jurisdictional priorities.
+
+Minnesota applied the Fire Needs Assessment framework to better understand fire needs across its diverse landscapes.
+The team summarized fire needs by county and by managing agency, allowing them to tailor fire management strategies to local ecological conditions and jurisdictional priorities.
 
 This approach highlights several key benefits of FNAs:
 
-  - It elevated ecological need by identifying where fire could support ecosystem health.
-  - It supported landscape-scale restoration by revealing patterns of fire exclusion across regions.
-  - It strengthened the case for prescribed fire by providing spatially explicit, data-driven insights.
-  - It fostered collaboration by aligning fire planning across agencies and jurisdictions.
-  - It helped tell the story of fire as a healing force, offering a foundation for public engagement and policy support.
-  
+-   It elevated ecological need by identifying where fire could support ecosystem health.
+-   It supported landscape-scale restoration by revealing patterns of fire exclusion across regions.
+-   It strengthened the case for prescribed fire by providing spatially explicit, data-driven insights.
+-   It fostered collaboration by aligning fire planning across agencies and jurisdictions.
+-   It helped tell the story of fire as a healing force, offering a foundation for public engagement and policy support.
+
 Learn more about the [Minnesota Fire Needs Assessment](https://www.mnprescribedfire.org/mnfireneedsassessment)
 
 ## Regional considerations
@@ -81,5 +86,7 @@ Understanding fire return intervals and historical fire patterns is essential fo
 4.  **Western US**: The Western US faces frequent and severe wildfires.
     Fire needs assessments are essential for reducing wildfire risks and managing forest health.
     Understanding historical fire regimes helps in planning fuel reduction treatments and prescribed burns.
-
+    
+**For more on What Fire Needs Assessments are and why they matter, please view this short video:** 
+<iframe width="75%" height="315" src="https://www.youtube.com/embed/rLFQRTOMcGY?si=kMdN9r2G_hLe4SsE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 

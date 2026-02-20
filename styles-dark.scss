@@ -38,8 +38,8 @@ $link-color:#66b2ff;
 /* Include specific overrides for sidebar toc in toggle mode */
 .sidebar nav[role=doc-toc] ul > li > a.active,
 .sidebar nav[role=doc-toc] ul > li > ul > li > a.active {
-  color: $link-color !important; /* Adjust color for toggle dark mode */
-  border-left: 1px solid $link-color !important;
+  color: #66b2ff !important; /* Adjust color for toggle dark mode */
+  border-left: 1px solid #66b2ff !important;
 }
 
 .sidebar nav[role=doc-toc] ul > li > a.focus,

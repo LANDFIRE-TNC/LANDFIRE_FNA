@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Python and ArcPy for LANDFIRE in Fire Needs Assessments – LANDFIRE in Fire Needs Assessments</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-dfbab9043565ea7ac8c80ae172816394.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-c0c17d6de6931201e5d4f1b5f81630ba.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-dfbab9043565ea7ac8c80ae172816394.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-BGYZ87XWDR"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-BGYZ87XWDR', { 'anonymize_ip': true});
+</script>
+
+
+</head>
+
+<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">LANDFIRE in Fire Needs Assessments</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">An Overview of Fire Needs Assessments</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../ArcGIS/historical-vegetation.html"> 
+<span class="menu-text">Fire Needs Assessments in ArcGIS Pro</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../r-workflow/r-introduction.html"> 
+<span class="menu-text">Fire Needs Assessments in R</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../python-workflow/python-introduction.html"> 
+<span class="menu-text">Fire Needs Assessments in Python</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Python and ArcPy for LANDFIRE in Fire Needs Assessments</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="setup-and-packages" class="level2">
+<h2 class="anchored" data-anchor-id="setup-and-packages">Setup and Packages</h2>
+<section id="overview" class="level3">
+<h3 class="anchored" data-anchor-id="overview">Overview</h3>
+<p>This section helps you set up your Python environment for the Fire Needs Assessment workflow. You’ll start by installing and loading the necessary packages, and then define your global environment settings that will be used throughout the workflow.</p>
+<hr>
+<p>This code was created using ArcGIS Pro version 3.2.2 and will require the Spatial Analyst extension. If you are working in a different version of the software or do not have a Spatial Analyst license, some of these tools may not work as expected.</p>
+<hr>
+<p>Before you begin, you will need to:</p>
+<ul>
+<li><p>Set up an ArcGIS Online project called FNA</p></li>
+<li><p>Create three directories, “Rasters.gdb”, and “Outputs”</p></li>
+<li><p>Download the file “https://tnc.box.com/s/nnuwixwc4ot21iovuj0zvq1f750hxh6e” (clicking will take you to a box file. Click Download to initiate a download that will likely land in your “C:” directory). This zip file is large (5.13GB) and will likely take a long time to download. Please plan your space and download time accordingly. That will download the Inputs.gdb, which contains:</p>
+<ul>
+<li>A feature class of New York State</li>
+<li>A CONUS BpS raster</li>
+<li>A CONUS EVT raster</li>
+</ul></li>
+<li><p>Extract the “fna_python_ag.zip” files into your FNA project.</p></li>
+<li><p>Create and save a new python-script with a name such as “fna_python_code”.</p></li>
+</ul>
+<p>Once this set up is complete, you should be able to copy/paste the code below into the python script you created above or run the code in the below section if you are following along with our tutorial.</p>
+<div id="cell-3" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Required only when there are SubModel(s)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="vs">r"C:</span><span class="er">\</span><span class="vs">Users</span><span class="dv">\s</span><span class="vs">hagen</span><span class="dv">\A</span><span class="vs">ppData</span><span class="er">\</span><span class="vs">Local</span><span class="er">\</span><span class="vs">Temp</span><span class="dv">\A</span><span class="vs">rcGISProTemp32472"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># -*- coding: utf-8 -*-</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> arcpy</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> arcpy.sa <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> arcpy.sa <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sys <span class="im">import</span> argv</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>os.chdir(<span class="st">"D:</span><span class="ch">\\</span><span class="st">LANDFIRE</span><span class="ch">\\</span><span class="st">GIS</span><span class="ch">\\</span><span class="st">GIS_Projects</span><span class="ch">\\</span><span class="st">Current</span><span class="ch">\\</span><span class="st">FNA</span><span class="ch">\\</span><span class="st">Python"</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># =======================================================</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Define Global Environment Settings</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># =======================================================</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># To allow overwriting outputs change overwriteOutput option to True.</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>arcpy.env.overwriteOutput <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Check out any necessary licenses.</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>arcpy.CheckOutExtension(<span class="st">"spatial"</span>)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the snap raster environment</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>arcpy.env.snapRaster <span class="op">=</span> <span class="st">".</span><span class="ch">\\</span><span class="st">Inputs.gdb</span><span class="ch">\\</span><span class="st">BpS"</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Define Cell Size</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>arcpy.env.cellSize <span class="op">=</span> <span class="st">"30"</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Define Output Coordinate System</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>arcpy.env.outputCoordinateSystem <span class="op">=</span> <span class="st">"PROJCS[</span><span class="ch">\"</span><span class="st">NAD_1983_Contiguous_USA_Albers</span><span class="ch">\"</span><span class="st">,GEOGCS[</span><span class="ch">\"</span><span class="st">GCS_North_American_1983</span><span class="ch">\"</span><span class="st">,DATUM[</span><span class="ch">\"</span><span class="st">D_North_American_1983</span><span class="ch">\"</span><span class="st">,SPHEROID[</span><span class="ch">\"</span><span class="st">GRS_1980</span><span class="ch">\"</span><span class="st">,6378137.0,298.257222101]],PRIMEM[</span><span class="ch">\"</span><span class="st">Greenwich</span><span class="ch">\"</span><span class="st">,0.0],UNIT[</span><span class="ch">\"</span><span class="st">Degree</span><span class="ch">\"</span><span class="st">,0.0174532925199433]],PROJECTION[</span><span class="ch">\"</span><span class="st">Albers</span><span class="ch">\"</span><span class="st">],PARAMETER[</span><span class="ch">\"</span><span class="st">False_Easting</span><span class="ch">\"</span><span class="st">,0.0],PARAMETER[</span><span class="ch">\"</span><span class="st">False_Northing</span><span class="ch">\"</span><span class="st">,0.0],PARAMETER[</span><span class="ch">\"</span><span class="st">Central_Meridian</span><span class="ch">\"</span><span class="st">,-96.0],PARAMETER[</span><span class="ch">\"</span><span class="st">Standard_Parallel_1</span><span class="ch">\"</span><span class="st">,29.5],PARAMETER[</span><span class="ch">\"</span><span class="st">Standard_Parallel_2</span><span class="ch">\"</span><span class="st">,45.5],PARAMETER[</span><span class="ch">\"</span><span class="st">Latitude_Of_Origin</span><span class="ch">\"</span><span class="st">,23.0],UNIT[</span><span class="ch">\"</span><span class="st">Meter</span><span class="ch">\"</span><span class="st">,1.0]]"</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Also set the default scratch and output workspaces globally</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>arcpy.env.scratchWorkspace <span class="op">=</span> <span class="st">".</span><span class="ch">\\</span><span class="st">Rasters.gdb"</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>arcpy.env.workspace <span class="op">=</span> <span class="st">".</span><span class="ch">\\</span><span class="st">Rasters.gdb"</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="co"># =======================================================</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="step-1-clipextract-the-landfire-rasters-to-your-analysis-extent" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-clipextract-the-landfire-rasters-to-your-analysis-extent">Step 1: Clip/Extract the LANDFIRE rasters to your analysis extent</h2>
+<section id="overview-1" class="level3">
+<h3 class="anchored" data-anchor-id="overview-1">Overview</h3>
+<p>This step clips the LANDFIRE Biophysical Settings (BpS) and Existing Vegetation Type (EVT) rasters to your analysis boundary using the <code>ExtractByMask</code> tool. This ensures that subsequent processing focuses only on your area of interest.</p>
+</section>
+<section id="prerequisites" class="level3">
+<h3 class="anchored" data-anchor-id="prerequisites">Prerequisites</h3>
+<ul>
+<li>ArcGIS Pro 3.2.2 or later with the <strong>Spatial Analyst extension</strong> enabled.</li>
+<li>Project directories set up:
+<ul>
+<li><code>Inputs.gdb</code> containing the CONUS BpS and EVT rasters and your boundary feature class.</li>
+<li><code>Rasters.gdb</code> for intermediate outputs.</li>
+<li><code>Outputs</code> folder for final tables.</li>
+</ul></li>
+<li>Global environment settings configured:
+<ul>
+<li><code>arcpy.env.snapRaster</code> set to the CONUS BpS raster.</li>
+<li><code>arcpy.env.cellSize</code> set to 30 meters.</li>
+<li><code>arcpy.env.outputCoordinateSystem</code> set to NAD 1983 Albers (CONUS).</li>
+</ul></li>
+</ul>
+</section>
+<section id="this-code-will" class="level3">
+<h3 class="anchored" data-anchor-id="this-code-will">This code will:</h3>
+<ul>
+<li>Clip the BpS raster to the boundary feature class and save it as <code>NY_BpS</code> in <code>Rasters.gdb</code>.</li>
+<li>Clip the EVT raster to the same boundary and save it as <code>NY_EVT</code> in <code>Rasters.gdb</code>.</li>
+</ul>
+<p><strong>Note</strong> - If you do not have the Spatial Analyst extension, you can use the Raster Clip tool instead, but subsequent steps require Spatial Analyst. - Ensure your boundary feature class and rasters share the same projection before running this step.</p>
+<div id="cell-5" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Clip/Extract LANDFIRE rasters to analysis extent</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Set model inputs. Replace with your own rasters and your own boundary if you are not using the demo.</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>Boundary<span class="op">=</span><span class="st">".</span><span class="ch">\\</span><span class="st">Inputs.gdb</span><span class="ch">\\</span><span class="st">NY_boundary"</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>BpS_Raster<span class="op">=</span><span class="st">".</span><span class="ch">\\</span><span class="st">Inputs.gdb</span><span class="ch">\\</span><span class="st">BpS"</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>Masked_BpS<span class="op">=</span><span class="st">".</span><span class="ch">\\</span><span class="st">Rasters.gdb</span><span class="ch">\\</span><span class="st">NY_BpS"</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>EVT_Raster<span class="op">=</span><span class="st">".</span><span class="ch">\\</span><span class="st">Inputs.gdb</span><span class="ch">\\</span><span class="st">EVT"</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>Masked_EVT<span class="op">=</span><span class="st">".</span><span class="ch">\\</span><span class="st">Rasters.gdb</span><span class="ch">\\</span><span class="st">NY_EVT"</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">#Boundary=".\\Inputs.gdb\\NY_boundary", BpS_Raster=".\\Inputs.gdb\\BpS", Masked_BpS=".\\Rasters.gdb\\NY_BpS", EVT_Raster=".\\Inputs.gdb\\EVT", Masked_EVT=".\\Rasters.gdb\\NY_EVT"</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># For inline variable substitution, parameters passed as a String are evaluated using locals(), globals() and isinstance(). To override, substitute values directly.</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Extract_to_Boundary():  <span class="co"># Extract LANDFIRE rasters to boundary.</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Process: Extract BpS to boundary (Extract by Mask) (sa)</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    Extract_BpS_to_boundary <span class="op">=</span> Masked_BpS</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Attempting Extract by Mask for BPS raster: </span><span class="sc">{</span>BpS_Raster<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>        arcpy.sa.ExtractByMask(BpS_Raster, Boundary).save(Masked_BpS)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"BPS data successfully masked and saved to </span><span class="sc">{</span>Masked_BpS<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> arcpy.ExecuteError:</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Failed: ArcPy Execution Error in BpS Process."</span>)</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(arcpy.GetMessages(<span class="dv">2</span>)) <span class="co"># prints error messages</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>        <span class="co"># catches other potential Python errors (e.g. indentation, syntax)</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Failed: A general error occurred in BpS process: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Process: Extract EVT to boundary (Extract by Mask) (sa)</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    Extract_EVT_to_boundary <span class="op">=</span> Masked_EVT</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Attempting Extract by Mask for EVT raster: </span><span class="sc">{</span>EVT_Raster<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>        arcpy.sa.ExtractByMask(EVT_Raster, Boundary).save(Masked_EVT)</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"EVT data successfully masked and saved to </span><span class="sc">{</span>Masked_EVT<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> arcpy.ExecuteError:</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Failed: ArcPy Execution Error in EVT Process."</span>)</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(arcpy.GetMessages(<span class="dv">2</span>)) <span class="co"># prints error messages</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>        <span class="co"># catches other potential Python errors (e.g. indentation, syntax)</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Failed: A general error occurred in BpS process: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Extract_to_Boundary execution finished."</span>)</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>    <span class="co"># When the script is run directly, this calls the main function Extract_to_Boundary</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>    Extract_to_Boundary()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Attempting Extract by Mask for BPS raster: .\Inputs.gdb\BpS
+BPS data successfully masked and saved to .\Rasters.gdb\NY_BpS
+Attempting Extract by Mask for EVT raster: .\Inputs.gdb\EVT
+EVT data successfully masked and saved to .\Rasters.gdb\NY_EVT
+Extract_to_Boundary execution finished.</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="step-2-examining-existing-vegetation-types" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-examining-existing-vegetation-types">Step 2: Examining Existing Vegetation Types</h2>
+<p>Assessing current fire needs involves understanding the current vegetation types and adjusting historical fire return intervals to reflect current management practices. This section focuses on processing LANDFIRE Existing Vegetation Type (EVT) data using Python and ArcPy.</p>
+<hr>
+<section id="a-note-on-fire-return-intervals" class="level3">
+<h3 class="anchored" data-anchor-id="a-note-on-fire-return-intervals">A Note on Fire Return Intervals</h3>
+<p>We are still using historical fire return intervals, even though we are analyzing current systems. Current fire return intervals may differ from those for the underlying Biophysical Settings. Later, we will share examples of how others have updated these intervals. For now, the goal is to understand how historical intervals relate to current vegetation so we can begin refining fire needs estimates within the analysis area.</p>
+<hr>
+</section>
+<section id="overview-2" class="level3">
+<h3 class="anchored" data-anchor-id="overview-2">Overview</h3>
+<p>This step filters out non-vegetated areas from the EVT raster and uses the resulting burnable zones to mask the Biophysical Settings (BPS) raster. This ensures that fire return interval calculations are limited to ecologically relevant areas.</p>
+</section>
+<section id="this-code-will-1" class="level3">
+<h3 class="anchored" data-anchor-id="this-code-will-1">This code will:</h3>
+<ul>
+<li>Define a SQL where clause to exclude non-burnable classes (e.g., Agricultural, Developed, Open Water).</li>
+<li>Apply the <code>ExtractByAttributes</code> function to the masked EVT raster using the specified where clause.</li>
+<li>Save the resulting raster of burnable EVT types to the project geodatabase.</li>
+</ul>
+<hr>
+<p>Ensure the Spatial Analyst extension is available and the input raster includes the <code>EVT_PHYS</code> field for filtering.</p>
+<hr>
+<div id="cell-7" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Mask EVT by attributes</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Set model inputs. Replace with your own rasters if you are not using the demo.</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>Where_clause<span class="op">=</span><span class="st">"EVT_PHYS &lt;&gt; 'Agricultural' And EVT_PHYS &lt;&gt; 'Developed' And EVT_PHYS &lt;&gt; 'Developed-High Intensity' And EVT_PHYS &lt;&gt; 'Developed-Low Intensity' And EVT_PHYS &lt;&gt; 'Developed-Medium Intensity' And EVT_PHYS &lt;&gt; 'Developed-Roads' And EVT_PHYS &lt;&gt; 'NA' And EVT_PHYS &lt;&gt; 'Open Water' And EVT_PHYS &lt;&gt; 'Quarries-Strip Mines-Gravel Pits-Well and Wind Pads'"</span> <span class="co"># Update these to include or exclude EVT values as desired</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>Burnable_EVTs<span class="op">=</span><span class="st">".//Rasters.gdb//NY_EVT_Burnable"</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#Masked_EVT, Where_clause, Burnable_EVTs</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#For inline variable substitution, parameters passed as a String are evaluated using locals(), globals() and isinstance(). To override, substitute values directly.</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Extract_EVT():</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Process: Extract EVT by Attributes (Extract by Attributes) (sa)</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    Extract_EVT_by_Attributes <span class="op">=</span> Burnable_EVTs</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Attempting Extract by Attributes for EVT raster: </span><span class="sc">{</span>Masked_EVT<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        arcpy.sa.ExtractByAttributes(Masked_EVT, Where_clause).save(Burnable_EVTs)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"EVT raster successfully masked and saved to </span><span class="sc">{</span>Burnable_EVTs<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> arcpy.ExecuteError:</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Failed: ArcPy Execution Error in EVT Mask."</span>)</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(arcpy.GetMessages(<span class="dv">2</span>)) <span class="co"># prints error messages</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>        <span class="co"># catches other potential Python errors (e.g. indentation, syntax)</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Failed: A general error occurred in EVT mask: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># When the script is run directly, this calls the main function Extract_EVT_by_Attributes</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>    Extract_EVT()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Attempting Extract by Attributes for EVT raster: .\Rasters.gdb\NY_EVT
+EVT raster successfully masked and saved to .//Rasters.gdb//NY_EVT_Burnable</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="step-3-mask-the-bps-raster-using-burnable-evt" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-mask-the-bps-raster-using-burnable-evt">Step 3: Mask the BPS Raster Using Burnable EVT</h2>
+<section id="overview-3" class="level3">
+<h3 class="anchored" data-anchor-id="overview-3">Overview</h3>
+<p>Assessing fire needs requires refining the analysis to focus only on ecologically relevant areas. After creating the burnable EVT raster in the previous step, we now use it to mask the Biophysical Settings (BPS) raster. This ensures that fire return interval calculations apply only to zones where vegetation can burn.</p>
+</section>
+<section id="this-code-will-2" class="level3">
+<h3 class="anchored" data-anchor-id="this-code-will-2">This code will:</h3>
+<ul>
+<li>Load the masked BPS raster (<code>Masked_BPS</code>) and the burnable EVT raster (<code>Burnable_EVTs</code>) from the project geodatabase.</li>
+<li>Apply a mask to the BPS raster using the burnable EVT raster (<code>ExtractByMask</code>) to produce <code>Burnable_BPSs</code>.</li>
+<li>Add fields <code>Acres</code> and <code>Acres_Year</code> to the output raster’s table <strong>if they are missing</strong>.</li>
+<li>Calculate <code>Acres</code> from <code>COUNT</code> using <code>COUNT × 900 × 0.0002471</code> <em>(assumes 30 m pixels)</em>.</li>
+<li>If the interval field (<code>FRI_ALLFIR</code>) exists, calculate <code>Acres_Year</code> as <code>Acres / FRI_ALLFIR</code>.</li>
+<li>Save the masked BPS raster to the project geodatabase.</li>
+</ul>
+<div id="cell-9" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Mask BPS by EVT</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Set model inputs. Replace with your own rasters if you are not using the demo.</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>Masked_BPS <span class="op">=</span> <span class="vs">r"</span><span class="dv">.</span><span class="vs">//Rasters</span><span class="dv">.</span><span class="vs">gdb//NY_BpS"</span>      <span class="co"># input raster to be masked</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>Burnable_EVTs<span class="op">=</span><span class="vs">r"</span><span class="dv">.</span><span class="vs">//Rasters</span><span class="dv">.</span><span class="vs">gdb//NY_EVT_Burnable"</span>   <span class="co"># mask raster</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>Burnable_BPSs <span class="op">=</span> <span class="vs">r"</span><span class="dv">.</span><span class="vs">//Rasters</span><span class="dv">.</span><span class="vs">gdb//NY_BPS_Burnable"</span>  <span class="co"># output raster after masking</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#For inline variable substitution, parameters passed as a String are evaluated using locals(), globals() and isinstance(). To override, substitute values directly.</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Extract_BPS():</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Process: Extract BPS by mask (Extract by Mask) (sa)</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    Extract_BPS_by_mask <span class="op">=</span> Burnable_BPSs</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Attempting Extract by Mask for BPS raster: </span><span class="sc">{</span>Masked_BPS<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>        arcpy.sa.ExtractByMask(Masked_BPS, Burnable_EVTs).save(Burnable_BPSs)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"BPS raster successfully masked and saved to </span><span class="sc">{</span>Burnable_BPSs<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> arcpy.ExecuteError:</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Failed: ArcPy Execution Error in BPS Mask."</span>)</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(arcpy.GetMessages(<span class="dv">2</span>)) <span class="co"># prints error messages</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>        <span class="co"># catches other potential Python errors (e.g. indentation, syntax)</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Failed: A general error occurred in BPS mask: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add fields (Acres, Acres_Year) if missing</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> field_exists(table, name):</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">any</span>(f.name.lower() <span class="op">==</span> name.lower() <span class="cf">for</span> f <span class="kw">in</span> arcpy.ListFields(table))</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> fld, alias <span class="kw">in</span> [(<span class="st">"Acres"</span>,<span class="st">"Acres"</span>), (<span class="st">"Acres_Year"</span>,<span class="st">"Acres per Year"</span>)]:</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> field_exists(Burnable_BPSs, fld):</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Field '</span><span class="sc">{</span>fld<span class="sc">}</span><span class="ss">' already exists—skipping."</span>)</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Adding field '</span><span class="sc">{</span>fld<span class="sc">}</span><span class="ss">'..."</span>)</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>            arcpy.management.AddField(Burnable_BPSs, fld, <span class="st">"DOUBLE"</span>, field_alias<span class="op">=</span>alias)</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Added field '</span><span class="sc">{</span>fld<span class="sc">}</span><span class="ss">'."</span>)</span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate Acres from COUNT (30 m pixels)</span></span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>        arcpy.management.CalculateField(</span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>            in_table<span class="op">=</span>Burnable_BPSs,</span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>            field<span class="op">=</span><span class="st">"Acres"</span>,</span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>            expression<span class="op">=</span><span class="st">"!COUNT! * 900 * 0.0002471"</span>,</span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>            expression_type<span class="op">=</span><span class="st">"PYTHON3"</span></span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Calculated 'Acres' using COUNT * 900 * 0.0002471."</span>)</span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> arcpy.ExecuteError:</span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"ArcPy error calculating 'Acres'."</span>)</span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(arcpy.GetMessages(<span class="dv">2</span>))</span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"General error calculating 'Acres': </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate Acres_Year if your interval field exists</span></span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a>    FRI_FIELD <span class="op">=</span> <span class="st">"FRI_ALLFIR"</span>  <span class="co"># your interval field</span></span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> field_exists(Burnable_BPSs, FRI_FIELD):</span>
+<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Calculating 'Acres_Year' = !Acres! / !</span><span class="sc">{</span>FRI_FIELD<span class="sc">}</span><span class="ss">!"</span>)</span>
+<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a>            arcpy.management.CalculateField(</span>
+<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a>                in_table<span class="op">=</span>Burnable_BPSs,</span>
+<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a>                field<span class="op">=</span><span class="st">"Acres_Year"</span>,</span>
+<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a>                expression<span class="op">=</span><span class="ss">f"!Acres! / !</span><span class="sc">{</span>FRI_FIELD<span class="sc">}</span><span class="ss">!"</span>,</span>
+<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a>                expression_type<span class="op">=</span><span class="st">"PYTHON3"</span></span>
+<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Calculated 'Acres_Year' using '</span><span class="sc">{</span>FRI_FIELD<span class="sc">}</span><span class="ss">'."</span>)</span>
+<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Skipped 'Acres_Year': '</span><span class="sc">{</span>FRI_FIELD<span class="sc">}</span><span class="ss">' field not found."</span>)</span>
+<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> arcpy.ExecuteError:</span>
+<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"ArcPy error calculating 'Acres_Year'."</span>)</span>
+<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(arcpy.GetMessages(<span class="dv">2</span>))</span>
+<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"General error calculating 'Acres_Year': </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
+<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a>    <span class="co"># When the script is run directly, this calls the main function Extract_BPS_by_EVT</span></span>
+<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a>    Extract_BPS()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Attempting Extract by Mask for BPS raster: .//Rasters.gdb//NY_BpS
+BPS raster successfully masked and saved to .//Rasters.gdb//NY_BPS_Burnable
+Adding field 'Acres'...
+Added field 'Acres'.
+Adding field 'Acres_Year'...
+Added field 'Acres_Year'.
+Calculated 'Acres' using COUNT * 900 * 0.0002471.
+Calculating 'Acres_Year' = !Acres! / !FRI_ALLFIR!
+Calculated 'Acres_Year' using 'FRI_ALLFIR'.</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="step-4-combine-burnable-bps-and-burnable-evt" class="level2">
+<h2 class="anchored" data-anchor-id="step-4-combine-burnable-bps-and-burnable-evt">Step 4: Combine Burnable BPS and Burnable EVT</h2>
+<section id="overview-4" class="level3">
+<h3 class="anchored" data-anchor-id="overview-4">Overview</h3>
+<p>Understanding how Biophysical Settings (BPS), Existing Vegetation Type (EVT), and historical fire return intervals interact on the landscape requires combining the burnable BPS and EVT rasters. This step combines the BPS and EVT rasters into a single raster that links each unique BPS–EVT pair to a unique ID. This combined raster will be used in later steps to join attributes and calculate fire return metrics for ecologically relevant areas.</p>
+</section>
+<section id="this-code-will-3" class="level3">
+<h3 class="anchored" data-anchor-id="this-code-will-3">This code will:</h3>
+<ul>
+<li>Load the burnable BPS raster (<code>Burnable_BPSs</code>) and burnable EVT raster (<code>Burnable_EVTs</code>) from the project geodatabase.</li>
+<li>Use the <code>Combine</code> function to merge both rasters into a single raster (<code>Combined_BPS_EVT</code>).</li>
+<li>Save the combined raster to the project geodatabase.</li>
+</ul>
+<div id="cell-11" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 4: Combine Burnable BPS and Burnable EVT</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Set model inputs. Replace with your own rasters if you are not using the demo.</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>Burnable_BPSs <span class="op">=</span> <span class="vs">r"</span><span class="dv">.</span><span class="vs">//Rasters</span><span class="dv">.</span><span class="vs">gdb//NY_BPS_Burnable"</span>  <span class="co"># input BPS raster</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>Burnable_EVTs <span class="op">=</span> <span class="vs">r"</span><span class="dv">.</span><span class="vs">//Rasters</span><span class="dv">.</span><span class="vs">gdb//NY_EVT_Burnable"</span>   <span class="co"># input EVT raster</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>Combined_BPS_EVT <span class="op">=</span> <span class="vs">r"</span><span class="dv">.</span><span class="vs">//Rasters</span><span class="dv">.</span><span class="vs">gdb//NY_BPS_EVT_Burnable"</span>  <span class="co"># output raster after combine</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">#For inline variable substitution, parameters passed as a String are evaluated using locals(), globals() and isinstance(). To override, substitute values directly.</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Combine_BPS_EVT():</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Process: Combine (Combine) (sa)</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    Combine_BPS_EVT <span class="op">=</span> Combined_BPS_EVT</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Attempting combine for : </span><span class="sc">{</span>Burnable_BPSs<span class="sc">}</span><span class="ss"> and </span><span class="sc">{</span>Burnable_EVTs<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>        arcpy.sa.Combine([Burnable_BPSs, Burnable_EVTs]).save(Combined_BPS_EVT)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"BPS raster successfully masked and saved to </span><span class="sc">{</span>Combined_BPS_EVT<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> arcpy.ExecuteError:</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Failed: ArcPy Execution Error in combine."</span>)</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(arcpy.GetMessages(<span class="dv">2</span>)) <span class="co"># prints error messages</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>        <span class="co"># catches other potential Python errors (e.g. indentation, syntax)</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Failed: A general error occurred in combine: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># When the script is run directly, this calls the main function Extract_BPS_by_EVT</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>    Combine_BPS_EVT()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Attempting combine for : .//Rasters.gdb//NY_BPS_Burnable and .//Rasters.gdb//NY_EVT_Burnable
+BPS raster successfully masked and saved to .//Rasters.gdb//NY_BPS_EVT_Burnable</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="step-5-join-attributes-and-export-combined-table" class="level2">
+<h2 class="anchored" data-anchor-id="step-5-join-attributes-and-export-combined-table">Step 5: Join Attributes and Export Combined Table</h2>
+<section id="overview-5" class="level3">
+<h3 class="anchored" data-anchor-id="overview-5">Overview</h3>
+<p>The combined raster currently contains only basic fields (e.g., Object ID, Value, Count, and the value fields from BPS and EVT). To make this data useful for analysis, we need to join additional attributes from the original BPS and EVT rasters and then export the table for further processing. This table will serve as the foundation for calculating fire return metrics and summarizing results by vegetation type.</p>
+</section>
+<section id="this-code-will-4" class="level3">
+<h3 class="anchored" data-anchor-id="this-code-will-4">This code will:</h3>
+<ul>
+<li>Join BPS attributes to the combined raster using <code>JoinField</code>:
+<ul>
+<li>Fields include: <code>BPS_NAME</code>, <code>BPS_MODEL</code>, <code>GROUPVEG</code>, fire return interval fields (<code>FRI_ALLFIR</code>, <code>FRI_REPLAC</code>, <code>FRI_MIXED</code>, <code>FRI_SURFAC</code>), fire severity percentages, and acreage fields (<code>Acres</code>, <code>Acres_Year</code>).</li>
+</ul></li>
+<li>Join EVT attributes to the combined raster using <code>JoinField</code>:
+<ul>
+<li>Fields include: <code>EVT_NAME</code>, <code>EVT_PHYS</code>, <code>EVT_GP_N</code>.</li>
+</ul></li>
+<li>Export the updated raster attribute table to a CSV file for further analysis.</li>
+</ul>
+<p><strong>Note</strong> - Ensure the combined raster and join tables exist in the specified geodatabase. - Update field lists if your analysis requires additional attributes. - The exported table will be saved to the <code>Outputs</code> folder as a <code>.csv</code> file.</p>
+<div id="cell-13" class="cell" data-scrolled="true" data-execution_count="22">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 5: Join fields and export table</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Set model inputs. Replace with your own files if you are not using the demo.</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>Combined_BPS_EVT_Raster <span class="op">=</span> <span class="vs">r"</span><span class="dv">.</span><span class="vs">//Rasters</span><span class="dv">.</span><span class="vs">gdb//NY_BPS_EVT_Burnable"</span> <span class="co"># input raster to which table will be joined</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>BPS_Field <span class="op">=</span> <span class="st">"NY_BPS_Burnable"</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>BPS_Join_Table <span class="op">=</span> <span class="vs">r"</span><span class="dv">.</span><span class="vs">//Rasters</span><span class="dv">.</span><span class="vs">gdb//NY_BPS_Burnable"</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>BPS_Join_Field <span class="op">=</span> <span class="st">"value"</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>BPS_Transfer_Fields <span class="op">=</span> [<span class="st">"BPS_NAME"</span>, <span class="st">"BPS_MODEL"</span>, <span class="st">"GROUPVEG"</span>, <span class="st">"FRI_ALLFIR"</span>, <span class="st">"FRI_REPLAC"</span>, <span class="st">"FRI_MIXED"</span>, <span class="st">"FRI_SURFAC"</span>, <span class="st">"PRC_REPLAC"</span>, <span class="st">"PRC_MIXED"</span>, <span class="st">"PRC_SURFAC"</span>, <span class="st">"FRG_NEW"</span>, <span class="st">"Acres"</span>, <span class="st">"Acres_Year"</span>]</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>EVT_Field <span class="op">=</span> <span class="st">"NY_EVT_Burnable"</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>EVT_Join_Table <span class="op">=</span> <span class="vs">r"</span><span class="dv">.</span><span class="vs">//Rasters</span><span class="dv">.</span><span class="vs">gdb//NY_EVT_Burnable"</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>EVT_Join_Field <span class="op">=</span> <span class="st">"value"</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>EVT_Transfer_Fields <span class="op">=</span> [<span class="st">"EVT_NAME"</span>, <span class="st">"EVT_PHYS"</span>, <span class="st">"EVT_GP_N"</span>]</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>Combined_BPS_EVT_Table <span class="op">=</span> <span class="vs">r"</span><span class="dv">.</span><span class="vs">//Outputs//NY_BPS_EVT_Burnable</span><span class="dv">.</span><span class="vs">csv"</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co">#For inline variable substitution, parameters passed as a String are evaluated using locals(), globals() and isinstance(). To override, substitute values directly.</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Join_BPS_Variables():  <span class="co"># Model</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Process: Join BPS Variables (Join Field) (management)</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Attempting join field for : </span><span class="sc">{</span>Combined_BPS_EVT_Raster<span class="sc">}</span><span class="ss"> and </span><span class="sc">{</span>BPS_Join_Table<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>        arcpy.management.JoinField(Combined_BPS_EVT_Raster, BPS_Field, BPS_Join_Table, BPS_Join_Field, BPS_Transfer_Fields, fm_option<span class="op">=</span><span class="st">"NOT_USE_FM"</span>, index_join_fields<span class="op">=</span><span class="st">"NO_INDEXES"</span>)</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"BPS fields successfully joined"</span>)</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> arcpy.ExecuteError:</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Failed: ArcPy Execution Error in combine."</span>)</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(arcpy.GetMessages(<span class="dv">2</span>)) <span class="co"># prints error messages</span></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>        <span class="co"># catches other potential Python errors (e.g. indentation, syntax)</span></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Failed: A general error occurred in join fields: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)                    </span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Process: Join EVT variables (Join Field) (management)</span></span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Attempting join field for : </span><span class="sc">{</span>Combined_BPS_EVT_Raster<span class="sc">}</span><span class="ss"> and </span><span class="sc">{</span>EVT_Join_Table<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>        arcpy.management.JoinField(Combined_BPS_EVT_Raster, EVT_Field, EVT_Join_Table, EVT_Join_Field, EVT_Transfer_Fields, fm_option<span class="op">=</span><span class="st">"NOT_USE_FM"</span>, index_join_fields<span class="op">=</span><span class="st">"NO_INDEXES"</span>)</span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"BPS fields successfully joined"</span>)</span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> arcpy.ExecuteError:</span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Failed: ArcPy Execution Error in combine."</span>)</span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(arcpy.GetMessages(<span class="dv">2</span>)) <span class="co"># prints error messages</span></span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>        <span class="co"># catches other potential Python errors (e.g. indentation, syntax)</span></span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Failed: A general error occurred in join fields: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Process: Export Table (Export Table) (conversion)</span></span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Attempting to export: </span><span class="sc">{</span>Combined_BPS_EVT_Table<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a>        arcpy.conversion.ExportTable(Combined_BPS_EVT_Raster, Combined_BPS_EVT_Table, use_field_alias_as_name<span class="op">=</span><span class="st">"NOT_USE_ALIAS"</span>)</span>
+<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"table successfully exported to </span><span class="sc">{</span>Combined_BPS_EVT_Table<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> arcpy.ExecuteError:</span>
+<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Failed: ArcPy Execution Error in combine."</span>)</span>
+<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(arcpy.GetMessages(<span class="dv">2</span>)) <span class="co"># prints error messages</span></span>
+<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a>        <span class="co"># catches other potential Python errors (e.g. indentation, syntax)</span></span>
+<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Failed: A general error occurred in join fields: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
+<span id="cb10-58"><a href="#cb10-58" aria-hidden="true" tabindex="-1"></a>    <span class="co"># When the script is run directly, this calls the main function Join_BPS_Variables</span></span>
+<span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a>    Join_BPS_Variables()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Attempting join field for : .//Rasters.gdb//NY_BPS_EVT_Burnable and .//Rasters.gdb//NY_BPS_Burnable
+BPS fields successfully joined
+Attempting join field for : .//Rasters.gdb//NY_BPS_EVT_Burnable and .//Rasters.gdb//NY_EVT_Burnable
+BPS fields successfully joined
+Attempting to export: .//Outputs//NY_BPS_EVT_Burnable.csv
+table successfully exported to .//Outputs//NY_BPS_EVT_Burnable.csv</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="next-steps-working-with-the-exported-table" class="level2">
+<h2 class="anchored" data-anchor-id="next-steps-working-with-the-exported-table">Next Steps: Working with the Exported Table</h2>
+<p>The combined BPS–EVT table has been exported as a CSV file. From this point forward, the workflow for analyzing and summarizing the data is the same as in the ArcGIS Pro and R tutorials.</p>
+<p>To continue:</p>
+<section id="if-you-prefer-excel" class="level3">
+<h3 class="anchored" data-anchor-id="if-you-prefer-excel">If you prefer Excel</h3>
+<p>Follow the instructions starting with <a href="https://landfire-tnc.github.io/LANDFIRE_FNA/ArcGIS/tabular-csv.html">Working with the CSV File</a> in the Fire Needs Assessments in ArcGIS Pro section of the <a href="https://landfire-tnc.github.io/LANDFIRE_FNA/">LANDFIRE in Fire Needs Assessments website</a>.</p>
+</section>
+<section id="if-you-prefer-r" class="level3">
+<h3 class="anchored" data-anchor-id="if-you-prefer-r">If you prefer R</h3>
+<p>Follow the instructions starting with <a href="https://landfire-tnc.github.io/LANDFIRE_FNA/r-workflow/r-tabular.html#calculating-evt-acres-in-r">Working with the Tabular Data</a> in the Fire Needs Assessments in R section of the <a href="https://landfire-tnc.github.io/LANDFIRE_FNA/">LANDFIRE in Fire Needs Assessments website</a>.</p>
+<p>These resources will guide you through: - Reviewing and cleaning the table, - Calculating fire return metrics, - Summarizing results by vegetation type.</p>
+<p><strong>Note:</strong><br>
+The Python workflow ends here. All subsequent steps for data manipulation and analysis should follow the Excel or R workflows linked above.</p>
+
+
+</section>
+</section>
+
+<section id="still-have-questions-landfire-is-here-to-help." class="level1">
+<h1>Still have questions? LANDFIRE is here to help.</h1>
+<ul>
+<li><p>Ask the <a href="mailto:helpdesk@landfire.gov?subject=landfirehelp">LANDFIRE Helpdesk</a> (email link).</p></li>
+<li><p>Search and subscribe to the <a href="https://www.youtube.com/@LANDFIREvideo">LANDFIRE YouTube Channel</a> (see tutorials, Office Hours, quick demonstrations).</p></li>
+<li><p><a href="https://tnc.zoom.us/meeting/register/8g82Cz9jTb6H-oRjgL6F9A">Join an Office Hour</a> (monthly meeting with open format Q &amp; A with LANDFIRE experts).</p></li>
+<li><p><a href="mailto:landfire@tnc.org?subject=landfirehelp">Schedule a meeting</a> (email link) with TNC’s LANDFIRE Team.</p></li>
+</ul>
+</section></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<script type="application/javascript" src="../../assets/js/fix-accessibility.js"></script>
+
+
+
+
+</body></html>
