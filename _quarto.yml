@@ -1,7 +1,8 @@
 project:
   type: website
   output-dir: docs
-  # resources: 
+  resources: 
+    -"ArcGIS/data/Fire Needs Assessment Tools.zip"
   #   - assets/js/fix-accessibility.js
 
 website:
